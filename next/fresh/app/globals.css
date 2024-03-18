@@ -20,7 +20,10 @@ body{
   color: black;
   padding: 20px;
   border-radius: 5px;
+  display: flex;
 }
+
+
 
 .navbar{
   background-color: white;
@@ -29,5 +32,11 @@ body{
 
 .navbar a{
   margin-right: 10px;
-  text-decoration: noen;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+.food-img{
+  width: 100%;
+  height: auto;
 }

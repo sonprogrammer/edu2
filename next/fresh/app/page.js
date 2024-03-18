@@ -8,10 +8,6 @@ export default function Home() {
 
   return (
    <div>
-    <div className="navbar">
-      <Link href='/'>홈</Link>
-      <Link href='/list'>List</Link>
-    </div>
     <h4 className="title">apple fresh</h4>
     <p className="content">by {name}</p>
 
