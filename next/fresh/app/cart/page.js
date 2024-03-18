@@ -6,6 +6,7 @@ export default function Cart() {
     <div>
       <h4 className='title'>cart</h4>
       <CartItem item={carts}/>
+      <CartItem item={carts}/>
     </div>
   )
 }
