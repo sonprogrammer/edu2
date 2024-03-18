@@ -5,7 +5,6 @@ export default function List() {
   const items = ['tomato', 'pasta', 'coconuts']
   return (
     <div>
-      <h1 className='title'>hi</h1>
       {items.map((item, i) => (
         <div className='food' key={i}>
           <h4>{item} $30 </h4>

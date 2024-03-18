@@ -20,10 +20,9 @@ body{
   color: black;
   padding: 20px;
   border-radius: 5px;
-  display: flex;
+  /* display: flex; */
+  text-align: center;
 }
-
-
 
 .navbar{
   background-color: white;
@@ -39,4 +38,10 @@ body{
 .food-img{
   width: 100%;
   height: auto;
+}
+
+.cart-item{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid white;
 }
