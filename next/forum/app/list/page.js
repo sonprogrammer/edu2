@@ -1,6 +1,7 @@
 import { connectDB } from '@/util/database'
 import Link from 'next/link'
 import React from 'react'
+import DetailLink from './DetailLink'
 
 export default async function List() {
   const client = await connectDB
@@ -13,6 +14,7 @@ export default async function List() {
       {result.map((a, i) => (
         <div className='list-item' key={i}>
           <Link href={`/detail/${result[i]._id}`} className='link'><h4>{result[i].title}</h4></Link>
+          <DetailLink />
           <p>19 of march</p>
         </div>
       ))}
