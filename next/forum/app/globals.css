@@ -28,3 +28,26 @@ body{
   text-decoration: none;
   color: black;
 }
+
+.p-20{
+  padding: 20px;
+
+}
+
+.p-20 input {
+  box-sizing: border-box;
+  padding: 10px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+button{
+  padding: 10px 15px;
+  background-color: lightgray;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover{
+  background-color: gray;
+}
