@@ -23,3 +23,8 @@ body{
   color: grey;
   margin : 5px 0px;
 } 
+
+.link{
+  text-decoration: none;
+  color: black;
+}
