@@ -51,3 +51,19 @@ button{
 button:hover{
   background-color: gray;
 }
+
+.navbar{
+  background-color: black;
+  padding: 20px;
+}
+
+.navbar a{
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+}
+
+.logo{
+  font-weight: bold;
+  font-size: 24px;
+}

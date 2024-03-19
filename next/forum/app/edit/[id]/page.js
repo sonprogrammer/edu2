@@ -8,17 +8,14 @@ export default async function Edit(props) {
     .collection('post')
     .findOne({ _id: new ObjectId(props.params.id) })
 
-    await db
-    .collection('post')
-    .updateOne({},{$set: {title: 'hello'}})
-
   return (
     <div>
       <div className='p-20'>
         <h4>edit page</h4>
-        <form action='/api/post/new' method='POST'>
-          <input type='text' name='title' value={result.title} />
-          <input name='content' value={result.content} />
+        <form action='/api/post/edit' method='POST'>
+          <input type='text' name='title' defaultValue={result.title} />
+          <input name='content' defaultValue={result.content} />
+          <input style={{display: 'none'}} name='_id' value={result._id.toString()} />
           <button type='submit'>button</button>
         </form>
       </div>
