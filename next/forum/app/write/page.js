@@ -1,7 +1,5 @@
 export default function Write() {
 
-  if(session)
-
 
   return (
     <div className="p-20">
@@ -9,6 +7,8 @@ export default function Write() {
       <form action="/api/post/new" method="POST">
         <input name="title" placeholder="title"/>
         <input name="content" placeholder="content"/>
+        <input type="file" accept="image/*" />
+        <img src="" alt="" />
         <button type="submit">button</button>
       </form>
     </div>
