@@ -1,6 +1,7 @@
 import { connectDB } from '@/util/database'
 import { ObjectId } from 'mongodb'
 import Comment from './comment'
+import Notfound from './not-found'
 
 export default async function Detail(props) {
 
@@ -9,6 +10,10 @@ export default async function Detail(props) {
   let result = await db.collection('post').findOne({ _id : new ObjectId(props.params.any) })
   console.log(props)
 
+  if(result === null) {
+    return Notfound()
+  }
+  
   return (
     <div>
       <h3>detail page</h3>
