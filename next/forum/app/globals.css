@@ -60,17 +60,26 @@ button:hover{
 }
 
 .navbar{
-  background-color: black;
+  background-color: white;
   padding: 20px;
 }
 
 .navbar a{
   text-decoration: none;
-  color: white;
+  color: black;
   margin-right: 10px;
 }
 
 .logo{
   font-weight: bold;
   font-size: 24px;
+}
+
+
+.dark-mode .navbar{
+  background-color: #222;
+}
+
+.dark-mode .navbar a{
+  color: white;
 }
