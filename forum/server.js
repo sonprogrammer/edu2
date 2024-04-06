@@ -7,6 +7,9 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
+app.use(methodOverride('_method'))
+const methodOverride = require('method-override')
+
 
 
 const {
@@ -95,6 +98,9 @@ app.get('/detail/:id', async (req, res) => {
 })
 
 app.get('/edit/:id', async (req, res) => {
+
+    // db.collection('post').updateOne({})
+
     const result = await db.collection('post').findOne({
         _id: new ObjectId(req.params.id)
     });
@@ -102,3 +108,23 @@ app.get('/edit/:id', async (req, res) => {
         result: result
     })
 })
+
+
+app.post('/edit/:id', async (req, res) => {
+    try {
+        await db.collection('post').updateOne({
+            _id: new ObjectId(req.params.id)
+        }, {
+            $set: {
+                title: req.body.title,
+                content: req.body.content
+            }
+        })
+        res.redirect('/list')
+
+    } catch (error) {
+        console.log(error.message)
+    }
+})
+
+
