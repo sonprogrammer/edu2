@@ -1,21 +1,12 @@
 const express = require('express');
 const app = express();
 
-app.use(express.static(__dirname + '/public'))
-app.set('view engine', 'ejs');
-app.use(express.json())
-app.use(express.urlencoded({
-    extended: true
-}))
-app.use(methodOverride('_method'))
-const methodOverride = require('method-override')
-
-
 
 const {
     MongoClient,
     ObjectId
 } = require('mongodb')
+const methodOverride = require('method-override')
 
 let db;
 const url = 'mongodb+srv://ods04139:cVCzld1lb8HhdUVO@cluster0.lyyr1v9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
@@ -28,6 +19,17 @@ new MongoClient(url).connect().then((client) => {
 }).catch((err) => {
     console.error(err)
 })
+
+app.use(express.static(__dirname + '/public'))
+app.set('view engine', 'ejs');
+app.use(express.json())
+app.use(express.urlencoded({
+    extended: true
+}))
+app.use(methodOverride('_method'))
+
+
+
 
 
 app.get('/', (req, res) => {
@@ -128,3 +130,13 @@ app.post('/edit/:id', async (req, res) => {
 })
 
 
+app.post('/abc', async(req, res) => {
+    console.log('hi')
+    console.log(req.body)
+})
+
+app.delete('/delete', async(req, res) => {
+    console.log(req.query)
+    await db.collection('post').deleteOne({_id: new ObjectId(req.query.docid)})
+    res.send('success')
+})

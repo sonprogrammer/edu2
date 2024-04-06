@@ -17,8 +17,23 @@
           <p>글내용임</p>
         </a>
         <a href="/edit/<%= posts[i]._id %>">글 수정</a>
+        <span style='cursor: pointer;' class="delete" data-id="<%= posts[i]._id %>">🗑️</span>
       </div>
       <% } %>
     </div>
+    <script>
+      document.querySelectorAll('.delete').forEach(button => {button.addEventListener('click', (e)=>{
+        e.target.dataset.id
+        fetch('/delete?docid=' + e.target.dataset.id , {
+          method: 'DELETE',
+        })
+        .then((r) => r.text())
+        .then((r) => {console.log(r)})
+        .then((r) =>{
+          e.target.parentElement.style.display = 'none'
+        })
+      })
+    })
+    </script>
   </body>
 </html>
