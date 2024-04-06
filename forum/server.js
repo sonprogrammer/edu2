@@ -9,6 +9,24 @@ app.use(express.urlencoded({
 }))
 
 
+const {
+    MongoClient,
+    ObjectId
+} = require('mongodb')
+
+let db;
+const url = 'mongodb+srv://ods04139:cVCzld1lb8HhdUVO@cluster0.lyyr1v9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+new MongoClient(url).connect().then((client) => {
+    console.log('db connection successful')
+    db = client.db('forum')
+    app.listen(8080, () => {
+        console.log('sever is runnding')
+    })
+}).catch((err) => {
+    console.error(err)
+})
+
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
@@ -22,7 +40,7 @@ app.get('/news', (req, res) => {
 
 app.get('/list', async (req, res) => {
     let result = await db.collection('post').find().toArray()
-    console.log(result)
+    // console.log(result)
     res.render('list.ejs', {
         posts: result
     })
@@ -57,24 +75,30 @@ app.post('/write', async (req, res) => {
     } catch (error) {
         res.status(500).send(error.message)
     }
-
-
 })
 
+app.get('/detail/:id', async (req, res) => {
+    try {
+        const result = await db.collection('post').findOne({
+            _id: new ObjectId(req.params.id)
+        })
+        res.render('detail.ejs', {
+            result: result
+        })
+        if (result === null) {
+            res.status(404).send('there is no this url')
+        }
+    } catch (error) {
+        console.log(error.message)
+        res.status(400).send('there is no this url')
+    }
+})
 
-
-const {
-    MongoClient
-} = require('mongodb')
-
-let db;
-const url = 'mongodb+srv://ods04139:cVCzld1lb8HhdUVO@cluster0.lyyr1v9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-new MongoClient(url).connect().then((client) => {
-    console.log('db connection successful')
-    db = client.db('forum')
-    app.listen(8080, () => {
-        console.log('sever is runnding')
+app.get('/edit/:id', async (req, res) => {
+    const result = await db.collection('post').findOne({
+        _id: new ObjectId(req.params.id)
+    });
+    res.render('edit.ejs', {
+        result: result
     })
-}).catch((err) => {
-    console.error(err)
 })

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="grey-bg">
+
+    <%- include('nav.ejs') %>
+
+    <!-- <%= JSON.stringify(result) %> -->
+    
+    <div class="detail-bg">
+        <h4><%= result.title %></h4>
+        <p><%= result.content %></p>
+    </div> 
+    </div>
+  </body>
+</html>

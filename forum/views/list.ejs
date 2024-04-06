@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body class="grey-bg">
-
     <%- include('nav.ejs') %>
-    
+
     <div class="white-bg">
       <% for(let i = 0; i < posts.length; i++){ %>
       <div class="list-box">
-        <h4><%= posts[i].title %></h4>
-        <p>글내용임</p>
+        <a href='/detail/<%= posts[i]._id %>''>
+          <h4><%= posts[i].title %></h4>
+          <p>글내용임</p>
+        </a>
+        <a href="/edit/<%= posts[i]._id %>">글 수정</a>
       </div>
       <% } %>
     </div>
