@@ -21,6 +21,7 @@
       </div>
       <% } %>
     </div>
+    <a href="/list/next/<%= posts[posts.length-1]._id %>">next</a>
     <script>
       document.querySelectorAll('.delete').forEach(button => {button.addEventListener('click', (e)=>{
         e.target.dataset.id
