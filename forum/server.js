@@ -7,6 +7,8 @@ const {
     ObjectId
 } = require('mongodb')
 const methodOverride = require('method-override')
+const bcrypt = require('bcrypt')
+require('dotenv').config
 
 let db;
 const url = 'mongodb+srv://ods04139:cVCzld1lb8HhdUVO@cluster0.lyyr1v9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
@@ -31,13 +33,18 @@ app.use(methodOverride('_method'))
 const session = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
+const MongoStore = require('connect-mongo')
 
 app.use(passport.initialize())
 app.use(session({
   secret: '암호화에 쓸 비번',
   resave : false,
   saveUninitialized : false,
-  cookie: { maxAge: 60 * 60 * 1000}
+  cookie: { maxAge: 60 * 60 * 1000},
+  store: MongoStore.create({
+    mongoUrl: 'mongodb+srv://ods04139:cVCzld1lb8HhdUVO@cluster0.lyyr1v9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', //db접속용 url
+    dbName: 'forum' //db이름
+  })
 }))
 
 app.use(passport.session()) 
@@ -176,7 +183,8 @@ passport.use(new LocalStrategy(async (id, password, cb) =>{
     if(!result){
         return cb(null, false, {message: 'No such user'})
     }
-    if(result.password == password){
+    let check = await bcrypt.compare(password, result.password)
+    if(check){
         return cb(null, result)
     }else{
         return cb(null, false, {message: 'password mismatch'})
@@ -221,5 +229,15 @@ app.get('/register', (req, res) => {
 })
 
 app.post('/register', async (req, res) => {
-    await db.collection('user').insertOne({ username: req.body.username, password: req.body.password})
+    let password = await bcrypt.hash(req.body.password, 10)
+    console.log(password)
+    await db.collection('user').insertOne({ username: req.body.username, password: password})
+    res.redirect('/')
+})
+
+app.get('/shop/shirt', (req, res) => {
+    res.send('shirt')
+})
+app.get('/shop/pants', (req, res) => {
+    res.send('pants')
 })
