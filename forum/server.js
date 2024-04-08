@@ -28,6 +28,20 @@ app.use(express.urlencoded({
 }))
 app.use(methodOverride('_method'))
 
+const session = require('express-session')
+const passport = require('passport')
+const LocalStrategy = require('passport-local')
+
+app.use(passport.initialize())
+app.use(session({
+  secret: '암호화에 쓸 비번',
+  resave : false,
+  saveUninitialized : false,
+  cookie: { maxAge: 60 * 60 * 1000}
+}))
+
+app.use(passport.session()) 
+
 
 
 
@@ -155,4 +169,57 @@ app.get('/list/:id', async (req, res) => {
     res.render('list.ejs', {
         posts: result
     })
+})
+
+passport.use(new LocalStrategy(async (id, password, cb) =>{
+    let result = await db.collection('user').findOne({ username: id})
+    if(!result){
+        return cb(null, false, {message: 'No such user'})
+    }
+    if(result.password == password){
+        return cb(null, result)
+    }else{
+        return cb(null, false, {message: 'password mismatch'})
+    }
+}))
+
+passport.serializeUser((user, done) =>{
+    console.log(user)
+    process.nextTick(()=>{
+        done(null, { id: user._id, username: user.username})
+    })
+})
+
+passport.deserializeUser( async (user, done) =>{
+    let result = await db.collection('user').findOne({_id: new ObjectId(user.id)})
+    delete result.password
+    console.log(user)
+    process.nextTick(()=>{
+        done(null, result)
+    })
+})
+
+app.get('/login', async (req, res) => {
+    console.log(req.user)
+    res.render('login.ejs')
+})
+
+app.post('/login', async (req, res, next) => {
+    passport.authenticate('local', (error, user, info) => { 
+        //에러시 error이게 들어오고 성공하면 user(로그인한 유저정보), 로그인 실패시 이유(info) 
+        if(error) return res.status(500).json(error)
+        if(!user) return res.status(401).json(info.message)
+        req.logIn(user, (err) => {
+            if(err) return next(err)
+            res.redirect('/')
+        })
+    })(req, res, next)
+})
+
+app.get('/register', (req, res) => {
+    res.render('register.ejs')
+})
+
+app.post('/register', async (req, res) => {
+    await db.collection('user').insertOne({ username: req.body.username, password: req.body.password})
 })
