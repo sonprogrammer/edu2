@@ -278,3 +278,11 @@ app.get('/search', async (req, res) => {
         posts: result
     })
 })
+
+app.get('/chat/request', async (req,res) =>{
+    console.log(req.user._id)
+    // await db.collection('chatroom').insertOne({
+    //     member: [req.user._id , req.query.writerId]
+    // })
+    req.query.writerId
+})
