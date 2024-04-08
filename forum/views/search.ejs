@@ -18,6 +18,8 @@
         location.href='/search?val=' + input
       })
     </script>
+
+    <h3>result</h3>
     
     <div class="white-bg">
       <% for(let i = 0; i < posts.length; i++){ %>
@@ -31,20 +33,5 @@
       </div>
       <% } %>
     </div>
-    <a href="/list/next/<%= posts[posts.length-1]._id %>">next</a>
-    <script>
-      document.querySelectorAll('.delete').forEach(button => {button.addEventListener('click', (e)=>{
-        e.target.dataset.id
-        fetch('/delete?docid=' + e.target.dataset.id , {
-          method: 'DELETE',
-        })
-        .then((r) => r.text())
-        .then((r) => {console.log(r)})
-        .then((r) =>{
-          e.target.parentElement.style.display = 'none'
-        })
-      })
-    })
-    </script>
   </body>
 </html>
