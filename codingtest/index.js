@@ -94,3 +94,96 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 // for(let i = 1; i <= 9; i++){
 //     console.log(a + ' * ' + i + ' = '+ a*i)
 // }
+
+
+// let a = Number(input[0])
+
+// let result = ''
+// for(let i = 0; i < a; i++) {
+//     for(let j = 0; j <= i; j++) {
+//         result += '*'
+//     }
+//     result += '\n'
+// }
+
+// console.log(result)
+
+// let testCase = Number(input[0])
+// let answer = ''
+
+// for (let i = 0; i <= testCase; i++) {
+//     let data = input[i].split(' ')
+//     let a = Number(data[0])
+//     let b = Number(data[1])
+//     answer += a + b + '\n'
+// }
+
+// console.log(answer)
+
+// let count = Number(input[0])
+
+// let arr = input[1].split(' ').map(Number)
+
+// let min = 1000000
+// let max = -1000000
+
+// for(let i = 0; i < count; i++){
+//     if(min > arr[i]) min = arr[i]
+//     if(max < arr[i]) max = arr[i]
+// }
+
+// console.log(min, max)
+
+// let max = 0
+// let maxIndex = 0;
+
+// for(let i = 0; i < 9; i++){
+//     let data = Number(input[i])
+//     if(max < data) {
+//        max = data
+//        maxIndex = i
+//     }
+// }
+
+// console.log(max, maxIndex+1)
+
+
+// let data = input.map(Number)
+// let mySet = new Set();
+
+// for(let i =0; i< 10; i++){
+//     mySet.add(input[i] % 42)
+// }
+// console.log(mySet.size)
+
+// let testCase = Number(input[0])
+
+// for(let i = 1; i <= testCase; i++){
+//     let data = input[t].split(' ').map(Number)
+//     let n = data[0]
+//     let summary = 0;
+//     for(let j = 1; j <= n; j++){
+//         summary += data[j]
+//     }
+//     let average = summary / n;
+//     let cnt = 0;
+//     for(let a = 1; a <= n; a++){
+//         if(data[a] > average){
+//             cnt += 1;
+//         }
+//     }
+//     console.log(`${(cnt / n * 100).toFixed(3)}%`)
+// }
+
+let n = Number(input[0])
+let score = input[1].split(' ').map(Number)
+let m = score.reduce((a, b) => Math.max(a, b))
+console.log(m)
+let updated = []
+
+for(let i = 0; i < n; i++){
+   updated.push(score[i] / m * 100)
+
+}
+
+console.log(updated.reduce((a, b) => a + b) / n)
