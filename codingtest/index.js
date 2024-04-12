@@ -58,14 +58,39 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 
 // console.log(hour + ' ' + minute)
 
-let [a, b] = input[0].split(' ').map(Number)
-let c = Number(input[1])
+// let [a, b] = input[0].split(' ').map(Number)
+// let c = Number(input[1])
 
-let totalMinute = a * 60 + b + c
+// let totalMinute = a * 60 + b + c
 
-totalMinute %= 1440;
+// totalMinute %= 1440;
 
-let hour = parseInt(totalMinute / 60) 
-let minute = totalMinute % 60
+// let hour = parseInt(totalMinute / 60) 
+// let minute = totalMinute % 60
 
-console.log(hour + ' ' + minute)
+// console.log(hour + ' ' + minute)
+
+
+// let a = Number(input[0].split(' ')[0])
+// let b = Number(input[0].split(' ')[1])
+// let c = Number(input[0].split(' ')[2])
+
+// if(a == b && b == c) console.log(10000 + a * 1000)
+// else if(a == b) console.log(1000 + a * 100)
+// else if(a == c) console.log(1000 + a * 100)
+// else if(c == b) console.log(1000 + b * 100)
+// else console.log(Math.max(a, b, c) * 100)
+
+// let a = Number(input[0])
+
+// let sum = 0
+// for(let i = 0; i < a; i++){
+//     sum += i
+// }
+// console.log(sum)
+
+
+// let a = Number(input[0])
+// for(let i = 1; i <= 9; i++){
+//     console.log(a + ' * ' + i + ' = '+ a*i)
+// }
