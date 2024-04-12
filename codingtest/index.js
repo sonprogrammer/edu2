@@ -175,15 +175,89 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 //     console.log(`${(cnt / n * 100).toFixed(3)}%`)
 // }
 
-let n = Number(input[0])
-let score = input[1].split(' ').map(Number)
-let m = score.reduce((a, b) => Math.max(a, b))
-console.log(m)
-let updated = []
+// let n = Number(input[0])
+// let score = input[1].split(' ').map(Number)
+// let m = score.reduce((a, b) => Math.max(a, b))
+// console.log(m)
+// let updated = []
 
-for(let i = 0; i < n; i++){
-   updated.push(score[i] / m * 100)
+// for(let i = 0; i < n; i++){
+//    updated.push(score[i] / m * 100)
 
+// }
+
+// console.log(updated.reduce((a, b) => a + b) / n)
+
+// let n = Number(input[0])
+
+// let b = input[1].split('').map(Number)
+
+// let result = 0
+// for(let i =0; i< n; i++) {
+//     result += b[i]
+// }
+
+// console.log(result)
+
+// let n = Number(input[0])
+
+// for(let i = 1; i<= n; i++){
+//     let [r, s] = input[i].split(' ')
+//     console.log(r, s)
+//     let result = ''
+//     for(let j = 0; j <= s.length; j++){
+//         result += s.charAt(j).repeat(r)
+//     }
+//     console.log(result)
+// }
+
+// let [a, b] = input[0].split(' ')
+
+// let newa= a.split('').reverse().join('')
+// let newb= b.split('').reverse().join('')
+// console.log(Math.max(newa,newb))
+
+
+// let n = Number(input[0])
+// let summary = 0
+
+// function check(data){
+//     let setData = new Set(data[0])
+//     for(let i = 0; i < data.length; i++){
+//         if(data[i] != data[i+1]){
+//             if(setData.has(data[i+1])){
+//                 return false
+//             }else{
+//                 setData.add(data[i+1])
+//             }
+//         }
+//     }
+//     return true
+// }
+
+// for(let i = 1; i<= n; i++){
+//     let data = input[i]
+//     if(check(data)) summary += 1
+// }
+// console.log(summary)
+
+// let data = input[0].trim().split(' ')
+// console.log(data)
+
+// if(data == ''){
+//     console.log(0)
+// }else{
+//     console.log(data.length)
+// }
+
+
+let a = Number(input[0].split(' ')[0])
+let b = Number(input[0].split(' ')[1])
+
+if(a < b){
+    console.log('<')
+}else if(a > b){
+    console.log('>')
+}else{
+    console.log('==')
 }
-
-console.log(updated.reduce((a, b) => a + b) / n)
