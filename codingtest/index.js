@@ -251,13 +251,80 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 // }
 
 
-let a = Number(input[0].split(' ')[0])
-let b = Number(input[0].split(' ')[1])
+// let a = Number(input[0].split(' ')[0])
+// let b = Number(input[0].split(' ')[1])
 
-if(a < b){
-    console.log('<')
-}else if(a > b){
-    console.log('>')
-}else{
-    console.log('==')
-}
+// if(a < b){
+//     console.log('<')
+// }else if(a > b){
+//     console.log('>')
+// }else{
+//     console.log('==')
+// }
+
+// let a = Number(input[0].split(' ')[0])
+// let b = Number(input[0].split(' ')[1])
+// let c = Number(input[0].split(' ')[2])
+
+// console.log(a+b+c)
+
+// let year = Number(input[0])
+
+// if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
+//     console.log(1)
+// }else{
+//     console.log(0)
+// }
+
+// let x = Number(input[0])
+// let y = Number(input[1])
+
+// if(x > 0 && y > 0){
+//     console.log(1)
+// }else if(x < 0 && y > 0){
+//     console.log(2)
+// }else if(x < 0 && y < 0){
+//     console.log(3)
+// }else{
+//     console.log(4)
+// }
+
+// let totalPrice = Number(input[0])
+// console.log('totalPrice', totalPrice)
+
+// let num = Number(input[1])
+// console.log('num', num)
+// let sum = 0
+
+// for(let i = 2; i <= num+1; i++){
+//     let [price, amount] = input[i].split(' ').map(Number)
+//     sum += (price * amount)
+// }
+// if(sum == totalPrice){
+//     console.log('Yes')
+// }else{
+//     console.log('No')
+// }
+
+
+// let n = Number(input[0])
+
+// for(let i =1; i <= n; i++){
+//     let space = ' '.repeat(n - i)
+//     let stars = '*'.repeat(i)
+//     console.log(space + stars)
+// }
+
+// let num = Number(input[0])
+
+// let a = input[1].split(' ').map(Number)
+// let b = Number(input[2])
+// let result = []
+
+// for(let i = 0; i < a.length; i++){
+//     if(b == a[i]){
+//         result.push(a[i])
+//     }
+// }
+// console.log(result.length)
+
