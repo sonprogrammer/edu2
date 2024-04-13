@@ -328,3 +328,23 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 // }
 // console.log(result.length)
 
+// let word = input[0]
+// let n = Number(input[1])
+
+// console.log(word[n-1])
+
+// let word = input[0]
+
+// console.log(word.length)
+
+// let testCase = Number(input[0])
+
+// for(let i = 1; i <= testCase; i++){
+//     let word = input[i]
+//     if(word.length <= 1){
+//         console.log(word[0].repeat(2))
+//     }else{
+
+//         console.log(word[0]+word[word.length-1])
+//     }
+// }
