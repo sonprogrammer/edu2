@@ -348,3 +348,33 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 //         console.log(word[0]+word[word.length-1])
 //     }
 // }
+
+// let n = Number(input[0])
+// let count = input[1].split('').map(Number)
+
+// let sum = count.reduce((a, b) => a + b)
+// console.log(sum)
+
+let n = Number(input[0])
+
+let result = ''
+
+for(let i = 1; i<= n; i++) {
+    let [count, word] = input[i].split(' ')
+    count = Number(count)
+    for(let j = 0; j < word.length; j++) {
+        result += word[j].repeat(count)
+    }
+    console.log(result)
+}
+
+
+for(let i = 1; i<= n; i++) {
+    let [count, word] = input[i].split(' ')
+    count = Number(count)
+    let result = ''
+    for(let j = 0; j < word.length; j++) {
+        result += word[j].repeat(count)
+    }
+    console.log(result)
+}
