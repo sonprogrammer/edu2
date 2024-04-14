@@ -357,16 +357,16 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 
 let n = Number(input[0])
 
-let result = ''
+// let result = ''
 
-for(let i = 1; i<= n; i++) {
-    let [count, word] = input[i].split(' ')
-    count = Number(count)
-    for(let j = 0; j < word.length; j++) {
-        result += word[j].repeat(count)
-    }
-    console.log(result)
-}
+// for(let i = 1; i<= n; i++) {
+//     let [count, word] = input[i].split(' ')
+//     count = Number(count)
+//     for(let j = 0; j < word.length; j++) {
+//         result += word[j].repeat(count)
+//     }
+//     console.log(result)
+// }
 
 
 for(let i = 1; i<= n; i++) {
