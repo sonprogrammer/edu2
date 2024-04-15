@@ -355,7 +355,6 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 // let sum = count.reduce((a, b) => a + b)
 // console.log(sum)
 
-let n = Number(input[0])
 
 // let result = ''
 
@@ -363,11 +362,12 @@ let n = Number(input[0])
 //     let [count, word] = input[i].split(' ')
 //     count = Number(count)
 //     for(let j = 0; j < word.length; j++) {
-//         result += word[j].repeat(count)
+    //         result += word[j].repeat(count)
 //     }
 //     console.log(result)
 // }
 
+let n = Number(input[0])
 
 for(let i = 1; i<= n; i++) {
     let [count, word] = input[i].split(' ')
