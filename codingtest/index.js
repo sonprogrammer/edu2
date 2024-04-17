@@ -408,6 +408,47 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 
 // input.forEach(line => console.log(line))
 
-let data = [1, 2,3, 4, 5]
+// let data = [1, 2,3, 4, 5]
 
-let result = data.forEach(twice => console.log(twice*2))
+// let result = data.forEach(twice => console.log(twice*2))
+
+// let n = input[0].split(' ').map(Number)
+
+
+// let result = n.reduce((a, b) => {
+//     console.log(a +b)
+//     return a + b
+// })
+
+// let word = input[0]
+
+// let r = word.split('').reverse().join('')
+
+// if(r === word){
+//     console.log(1)
+// }else{
+//     console.log(0)
+// }
+
+let n = Number(input[0]);
+
+for (let i = 1; i <= n; i++) {
+    let row = '';
+    for (let j = 1; j <= n - i; j++) {
+        row += ' ';
+    }
+    for (let k = 1; k <= 2 * i - 1; k++) {
+        row += '*';
+    }
+    console.log(row);
+}
+for (let i = n - 1; i >= 1; i--) {
+    let row = '';
+    for (let j = 1; j <= n - i; j++) {
+        row += ' ';
+    }
+    for (let k = 1; k <= 2 * i - 1; k++) {
+        row += '*';
+    }
+    console.log(row);
+}
