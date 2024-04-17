@@ -368,14 +368,42 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 // }
 
 
-let n = Number(input[0])
+// let n = Number(input[0])
 
-for(let i = 1; i<= n; i++) {
-    let [count, word] = input[i].split(' ')
-    count = Number(count)
-    let result = ''
-    for(let j = 0; j < word.length; j++) {
-        result += word[j].repeat(count)
-    }
-    console.log(result)
-}
+// for(let i = 1; i<= n; i++) {
+//     let [count, word] = input[i].split(' ')
+//     count = Number(count)
+//     let result = ''
+//     for(let j = 0; j < word.length; j++) {
+//         result += word[j].repeat(count)
+//     }
+//     console.log(result)
+// }
+
+// let s = input[0]
+
+// let result = s.trim().split(' ')
+
+// console.log(result.length)
+
+// let words = input[0].trim().split(' ')
+
+// if(words == ''){
+//     console.log(0)
+// }else{
+//     console.log(words.length)
+// }
+
+// let a = input[0].split(' ')[0]
+// let b = input[0].split(' ')[1]
+
+// let newa = a.split('').reverse().join('')
+// let newb = b.split('').reverse().join('')
+
+// if(newa > newb) {
+//     console.log(newa)
+// }else{
+//     console.log(newb)
+// }
+
+input.forEach(line => console.log(line))
