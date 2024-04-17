@@ -406,4 +406,8 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 //     console.log(newb)
 // }
 
-input.forEach(line => console.log(line))
+// input.forEach(line => console.log(line))
+
+let data = [1, 2,3, 4, 5]
+
+let result = data.forEach(twice => console.log(twice*2))
