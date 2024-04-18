@@ -430,25 +430,42 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 //     console.log(0)
 // }
 
-let n = Number(input[0]);
+// let n = Number(input[0]);
 
-for (let i = 1; i <= n; i++) {
-    let row = '';
-    for (let j = 1; j <= n - i; j++) {
-        row += ' ';
-    }
-    for (let k = 1; k <= 2 * i - 1; k++) {
-        row += '*';
-    }
-    console.log(row);
+// for (let i = 1; i <= n; i++) {
+//     let row = '';
+//     for (let j = 1; j <= n - i; j++) {
+//         row += ' ';
+//     }
+//     for (let k = 1; k <= 2 * i - 1; k++) {
+//         row += '*';
+//     }
+//     console.log(row);
+// }
+// for (let i = n - 1; i >= 1; i--) {
+//     let row = '';
+//     for (let j = 1; j <= n - i; j++) {
+//         row += ' ';
+//     }
+//     for (let k = 1; k <= 2 * i - 1; k++) {
+//         row += '*';
+//     }
+//     console.log(row);
+// }
+
+let a = Number(input[0])
+let b = Number(input[1])
+let c = Number(input[2])
+
+let result = a * b * c
+let counts = Array(10).fill(0);
+
+while (result > 0) {
+    let digit = result % 10;
+    counts[digit]++;
+    result = Math.floor(result / 10);
 }
-for (let i = n - 1; i >= 1; i--) {
-    let row = '';
-    for (let j = 1; j <= n - i; j++) {
-        row += ' ';
-    }
-    for (let k = 1; k <= 2 * i - 1; k++) {
-        row += '*';
-    }
-    console.log(row);
+
+for (let i = 0; i < 10; i++) {
+    console.log(`${i}: ${counts[i]}`);
 }
