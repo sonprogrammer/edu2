@@ -453,19 +453,19 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 //     console.log(row);
 // }
 
-let a = Number(input[0])
-let b = Number(input[1])
-let c = Number(input[2])
+// let a = Number(input[0])
+// let b = Number(input[1])
+// let c = Number(input[2])
 
-let result = a * b * c
-let counts = Array(10).fill(0);
+// let result = a * b * c
+// let counts = Array(10).fill(0);
 
-while (result > 0) {
-    let digit = result % 10;
-    counts[digit]++;
-    result = Math.floor(result / 10);
-}
+// while (result > 0) {
+//     let digit = result % 10;
+//     counts[digit]++;
+//     result = Math.floor(result / 10);
+// }
 
-for (let i = 0; i < 10; i++) {
-    console.log(`${i}: ${counts[i]}`);
-}
+// for (let i = 0; i < 10; i++) {
+//     console.log(`${i}: ${counts[i]}`);
+// }
