@@ -362,7 +362,7 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 //     let [count, word] = input[i].split(' ')
 //     count = Number(count)
 //     for(let j = 0; j < word.length; j++) {
-    //         result += word[j].repeat(count)
+//         result += word[j].repeat(count)
 //     }
 //     console.log(result)
 // }
@@ -469,3 +469,20 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 // for (let i = 0; i < 10; i++) {
 //     console.log(`${i}: ${counts[i]}`);
 // }
+
+// let a = [1, 2, 3, 4, 5]
+// let b = [...a]
+
+// a[5] = 6
+// console.log(a)
+// console.log(b)
+
+let o1 = {
+    a: 1,
+    b: 2
+}
+let o2 = {
+    ...o1,
+    c: 3
+}
+console.log(o2)
