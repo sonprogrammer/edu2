@@ -477,12 +477,3 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 // console.log(a)
 // console.log(b)
 
-let o1 = {
-    a: 1,
-    b: 2
-}
-let o2 = {
-    ...o1,
-    c: 3
-}
-console.log(o2)
