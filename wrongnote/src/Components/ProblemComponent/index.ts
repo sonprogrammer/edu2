@@ -1,1 +1,1 @@
-export { default as ProblemComponent } from './ProblemComponent'
+export {default as ProblemComponent } from './ProblemComponent'

@@ -1,9 +1,19 @@
 import React from 'react'
+import { StyledContainer, StyledLogo, StyledSearch, StyledTags } from './style'
 
 export default function NavbarComponent() {
   return (
-    <div>
-      
-    </div>
+    <StyledContainer>
+      <StyledLogo>
+        CAN
+      </StyledLogo>
+      <StyledSearch>
+            search
+      </StyledSearch>
+      <StyledTags>
+        <h2>problem</h2>
+        <h2>login</h2>
+      </StyledTags>
+    </StyledContainer>
   )
 }

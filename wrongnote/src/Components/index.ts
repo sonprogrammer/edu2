@@ -1,2 +1,2 @@
-export * from './ProblemComponent'
 export * from './NavbarComponent'
+export * from './ProblemComponent'
