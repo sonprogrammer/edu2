@@ -10,20 +10,27 @@ export const StyledContainer = styled.div`
         text-2xl
         font-bold
         p-4
+        bg-blue-500
+        h-20
     `}
 `
 
-export const StyledLogo = styled.div`
+export const StyledLogo = styled.a`
     ${tw`
         mr-auto
+        bg-yellow-500
+        rounded-xl
+        p-1
+        items-center
+        flex
     `}
 `
-export const StyledSearch = styled.div`
+export const StyledSearch = styled.a`
     ${tw`
         mx-auto
     `}
 `
-export const StyledTags = styled.div`
+export const StyledTags = styled.a`
     ${tw`
         flex
         ml-auto
