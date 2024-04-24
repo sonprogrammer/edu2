@@ -12,10 +12,11 @@ export const StyledContainer = styled.div`
         p-4
         bg-blue-500
         h-20
+        items-center
     `}
 `
 
-export const StyledLogo = styled.a`
+export const StyledLogo = styled.div`
     ${tw`
         mr-auto
         bg-yellow-500
@@ -25,10 +26,17 @@ export const StyledLogo = styled.a`
         flex
     `}
 `
-export const StyledSearch = styled.a`
+export const StyledSearch = styled.input`
     ${tw`
         mx-auto
+        rounded-3xl
+        h-10
+        text-center
     `}
+    transition: border-color 0.3s ease;
+    &:focus{
+        border-color: red;
+    }
 `
 export const StyledTags = styled.a`
     ${tw`

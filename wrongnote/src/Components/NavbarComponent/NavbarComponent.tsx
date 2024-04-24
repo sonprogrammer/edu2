@@ -10,9 +10,7 @@ export default function NavbarComponent() {
                 CAN
                 </Link>
             </StyledLogo>
-            <StyledSearch>
-                search
-            </StyledSearch>
+            <StyledSearch placeholder='search'/>
             <StyledTags>
                 <Link to='/problem'>problem</Link>
                 <Link to='/login'>login</Link>
