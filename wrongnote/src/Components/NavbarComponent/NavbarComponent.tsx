@@ -1,18 +1,21 @@
 import React from 'react'
 import { StyledContainer, StyledLogo, StyledSearch, StyledTags } from './style'
+import { Link } from 'react-router-dom'
 
 export default function NavbarComponent() {
     return (
         <StyledContainer>
-            <StyledLogo href='#'>
+            <StyledLogo>
+                <Link to='/'>
                 CAN
+                </Link>
             </StyledLogo>
             <StyledSearch>
                 search
             </StyledSearch>
             <StyledTags>
-                <h2>problem</h2>
-                <h2>login</h2>
+                <Link to='/problem'>problem</Link>
+                <Link to='/login'>login</Link>
             </StyledTags>
         </StyledContainer>
     )
