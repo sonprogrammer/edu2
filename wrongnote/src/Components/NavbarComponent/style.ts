@@ -26,17 +26,16 @@ export const StyledLogo = styled.div`
         flex
     `}
 `
-export const StyledSearch = styled.input`
+export const StyledSearch = styled.input.attrs({placeholder: 'Search'})`
     ${tw`
         mx-auto
         rounded-3xl
         h-10
-        text-center
+        text-left
+        px-4
+        outline-none
     `}
-    transition: border-color 0.3s ease;
-    &:focus{
-        border-color: red;
-    }
+    
 `
 export const StyledTags = styled.a`
     ${tw`
