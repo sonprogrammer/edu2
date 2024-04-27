@@ -32,6 +32,18 @@ export default function ProblemComponent() {
         <p>description</p>
         <h1>answer</h1>
       </StyledContainer>
+      <StyledContainer>
+        <p>description</p>
+        <h1>answer</h1>
+      </StyledContainer>
+      <StyledContainer>
+        <p>description</p>
+        <h1>answer</h1>
+      </StyledContainer>
+      <StyledContainer>
+        <p>description</p>
+        <h1>answer</h1>
+      </StyledContainer>
      
     </StyledBox>
   )
