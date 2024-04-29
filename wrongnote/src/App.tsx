@@ -1,9 +1,9 @@
 
 import './App.css'
 import React from 'react'
-import { AddProblemComponent, NavbarComponent, ProblemComponent } from './components';
+import { AddProblemComponent, LoginComponent, NavbarComponent, NotFoundComponent, NoteComponent, ProblemComponent } from './components';
 import { Route, Routes } from 'react-router-dom';
-import { NotFoundComponent } from './components/NotFoundComponent';
+
 
 
 
@@ -14,8 +14,10 @@ function App() {
       <AddProblemComponent />
     <Routes>
       <Route path='/' element={<ProblemComponent answer={false} />} />
-      <Route path='/login' element={<div>loginpage</div>}/>
+      <Route path='/login' element={<><LoginComponent /> </>}/>
       <Route path='/test' element={<div>testpage</div>}/>
+      <Route path='/note' element={<NoteComponent/>}/>
+      <Route path='/problem' element={<div>problempage</div>}/>
       <Route path='*' element={<NotFoundComponent />}/>
      </Routes>
       </>

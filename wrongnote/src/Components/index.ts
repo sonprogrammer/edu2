@@ -1,3 +1,6 @@
 export * from './NavbarComponent'
 export * from './ProblemComponent'
 export * from './AddProblemComponent'
+export * from './NotFoundComponent'
+export * from './NoteComponent'
+export * from './LoginComponent'
