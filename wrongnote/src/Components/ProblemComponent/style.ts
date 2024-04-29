@@ -12,7 +12,7 @@ export const StyledBox = styled.div`
     `}
 `
 
-export const StyledContainer = styled.div`
+export const StyledContainer = styled.div<{answer: boolean}>`
     ${tw`
         bg-gray-400
         rounded-xl
