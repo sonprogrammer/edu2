@@ -13,7 +13,8 @@ export default function NavbarComponent() {
             </StyledLogo>
             <StyledSearch type='search'/>
             <StyledTags>
-                <Link to='/problem'>problem</Link>
+                <Link to='/note'>my note</Link>
+                <Link to='/test'>20 test</Link>
                 <Link to='/login'>login</Link>
             </StyledTags>
         </StyledContainer>

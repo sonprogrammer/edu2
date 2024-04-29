@@ -5,8 +5,7 @@ interface ProblemComponentProps{
   answer: boolean;
 }
 
-export default function ProblemComponent({
-  answer} :ProblemComponentProps) {
+export default function ProblemComponent() {
   const[showAnswer, setShowAnswer] = useState(false)
   // const[isExpand, setIsExpand] = useState(false)
   
@@ -33,7 +32,7 @@ export default function ProblemComponent({
       </StyledContainer>
       <StyledContainer answer={showAnswer}>
         <p>내 출생연도와 내 이름과 내 나이는?</p>
-        { answer ? (
+        { showAnswer ? (
           <h1 onClick={handleClick}>1997.01.26 손영진</h1>
         ):
         (
