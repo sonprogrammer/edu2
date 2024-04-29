@@ -27,17 +27,17 @@ export default function ProblemComponent() {
       <StyledContainer answer={showAnswer}>
         <p>내 출생연도와 내 이름과 내 나이는?</p>
         { showAnswer ? (
-          <h1 onClick={handleClick}>1997.01.26 손영진</h1>
+          <h1 onClick={handleClick}>답 : 1997.01.26 손영진</h1>
         ):
         (
           <h1 onClick={handleClick}>Check the answer</h1>
         )
       }
       </StyledContainer>
-      <StyledContainer answer={showAnswer}>
+      <StyledContainer answer={showAnswer2}>
         <p>내 출생연도와 내 이름과 내 나이는?</p>
-        { showAnswer ? (
-          <h1 onClick={handleClick2}>1997.01.26 손영진</h1>
+        { showAnswer2 ? (
+          <h1 onClick={handleClick2}>답 : 1997.01.26 손영진</h1>
         ):
         (
           <h1 onClick={handleClick2}>Check the answer</h1>
