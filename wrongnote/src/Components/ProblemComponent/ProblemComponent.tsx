@@ -10,7 +10,7 @@ export default function ProblemComponent() {
 
   return (
     <StyledBox>
-      <StyledContainer>
+      <StyledContainer answer={answer}>
         <p>descriptionfdsafadsfsdafsdafsdafsdafadsfdasfasdfdsa</p>
         { answer ? (
           <h1 onClick={handleClick}>answer</h1>
@@ -24,24 +24,6 @@ export default function ProblemComponent() {
         <p>description</p>
         <h1>answer</h1>
       </StyledContainer>
-     
-      <StyledContainer>
-        <p>description</p>
-        <h1>answer</h1>
-      </StyledContainer>
-      <StyledContainer>
-        <p>description</p>
-        <h1>answer</h1>
-      </StyledContainer>
-      <StyledContainer>
-        <p>description</p>
-        <h1>answer</h1>
-      </StyledContainer>
-      <StyledContainer>
-        <p>description</p>
-        <h1>answer</h1>
-      </StyledContainer>
-     
     </StyledBox>
   )
 }

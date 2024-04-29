@@ -1,7 +1,7 @@
 
 import './App.css'
 import React from 'react'
-import { NavbarComponent, ProblemComponent } from './components';
+import { AddProblemComponent, NavbarComponent, ProblemComponent } from './components';
 
 
 
@@ -10,6 +10,7 @@ function App() {
     <>
       <NavbarComponent />
       <ProblemComponent />
+      <AddProblemComponent />
     </>
   );
 }

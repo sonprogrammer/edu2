@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 export const StyledBox = styled.div`
     ${tw`
+        mt-10
         flex
         justify-around
         flex-wrap
@@ -29,8 +30,16 @@ export const StyledContainer = styled.div`
         margin-bottom: 10px;
         cursor: pointer;
     }
+
+    ${props => props.answer ? `
+        h1:hover{
+            color: white;
+        }
+    ` : `color: black;`}
+
     h1:hover{
-        background-color: red
+        background-color: ${props => props.answer ? 'blue' : 'red'};
+        border-radius: 15px;
     }
     p{
         font-size: 24px;
