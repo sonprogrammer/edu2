@@ -45,7 +45,7 @@ export const StyledContainer = styled.div`
         font-size: 24px;
         margin-left: 10px;
         margin-right: 10px;
-        text-wrap: wrap;
+        word-wrap: break-all;
     }
     @media(max-width:768px){
         width: calc(100% - 10px)
