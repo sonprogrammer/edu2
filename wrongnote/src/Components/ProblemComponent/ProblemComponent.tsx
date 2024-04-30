@@ -11,8 +11,9 @@ export default function ProblemComponent() {
   const [modal, setModal] = useState(false)
   // const[isExpand, setIsExpand] = useState(false)
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     setShowAnwser(!showAnswer)
+    e.stopPropagation()
   }
   const handleClick2 = () => {
     setShowAnwser2(!showAnswer2)
