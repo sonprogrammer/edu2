@@ -51,3 +51,42 @@ export const StyledContainer = styled.div<{answer: boolean}>`
         width: calc(100% - 10px)
     }
 `
+
+export const StyledModalOverlay = styled.div`
+    ${tw`
+        fixed
+        top-0
+        left-0
+        w-full
+        h-full
+        flex
+        justify-center
+    `}
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+`
+export const StyledModalContent = styled.div`
+    ${tw`
+        w-[80%]
+        h-[80%]
+        bg-white
+        p-10
+        rounded-md
+        relative
+    `}
+`
+export const StyledCloseButton = styled.div`
+    ${tw`
+        absolute
+        top-[10px]
+        right-[10px]
+        bg-transparent	
+        cursor-pointer
+        text-[18px]
+    `}
+    &:hover{
+        padding: 3px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+`
