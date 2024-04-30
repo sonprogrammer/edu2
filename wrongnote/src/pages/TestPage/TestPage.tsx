@@ -1,10 +1,10 @@
 import React from 'react'
-import { ProblemComponent } from '../../components'
+import { TestComponent } from '../../components'
 
 export default function TestPage() {
   return (
-    <ProblemComponent>
+    <TestComponent>
       
-    </ProblemComponent>
+    </TestComponent>
   )
 }
