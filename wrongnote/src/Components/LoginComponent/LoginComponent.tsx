@@ -13,10 +13,8 @@ export default function LoginComponent() {
     return (
         <StyledContainer>
             <img src="/favicon.png" alt="logo" className='w-1/3 mb-10 rounded-full' />
-            <div>
                 <StyledInput type="email" placeholder='email' />
                 <StyledInput type="password" placeholder='password' />
-            </div>
             <div>
                 <input type="checkbox" className='peer mr-2' checked={isEmailChecked} onChange={handleEmailClick}/>
                 <span onClick={handleEmailClick} style={{cursor:'pointer'}}>이메일 기억하기</span>
