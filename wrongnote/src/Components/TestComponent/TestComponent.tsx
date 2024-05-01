@@ -5,7 +5,7 @@ export default function TestComponent() {
     return (
         <StyledBox>
             <StyledContainer>
-                <StyledContent>문제내용fdsafdsfdasfdsafadsfsdafsdafdsafdsafasdfadsfsdafasdfsadfadsdddfdfdfdfdfdf dfdfdfdfd</StyledContent>
+                <StyledContent>문제내용fdsafdsfdasfdsafadsf sdafsdafdsafdsafasdfadsfsdafasdfsadfadsdddfdfdfdfdfdf dfdfdfdfd</StyledContent>
                 <StyledAnswer cols={40} rows={3} placeholder='정답을 입력하세요' />
             </StyledContainer>
             <StyledContainer>
