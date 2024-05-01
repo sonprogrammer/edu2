@@ -14,7 +14,7 @@ export const StyledBox = styled.div`
 
 export const StyledContainer = styled.div<{answer: boolean}>`
     ${tw`
-        bg-gray-400
+        bg-gray-300
         rounded-xl
         w-[calc(40% - 10px)]
         text-wrap
@@ -88,5 +88,46 @@ export const StyledCloseButton = styled.div`
     &:hover{
         padding: 3px;
         background-color: rgba(0, 0, 0, 0.5);
+        border-radius:10px;
+        color: white;
+    }
+`
+
+export const StyledEditBtn = styled.div`
+    ${tw`
+    bottom-[10px]
+    w-[50px]
+    bg-blue-500
+    text-white
+    p-2
+    font-semibold
+    rounded-md
+    cursor-pointer
+    text-[18px]
+    mx-auto
+    mt-20
+    `}
+    transition: all 0.4s;
+    &:hover{
+        transform: scale(1.2);
+    }
+`
+
+export const StyledContent = styled.div`
+    ${tw`
+        w-full
+        h-[80%]
+        flex
+        flex-col
+        mt-5
+    `}
+    p{
+        margin-bottom: 20px;
+    }
+    h2{
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: blue;
+        font-weight: bold;
     }
 `

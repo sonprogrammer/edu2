@@ -13,7 +13,7 @@ export default function NoteComponent() {
       <StyledTextarea
         value={noteContent}
         onChange={handleNoteChange}
-        placeholder='write your note here'
+        placeholder='write your note here...'
       >
 
       </StyledTextarea>

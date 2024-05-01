@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { StyledContainer, StyledBox, StyledModalOverlay, StyledModalContent, StyledCloseButton } from './style'
+import { StyledContainer, StyledBox, StyledModalOverlay, StyledModalContent, StyledCloseButton, StyledContent, StyledEditBtn } from './style'
+import { useNavigate } from 'react-router-dom'
 // import { useSelector, useDispatch } from 'react-redux'
 // import { setShowAnwser } from '../../store'
 // import axios from 'axios'
@@ -64,14 +65,13 @@ function DetailModal({onClose}) {
     <StyledModalOverlay onClick={onClose}>
         <StyledModalContent onClick={stopPropagation}>
           <StyledCloseButton onClick={onClose}>Close</StyledCloseButton>
+          <StyledContent>
           <p>내 출생연도와 내 이름과 내 나이는?</p>
           <h2>답 : 1997.01.26 손영진</h2>
           <p>description</p>
+          </StyledContent>
+          <StyledEditBtn>Edit</StyledEditBtn>
         </StyledModalContent>
       </StyledModalOverlay>
-      // {/* 문제 */}
-      // {/* 정답 */}
-      // {/* 해설 */}
-
   )
 }

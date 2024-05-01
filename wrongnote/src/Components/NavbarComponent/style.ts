@@ -37,10 +37,14 @@ export const StyledSearch = styled.input.attrs({placeholder: 'Search'})`
     `}
     
 `
-export const StyledTags = styled.a`
+export const StyledTags = styled.div`
     ${tw`
         flex
         ml-auto
-        `}
-        gap: 20px
+        text-white
+    `}
+        gap: 20px;
+        & > a:hover {
+            color: yellow;
+        }
 `

@@ -23,21 +23,29 @@ export const StyledContainer = styled.div`
         flex-col
         w-[80%]
         mt-10
+        h-[80%]
     `}
 `
-export const StyledProblem = styled.input`
+export const StyledProblem = styled.textarea`
     ${tw`
-        
+        p-2
+        mb-5
+        h-[50%]
+        resize-none
     `}
 `
-export const StyledAnswer = styled.input`
+export const StyledAnswer = styled.textarea`
     ${tw`
-
+    p-2
+    mb-5
+    resize-none
     `}
 `
-export const StyledDescription = styled.input`
+export const StyledDescription = styled.textarea`
     ${tw`
-
+    p-2
+    h-[30%]
+    resize-none
     `}
 `
 export const StyledBtn = styled.button`
@@ -45,7 +53,7 @@ export const StyledBtn = styled.button`
         bg-yellow-300
         w-[80%]
         h-[7%]
-        rounded-md
+        rounded-xl
         font-bold
         text-xl
         mb-10
