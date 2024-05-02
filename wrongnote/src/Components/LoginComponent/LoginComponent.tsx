@@ -12,7 +12,7 @@ export default function LoginComponent() {
     };
 
     const handleLoginClick = () => {
-        navigate('/main')
+        navigate('/')
     }
 
     return (
