@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import TestPage from './pages/TestPage/TestPage';
 import RegisterPage from './pages/SignUpPage/SignUpPage';
 import { LoginPage, MainPage, MakeProblemPage } from './pages';
+import { LandingPage } from './pages/LandingPage';
 // import { LandingPage } from './pages/LandingPage';
 
 
@@ -18,7 +19,7 @@ function App() {
       {/* <AddProblemComponent /> */}
 
       <Routes>
-        {/* <Route path='/' element={<LandingPage />}/> */}
+        <Route path='/main' element={<LandingPage />}/>
         {/* <Route element={<PrivateRoute />}></Route>  --> 이건 나중에 인증된 회원들만 들어갈 수있게 하는거라 나중에 감싸야함 landgin페이지 제외하고*/}
         <Route path='*' element={
           <Suspense fallback={<div></div>}>
