@@ -142,6 +142,7 @@ export const StyledContent = styled.div`
         flex
         flex-col
         mt-5
+        p-5
     `}
     border: blue solid 1px;
     p{

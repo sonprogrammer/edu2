@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StyledPlus = styled.div`
     ${tw`
-        absolute
+        fixed
         bottom-10
         right-10
         w-20
