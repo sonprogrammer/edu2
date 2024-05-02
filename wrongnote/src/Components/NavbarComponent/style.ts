@@ -47,4 +47,7 @@ export const StyledTags = styled.div`
         & > a:hover {
             color: yellow;
         }
+        & >a:last-child:hover{
+            color: red;
+        }
 `

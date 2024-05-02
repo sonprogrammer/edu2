@@ -1,7 +1,7 @@
 
 import './App.css'
 import React, { Suspense } from 'react'
-import { LoginComponent, NotFoundComponent, NoteComponent, ProblemComponent } from './components';
+import { NotFoundComponent, NoteComponent } from './components';
 import { Route, Routes } from 'react-router-dom';
 import TestPage from './pages/TestPage/TestPage';
 import RegisterPage from './pages/SignUpPage/SignUpPage';
@@ -19,7 +19,18 @@ function App() {
       {/* <AddProblemComponent /> */}
 
       <Routes>
-        <Route path='/main' element={<LandingPage />}/>
+        <Route path='/main' element={<LandingPage />} />
+        <Route path='/login' element={
+            <Suspense fallback={<div></div>}>
+              <LoginPage />
+            </Suspense>
+          } />
+          <Route path='/signup' element={
+            <Suspense fallback={<div></div>}>
+              <RegisterPage />
+            </Suspense>
+          } />
+        {/* </Route> */}
         {/* <Route element={<PrivateRoute />}></Route>  --> 이건 나중에 인증된 회원들만 들어갈 수있게 하는거라 나중에 감싸야함 landgin페이지 제외하고*/}
         <Route path='*' element={
           <Suspense fallback={<div></div>}>
@@ -33,16 +44,16 @@ function App() {
           </Suspense>
         }>
           {/* <Route element={<Suspense fallback={<div></div>}><MainPage /></Suspense>}> </Route> */}
-          <Route path='/login' element={
+          {/* <Route path='/login' element={
             <Suspense fallback={<div></div>}>
               <LoginPage />
             </Suspense>
-          } />
-          <Route path='/signup' element={
+          } /> */}
+          {/* <Route path='/signup' element={
             <Suspense fallback={<div></div>}>
               <RegisterPage />
             </Suspense>
-          } />
+          } /> */}
           <Route path='/test' element={
             <Suspense fallback={<div></div>}>
               <TestPage />

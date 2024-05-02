@@ -15,7 +15,7 @@ export default function NavbarComponent() {
             <StyledTags>
                 <Link to='/note'>my note</Link>
                 <Link to='/test'>20 test</Link>
-                <Link to='/login'>login</Link>
+                <Link to='/main' className='text-black'>logout</Link>
             </StyledTags>
         </StyledContainer>
     )
