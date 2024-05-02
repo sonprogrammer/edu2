@@ -76,6 +76,27 @@ export const StyledModalContent = styled.div`
         relative
     `}
 `
+
+export const StyledEditProblem = styled.textarea`
+    ${tw`
+        resize-none
+        h-[60%]
+    `}
+`
+export const StyledEditAnswer = styled.textarea`
+    ${tw`
+        resize-none
+        h-[10%]
+    `}
+`
+export const StyledEditDescription = styled.textarea`
+    ${tw`
+        resize-none
+        h-[50%]
+    `}
+`
+
+
 export const StyledCloseButton = styled.div`
     ${tw`
         absolute
@@ -96,7 +117,8 @@ export const StyledCloseButton = styled.div`
 export const StyledEditBtn = styled.div`
     ${tw`
     bottom-[10px]
-    w-[50px]
+    w-[55px]
+    text-center
     bg-blue-500
     text-white
     p-2
@@ -121,6 +143,7 @@ export const StyledContent = styled.div`
         flex-col
         mt-5
     `}
+    border: blue solid 1px;
     p{
         margin-bottom: 20px;
     }
