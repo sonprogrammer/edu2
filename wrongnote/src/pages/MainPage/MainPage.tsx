@@ -4,10 +4,12 @@ import { Outlet } from 'react-router-dom'
 
 export default function MainPage() {
   return (
-    <div>
-      <NavbarComponent />
-        <AddProblemComponent />
-        <Outlet />
-    </div>
+    <>
+      <div className='fixed top-0 left-0 w-full'>
+        <NavbarComponent />
+      </div>
+      <AddProblemComponent />
+      <Outlet />
+    </>
   )
 }

@@ -11,7 +11,7 @@ export const StyledBox = styled.div`
         items-center
         w-1/2
         h-[80vh]
-        mt-10
+        mt-[120px]
         rounded-2xl
         mr-auto
         ml-auto
@@ -24,6 +24,7 @@ export const StyledContainer = styled.div`
         w-[80%]
         mt-10
         h-[80%]
+        mb-5
     `}
 `
 export const StyledProblem = styled.textarea`

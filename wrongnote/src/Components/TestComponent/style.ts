@@ -30,8 +30,8 @@ export const StyledContainer = styled.div`
 `
 export const StyledContent = styled.div`
     ${tw`
-
     `}
+    text-wrap: break-word
 `
 export const StyledAnswer = styled.textarea`
     ${tw`

@@ -16,6 +16,7 @@ export const StyledPlus = styled.div`
         rounded-full
         cursor-pointer
     `}
+    z-index: 1000;
     transition: transform 0.3s;
     &:hover{
         transform: scale(1.2)

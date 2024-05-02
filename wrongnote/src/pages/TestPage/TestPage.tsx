@@ -3,8 +3,8 @@ import { TestComponent } from '../../components'
 
 export default function TestPage() {
   return (
-    <TestComponent>
-      
-    </TestComponent>
+    <div className='absolute top-20'>
+      <TestComponent />
+    </div>
   )
 }

@@ -2,14 +2,15 @@ import React from 'react'
 import { StyledAnswer, StyledBox, StyledBtn, StyledContainer, StyledDescription, StyledProblem } from './style'
 import { useNavigate } from 'react-router-dom'
 
-export default function AddProblemPage() {
-  const navigate = useNavigate()
+export default function MakeProblemComponet() {
 
-  const handleClick = () =>{
-    alert('succeeded to add in my notenote 🥳🥳')
-    navigate('/')
-  }
-  
+    const navigate = useNavigate()
+    
+    const handleClick = () =>{
+        alert('succeeded to add problem')
+        navigate('/')
+    }
+    
   return (
     <StyledBox>
       <StyledContainer>
