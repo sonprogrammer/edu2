@@ -37,7 +37,7 @@ export default function SignUpComponent() {
             <img src="/favicon.png" alt="logo" className='w-1/3 mb-5 rounded-full' />
             <div className='mb-5 font-bold'>register</div>
             <StyledInputWrapper>
-            <StyledInput type="email" placeholder='email' className='styled-input' />
+            <StyledInput type="email" placeholder='email or nickname' className='styled-input' />
             <StyledEmailCheckBtn>
                 중복 확인
             </StyledEmailCheckBtn>
