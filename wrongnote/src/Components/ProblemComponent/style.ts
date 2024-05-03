@@ -9,6 +9,7 @@ export const StyledBox = styled.div`
         justify-around
         flex-wrap
         gap-[30px]
+        mt-[120px]
     `}
 `
 
@@ -81,19 +82,27 @@ export const StyledEditProblem = styled.textarea`
     ${tw`
         resize-none
         h-[60%]
+        p-3
+        mb-3
     `}
+    border: 1px solid black
 `
 export const StyledEditAnswer = styled.textarea`
     ${tw`
         resize-none
-        h-[10%]
+        h-[12%]
+        p-3
+        mb-3
     `}
+    border: 1px solid black
 `
 export const StyledEditDescription = styled.textarea`
     ${tw`
         resize-none
         h-[50%]
+        p-3
     `}
+    border: 1px solid black
 `
 
 

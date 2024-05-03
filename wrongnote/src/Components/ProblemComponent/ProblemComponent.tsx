@@ -70,11 +70,7 @@ function DetailModal({ onClose, onClick, editProblem }) {
     <StyledModalOverlay onClick={onClose}>
       <StyledModalContent onClick={stopPropagation}>
         <StyledCloseButton onClick={onClose}>Close</StyledCloseButton>
-        {/* <StyledContent>
-          <p>내 출생연도와 내 이름과 내 나이는?</p>
-          <h2>답 : 1997.01.26 손영진</h2>
-          <p>description</p>
-        </StyledContent> */}
+        
         {editProblem ? (
           <>
             <StyledContent>
@@ -94,7 +90,6 @@ function DetailModal({ onClose, onClick, editProblem }) {
             <StyledEditBtn onClick={onClick}>Edit</StyledEditBtn>
           </>
         )}
-        {/* <StyledEditBtn onClick={onClick}>Edit</StyledEditBtn> */}
       </StyledModalContent>
     </StyledModalOverlay>
   )

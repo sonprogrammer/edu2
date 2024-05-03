@@ -1,6 +1,5 @@
 import React from 'react'
-import { AddProblemComponent, NavbarComponent } from '../../components'
-import { Outlet } from 'react-router-dom'
+import { AddProblemComponent, NavbarComponent, ProblemComponent } from '../../components'
 
 export default function MainPage() {
   return (
@@ -9,7 +8,7 @@ export default function MainPage() {
         <NavbarComponent />
       </div>
       <AddProblemComponent />
-      <Outlet />
+      <ProblemComponent />
     </>
   )
 }

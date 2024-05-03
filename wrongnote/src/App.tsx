@@ -1,8 +1,8 @@
 
 import './App.css'
-import React, { Suspense, lazy, useEffect, useState } from 'react'
+import React, { Suspense, lazy } from 'react'
 import { NotFoundComponent, NoteComponent } from './components';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import TestPage from './pages/TestPage/TestPage';
 
 
@@ -31,7 +31,11 @@ const LayoutPage = lazy(() =>
     default: module.LayoutPage,
   }))
 )
-
+const MainPage = lazy(() =>
+  import('./pages/MainPage').then((module) =>({
+    default: module.MainPage,
+  }))
+)
 
 {/* <Route element={<PrivateRoute />}></Route>  --> 이건 나중에 인증된 회원들만 들어갈 수있게 하는거라 나중에 감싸야함 landgin페이지 제외하고*/}
 
@@ -57,11 +61,16 @@ function App() {
           </Suspense>
         }
         />
-        <Route path='/browse' element={
+        <Route element={
           <Suspense fallback={<div></div>}>
-            <LayoutPage />
+              <LayoutPage />
           </Suspense>
         }>
+        <Route path='/browse' element={
+          <Suspense fallback={<div></div>}>
+            <MainPage />
+          </Suspense>
+        }/>
           <Route path='test' element={
             <Suspense fallback={<div></div>}>
               <TestPage />
