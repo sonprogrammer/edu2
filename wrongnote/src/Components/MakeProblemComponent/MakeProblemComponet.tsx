@@ -8,7 +8,7 @@ export default function MakeProblemComponet() {
     
     const handleClick = () =>{
         alert('succeeded to add problem')
-        navigate('/')
+        navigate('/browse')
     }
     
   return (

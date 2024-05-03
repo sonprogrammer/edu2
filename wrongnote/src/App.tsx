@@ -4,38 +4,39 @@ import React, { Suspense, lazy } from 'react'
 import { NotFoundComponent, NoteComponent } from './components';
 import { Route, Routes } from 'react-router-dom';
 import TestPage from './pages/TestPage/TestPage';
+import { LandingPage, LayoutPage, LoginPage, MainPage, MakeProblemPage, SignUpPage } from './pages';
 
 
-const SignUpPage = lazy(() =>
-  import('./pages/SignUpPage').then((module) =>({
-    default: module.SignUpPage,
-  }))
-)
-const LoginPage = lazy(() =>
-  import('./pages/LoginPage').then((module) =>({
-    default: module.LoginPage,
-  }))
-)
-const LandingPage = lazy(() =>
-  import('./pages/LandingPage').then((module) =>({
-    default: module.LandingPage,
-  }))
-)
-const MakeProblemPage = lazy(() =>
-  import('./pages/MakeProblemPage').then((module) =>({
-    default: module.MakeProblemPage,
-  }))
-)
-const LayoutPage = lazy(() =>
-  import('./pages/LayoutPage').then((module) =>({
-    default: module.LayoutPage,
-  }))
-)
-const MainPage = lazy(() =>
-  import('./pages/MainPage').then((module) =>({
-    default: module.MainPage,
-  }))
-)
+// const SignUpPage = lazy(() =>
+//   import('./pages/SignUpPage').then((module) =>({
+//     default: module.SignUpPage,
+//   }))
+// )
+// const LoginPage = lazy(() =>
+//   import('./pages/LoginPage').then((module) =>({
+//     default: module.LoginPage,
+//   }))
+// )
+// const LandingPage = lazy(() =>
+//   import('./pages/LandingPage').then((module) =>({
+//     default: module.LandingPage,
+//   }))
+// )
+// const MakeProblemPage = lazy(() =>
+//   import('./pages/MakeProblemPage').then((module) =>({
+//     default: module.MakeProblemPage,
+//   }))
+// )
+// const LayoutPage = lazy(() =>
+//   import('./pages/LayoutPage').then((module) =>({
+//     default: module.LayoutPage,
+//   }))
+// )
+// const MainPage = lazy(() =>
+//   import('./pages/MainPage').then((module) =>({
+//     default: module.MainPage,
+//   }))
+// )
 
 {/* <Route element={<PrivateRoute />}></Route>  --> 이건 나중에 인증된 회원들만 들어갈 수있게 하는거라 나중에 감싸야함 landgin페이지 제외하고*/}
 
@@ -71,17 +72,17 @@ function App() {
             <MainPage />
           </Suspense>
         }/>
-          <Route path='test' element={
+          <Route path='/browse/test' element={
             <Suspense fallback={<div></div>}>
               <TestPage />
             </Suspense>
           } />
-          <Route path='note' element={
+          <Route path='/browse/note' element={
             <Suspense fallback={<div></div>}>
               <NoteComponent />
             </Suspense>
           } />
-          <Route path='problem' element={
+          <Route path='/browse/problem' element={
             <Suspense fallback={<div></div>}>
               <MakeProblemPage />
             </Suspense>
