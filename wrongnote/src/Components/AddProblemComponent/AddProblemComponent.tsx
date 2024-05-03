@@ -6,7 +6,7 @@ export default function AddProblemComponent() {
   const navigate = useNavigate()
   
   return (
-    <StyledPlus onClick={()=>navigate('/problem')}>
+    <StyledPlus onClick={()=>navigate('/browse/problem')}>
       +
     </StyledPlus>
   )

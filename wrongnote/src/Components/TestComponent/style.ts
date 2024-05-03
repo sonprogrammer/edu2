@@ -8,6 +8,7 @@ export const StyledBox = styled.div`
     justify-around
     flex-wrap
     gap-[30px]
+    mt-[120px]
     `}
 `
 export const StyledContainer = styled.div`

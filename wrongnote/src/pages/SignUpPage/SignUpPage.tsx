@@ -2,7 +2,7 @@ import React from 'react'
 import { SignUpComponent } from '../../components'
 import { StyledBox, StyledVideo, StyledVideoBackground } from './style'
 
-export default function RegisterPage() {
+export default function SignUpPage() {
   return (
     <StyledBox>
       <StyledVideoBackground>

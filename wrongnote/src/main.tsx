@@ -6,11 +6,12 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store.ts'
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <Provider store={store}>
-      <BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
         <App />
-      </BrowserRouter>
-    </Provider>
+    </BrowserRouter>
+  </Provider>
 
 )
