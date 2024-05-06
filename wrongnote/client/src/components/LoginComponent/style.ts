@@ -35,9 +35,9 @@ export const StyledInput = styled.input`
     `}
 `
 
-export const StyledCheckbox = styled.input`
-  ${tw`sr-only`}
-`;
+// export const StyledCheckbox = styled.input`
+//   ${tw`sr-only`}
+// `;
 
 export const StyledButton = styled.button`
     ${tw`
