@@ -12,9 +12,9 @@ app.get('/', (req, res) =>{
     res.send('Welcome')
 })
 
+app.use(express.json());
 app.use('/signup', userRouter)
 app.use('/problem', problemRouter)
-app.use(express.json());
 
 app.listen(3000, ()=>{
     console.log('listening on port 3000')
