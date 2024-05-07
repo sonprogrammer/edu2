@@ -1,15 +1,22 @@
 const express = require('express')
 const passport = require('passport')
+const cors = require('cors')
+
 const session = require('express-session')
+
 const userRouter = require('./Routes/userRouter')
-const { default: mongoose } = require('mongoose')
 const problemRouter = require('./Routes/problemRouter')
+const { default: mongoose } = require('mongoose')
 
 const app = express()
+
 
 mongoose.connect('mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 .then(() => console.log('mongodb connect success'))
 .catch(err => console.log('mongodb connect error'))
+
+
+app.use(cors())
 
 
 app.use(passport.initialize()) //passport를 사용한다고 express에 알림
@@ -20,9 +27,9 @@ app.get('/', (req, res) =>{
 })
 
 app.use(express.json());
-app.use('/signup', userRouter)
-app.use('/login', userRouter)
-app.use('/problem', problemRouter)
+app.use("/signup", userRouter)
+app.use("/login", userRouter)
+app.use("/problem", problemRouter)
 
 
 // app.post('/login', passport.authenticate('local', { successRedirect : '/browse', failureRedirect: '/', failureFlash: true}))

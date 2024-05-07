@@ -188,45 +188,61 @@ app.get('/list/:id', async (req, res) => {
     })
 })
 
-passport.use(new LocalStrategy(async (id, password, cb) => {
+
+//passport.authenticate('local')() 쓰면 아래 코드가 실행됨 
+passport.use(new LocalStrategy(async (입력한아이디, 입력한비번, cb) => {
     let result = await db.collection('user').findOne({
-        username: id
+        username: 입력한아이디
     })
     if (!result) {
         return cb(null, false, {
             message: 'No such user'
         })
     }
-    let check = await bcrypt.compare(password, result.password)
-    if (check) {
+    if(result.password == 입력한비번){
         return cb(null, result)
-    } else {
-        return cb(null, false, {
-            message: 'password mismatch'
-        })
+    }else{
+        return cb(null, false, {message: 'Invalid password'})
     }
+    //위 코드를 trycatch로 묶어도됨 위는 전체다 try안에다 집어넣으면됨
+
+    // let check = await bcrypt.compare(password, result.password)
+    // if (check) {
+    //     return cb(null, result)
+    // } else {
+    //     return cb(null, false, {
+    //         message: 'password mismatch'
+    //     })
+    // }
 }))
 
-passport.serializeUser((user, done) => {
-    console.log(user)
-    process.nextTick(() => {
-        done(null, {
+//로그인시 세션만들기
+passport.serializeUser((user, done) => { 
+    console.log(user)//user는 로그인중인 유저 정보이다
+    process.nextTick(() => {    //내부 코드를 비동기적으로 처리해줌(process.nextTick())
+        done(null, { //이안에는 세션document에 기록할 내용이다 -> req.logIn()을 사용하면 자동 실행됨
             id: user._id,
-            username: user.username
+            username: user.username 
+            //id, username과 같이 이 안에 기록된 세션 document만들어주고 쿠키도 알아서 보내줌, 
+            //세션유효기간도 알아서 보내줌 BUT 아무설정안해주면 유효기간이 기본 2주이다.(그걸 설정해주고 싶으면 
+            //상단 app.use(session({ 이 부분에 cookie: {maxAge : 60 * 60 * 1000}처럼 밀리세컨단위로 정할 수 있음
         })
     })
 })
 
-passport.deserializeUser(async (user, done) => {
+//유저가 보낸 쿠키 분석 , 쿠키는 서버로 요청을 보낼때마다 서버로 자동으로 전송된다
+passport.deserializeUser(async (user, done) => { //쿠키까보는 역할을 하는 코드
     let result = await db.collection('user').findOne({
         _id: new ObjectId(user.id)
     })
     delete result.password
     console.log(user)
     process.nextTick(() => {
-        done(null, result)
+        done(null, result) //여기 result가 req.user에 들어감
+        //쿠키가 이상없으면 현재 로그인된 유저정보를 알려줌
     })
 })
+//passport.deserializeUser()를 설정해놓으면 아무 api에서나 req.user코드 쓰면 현재 로그인된 유저 정보 알려줌
 
 app.get('/login', async (req, res) => {
     console.log(req.user)
@@ -236,11 +252,12 @@ app.get('/login', async (req, res) => {
 app.post('/login', async (req, res, next) => {
     passport.authenticate('local', (error, user, info) => {
         //에러시 error이게 들어오고 성공하면 user(로그인한 유저정보), 로그인 실패시 이유(info) 
+        console.log(user)
         if (error) return res.status(500).json(error)
         if (!user) return res.status(401).json(info.message)
-        req.logIn(user, (err) => {
+        req.logIn(user, (err) => { //req.logIn을 하면 세션만들기 시작됨
             if (err) return next(err)
-            res.redirect('/')
+            res.redirect('/') //로그인 완료시
         })
     })(req, res, next)
 })

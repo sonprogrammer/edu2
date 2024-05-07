@@ -22,13 +22,14 @@ export default function LoginComponent() {
     }
 
     const handleLoginClick = async () => {
+        console.log('formdata', formData)
         try {
-            const response = await axios.post('/login', formData)
+            const response = await axios.post('http://localhost:3000/login', formData)
             console.log('response',response)
             console.log('success to login', response.data)
             navigate('/browse')
-        } catch (error: unknown) {
-            console.log('error to login', error.response.data)
+        } catch (error) {
+            console.log('error to login')
         }
     }
 
@@ -40,10 +41,10 @@ export default function LoginComponent() {
     return (
         <StyledContainer>
             <img src="/favicon.png" alt="logo" className='w-1/3 mb-10 rounded-full' />
-                <form onSubmit={handleSubmit}>
+                {/* <form onSubmit={handleSubmit}> */}
                 <StyledInput name='email' type="email" placeholder='email' value={formData.email} onChange={handleChange}/>
                 <StyledInput name='password' type="password" placeholder='password' value={formData.password} onChange={handleChange}/>
-                </form>
+                {/* </form> */}
             <div>
                 <input type="checkbox" className='peer mr-2' checked={isEmailChecked} onChange={handleEmailClick}/>
                 <span onClick={handleEmailClick} style={{cursor:'pointer'}}>이메일 기억하기</span>
