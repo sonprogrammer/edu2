@@ -35,17 +35,17 @@ app.use(methodOverride('_method'))
 const session = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo'); //세션데이터를 디비에 저장하기위한 라이브러리
 
 app.use(passport.initialize())
 app.use(session({
-    secret: '암호화에 쓸 비번',
-    resave: false,
-    saveUninitialized: false,
+    secret: '암호화에 쓸 비번', //세션의 documentId는 암호화해서 유저에게 보냄
+    resave: false,  //유저가 서버로 요청할 때마다 세션 갱신할건지 여부 보통은 false
+    saveUninitialized: false, //로그인 안해도 세션 만들것인지
     cookie: {
         maxAge: 60 * 60 * 1000
     },
-    store: MongoStore.create({
+    store: MongoStore.create({ //세션데이터를 디비에 저장
         mongoUrl: 'mongodb+srv://ods04139:cVCzld1lb8HhdUVO@cluster0.lyyr1v9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', //db접속용 url
         dbName: 'forum' //db이름
     })
@@ -199,21 +199,22 @@ passport.use(new LocalStrategy(async (입력한아이디, 입력한비번, cb) =
             message: 'No such user'
         })
     }
-    if(result.password == 입력한비번){
-        return cb(null, result)
-    }else{
-        return cb(null, false, {message: 'Invalid password'})
-    }
+    // if(result.password == 입력한비번){
+    //     return cb(null, result)
+    // }else{
+    //     return cb(null, false, {message: 'Invalid password'})
+    // }
     //위 코드를 trycatch로 묶어도됨 위는 전체다 try안에다 집어넣으면됨
 
-    // let check = await bcrypt.compare(password, result.password)
-    // if (check) {
-    //     return cb(null, result)
-    // } else {
-    //     return cb(null, false, {
-    //         message: 'password mismatch'
-    //     })
-    // }
+    let check = await bcrypt.compare(password, result.password) //해쉬된 비번과 유저가 입력한 비번이랑 비교해줌
+    //password는 사용자가 입력한 비번, result.password는 디비에 저장되어있는 해쉬된 비번
+    if (check) {
+        return cb(null, result)
+    } else {
+        return cb(null, false, {
+            message: 'password mismatch'
+        })
+    }
 }))
 
 //로그인시 세션만들기
@@ -231,6 +232,7 @@ passport.serializeUser((user, done) => {
 })
 
 //유저가 보낸 쿠키 분석 , 쿠키는 서버로 요청을 보낼때마다 서버로 자동으로 전송된다
+//세션정보 적힌 쿠키가지고 있는 유저가 요청날릴 때마다 실행됨 -> 비효율적임(쓸때없는 디비조회가 반복됨)
 passport.deserializeUser(async (user, done) => { //쿠키까보는 역할을 하는 코드
     let result = await db.collection('user').findOne({
         _id: new ObjectId(user.id)

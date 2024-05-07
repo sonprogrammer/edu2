@@ -1,8 +1,5 @@
 const express = require('express')
-const passport = require('passport')
 const cors = require('cors')
-
-const session = require('express-session')
 
 const userRouter = require('./Routes/userRouter')
 const problemRouter = require('./Routes/problemRouter')
@@ -19,16 +16,19 @@ mongoose.connect('mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongo
 app.use(cors())
 
 
-app.use(passport.initialize()) //passport를 사용한다고 express에 알림
-// app.use(passport.session()) //session을 이용하여 passport를 동작한다
+
+app.use(express.json());
+
+
+
 
 app.get('/', (req, res) =>{
     res.send('Welcome')
 })
 
-app.use(express.json());
-app.use("/signup", userRouter)
-app.use("/login", userRouter)
+
+app.use("/api/account", userRouter)
+// app.use("/login", userRouter)
 app.use("/problem", problemRouter)
 
 

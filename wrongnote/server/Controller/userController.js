@@ -11,7 +11,7 @@ async function loginUser(req, res){
         const user = await userModel.findOne({ userId : email});
         console.log('user',user);
         if(!user || !user.validPassword(password)){
-            return res.status(401).json({ message : 'Invalid password'})
+            return res.status(401).json({ message : 'Invalid password11'})
         }
         return res.status(200).json({ message: 'login successful' })
     } catch (error) {
