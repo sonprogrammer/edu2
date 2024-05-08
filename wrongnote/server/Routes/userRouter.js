@@ -49,41 +49,13 @@ passport.use(new LocalStrategy({
         if(result){
             return cb(null, user)
         }
-        return done(null, false, { message : 'Password mismatch' })
+        return cb(null, false, { message : 'Password mismatch' })
     } catch (error) {
         console.error(error)
-        return done(error)
+        return cb(error)
     }
 }))
 
-
-
-// passport.use(new LocalStrategy(async (userId, userPassword, cb) => {
-//     console.log('uerid' , req.body)
-//     let result = await userModel.findOne({
-//         userId: userId
-//     })
-//     if (!result) {
-//         return cb(null, false, {
-//             message: 'no such user'
-//         })
-//     }
-//     if (result.userPassword == userPassword) {
-//         return cb(null, result)
-//     } else {
-//         return cb(null, false, {
-//             message: 'invalid password'
-//         })
-//     }
-    // let check = await bcrypt.compare(userPassword, result.userPassword)
-    // if(check){
-    //     return cb(null, result)
-    // }else{
-    //     return cb(null, false,{
-    //         message: 'password mismatch'
-    //     })
-    // }
-// }))
 
 //* 로그인시 세션만들기
 passport.serializeUser((user, done) => {
@@ -136,20 +108,6 @@ router.post('/login', (req, res, next) =>{
         })
     }) (req, res, next)
 })
-
-
-// router.post('/login', async (req, res, next) => {
-//     console.log(req.body)
-//     passport.authenticate('local', (error, user, info) => {
-//         console.log(user) //성공적으로 인증된 사용자 객체. 실패하면 false가 출력된다
-//         if (error) return res.status(500).json(error)
-//         if (!user) return res.status(401).json(info.message)
-//         req.logIn(user, (err) => {
-//             if (err) return next(err)
-//             res.redirect('/browse')
-//         })
-//     })(req, res, next)
-// })
 
 
 // * 아이디 중복확인 api
