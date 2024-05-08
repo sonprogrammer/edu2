@@ -155,7 +155,18 @@ router.post('/login', (req, res, next) =>{
 //     })(req, res, next)
 // })
 
-
+// 로그아웃 api
+router.post('/logout', (req, res) => {
+    //세션 삭제
+    req.session.destroy((err)=>{
+        if(err){
+            console.error('error destroying session', err)
+            res.status(500).send('Error logging out')
+        }else{
+            res.send('logout successful')
+        }
+    })
+})
 
 router.post("/signup", userController.createUser)
 router.get('/', userController.getUser)

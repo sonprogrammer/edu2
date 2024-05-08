@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { StyledContainer, StyledLogo, StyledLogoutModal, StyledSearch, StyledTags } from './style'
 import { Link, useNavigate } from 'react-router-dom'
 import LogoutModal from './LogoutModal'
+import axios from 'axios'
 
 
 export default function NavbarComponent() {
@@ -14,8 +15,18 @@ export default function NavbarComponent() {
         setLogout(!logout)
     }
 
-    const handleLogoutConfirm = () => {
-        navigate('/')
+    const handleLogoutConfirm = async () => {
+        try {
+            const response = await axios.post('http://localhost:3000/api/account/logout')
+            if(response.status === 200){
+                console.log('success', response)
+                navigate('/')
+            }else{
+                console.error('failed to logout')
+            }
+        } catch (error) {
+            console.error('error during logout', error)
+        }
     }
 
     const handleCancelLogout = () => {
