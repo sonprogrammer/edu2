@@ -24,6 +24,7 @@ export default function LoginComponent() {
     }, [])
 
 
+
     const handleEmailClick = () => {
         setIsEmailChecked(!isEmailChecked);
         if(isEmailChecked == false){
@@ -70,17 +71,16 @@ export default function LoginComponent() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // 기본 동작 방지
-        handleLoginClick(); // 로그인 클릭 이벤트 호출
+        e.preventDefault(); 
+        handleLoginClick(); 
     }
 
     return (
         <StyledContainer>
             <img src="/favicon.png" alt="logo" className='w-1/3 mb-10 rounded-full' />
-                {/* <form onSubmit={handleSubmit}> */}
+
                 <StyledInput name='userId' type="email" placeholder='email' value={formData.userId} onChange={handleChange} onKeyDown={handleKeydown}/>
                 <StyledInput name='userPassword' type="password" placeholder='password' value={formData.userPassword} onChange={handleChange} onKeyDown={handleKeydown}/>
-                {/* </form> */}
             <div>
                 <input type="checkbox" className='peer mr-2' checked={isEmailChecked} onChange={handleEmailClick}/>
                 <span onClick={handleEmailClick} style={{cursor:'pointer'}}>이메일 기억하기</span>
