@@ -6,8 +6,8 @@ import axios from 'axios'
 export default function LoginComponent() {
     const [isEmailChecked, setIsEmailChecked] = useState(false);
     const [formData, setFormData] = useState({
-        email: '',
-        password: '',
+        userId: '',
+        userPassword: '',
     })
 
     const navigate = useNavigate()
@@ -24,10 +24,11 @@ export default function LoginComponent() {
     const handleLoginClick = async () => {
         console.log('formdata', formData)
         try {
-            const response = await axios.post('http://localhost:3000/login', formData)
+            const response = await axios.post('http://localhost:3000/api/account/login', formData)
             console.log('response',response)
             console.log('success to login', response.data)
             navigate('/browse')
+            return response.data
         } catch (error) {
             console.log('error to login')
         }
@@ -42,15 +43,15 @@ export default function LoginComponent() {
         <StyledContainer>
             <img src="/favicon.png" alt="logo" className='w-1/3 mb-10 rounded-full' />
                 {/* <form onSubmit={handleSubmit}> */}
-                <StyledInput name='email' type="email" placeholder='email' value={formData.email} onChange={handleChange}/>
-                <StyledInput name='password' type="password" placeholder='password' value={formData.password} onChange={handleChange}/>
+                <StyledInput name='userId' type="email" placeholder='email' value={formData.userId} onChange={handleChange}/>
+                <StyledInput name='userPassword' type="password" placeholder='password' value={formData.userPassword} onChange={handleChange}/>
                 {/* </form> */}
             <div>
                 <input type="checkbox" className='peer mr-2' checked={isEmailChecked} onChange={handleEmailClick}/>
                 <span onClick={handleEmailClick} style={{cursor:'pointer'}}>이메일 기억하기</span>
             </div>
             <div>
-                <StyledButton onClick={handleLoginClick}>Login</StyledButton>
+                <StyledButton onClick={handleSubmit}>Login</StyledButton>
                 {/* 회원정보 검사후 맞으면 main페이지로 이동 */}
                 <StyledTextWrapper>
                     <span>not a member?</span>
