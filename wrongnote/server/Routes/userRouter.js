@@ -4,12 +4,15 @@ const userModel = require('../db/models/userModel');
 const router = express.Router()
 const bcrypt = require('bcrypt');
 
+const search = require('../utils/search')
+
 
 
 const passport = require('passport')
 const session = require('express-session')
 const { Strategy : LocalStrategy} = require('passport-local')
-const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo');
+const { UserSearch } = require('../utils/search');
 
 router.use(passport.initialize()) //passport를 사용한다고 express에 알림
 router.use(session({
@@ -28,7 +31,7 @@ router.use(passport.session()) //session을 이용하여 passport를 동작한�
 
 
 
-// 로그인 -> 디비에 있는 정보와 사용자가 입력한 정보랑 일치하는지 확인 
+//* 로그인 -> 디비에 있는 정보와 사용자가 입력한 정보랑 일치하는지 확인 
 passport.use(new LocalStrategy({
     usernameField : 'userId',
     passwordField : 'userPassword',
@@ -42,18 +45,11 @@ passport.use(new LocalStrategy({
         if(!user){
             return cb(null, false, { message: 'User not founddd'})
         }
-        if (user.userPassword == userPassword) {
-                    return cb(null, user)
-                } else {
-                    return cb(null, false, {
-                        message: 'invalid password'
-                    })
-                }
-        // const result = await bcrypt.compare(userPassword, user.userPassword)
-        // if(result){
-        //     return done(null, user)
-        // }
-        // return done(null, false, { message : 'Password mismatch' })
+        const result = await bcrypt.compare(userPassword, user.userPassword)
+        if(result){
+            return cb(null, user)
+        }
+        return done(null, false, { message : 'Password mismatch' })
     } catch (error) {
         console.error(error)
         return done(error)
@@ -89,7 +85,7 @@ passport.use(new LocalStrategy({
     // }
 // }))
 
-// 로그인시 세션만들기
+//* 로그인시 세션만들기
 passport.serializeUser((user, done) => {
     
     console.log('user', user._id)
@@ -99,7 +95,7 @@ passport.serializeUser((user, done) => {
     // local()
 })
 
-// 쿠키 까보는 역할
+//* 쿠키 까보는 역할
 passport.deserializeUser(async (id, done) => {
     // let result = await userModel.findOne({
     //     _id: new ObjectId(user.id)
@@ -120,7 +116,7 @@ passport.deserializeUser(async (id, done) => {
         done(error)
     }
 })
-
+// * 로그인 api
 router.post('/login', (req, res, next) =>{
     passport.authenticate('local', (err, user, info) =>{
         console.log('err, user, info',err, user, info)
@@ -155,7 +151,31 @@ router.post('/login', (req, res, next) =>{
 //     })(req, res, next)
 // })
 
-// 로그아웃 api
+
+// * 아이디 중복확인 api
+router.get('/check-email', async(req, res, next)=>{
+    const {email} = req.query
+    try {
+        await search.EmailExist(email)
+        res.status(200).json({message: 'can use email'})
+    } catch (error) {
+        next(error)
+    }
+})
+
+// 이메일 중복확인 api
+// router.get("/check-email", async (req, res, next) => {
+// 	const { email } = req.query;
+// 	try {
+// 		await search.EmailExist(email);
+// 		res.status(200).json({ message: "사용 가능한 이메일입니다." });
+// 	} catch (error) {
+// 		next(error);
+// 	}
+// });
+
+
+//* 로그아웃 api
 router.post('/logout', (req, res) => {
     //세션 삭제
     req.session.destroy((err)=>{
@@ -168,6 +188,7 @@ router.post('/logout', (req, res) => {
     })
 })
 
+//* 회원가입 API
 router.post("/signup", userController.createUser)
 router.get('/', userController.getUser)
 

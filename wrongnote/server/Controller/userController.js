@@ -24,6 +24,7 @@ const bcrypt = require('bcrypt');
 
 
 async function createUser(req, res, next){
+    console.log('req.body : ', req.body)
     try {
         let hashedpPassword = await bcrypt.hash(req.body.userPassword, 10)
         console.log(hashedpPassword)
