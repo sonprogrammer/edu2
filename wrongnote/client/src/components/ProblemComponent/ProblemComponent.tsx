@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { StyledContainer, StyledBox, StyledModalOverlay, StyledModalContent, StyledCloseButton, StyledContent, StyledEditBtn, StyledEditProblem, StyledEditAnswer, StyledEditDescription } from './style'
-import { useNavigate } from 'react-router-dom'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { setShowAnwser } from '../../store'
-// import axios from 'axios'
+// import { useNavigate } from 'react-router-dom'
+import { useGetProblem } from '../../hooks/useGetProblem'
 
 
 export default function ProblemComponent() {
@@ -13,6 +11,17 @@ export default function ProblemComponent() {
   const [editProblem, setEditProblem] = useState(false)
   // const[isExpand, setIsExpand] = useState(false)
 
+
+  // const { problems, loading, error } = useGetProblem()
+
+  // if(loading){
+  //   return <div>Loading...</div>
+  // }
+
+  // if(error){
+  //   return <div>Error: {error}</div>
+  // }
+  
   const handleClick = (e) => {
     setShowAnwser(!showAnswer)
     e.stopPropagation()
@@ -36,6 +45,21 @@ export default function ProblemComponent() {
 
   return (
     <StyledBox>
+      {/* {problems.map((problem) => (
+        <>
+        <StyledContainer answer={showAnswer} onClick={handleModalClick}>
+          <p>{problem.problem}</p>
+        </StyledContainer>
+        {showAnswer ? (
+          <h1 onClick={handleClick}>답 : {problem.answer}</h1>
+        ) : (
+          <h1 onClick={handleClick}>Check the answer</h1>
+        )}
+        {modal && (
+        <DetailModal onClose={handleModalClick} onClick={handleEditClick} editProblem={editProblem} />
+      )}
+        </>
+      ))} */}
       <StyledContainer answer={showAnswer} onClick={handleModalClick}>
         <p>내 출생연도와 내 이름과 내 나이는?</p>
         {showAnswer ? (
@@ -45,7 +69,7 @@ export default function ProblemComponent() {
         )}
       </StyledContainer>
       {modal && (
-        <DetailModal onClose={handleModalClick} onClick={handleEditClick} editProblem={editProblem} />
+        <DetailModal onClose={handleModalClick} onClick={handleEditClick} editProblem={editProblem} problem={problem} />
       )}
       <StyledContainer answer={showAnswer2} onClick={handleModalClick}>
         <p>내 출생연도와 내 이름과 내 나이는?</p>
@@ -62,7 +86,7 @@ export default function ProblemComponent() {
   )
 }
 
-function DetailModal({ onClose, onClick, editProblem }) {
+function DetailModal({ onClose, onClick, editProblem, problem }) {
   const stopPropagation = (e) => {
     e.stopPropagation();
   }
@@ -74,18 +98,18 @@ function DetailModal({ onClose, onClick, editProblem }) {
         {editProblem ? (
           <>
             <StyledContent>
-              <StyledEditProblem>문제</StyledEditProblem>
-              <StyledEditAnswer>답</StyledEditAnswer>
-              <StyledEditDescription>해설</StyledEditDescription>
+              <StyledEditProblem>{problem.problem}</StyledEditProblem>
+              <StyledEditAnswer>{problem.answer}</StyledEditAnswer>
+              <StyledEditDescription>{problem.description}</StyledEditDescription>
             </StyledContent>
             <StyledEditBtn onClick={onClick}>Save</StyledEditBtn>
           </>
         ) : (
           <>
             <StyledContent>
-              <p>내 출생연도와 내 이름과 내 나이는?</p>
-              <h2>답 : 1997.01.26 손영진</h2>
-              <p>description</p>
+              <p>{problem.problem}</p>
+              <h2>{problem.answer}</h2>
+              <p>{problem.description}</p>
             </StyledContent>
             <StyledEditBtn onClick={onClick}>Edit</StyledEditBtn>
           </>

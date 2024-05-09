@@ -14,20 +14,20 @@ const { Strategy : LocalStrategy} = require('passport-local')
 const MongoStore = require('connect-mongo');
 const { UserSearch } = require('../utils/search');
 
-router.use(passport.initialize()) //passport를 사용한다고 express에 알림
-router.use(session({
-    secret: 'son',
-    resave: false, //유저가 서버로 요청할 때마다 세션 갱신할건지 여부
-    saveUninitialized: false, //로그인 안해도 세션 만들것인지
-    cookie: {
-        maxAge: 60 * 60 * 1000
-    },
-    store: MongoStore.create({ //세션데이터를 디비에 저장
-        mongoUrl: 'mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', //db접속용 url
-        dbName: 'test' //db이름
-    })
-}))
-router.use(passport.session()) //session을 이용하여 passport를 동작한다
+// router.use(passport.initialize()) //passport를 사용한다고 express에 알림
+// router.use(session({
+//     secret: 'son',
+//     resave: false, //유저가 서버로 요청할 때마다 세션 갱신할건지 여부
+//     saveUninitialized: false, //로그인 안해도 세션 만들것인지
+//     cookie: {
+//         maxAge: 60 * 60 * 1000
+//     },
+//     store: MongoStore.create({ //세션데이터를 디비에 저장
+//         mongoUrl: 'mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', //db접속용 url
+//         dbName: 'test' //db이름
+//     })
+// }))
+// router.use(passport.session()) //session을 이용하여 passport를 동작한다
 
 
 
@@ -41,7 +41,7 @@ passport.use(new LocalStrategy({
     console.log('userPassword :', userPassword);
     try {
         const user = await userModel.findOne({userId : userId})
-        console.log('user',user)
+        console.log('user1',user)
         if(!user){
             return cb(null, false, { message: 'User not founddd'})
         }
@@ -59,27 +59,21 @@ passport.use(new LocalStrategy({
 
 //* 로그인시 세션만들기
 passport.serializeUser((user, done) => {
-    
-    console.log('user', user._id)
+    console.log('userSession', user)
     process.nextTick(() => {
-        done(null, user._id)
+        done(null, user.userId)
     })
-    // local()
 })
 
-//* 쿠키 까보는 역할
-passport.deserializeUser(async (id, done) => {
-    // let result = await userModel.findOne({
-    //     _id: new ObjectId(user.id)
-    // })
-    // delete result.userPassword
-    // console.log('user1', user)
+//* 쿠키 까보는 역할 -> 사용자의 세션 정보를 검색해 사용자 객체로 변환하는 역할 -> 어디서든 req.user하면 유저 정보가 뜬다
+passport.deserializeUser(async (userId, done) => {
+    console.log('userId', userId)
     // process.nextTick(() => {
-    //     done(null, result)
+    //     done(null, user)
     // })
     try {
-        const user = await userModel.findById(id)
-        console.log('user._id', user)
+        const user = await userModel.findOne({userId: userId})
+        console.log('Deserialized user', user)
         if (!user) {
             return done(null, false, { message: 'user not found' })
         }
@@ -99,14 +93,15 @@ router.post('/login', (req, res, next) =>{
         if(info){
             return res.status(401).send(info.message)
         }
-        return req.logIn(user, async(loinerr)=>{
-            if(loinerr){
-                console.error(loinerr)
-                return next(loinerr)
+         req.logIn(user, async(loginerr)=>{
+            // console.log('dsafsadf', user)
+            if(loginerr){
+                console.error(loginerr)
+                return next(loginerr)
             }
             return res.status(200).json(user)
         })
-    }) (req, res, next)
+    })(req, res, next)
 })
 
 
@@ -121,16 +116,6 @@ router.get('/check-email', async(req, res, next)=>{
     }
 })
 
-// 이메일 중복확인 api
-// router.get("/check-email", async (req, res, next) => {
-// 	const { email } = req.query;
-// 	try {
-// 		await search.EmailExist(email);
-// 		res.status(200).json({ message: "사용 가능한 이메일입니다." });
-// 	} catch (error) {
-// 		next(error);
-// 	}
-// });
 
 
 //* 로그아웃 api
@@ -148,7 +133,20 @@ router.post('/logout', (req, res) => {
 
 //* 회원가입 API
 router.post("/signup", userController.createUser)
+
+// *유저들의 정보
 router.get('/', userController.getUser)
+
+//*현재 로그인된 정보
+router.get('/current-user', (req, res)=>{
+    console.log('req.user', req.user)
+    console.log('res.authentication', req.isAuthenticated())
+    if(req.user){
+        res.status(200).json(req.user)
+    }else{
+        res.status(404).json({message: 'no user logged in'})
+    }
+})
 
 
 
