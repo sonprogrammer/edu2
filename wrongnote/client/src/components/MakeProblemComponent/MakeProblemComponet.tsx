@@ -42,8 +42,6 @@ export default function MakeProblemComponet() {
         navigate('/browse')
       } catch (error) {
         console.log('error', error)
-        const response = await axios.get('http://localhost:3000/api/account/current-user')
-        console.log('resposne', response)
       }
     }
     

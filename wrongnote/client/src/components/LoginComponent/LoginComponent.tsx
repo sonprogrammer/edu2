@@ -47,7 +47,9 @@ export default function LoginComponent() {
     const handleLoginClick = async () => {
         console.log('formdata', formData)
         try {
-            const response = await axios.post('http://localhost:3000/api/account/login', formData)
+            const response = await axios.post('http://localhost:3000/api/account/login'
+                , formData
+            )
             console.log('response',response)
             console.log('success to login', response.data)
             navigate('/browse')

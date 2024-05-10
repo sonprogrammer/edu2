@@ -4,8 +4,9 @@ const passport = require('passport')
 
 const userRouter = require('./Routes/userRouter')
 const problemRouter = require('./Routes/problemRouter')
-const { default: mongoose } = require('mongoose')
+const { mongoose } = require('mongoose')
 const MongoStore = require('connect-mongo');
+const cookieParser = require('cookie-parser')
 const session = require('express-session')
 
 const app = express()
@@ -18,13 +19,17 @@ mongoose.connect('mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongo
 
 app.use(cors())
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
-    secret: 'son',
+    secret: 'secret',
     resave: false, //유저가 서버로 요청할 때마다 세션 갱신할건지 여부
     saveUninitialized: false, //로그인 안해도 세션 만들것인지
     cookie: {
-        maxAge: 60 * 60 * 1000
+        maxAge: 60 * 60 * 1000,
+        secure: false,
+        httpOnly: true,
+        sameSite: 'none'
     },
     store: MongoStore.create({ //세션데이터를 디비에 저장
         mongoUrl: 'mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', //db접속용 url

@@ -206,7 +206,7 @@ passport.use(new LocalStrategy(async (입력한아이디, 입력한비번, cb) =
     // }
     //위 코드를 trycatch로 묶어도됨 위는 전체다 try안에다 집어넣으면됨
 
-    let check = await bcrypt.compare(password, result.password) //해쉬된 비번과 유저가 입력한 비번이랑 비교해줌
+    let check = await bcrypt.compare(입력한비번, result.password) //해쉬된 비번과 유저가 입력한 비번이랑 비교해줌
     //password는 사용자가 입력한 비번, result.password는 디비에 저장되어있는 해쉬된 비번
     if (check) {
         return cb(null, result)
