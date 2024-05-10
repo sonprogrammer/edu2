@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const search = require('../utils/search')
 
 
-
+const mongoose = require('mongoose');
 const passport = require('passport')
 const session = require('express-session')
 const { Strategy : LocalStrategy} = require('passport-local')
@@ -61,27 +61,29 @@ passport.use(new LocalStrategy({
 passport.serializeUser((user, done) => {
     console.log('userSession', user)
     process.nextTick(() => {
-        done(null, user.userId)
+        done(null, user.id)
     })
 })
 
 //* 쿠키 까보는 역할 -> 사용자의 세션 정보를 검색해 사용자 객체로 변환하는 역할 -> 어디서든 req.user하면 유저 정보가 뜬다
-passport.deserializeUser(async (userId, done) => {
-    console.log('userId', userId)
+passport.deserializeUser(async (id, done) => {
+    // console.log('userId', userId)
     // process.nextTick(() => {
     //     done(null, user)
     // })
     try {
-        const user = await userModel.findOne({userId: userId})
+        const user = await userModel.findOne({where: {id}})
         console.log('Deserialized user', user)
         if (!user) {
             return done(null, false, { message: 'user not found' })
         }
-        done(null, user)
+        return done(null, user)
     } catch (error) {
         done(error)
     }
 })
+
+
 // * 로그인 api
 router.post('/login', (req, res, next) =>{
     passport.authenticate('local', (err, user, info) =>{
@@ -93,12 +95,13 @@ router.post('/login', (req, res, next) =>{
         if(info){
             return res.status(401).send(info.message)
         }
-         req.logIn(user, async(loginerr)=>{
-            // console.log('dsafsadf', user)
-            if(loginerr){
-                console.error(loginerr)
-                return next(loginerr)
+         return req.logIn(user, async(loginerror)=>{
+             // console.log('dsafsadf', user)
+             if(loginerror){
+                console.error(loginerror)
+                return next(loginerror)
             }
+            console.log('req.isAuthenticated', req.isAuthenticated())
             return res.status(200).json(user)
         })
     })(req, res, next)

@@ -18,6 +18,7 @@ export default function MakeProblemComponet() {
       const fetchCurrentUser = async() =>{
         try {
           const response = await axios.get('http://localhost:3000/api/account/current-user')
+          console.log('response', response)
           setCurrentUser(response.data)
         } catch (error) {
           console.log('failed to get current user', error)
@@ -33,6 +34,7 @@ export default function MakeProblemComponet() {
     }
     
     const handleClick = async () =>{
+      console.log('currentUser',currentUser)
       try {
         const response = await axios.post('http://localhost:3000/api/problem/add', {...problemData, currentUser: currentUser})
         console.log('response', response)
@@ -40,6 +42,8 @@ export default function MakeProblemComponet() {
         navigate('/browse')
       } catch (error) {
         console.log('error', error)
+        const response = await axios.get('http://localhost:3000/api/account/current-user')
+        console.log('resposne', response)
       }
     }
     

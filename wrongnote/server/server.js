@@ -19,7 +19,6 @@ mongoose.connect('mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongo
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(passport.initialize()) //passport를 사용한다고 express에 알림
 app.use(session({
     secret: 'son',
     resave: false, //유저가 서버로 요청할 때마다 세션 갱신할건지 여부
@@ -32,6 +31,7 @@ app.use(session({
         dbName: 'test' //db이름
     })
 }))
+app.use(passport.initialize()) //passport를 사용한다고 express에 알림
 app.use(passport.session()) //session을 이용하여 passport를 동작한다
 
 
