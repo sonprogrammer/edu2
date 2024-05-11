@@ -15,6 +15,31 @@ const LocalStrategy = require('passport-local')
 const { UserSearch } = require('../utils/search');
 
 
+//* 로그인시 세션만들기
+passport.serializeUser((user, done) => {
+    console.log('serializeUser',user)
+    done(null, {id : user.id})
+})
+
+
+//* 쿠키 까보는 역할 -> 사용자의 세션 정보를 검색해 사용자 객체로 변환하는 역할 -> 어디서든 req.user하면 유저 정보가 뜬다
+passport.deserializeUser(async (user, done) => {
+// try {
+//     const result = await User.findOne({_id : new ObjectId(user.id)})
+//     done(null, result)
+// } catch (error) {
+//     done(error)
+// }
+
+User.findById(id, function(err, user) {
+    done(err, user)
+})
+// process.nextTick(() =>{
+//     console.log('deserialize', user)
+//     done(null, user)
+// })
+})
+
 
 //* 로그인 -> 디비에 있는 정보와 사용자가 입력한 정보랑 일치하는지 확인 
 passport.use(new LocalStrategy(
@@ -47,34 +72,11 @@ passport.use(new LocalStrategy(
 ))
 
 
-//* 로그인시 세션만들기
-passport.serializeUser((user, done) => {
-    process.nextTick(() =>{
-        console.log('serializeUser',user)
-        done(null, user.id)
-    })
-})
 
-
-//* 쿠키 까보는 역할 -> 사용자의 세션 정보를 검색해 사용자 객체로 변환하는 역할 -> 어디서든 req.user하면 유저 정보가 뜬다
-passport.deserializeUser(async (id, done) => {
-    try {
-        const user = await userModel.findById(id)
-        done(null, user)
-    } catch (error) {
-        done(error)
-    }
-    // process.nextTick(() =>{
-    //     console.log('deserialize', user)
-    //     done(null, user)
-    // })
-})
 
 // * 로그인 api
 router.post('/login', (req, res, next) =>{
-    passport.authenticate('local', {session: false}, async (err, user, info) =>{
-        console.log('err, user, info',err, user, info)
-        console.log('req.userefdasfdsa', req.user)
+    passport.authenticate('local', async (err, user, info) =>{
         if(err){
             console.error(err)
             return next(err)
@@ -83,7 +85,6 @@ router.post('/login', (req, res, next) =>{
             return res.status(401).send(info.message)
         }
          return req.logIn(user, async(loginerror)=>{
-             // console.log('dsafsadf', user)
              if(loginerror){
                 console.error(loginerror)
                 return next(loginerror)
@@ -104,6 +105,7 @@ router.post('/login', (req, res, next) =>{
 
 // * 아이디 중복확인 api
 router.get('/check-email', async(req, res, next)=>{
+    console.log('rea.user', req.user)
     const {email} = req.query
     try {
         await search.EmailExist(email)
@@ -116,16 +118,12 @@ router.get('/check-email', async(req, res, next)=>{
 
 
 //* 로그아웃 api
-router.post('/logout', (req, res) => {
-    //세션 삭제
-    req.session.destroy((err)=>{
-        if(err){
-            console.error('error destroying session', err)
-            res.status(500).send('Error logging out')
-        }else{
-            res.send('logout successful')
-        }
-    })
+router.post('/logout', (req, res, next) => {
+    req.logout(function(err){
+        if(err) { return next(err)}
+        res.redirect('/')
+    }) //req.logout()으로 세션 삭제
+    res.send('Logout successful')
 })
 
 //* 회원가입 API

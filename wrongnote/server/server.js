@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const passport = require('passport')
+
 
 const userRouter = require('./Routes/userRouter')
 const problemRouter = require('./Routes/problemRouter')
@@ -28,14 +28,13 @@ app.use(session({
     cookie: {
         maxAge: 60 * 60 * 1000,
         secure: false,
-        httpOnly: true,
-        sameSite: 'none'
     },
     store: MongoStore.create({ //세션데이터를 디비에 저장
         mongoUrl: 'mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', //db접속용 url
         dbName: 'test' //db이름
     })
 }))
+const passport = require('passport')
 app.use(passport.initialize()) //passport를 사용한다고 express에 알림
 app.use(passport.session()) //session을 이용하여 passport를 동작한다
 

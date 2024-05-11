@@ -266,6 +266,7 @@ app.post('/login', async (req, res, next) => {
 
 app.get('/register', (req, res) => {
     res.render('register.ejs')
+    console.log('req.user', req.user)
 })
 
 app.post('/register', async (req, res) => {

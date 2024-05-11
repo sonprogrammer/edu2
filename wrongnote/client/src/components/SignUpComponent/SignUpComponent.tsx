@@ -49,8 +49,7 @@ export default function SignUpComponent() {
             
             setBtnClick(true)
             if(response){
-                console.log('rp',response.data.exists)
-                    setEmailCheck(true)
+                setEmailCheck(true)
                 console.log('response', response)
             }
         } catch (error) {
@@ -61,7 +60,7 @@ export default function SignUpComponent() {
 
     const handleSignupClick = async () =>{
         try {
-            const response = await axios.post('http://localhost:3000/api/account/signup', formData)
+            const response = await axios.post('http://localhost:3000/api/account/signup', formData, { withCredentials: true })
             console.log('response', response)
             if (!passwordError) {
                 alert('가입 성공!');
