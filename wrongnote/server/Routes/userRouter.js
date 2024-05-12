@@ -24,16 +24,16 @@ passport.serializeUser((user, done) => {
 
 //* 쿠키 까보는 역할 -> 사용자의 세션 정보를 검색해 사용자 객체로 변환하는 역할 -> 어디서든 req.user하면 유저 정보가 뜬다
 passport.deserializeUser(async (user, done) => {
-// try {
-//     const result = await User.findOne({_id : new ObjectId(user.id)})
-//     done(null, result)
-// } catch (error) {
-//     done(error)
-// }
+try {
+    const result = await User.findOne({_id : new ObjectId(user.id)})
+    done(null, result)
+} catch (error) {
+    done(error)
+}
 
-User.findById(id, function(err, user) {
-    done(err, user)
-})
+// User.findById(id, function(err, user) {
+//     done(err, user)
+// })
 // process.nextTick(() =>{
 //     console.log('deserialize', user)
 //     done(null, user)

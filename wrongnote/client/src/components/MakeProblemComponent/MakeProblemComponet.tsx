@@ -17,7 +17,7 @@ export default function MakeProblemComponet() {
     useEffect(()=>{
       const fetchCurrentUser = async() =>{
         try {
-          const response = await axios.get('http://localhost:3000/api/account/current-user')
+          const response = await axios.get('http://localhost:3000/api/account/current-user', { withCredentials: true})
           console.log('response', response)
           setCurrentUser(response.data)
         } catch (error) {

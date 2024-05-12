@@ -48,11 +48,11 @@ export default function LoginComponent() {
         console.log('formdata', formData)
         try {
             const response = await axios.post('http://localhost:3000/api/account/login'
-                , formData, { withCredentials: true }
+                , formData
             )
             console.log('response',response)
             console.log('success to login', response.data)
-            navigate('/browse')
+            navigate('/browse') 
             return response.data
         } catch (error) {
             alert('check your username or password')

@@ -17,8 +17,11 @@ mongoose.connect('mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongo
 .catch(err => console.log('mongodb connect error'))
 
 
-app.use(cors())
 app.use(express.json());
+app.use(cors({
+    origin: '*',
+    credentials: true
+}))
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
