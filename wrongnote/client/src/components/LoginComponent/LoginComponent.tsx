@@ -48,7 +48,7 @@ export default function LoginComponent() {
         console.log('formdata', formData)
         try {
             const response = await axios.post('http://localhost:3000/api/account/login'
-                , formData
+                , formData, { withCredentials: true}
             )
             console.log('response',response)
             console.log('success to login', response.data)

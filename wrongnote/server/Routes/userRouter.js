@@ -1,8 +1,6 @@
 const express = require('express');
 const userController = require('../Controller/userController')
-const userModel = require('../db/models/userModel');
 const router = express.Router()
-const bcrypt = require('bcrypt');
 
 const search = require('../utils/search')
 
@@ -10,67 +8,9 @@ const search = require('../utils/search')
 // const mongoose = require('mongoose');
 const passport = require('passport')
 // const session = require('express-session')
-const LocalStrategy = require('passport-local')
+
 // const MongoStore = require('connect-mongo');
-const { UserSearch } = require('../utils/search');
-
-
-//* 로그인시 세션만들기
-passport.serializeUser((user, done) => {
-    console.log('serializeUser',user)
-    done(null, {id : user.id})
-})
-
-
-//* 쿠키 까보는 역할 -> 사용자의 세션 정보를 검색해 사용자 객체로 변환하는 역할 -> 어디서든 req.user하면 유저 정보가 뜬다
-passport.deserializeUser(async (user, done) => {
-try {
-    const result = await User.findOne({_id : new ObjectId(user.id)})
-    done(null, result)
-} catch (error) {
-    done(error)
-}
-
-// User.findById(id, function(err, user) {
-//     done(err, user)
-// })
-// process.nextTick(() =>{
-//     console.log('deserialize', user)
-//     done(null, user)
-// })
-})
-
-
-//* 로그인 -> 디비에 있는 정보와 사용자가 입력한 정보랑 일치하는지 확인 
-passport.use(new LocalStrategy(
-    {
-    usernameField : 'userId',
-    passwordField : 'userPassword',
-    // session: true
-    }
-    , 
-    async (userId, userPassword, cb) =>{
-    console.log('userid :', userId);
-    console.log('userPassword :', userPassword);
-    try {
-        const user = await userModel.findOne({userId : userId})
-        console.log('user1',user)
-        if(!user){
-            return cb(null, false, { message: 'User not founddd'})
-        }
-        const result = await bcrypt.compare(userPassword, user.userPassword)
-        if(result){
-            return cb(null, user)
-        }else{
-            return cb(null, false, { message : 'Password mismatch' })
-        }
-    } catch (error) {
-        console.error(error)
-        return cb(error)
-        }
-    }
-))
-
+// const { UserSearch } = require('../utils/search');
 
 
 
@@ -95,6 +35,13 @@ router.post('/login', (req, res, next) =>{
         })
     })(req, res, next)
 })
+// router.post('/login', (req, res) => {
+//     console.log('req.isAuthenticatedfdf', req.isAuthenticated());
+//     console.log('req.user', req.user);
+//     res.status(200).json(req.user);
+// });
+
+
 
 
 // router.post('/login', passport.authenticate('local', {
@@ -119,6 +66,7 @@ router.get('/check-email', async(req, res, next)=>{
 
 //* 로그아웃 api
 router.post('/logout', (req, res, next) => {
+    console.log('logout: req.user', req.user)
     req.logout(function(err){
         if(err) { return next(err)}
         res.redirect('/')
@@ -134,8 +82,8 @@ router.get('/', userController.getUser)
 
 //*현재 로그인된 정보
 router.get('/current-user', (req, res)=>{
-    console.log('req.user', req.user)
-    console.log('res.authentication', req.isAuthenticated())
+    console.log('GET -> req.user', req.user)
+    console.log('GET -> res.authentication', req.isAuthenticated())
     if(req.user){
         res.status(200).json(req.user)
     }else{

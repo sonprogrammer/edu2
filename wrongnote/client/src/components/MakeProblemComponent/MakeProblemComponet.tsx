@@ -17,7 +17,7 @@ export default function MakeProblemComponet() {
     useEffect(()=>{
       const fetchCurrentUser = async() =>{
         try {
-          const response = await axios.get('http://localhost:3000/api/account/current-user', { withCredentials: true})
+          const response = await axios.get('http://localhost:3000/api/account/current-user',{withCredentials: true})
           console.log('response', response)
           setCurrentUser(response.data)
         } catch (error) {
@@ -36,7 +36,10 @@ export default function MakeProblemComponet() {
     const handleClick = async () =>{
       console.log('currentUser',currentUser)
       try {
-        const response = await axios.post('http://localhost:3000/api/problem/add', {...problemData, currentUser: currentUser})
+        const response = await axios.post('http://localhost:3000/api/problem/add', 
+        {...problemData, currentUser: currentUser},
+        {withCredentials: true}
+        )
         console.log('response', response)
         alert('succeeded to add problem')
         navigate('/browse')

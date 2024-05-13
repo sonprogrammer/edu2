@@ -60,7 +60,7 @@ export default function SignUpComponent() {
 
     const handleSignupClick = async () =>{
         try {
-            const response = await axios.post('http://localhost:3000/api/account/signup', formData, { withCredentials: true })
+            const response = await axios.post('http://localhost:3000/api/account/signup', formData)
             console.log('response', response)
             if (!passwordError) {
                 alert('가입 성공!');
