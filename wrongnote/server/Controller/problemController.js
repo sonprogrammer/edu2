@@ -29,7 +29,21 @@ async function getProblem(req, res, next) {
     }
 }
 
+async function getUserProblems(req, res, next) {
+    try {
+        console.log('getUserProblems', req.params, req.params.userId)
+        const userId = req.params.userId
+        const userProblems = await problemModel.find({user: userId})
+        res.status(200).json(userProblems)
+    } catch (error) {
+        next(error)
+        console.error('failed to fetch user problems', error)
+        res.status(500).json({message : 'failed to fetch user problems'})
+    }
+}
+
 module.exports = {
     createProblem,
-    getProblem
+    getProblem,
+    getUserProblems
 }

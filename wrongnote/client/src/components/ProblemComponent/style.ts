@@ -13,7 +13,7 @@ export const StyledBox = styled.div`
     `}
 `
 
-export const StyledContainer = styled.div<{answer: boolean}>`
+export const StyledContainer = styled.div<{answerStatus: boolean}>`
     ${tw`
         bg-gray-300
         rounded-xl
@@ -32,14 +32,14 @@ export const StyledContainer = styled.div<{answer: boolean}>`
         cursor: pointer;
     }
 
-    ${props => props.answer ? `
+    ${props => props.answerStatus ? `
         h1:hover{
             color: white;
         }
     ` : `color: black;`}
 
     h1:hover{
-        background-color: ${props => props.answer ? 'blue' : 'red'};
+        background-color: ${props => props.answerStatus ? 'blue' : 'red'};
         border-radius: 15px;
     }
     p{

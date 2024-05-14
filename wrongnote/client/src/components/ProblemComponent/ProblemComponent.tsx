@@ -1,18 +1,33 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StyledContainer, StyledBox, StyledModalOverlay, StyledModalContent, StyledCloseButton, StyledContent, StyledEditBtn, StyledEditProblem, StyledEditAnswer, StyledEditDescription } from './style'
-// import { useNavigate } from 'react-router-dom'
-import { useGetProblem } from '../../hooks/useGetProblem'
+import useGetProblem  from '../../hooks/useGetProblem'
+import axios from 'axios'
 
 
 export default function ProblemComponent() {
   const [showAnswer, setShowAnwser] = useState(false)
-  const [showAnswer2, setShowAnwser2] = useState(false)
-  const [modal, setModal] = useState(false)
+  const [showAnswerStates, setShowAnswerStates] = useState([]);
+  const [modal, setModal] = useState(null)
   const [editProblem, setEditProblem] = useState(false)
   // const[isExpand, setIsExpand] = useState(false)
+  const [currentUser, setCurrentUser] = useState('')
+  
+  useEffect(()=>{
+    const fetchCurrentUser = async() =>{
+      try {
+        const response = await axios.get('http://localhost:3000/api/account/current-user',{withCredentials: true})
+        console.log('response', response.data)
+        setCurrentUser(response.data._id)
+      } catch (error) {
+        console.log('failed to get current user', error)
+      }
+    }
+    fetchCurrentUser()
+  }, [])
 
-
-  // const { problems, loading, error } = useGetProblem()
+  console.log('current user', currentUser)
+  const { problems, loading, error } = useGetProblem(currentUser)
+  console.log('problems', problems)
 
   // if(loading){
   //   return <div>Loading...</div>
@@ -22,18 +37,25 @@ export default function ProblemComponent() {
   //   return <div>Error: {error}</div>
   // }
   
-  const handleClick = (e) => {
-    setShowAnwser(!showAnswer)
-    e.stopPropagation()
-  }
-  const handleClick2 = () => {
-    setShowAnwser2(!showAnswer2)
+
+  useEffect(() =>{
+    setShowAnswerStates(new Array(problems.length).fill(false))
+    //problems의 개수에 따라 showAnswerStates 배열을 초기화
+  },[problems]);
+
+  const handleClick = (e,i) => {
+    e.stopPropagation();
+    setShowAnswerStates(prevStates =>{
+      const newStates = [...prevStates]
+      newStates[i] = !newStates[i]
+      return newStates
+    })
   }
 
-  const handleModalClick = () => {
-    setModal(!modal)
+  const handleModalClick = ( i) => {
+    setModal(i)
   }
-
+  
   const handleEditClick = () => {
     setEditProblem(!editProblem)
   }
@@ -45,42 +67,21 @@ export default function ProblemComponent() {
 
   return (
     <StyledBox>
-      {/* {problems.map((problem) => (
+      {problems.map((problem, i) => (
         <>
-        <StyledContainer answer={showAnswer} onClick={handleModalClick}>
+        <StyledContainer key={i} answerStatus={showAnswerStates[i]} onClick={()=>handleModalClick(i)}>
           <p>{problem.problem}</p>
+        {showAnswerStates[i] ? (
+          <h1 onClick={(e)=>handleClick(e, i)}>답 : {problem.answer}</h1>
+          ) : (
+            <h1 onClick={(e) =>handleClick(e, i)}>Check the answer</h1>
+            )}
         </StyledContainer>
-        {showAnswer ? (
-          <h1 onClick={handleClick}>답 : {problem.answer}</h1>
-        ) : (
-          <h1 onClick={handleClick}>Check the answer</h1>
+        {modal === i && (
+        <DetailModal onClose={handleModalClick} onClick={handleEditClick} editProblem={editProblem} problem={problem}/>
         )}
-        {modal && (
-        <DetailModal onClose={handleModalClick} onClick={handleEditClick} editProblem={editProblem} />
-      )}
         </>
-      ))} */}
-      <StyledContainer answer={showAnswer} onClick={handleModalClick}>
-        <p>내 출생연도와 내 이름과 내 나이는?</p>
-        {showAnswer ? (
-          <h1 onClick={handleClick}>답 : 1997.01.26 손영진</h1>
-        ) : (
-          <h1 onClick={handleClick}>Check the answer</h1>
-        )}
-      </StyledContainer>
-      {modal && (
-        <DetailModal onClose={handleModalClick} onClick={handleEditClick} editProblem={editProblem} problem={problem} />
-      )}
-      <StyledContainer answer={showAnswer2} onClick={handleModalClick}>
-        <p>내 출생연도와 내 이름과 내 나이는?</p>
-        {showAnswer2 ? (
-          <h1 onClick={handleClick2}>답 : 1997.01.26 손영진</h1>
-        ) :
-          (
-            <h1 onClick={handleClick2}>Check the answer</h1>
-          )
-        }
-      </StyledContainer>
+      ))}
 
     </StyledBox>
   )

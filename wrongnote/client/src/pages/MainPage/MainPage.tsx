@@ -7,8 +7,8 @@ export default function MainPage() {
       <div className='fixed top-0 left-0 w-full'>
         <NavbarComponent />
       </div>
-      <AddProblemComponent />
       <ProblemComponent />
+      <AddProblemComponent />
     </>
   )
 }

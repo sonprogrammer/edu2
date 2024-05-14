@@ -25,10 +25,10 @@ const useGetProblem = (userId: string) : UseGetProblemsResult =>{
 
 
     useEffect(() =>{
-        const fetchProblems = async () =>{
+        const fetchUserProblems = async () =>{
             try {
                 setLoading(true)
-                const response: AxiosResponse<Problem[]> = await axios.get(`http://localhost:3000/${userId}`)
+                const response: AxiosResponse<Problem[]> = await axios.get(`http://localhost:3000/api/problem/user/${userId}`, {withCredentials: true})
                 setProblems(response.data)
                 setLoading(false)
             } catch (error) {
@@ -36,7 +36,7 @@ const useGetProblem = (userId: string) : UseGetProblemsResult =>{
                 setLoading(false)
             }
         }
-        fetchProblems()
+        fetchUserProblems()
     }, [userId])
 
     return { problems, loading, error}
