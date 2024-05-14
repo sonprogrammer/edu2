@@ -39,3 +39,21 @@ export const StyledAnswer = styled.textarea`
         w-full
     `}
 `
+export const StyledMark = styled.button`
+    ${tw`
+        bg-yellow-300
+        p-3
+        rounded-xl
+        font-bold
+        mt-10
+        absolute
+        left-1/2
+        transform -translate-x-1/2
+    `}
+    transition: all 0.4s;
+    &:hover{
+        color: blue;
+        font-weight: bold;
+        transform: scale(1.2) translateX(-50%);
+    }
+`
