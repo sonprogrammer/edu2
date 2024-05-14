@@ -6,6 +6,8 @@ import useGetProblem from '../../hooks/useGetProblem'
 export default function TestComponent() {
     const [currentUser, setCurrentUser] = useState('')
     const [randomProblems, setRandomProblems] = useState([])
+    const [answers, setAnswers] = useState({})
+    const [showAnswer, setShowAnwser] = useState(false)
 
     useEffect(() => {
         const fetchCurrentUser = async () => {
@@ -42,6 +44,16 @@ export default function TestComponent() {
         return shuffledArray;
     };
 
+    const handleMarkClick = () =>{
+        setShowAnwser(!showAnswer)
+    }
+
+    const handleAnswerChange= (i, value) =>{
+        setAnswers((prev) =>({
+            ...prev,
+            [i]: value
+        }))
+    }
 
     return (
         <div>
@@ -49,11 +61,17 @@ export default function TestComponent() {
                 {randomProblems.map((problem, i) => (
                     <StyledContainer key={i}>
                         <StyledContent>{problem.problem}</StyledContent>
-                        <StyledAnswer cols={40} rows={3} placeholder='정답을 입력하세요' />
+                        <StyledAnswer cols={40} rows={3} placeholder='정답을 입력하세요' value={answers[i] || ''} onChange={(e)=>handleAnswerChange(i, e.target.value)}/>
+                        {showAnswer && (
+                            <div>
+                                <p>정답 : {problem.answer}</p>
+                                <p>해설 : {problem.description}</p>
+                            </div>
+                        )}
                     </StyledContainer>
                 ))}
             </StyledBox>
-            <StyledMark>채점하기</StyledMark>
+            <StyledMark onClick={handleMarkClick}>채점하기</StyledMark>
         </div>
     )
 }
