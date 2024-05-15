@@ -41,6 +41,18 @@ export default function ProblemComponent() {
     //problems의 개수에 따라 showAnswerStates 배열을 초기화
   }, [problems]);
 
+
+//   useEffect(() => {
+//     const handleSaveResponse = () => {
+//         if (!updatedProblem) {
+//             window.location.reload(); // 페이지 새로고침
+//         }
+//     };
+
+//     handleSaveResponse();
+// }, []);
+
+
   const handleClick = (e, i) => {
     e.stopPropagation();
     setShowAnswerStates(prevStates => {
@@ -66,7 +78,7 @@ export default function ProblemComponent() {
       const response = await axios.put(`http://localhost:3000/api/problem/update`, updatedProblem);
       console.log('PUT => response', response.data)
       setEditProblem(!editProblem)
-      const { problems, loading, error } = useGetProblem(currentUser);
+      window.location.reload()
     } catch (error) {
       console.error('failed to save problem', error)
     }
