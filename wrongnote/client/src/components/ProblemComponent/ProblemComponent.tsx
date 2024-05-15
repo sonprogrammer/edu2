@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { StyledContainer, StyledBox, StyledModalOverlay, StyledModalContent, StyledCloseButton, StyledContent, StyledEditBtn, StyledEditProblem, StyledEditAnswer, StyledEditDescription } from './style'
-import useGetProblem  from '../../hooks/useGetProblem'
+import useGetProblem from '../../hooks/useGetProblem'
 import axios from 'axios'
 
 
@@ -11,11 +11,19 @@ export default function ProblemComponent() {
   const [editProblem, setEditProblem] = useState(false)
   // const[isExpand, setIsExpand] = useState(false)
   const [currentUser, setCurrentUser] = useState('')
-  
-  useEffect(()=>{
-    const fetchCurrentUser = async() =>{
+  const [updatedProblem, setUpdatedProblem] = useState(
+    {
+      id: '',
+      problem: '',
+      answer: '',
+      description: '',
+    }
+  )
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/account/current-user',{withCredentials: true})
+        const response = await axios.get('http://localhost:3000/api/account/current-user', { withCredentials: true })
         console.log('response', response.data)
         setCurrentUser(response.data._id)
       } catch (error) {
@@ -25,39 +33,43 @@ export default function ProblemComponent() {
     fetchCurrentUser()
   }, [])
 
-  console.log('current user', currentUser)
-  const { problems, loading, error } = useGetProblem(currentUser)
-  console.log('problems', problems)
+  const { problems } = useGetProblem(currentUser)
 
-  // if(loading){
-  //   return <div>Loading...</div>
-  // }
 
-  // if(error){
-  //   return <div>Error: {error}</div>
-  // }
-  
-
-  useEffect(() =>{
+  useEffect(() => {
     setShowAnswerStates(new Array(problems.length).fill(false))
     //problems의 개수에 따라 showAnswerStates 배열을 초기화
-  },[problems]);
+  }, [problems]);
 
-  const handleClick = (e,i) => {
+  const handleClick = (e, i) => {
     e.stopPropagation();
-    setShowAnswerStates(prevStates =>{
+    setShowAnswerStates(prevStates => {
       const newStates = [...prevStates]
       newStates[i] = !newStates[i]
       return newStates
     })
   }
 
-  const handleModalClick = ( i) => {
+  const handleModalClick = (i) => {
     setModal(i)
   }
-  
+
   const handleEditClick = () => {
     setEditProblem(!editProblem)
+  }
+
+ 
+
+
+  const handleSaveClick = async () => {
+    try {
+      const response = await axios.put(`http://localhost:3000/api/problem/update`, updatedProblem);
+      console.log('PUT => response', response.data)
+      setEditProblem(!editProblem)
+      const { problems, loading, error } = useGetProblem(currentUser);
+    } catch (error) {
+      console.error('failed to save problem', error)
+    }
   }
 
   //*설명길이가 길면 20자 이상뒤로 부턴 ...으로 대체
@@ -69,17 +81,17 @@ export default function ProblemComponent() {
     <StyledBox>
       {problems.map((problem, i) => (
         <>
-        <StyledContainer key={i} answerStatus={showAnswerStates[i]} onClick={()=>handleModalClick(i)}>
-          <p>{problem.problem}</p>
-        {showAnswerStates[i] ? (
-          <h1 onClick={(e)=>handleClick(e, i)}>답 : {problem.answer}</h1>
-          ) : (
-            <h1 onClick={(e) =>handleClick(e, i)}>Check the answer</h1>
+          <StyledContainer key={i} answerStatus={showAnswerStates[i]} onClick={() => handleModalClick(i)}>
+            <p>{problem.problem}</p>
+            {showAnswerStates[i] ? (
+              <h1 onClick={(e) => handleClick(e, i)}>답 : {problem.answer}</h1>
+            ) : (
+              <h1 onClick={(e) => handleClick(e, i)}>Check the answer</h1>
             )}
-        </StyledContainer>
-        {modal === i && (
-        <DetailModal onClose={handleModalClick} onClick={handleEditClick} editProblem={editProblem} problem={problem}/>
-        )}
+          </StyledContainer>
+          {modal === i && (
+            <DetailModal onClose={handleModalClick} handleEditClick={handleEditClick} handleSaveClick={handleSaveClick} editProblem={editProblem} problem={problem} setUpdatedProblem={setUpdatedProblem} updatedProblem={updatedProblem} />
+          )}
         </>
       ))}
 
@@ -87,23 +99,39 @@ export default function ProblemComponent() {
   )
 }
 
-function DetailModal({ onClose, onClick, editProblem, problem }) {
+function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, problem, setUpdatedProblem, updatedProblem }) {
   const stopPropagation = (e) => {
     e.stopPropagation();
   }
+
+  useEffect(()=>{
+    setUpdatedProblem(problem)
+  },[problem, setUpdatedProblem])
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedProblem({
+      ...updatedProblem,
+      [name]: value
+    })
+  }
+
   return (
     <StyledModalOverlay onClick={onClose}>
       <StyledModalContent onClick={stopPropagation}>
         <StyledCloseButton onClick={onClose}>Close</StyledCloseButton>
-        
+
         {editProblem ? (
           <>
             <StyledContent>
-              <StyledEditProblem>{problem.problem}</StyledEditProblem>
-              <StyledEditAnswer>{problem.answer}</StyledEditAnswer>
-              <StyledEditDescription>{problem.description}</StyledEditDescription>
+              {/* <StyledEditProblem value={problem.problem} name='problem' onChange={handleChange}></StyledEditProblem> */}
+              <StyledEditProblem name='problem' onChange={handleChange}>{problem.problem}</StyledEditProblem>
+              {/* <StyledEditAnswer value={problem.answer} name='answer' onChange={handleChange}> </StyledEditAnswer> */}
+              <StyledEditAnswer name='answer' onChange={handleChange}>{problem.answer}</StyledEditAnswer>
+              {/* <StyledEditDescription value={problem.description} name='description' onChange={handleChange}></StyledEditDescription> */}
+              <StyledEditDescription  name='description' onChange={handleChange}>{problem.description}</StyledEditDescription>
             </StyledContent>
-            <StyledEditBtn onClick={onClick}>Save</StyledEditBtn>
+            <StyledEditBtn onClick={handleSaveClick}>Save</StyledEditBtn>
           </>
         ) : (
           <>
@@ -112,7 +140,7 @@ function DetailModal({ onClose, onClick, editProblem, problem }) {
               <h2>{problem.answer}</h2>
               <p>{problem.description}</p>
             </StyledContent>
-            <StyledEditBtn onClick={onClick}>Edit</StyledEditBtn>
+            <StyledEditBtn onClick={handleEditClick}>Edit</StyledEditBtn>
           </>
         )}
       </StyledModalContent>

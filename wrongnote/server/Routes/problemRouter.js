@@ -5,6 +5,7 @@ const problemRouter = express.Router();
 problemRouter.post('/add', problemController.createProblem)
 problemRouter.get('/', problemController.getProblem)
 problemRouter.get('/user/:userId', problemController.getUserProblems)
+problemRouter.put('/update', problemController.updateProblem)
 
 
 
