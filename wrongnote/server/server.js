@@ -11,7 +11,8 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const userRouter = require('./Routes/userRouter')
-const problemRouter = require('./Routes/problemRouter')
+const problemRouter = require('./Routes/problemRouter');
+const problemModel = require('./db/models/problemModel');
 
 
 const app = express()
@@ -119,6 +120,8 @@ try {
 app.get('/', (req, res) =>{
     res.send('Welcomedfd')
 })
+
+
 app.use("/api/account", userRouter)
 // app.use("/login", userRouter)
 app.use("/api/problem", problemRouter)

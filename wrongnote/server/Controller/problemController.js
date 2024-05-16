@@ -20,10 +20,36 @@ async function createProblem(req, res, next) {
     }
 }
 
-async function getProblem(req, res, next) {
+async function searchProblem(req, res, next) {
     try {
-        const Problem = await problemModel.find()
-        res.status(200).json(Problem)
+        const { q, userId } = req.query;
+        console.log('q',q)
+        console.log('userId',userId)
+        let query = {}
+        if(q){
+            query = {
+                $and: [
+                    {user: userId}
+                ],
+                $or: [
+                    //문제에 검색어가 포함되는경우
+                    {problem: { $regex : q, $options: 'i'}},
+                    //답에 검색어가 포함되는경우
+                    {answer : { $regex: q, $options: 'i'}},
+                    //해설에 검색어가 포함되는경우
+                    {description : { $regex: q, $options: 'i'}},
+                ]
+            }
+        }
+        let problems = await problemModel.find(query)
+        console.log('problem', problems)
+        
+        if(problems.length === 0){
+            problems = await problemModel.find({user: userId})
+            console.log('problem', problems)
+        }
+
+        res.status(200).json(problems)
     } catch (error) {
         next(error);
     }
@@ -105,5 +131,5 @@ module.exports = {
     getUserProblems,
     updateProblem,
     deleteProblem,
-    getProblem
+    searchProblem
 }

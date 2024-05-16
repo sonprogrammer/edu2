@@ -1,14 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyledContainer, StyledLogo, StyledLogoutModal, StyledSearch, StyledTags } from './style'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import LogoutModal from './LogoutModal'
 import axios from 'axios'
 
 
 export default function NavbarComponent() {
     const [logout, setLogout] = useState(false)
+    const [searchValue, setSearchValue] = useState('')
+    
 
     const navigate = useNavigate()
+
+
+    const handleChange = (e) => {
+        setSearchValue(e.target.value)
+        navigate(`/browse/search?q=${e.target.value}`)
+    }
     
 
     const handleLogoutClick = () => {
@@ -40,7 +48,7 @@ export default function NavbarComponent() {
                 CAN
                 </Link>
             </StyledLogo>
-            <StyledSearch type='search'/>
+            <StyledSearch onChange={handleChange} value={searchValue} type='search'/>
             <StyledTags>
                 <Link to='/browse/note'>my note</Link>
                 <Link to='/browse/test'>20 test</Link>

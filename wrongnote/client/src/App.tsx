@@ -4,6 +4,7 @@ import React, { Suspense, lazy } from 'react'
 import { NotFoundComponent, NoteComponent } from './components';
 import { Route, Routes } from 'react-router-dom';
 import TestPage from './pages/TestPage/TestPage';
+import { SearchPage } from './pages';
 // import { LandingPage, LayoutPage, LoginPage, MainPage, MakeProblemPage, SignUpPage } from './pages';
 
 
@@ -85,6 +86,11 @@ function App() {
           <Route path='/browse/problem' element={
             <Suspense fallback={<div></div>}>
               <MakeProblemPage />
+            </Suspense>
+          } />
+          <Route path='/browse/search' element={
+            <Suspense fallback={<div></div>}>
+              <SearchPage />
             </Suspense>
           } />
         </Route>

@@ -35,7 +35,6 @@ export default function ProblemComponent() {
     fetchCurrentUser()
   }, [])
 
-  console.log('fetchCurrent', currentUser)
 
   const { problems, setProblems } = useGetProblem(currentUser)
 
