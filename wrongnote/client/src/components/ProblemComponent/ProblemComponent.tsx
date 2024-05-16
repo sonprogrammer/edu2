@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { StyledContainer, StyledBox, StyledModalOverlay, StyledModalContent, StyledCloseButton, StyledContent, StyledEditBtn, StyledEditProblem, StyledEditAnswer, StyledEditDescription } from './style'
+import { StyledContainer, StyledBox, StyledModalOverlay, StyledModalContent, StyledCloseButton, StyledContent, StyledEditBtn, StyledEditProblem, StyledEditAnswer, StyledEditDescription, StyledDeleteBtn, StyledLogoutModal } from './style'
 import useGetProblem from '../../hooks/useGetProblem'
 import axios from 'axios'
+import DeleteModal from './DeleteModal'
 
 
 export default function ProblemComponent() {
@@ -10,6 +11,7 @@ export default function ProblemComponent() {
   const [modal, setModal] = useState(null)
   const [editProblem, setEditProblem] = useState(false)
   // const[isExpand, setIsExpand] = useState(false)
+  const [deleteModal, setDeletModal] = useState(false)
   const [currentUser, setCurrentUser] = useState('')
   const [updatedProblem, setUpdatedProblem] = useState(
     {
@@ -84,6 +86,7 @@ export default function ProblemComponent() {
     }
   }
 
+
   //*설명길이가 길면 20자 이상뒤로 부턴 ...으로 대체
   // const OverDescription = isExpand ?
   //   description : description?.slice(0, 20) + '...'
@@ -102,7 +105,18 @@ export default function ProblemComponent() {
             )}
           </StyledContainer>
           {modal === i && (
-            <DetailModal onClose={handleModalClick} handleEditClick={handleEditClick} handleSaveClick={handleSaveClick} editProblem={editProblem} problem={problem} setUpdatedProblem={setUpdatedProblem} updatedProblem={updatedProblem} />
+            <DetailModal 
+              onClose={handleModalClick}
+              handleEditClick={handleEditClick} 
+              handleSaveClick={handleSaveClick} 
+              editProblem={editProblem} 
+              problem={problem} 
+              setUpdatedProblem={setUpdatedProblem} 
+              updatedProblem={updatedProblem}
+              // handleDeleteClick={handleDeleteClick}
+              deleteModal={deleteModal}
+              setDeletModal={setDeletModal}
+               />
           )}
         </>
       ))}
@@ -111,7 +125,7 @@ export default function ProblemComponent() {
   )
 }
 
-function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, problem, setUpdatedProblem, updatedProblem }) {
+function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, problem, setUpdatedProblem, updatedProblem, deleteModal, setDeletModal }) {
   const stopPropagation = (e) => {
     e.stopPropagation();
   }
@@ -126,6 +140,18 @@ function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, p
       ...updatedProblem,
       [name]: value
     })
+  }
+
+  const handleDeleteClick = () =>{
+    setDeletModal(!deleteModal)
+  }
+
+  const handleCancelDelete = () =>{
+    setDeletModal(false)
+  }
+
+  const handleDeleteConfirm = () =>{
+    
   }
 
   return (
@@ -152,7 +178,15 @@ function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, p
               <h2>{problem.answer}</h2>
               <p>{problem.description}</p>
             </StyledContent>
+            <div className='flex'>
             <StyledEditBtn onClick={handleEditClick}>Edit</StyledEditBtn>
+            <StyledDeleteBtn onClick={handleDeleteClick}>Delete</StyledDeleteBtn>
+            </div>
+            <StyledLogoutModal onClick={handleCancelDelete}>
+            {deleteModal && (
+                <DeleteModal onConfirm={handleDeleteConfirm} onCancel={handleCancelDelete} />
+            )}
+            </StyledLogoutModal>
           </>
         )}
       </StyledModalContent>

@@ -126,9 +126,30 @@ export const StyledCloseButton = styled.div`
 export const StyledEditBtn = styled.div`
     ${tw`
     bottom-[10px]
-    w-[55px]
+    w-[70px]
     text-center
     bg-blue-500
+    text-white
+    p-2
+    font-semibold
+    rounded-md
+    cursor-pointer
+    text-[18px]
+    mx-auto
+    mt-20
+    `}
+    transition: all 0.4s;
+    &:hover{
+        transform: scale(1.2);
+    }
+`
+
+export const StyledDeleteBtn = styled.div`
+    ${tw`
+    bottom-[10px]
+    w-[70px]
+    text-center
+    bg-red-500
     text-white
     p-2
     font-semibold
@@ -164,3 +185,84 @@ export const StyledContent = styled.div`
         font-weight: bold;
     }
 `
+
+//
+export const StyledLogoutModal = styled.div`
+  ${tw`
+    
+    flex
+    justify-center
+    items-center
+  `}
+
+
+`
+export const StyledLogoutModalContainer = styled.div`
+    ${tw`
+    fixed top-0 left-0 w-full h-full flex justify-center 
+    items-center bg-black bg-opacity-50
+    z-40
+
+    `};
+
+    `
+
+    export const StyledLogoutModalContent = styled.div`
+  ${tw`
+  bg-[#bebebe] p-8 rounded-xl shadow-md
+  `
+}
+  p{
+    color: black;
+  }
+  z-index: 9999;
+  
+`
+
+export const StyledButtons = styled.div`
+  ${tw`
+    flex
+    justify-center
+    mt-2
+    
+  `}
+
+  button {
+    ${tw`
+      px-4
+      py-2
+      transition-all
+      duration-300
+      rounded-md
+      font-semibold
+    `}
+
+    &:first-child {
+      ${tw`
+        mr-4
+        text-red-500
+
+      `}
+    }
+
+    &:hover {
+      ${tw`
+        transform
+        scale-105
+      `}
+    }
+
+    &:first-child:hover {
+      ${tw`
+        bg-red-500
+        text-white
+      `}
+    }
+
+    &:last-child:hover {
+      ${tw`
+        bg-black
+        text-white
+      `}
+    }
+  }`
