@@ -12,6 +12,7 @@ export default function ProblemComponent() {
   const [editProblem, setEditProblem] = useState(false)
   // const[isExpand, setIsExpand] = useState(false)
   const [deleteModal, setDeletModal] = useState(false)
+  // const [isOpen, setIsOpen] = useState(false)
   const [currentUser, setCurrentUser] = useState('')
   const [updatedProblem, setUpdatedProblem] = useState(
     {
@@ -34,6 +35,8 @@ export default function ProblemComponent() {
     }
     fetchCurrentUser()
   }, [])
+
+  console.log('fetchCurrent', currentUser)
 
   const { problems } = useGetProblem(currentUser)
 
@@ -116,6 +119,8 @@ export default function ProblemComponent() {
               // handleDeleteClick={handleDeleteClick}
               deleteModal={deleteModal}
               setDeletModal={setDeletModal}
+              isOpen={modal === i}
+              currentUser={currentUser}
                />
           )}
         </>
@@ -125,7 +130,7 @@ export default function ProblemComponent() {
   )
 }
 
-function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, problem, setUpdatedProblem, updatedProblem, deleteModal, setDeletModal }) {
+function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, problem, setUpdatedProblem, updatedProblem, deleteModal, setDeletModal, isOpen }) {
   const stopPropagation = (e) => {
     e.stopPropagation();
   }
@@ -150,8 +155,13 @@ function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, p
     setDeletModal(false)
   }
 
-  const handleDeleteConfirm = () =>{
-    
+  const handleDeleteConfirm = async () =>{
+    try {
+      const result = await axios.delete('http://localhost:3000/api/problem/delete', {data : { _id : problem._id}})
+      console.log('delete result: ', result)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

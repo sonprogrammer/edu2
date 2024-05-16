@@ -67,10 +67,28 @@ async function updateProblem(req, res, next) {
     }
 }
 
+async function deleteProblem(req, res, next){
+    try {
+        const { _id } = req.body
+        console.log('문제의 _id', req.body)
+
+        const deleteProblem = await problemModel.findByIdAndDelete(_id)
+
+        if(!deleteProblem){
+            return res.status(404).json({ message : 'Problem not found'})
+        }
+        res.status(200).json({ message: 'Problem deleted successfully'})
+
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 module.exports = {
     createProblem,
     getProblem,
     getUserProblems,
-    updateProblem
+    updateProblem,
+    deleteProblem
 }
