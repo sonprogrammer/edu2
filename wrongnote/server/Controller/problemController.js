@@ -43,6 +43,20 @@ async function getUserProblems(req, res, next) {
 }
 
 
+
+async function getProblem(req, res, next){
+    try {
+        const problem = await problemModel.findById(req.params.id)
+        if(!problem){
+            return res.status(404).json({message: 'problem not found'})
+        }
+        res.json(problem)
+    } catch (error) {
+        next(error)
+    }
+}
+
+
 async function updateProblem(req, res, next) {
     try {
         const { id } = req.params
@@ -90,5 +104,6 @@ module.exports = {
     getProblem,
     getUserProblems,
     updateProblem,
-    deleteProblem
+    deleteProblem,
+    getProblem
 }

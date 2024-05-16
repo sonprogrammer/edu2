@@ -27,7 +27,6 @@ export default function ProblemComponent() {
     const fetchCurrentUser = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/account/current-user', { withCredentials: true })
-        console.log('response', response.data)
         setCurrentUser(response.data._id)
       } catch (error) {
         console.log('failed to get current user', error)
@@ -38,24 +37,13 @@ export default function ProblemComponent() {
 
   console.log('fetchCurrent', currentUser)
 
-  const { problems } = useGetProblem(currentUser)
+  const { problems, setProblems } = useGetProblem(currentUser)
 
 
   useEffect(() => {
     setShowAnswerStates(new Array(problems.length).fill(false))
-    //problems의 개수에 따라 showAnswerStates 배열을 초기화
+    //*problems의 개수에 따라 showAnswerStates 배열을 초기화
   }, [problems]);
-
-
-//   useEffect(() => {
-//     const handleSaveResponse = () => {
-//         if (!updatedProblem) {
-//             window.location.reload(); // 페이지 새로고침
-//         }
-//     };
-
-//     handleSaveResponse();
-// }, []);
 
 
   const handleClick = (e, i) => {
@@ -81,7 +69,7 @@ export default function ProblemComponent() {
   const handleSaveClick = async () => {
     try {
       const response = await axios.put(`http://localhost:3000/api/problem/update`, updatedProblem);
-      console.log('PUT => response', response.data)
+      
       setEditProblem(!editProblem)
       window.location.reload()
     } catch (error) {
@@ -158,7 +146,7 @@ function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, p
   const handleDeleteConfirm = async () =>{
     try {
       const result = await axios.delete('http://localhost:3000/api/problem/delete', {data : { _id : problem._id}})
-      console.log('delete result: ', result)
+      window.location.reload()
     } catch (error) {
       console.log(error)
     }
@@ -172,11 +160,8 @@ function DetailModal({ onClose, handleEditClick, handleSaveClick, editProblem, p
         {editProblem ? (
           <>
             <StyledContent>
-              {/* <StyledEditProblem value={problem.problem} name='problem' onChange={handleChange}></StyledEditProblem> */}
               <StyledEditProblem name='problem' onChange={handleChange}>{problem.problem}</StyledEditProblem>
-              {/* <StyledEditAnswer value={problem.answer} name='answer' onChange={handleChange}> </StyledEditAnswer> */}
               <StyledEditAnswer name='answer' onChange={handleChange}>{problem.answer}</StyledEditAnswer>
-              {/* <StyledEditDescription value={problem.description} name='description' onChange={handleChange}></StyledEditDescription> */}
               <StyledEditDescription  name='description' onChange={handleChange}>{problem.description}</StyledEditDescription>
             </StyledContent>
             <StyledEditBtn onClick={handleSaveClick}>Save</StyledEditBtn>

@@ -7,6 +7,7 @@ problemRouter.get('/', problemController.getProblem)
 problemRouter.get('/user/:userId', problemController.getUserProblems)
 problemRouter.put('/update', problemController.updateProblem)
 problemRouter.delete('/delete', problemController.deleteProblem)
+problemRouter.get('/:id', problemController.getProblem)
 
 
 
