@@ -44,10 +44,6 @@ async function searchProblem(req, res, next) {
         let problems = await problemModel.find(query)
         console.log('problem', problems)
         
-        if(problems.length === 0){
-            problems = await problemModel.find({user: userId})
-            console.log('problem', problems)
-        }
 
         res.status(200).json(problems)
     } catch (error) {

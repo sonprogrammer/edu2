@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ProblemComponent } from '../../components'
 import { StyledBox, StyledCloseButton, StyledContainer, StyledContent, StyledDeleteBtn, StyledEditAnswer, StyledEditBtn, StyledEditDescription, StyledEditProblem, StyledLogoutModal, StyledModalContent, StyledModalOverlay } from './style'
 import DeleteModal from '../../components/ProblemComponent/DeleteModal'
@@ -15,6 +15,7 @@ export default function SearchPage() {
   const [editProblem, setEditProblem] = useState(false)
   // const[isExpand, setIsExpand] = useState(false)
   const [deleteModal, setDeletModal] = useState(false)
+  const [searchError, setSearchError] = useState('')
   // const [isOpen, setIsOpen] = useState(false)
   const [updatedProblem, setUpdatedProblem] = useState(
     {
@@ -24,6 +25,8 @@ export default function SearchPage() {
       description: '',
     }
   )
+
+  const navigate = useNavigate()
 
     const useQuery = () => {
         return new URLSearchParams(useLocation().search)
@@ -80,7 +83,7 @@ const { problems, setProblems } = useGetProblem(currentUser)
       const response = await axios.put(`http://localhost:3000/api/problem/update`, updatedProblem);
       
       setEditProblem(!editProblem)
-      window.location.reload()
+      navigate('/browse/search')
     } catch (error) {
       console.error('failed to save problem', error)
     }
@@ -96,15 +99,22 @@ const { problems, setProblems } = useGetProblem(currentUser)
         try {
             const response = await axios.get(`http://localhost:3000/api/problem/search?q=${searchTerm}&userId=${currentUser}`)
             setSearchList(response.data)
-            console.log('response: ' , response.data)
+            if(response.data.length === 0){
+              setSearchError('검색된 결과가 없습니다.')
+            }else{
+              setSearchError('')
+            }
         } catch (error) {
             console.log(error)
         }
     }
-    console.log('searchList: ' , searchList.answer)
+    console.log('searchList: ' , searchList)
   return (
     <StyledBox>
-    {searchList.map((problem, i) => (
+      {searchError ? (
+        <p className='text-gray-500'>{searchError}</p>
+      ) : (
+    searchList.map((problem, i) => (
       <>
         <StyledContainer key={i} answerStatus={showAnswerStates[i]} onClick={() => handleModalClick(i)}>
           <p>{problem.problem}</p>
@@ -131,7 +141,7 @@ const { problems, setProblems } = useGetProblem(currentUser)
              />
         )}
       </>
-    ))}
+    )))}
 
   </StyledBox>
 )
