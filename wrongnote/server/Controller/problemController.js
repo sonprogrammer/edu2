@@ -81,7 +81,6 @@ async function getProblem(req, res, next){
 
 async function updateProblem(req, res, next) {
     try {
-        const { id } = req.params
         const { _id, problem, answer, description } = req.body
         console.log('req.body', req.body)
 

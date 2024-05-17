@@ -12,6 +12,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const userRouter = require('./Routes/userRouter')
 const problemRouter = require('./Routes/problemRouter');
+const noteRouter = require('./Routes/noteRouter')
 const problemModel = require('./db/models/problemModel');
 
 
@@ -125,6 +126,7 @@ app.get('/', (req, res) =>{
 app.use("/api/account", userRouter)
 // app.use("/login", userRouter)
 app.use("/api/problem", problemRouter)
+app.use('/api/note', noteRouter)
 
 app.listen(3000, ()=>{
     console.log('listening on port 3000')
