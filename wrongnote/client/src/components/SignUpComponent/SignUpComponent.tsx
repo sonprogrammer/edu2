@@ -5,7 +5,6 @@ import axios from 'axios';
 
 
 export default function SignUpComponent() {
-    const [userId, setUserId] = useState('')
     const [userPassword, setUserPassword] = useState('')
     const [verifyPassword, setVerifyPassword] = useState('')
     const [passwordError, setPasswordError] = useState(false)

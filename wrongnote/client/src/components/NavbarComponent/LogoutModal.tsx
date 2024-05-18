@@ -14,7 +14,6 @@ interface LogoutModalProps {
 export default function LogoutModal({
   onConfirm,
   onCancel,
-  text,
 }: LogoutModalProps) {
   return (
     <StyledLogoutModalContainer>

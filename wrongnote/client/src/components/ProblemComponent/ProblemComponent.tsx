@@ -6,7 +6,6 @@ import DeleteModal from './DeleteModal'
 
 
 export default function ProblemComponent() {
-  const [showAnswer, setShowAnwser] = useState(false)
   const [showAnswerStates, setShowAnswerStates] = useState([]);
   const [modal, setModal] = useState(null)
   const [editProblem, setEditProblem] = useState(false)
@@ -36,7 +35,7 @@ export default function ProblemComponent() {
   }, [])
 
 
-  const { problems, setProblems } = useGetProblem(currentUser)
+  const { problems } = useGetProblem(currentUser)
 
 
   useEffect(() => {

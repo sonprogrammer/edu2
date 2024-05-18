@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { StyledContainer, StyledLogo, StyledLogoutModal, StyledSearch, StyledTags } from './style'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import LogoutModal from './LogoutModal'
 import axios from 'axios'
 

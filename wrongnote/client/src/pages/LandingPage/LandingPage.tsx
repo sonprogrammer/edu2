@@ -1,5 +1,3 @@
-
-// import { LoginComponent } from '../../components'
 import { useState } from 'react';
 import { StyledBox, StyledContainer, StyledLoginBtn, StyledSignupBtn, StyledTitle, StyledVideo, StyledVideoBackground } from './style'
 import { LoginComponent, SignUpComponent } from '../../components';
@@ -10,11 +8,9 @@ export default function LandingPage() {
 
 
   const handleLoginClick = () => {
-    // navigate('/login')
     setLogin(true)
   }
   const handleSignupClick = () => {
-    // navigate('/signup')
     setSignup(true)
   }
   return (
@@ -25,7 +21,7 @@ export default function LandingPage() {
             <StyledVideo autoPlay loop muted src='/landing.mp4' className='bg-video' />
           </StyledVideoBackground>
           <div>
-            <StyledTitle>오답노트와 무제풀이를 한번에!!</StyledTitle>
+            <StyledTitle>오답노트와 문제풀이를 한번에!!</StyledTitle>
             <h1 className='text-yellow-300 absolute
             top-[35%]
             left-[47%]
