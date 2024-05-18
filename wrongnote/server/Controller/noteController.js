@@ -31,10 +31,10 @@ async function postNote(req, res, next){
 
 async function updateNote(req, res, next){
     try {
-        const noteId = req.params.noteId
-        console.log('noteid', req.params.noteId)
-        const { content } = req.body
-        const note = await noteModel.findByIdAndUpdate('664727474b01df1e9dcbac62', { content }, {new : true})
+
+        const { content, noteId } = req.body
+        console.log('notezzzz', noteId)
+        const note = await noteModel.findByIdAndUpdate(noteId, { content }, {new : true})
         console.log('note3', note)
         res.json(note)
     } catch (error) {

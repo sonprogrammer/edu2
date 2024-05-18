@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export default function NoteComponent() {
     const [noteContent, setNoteContent] = useState('')
-    const [updateContent, setUpdateContent] = useState('')
+    const [noteId, setNoteId] = useState('')
     const [currentUser, setCurrentUser] = useState('')
 
     useEffect(() => {
@@ -12,6 +12,7 @@ export default function NoteComponent() {
         try {
           const response = await axios.get('http://localhost:3000/api/account/current-user', { withCredentials: true })
           setCurrentUser(response.data._id)
+          console.log('setCurrentUser',setCurrentUser)
         } catch (error) {
           console.log('failed to get current user', error)
         }
@@ -26,6 +27,7 @@ export default function NoteComponent() {
           const result = await axios.get(`http://localhost:3000/api/note/${currentUser}`)
           setNoteContent(result.data[0].content)
           console.log('dudlfd',result.data)
+          setNoteId(result.data[0]._id)
         } catch (error) {
           console.log('fetchnote error', error)
         }
@@ -39,7 +41,14 @@ export default function NoteComponent() {
 
     const handleSaveNote = async () => {
       try {
-        await axios.put(`http://localhost:3000/api/note/edit/${currentUser}`, { content: noteContent })
+        if(noteId){
+          await axios.put(`http://localhost:3000/api/note/edit/${currentUser}`, { content: noteContent, noteId })
+          alert('save success')
+        }else{
+          const response = await axios.post(`http://localhost:3000/api/note/write/${currentUser}`, {content : noteContent})
+          setNoteId(response.data[0]._id)
+          alert('save success')
+        }
       } catch (error) {
         console.log('error', error)
       }
