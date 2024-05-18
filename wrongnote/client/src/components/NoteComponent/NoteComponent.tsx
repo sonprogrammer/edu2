@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { StyledBox, StyledTextarea } from './style'
+import { StyledBox, StyledBtn, StyledTextarea } from './style'
 import axios from 'axios'
 
 export default function NoteComponent() {
@@ -52,7 +52,7 @@ export default function NoteComponent() {
         onChange={handleNoteChange}
         placeholder='write your note here...'
       />
-    <button onClick={handleSaveNote}>Save</button>
+    <StyledBtn onClick={handleSaveNote}>Save</StyledBtn>
 
     </StyledBox>
   )
