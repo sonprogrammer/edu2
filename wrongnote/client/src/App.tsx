@@ -23,6 +23,7 @@ const LandingPage = lazy(() =>
     default: module.LandingPage,
   }))
 )
+
 const MakeProblemPage = lazy(() =>
   import('./pages/MakeProblemPage').then((module) =>({
     default: module.MakeProblemPage,
