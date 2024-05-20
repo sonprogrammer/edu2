@@ -7,19 +7,20 @@ const userModel = require('./db/models/userModel');
 const { Types: { ObjectId } } = require('mongoose');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose')
-// const cookieParser = require('cookie-parser')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const userRouter = require('./Routes/userRouter')
 const problemRouter = require('./Routes/problemRouter');
 const noteRouter = require('./Routes/noteRouter')
 const problemModel = require('./db/models/problemModel');
+require('dotenv').config()
 
 
 const app = express()
 
 
-mongoose.connect('mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+
+mongoose.connect(process.env.MONGODB_URL)
 .then(() => console.log('mongodb connect success'))
 .catch(err => console.log('mongodb connect error'))
 
@@ -30,7 +31,7 @@ app.use(cors({
     origin: true,
     credentials: true
 }))
-// app.use(cookieParser());
+
 app.use(passport.initialize()) //passport를 사용한다고 express에 알림
 app.use(session({
     secret: 'secret',
@@ -41,13 +42,10 @@ app.use(session({
         secure: false,
     },
     store: MongoStore.create({ //세션데이터를 디비에 저장
-        mongoUrl: 'mongodb+srv://ods04139:N8cxD39GfjQIVG82@cluster0.4rfishh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', //db접속용 url
+        mongoUrl: process.env.MONGODB_URL, //db접속용 url
         dbName: 'test' //db이름
     })
-    // store: new MongoStore({
-    //     mongooseConnection: mongoose.connection,
-    //     dbName: 'test'
-    // })
+   
 }))
 
 
@@ -93,7 +91,6 @@ passport.serializeUser((user, done) => {
 
 //* 쿠키 까보는 역할 -> 사용자의 세션 정보를 검색해 사용자 객체로 변환하는 역할 -> 어디서든 req.user하면 유저 정보가 뜬다
 passport.deserializeUser(async (user, done) => {
-    console.log('deserialized user', user)
 try {
     const result = await userModel.findOne({_id : user.id})
     if(!result){
@@ -105,15 +102,6 @@ try {
     done(error)
 }
 
-
-
-// User.findById(id, function(err, user) {
-//     done(err, user)
-// })
-// process.nextTick(() =>{
-//     console.log('deserialize', user)
-//     done(null, user)
-// })
 })
 
 
@@ -124,7 +112,6 @@ app.get('/', (req, res) =>{
 
 
 app.use("/api/account", userRouter)
-// app.use("/login", userRouter)
 app.use("/api/problem", problemRouter)
 app.use('/api/note', noteRouter)
 

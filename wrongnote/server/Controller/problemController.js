@@ -12,7 +12,6 @@ async function createProblem(req, res, next) {
             user: userId
         })
         const savedProblem = await newProblem.save()
-        // const createdProblem = await problemModel.create(req.body)
         res.status(200).json(savedProblem)
     } catch (error) {
         console.error('failed to save problem', error)
@@ -23,8 +22,6 @@ async function createProblem(req, res, next) {
 async function searchProblem(req, res, next) {
     try {
         const { q, userId } = req.query;
-        console.log('q',q)
-        console.log('userId',userId)
         let query = {}
         if(q){
             query = {
@@ -42,7 +39,6 @@ async function searchProblem(req, res, next) {
             }
         }
         let problems = await problemModel.find(query)
-        console.log('problem', problems)
         
 
         res.status(200).json(problems)
@@ -59,7 +55,6 @@ async function getUserProblems(req, res, next) {
         res.status(200).json(userProblems)
     } catch (error) {
         next(error)
-        console.error('failed to fetch user problems', error)
         res.status(500).json({message : 'failed to fetch user problems'})
     }
 }
@@ -82,7 +77,6 @@ async function getProblem(req, res, next){
 async function updateProblem(req, res, next) {
     try {
         const { _id, problem, answer, description } = req.body
-        console.log('req.body', req.body)
 
 
         const updateProblem = await problemModel.findByIdAndUpdate(_id, {
@@ -96,7 +90,6 @@ async function updateProblem(req, res, next) {
         }
         
         res.status(200).json(updateProblem)
-        console.log('update successful')
     } catch (error) {
         next(error)
     }
@@ -105,7 +98,6 @@ async function updateProblem(req, res, next) {
 async function deleteProblem(req, res, next){
     try {
         const { _id } = req.body
-        console.log('문제의 _id', req.body)
 
         const deleteProblem = await problemModel.findByIdAndDelete(_id)
 

@@ -18,7 +18,6 @@ export default function MakeProblemComponet() {
       const fetchCurrentUser = async() =>{
         try {
           const response = await axios.get('http://localhost:3000/api/account/current-user',{withCredentials: true})
-          console.log('response', response.data)
           setCurrentUser(response.data._id)
         } catch (error) {
           console.log('failed to get current user', error)
@@ -40,7 +39,7 @@ export default function MakeProblemComponet() {
         {...problemData, currentUser: currentUser},
         {withCredentials: true}
         )
-        console.log('response', response)
+        console.log('response',response)
         alert('succeeded to add problem')
         navigate('/browse')
       } catch (error) {

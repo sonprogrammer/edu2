@@ -1,22 +1,19 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { ProblemComponent } from '../../components'
 import { StyledBox, StyledCloseButton, StyledContainer, StyledContent, StyledDeleteBtn, StyledEditAnswer, StyledEditBtn, StyledEditDescription, StyledEditProblem, StyledLogoutModal, StyledModalContent, StyledModalOverlay } from './style'
 import DeleteModal from '../../components/ProblemComponent/DeleteModal'
 import useGetProblem from '../../hooks/useGetProblem'
 
+
 export default function SearchPage() {
     const [searchList, setSearchList] = useState([])
     const [currentUser, setCurrentUser] = useState('')
-    const [showAnswer, setShowAnwser] = useState(false)
   const [showAnswerStates, setShowAnswerStates] = useState([]);
   const [modal, setModal] = useState(null)
   const [editProblem, setEditProblem] = useState(false)
-  // const[isExpand, setIsExpand] = useState(false)
   const [deleteModal, setDeletModal] = useState(false)
   const [searchError, setSearchError] = useState('')
-  // const [isOpen, setIsOpen] = useState(false)
   const [updatedProblem, setUpdatedProblem] = useState(
     {
       id: '',
@@ -81,6 +78,7 @@ const { problems, setProblems } = useGetProblem(currentUser)
   const handleSaveClick = async () => {
     try {
       const response = await axios.put(`http://localhost:3000/api/problem/update`, updatedProblem);
+      console.log(response)
       
       setEditProblem(!editProblem)
       navigate('/browse/search')
@@ -108,7 +106,7 @@ const { problems, setProblems } = useGetProblem(currentUser)
             console.log(error)
         }
     }
-    console.log('searchList: ' , searchList)
+
   return (
     <StyledBox>
       {searchError ? (
@@ -133,7 +131,6 @@ const { problems, setProblems } = useGetProblem(currentUser)
             problem={problem} 
             setUpdatedProblem={setUpdatedProblem} 
             updatedProblem={updatedProblem}
-            // handleDeleteClick={handleDeleteClick}
             deleteModal={deleteModal}
             setDeletModal={setDeletModal}
             isOpen={modal === i}
