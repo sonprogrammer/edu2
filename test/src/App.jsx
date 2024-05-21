@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 import axios from 'axios'
+import dotenv from 'dotenv';
+dotenv.config()
+
 
 function App() {
   const [wearherData, setWeatherData] = useState(null)
@@ -11,7 +14,7 @@ function App() {
   useEffect(() =>{
     const fetchWeather = async() => {
       try {
-        const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=07b4a2fe64be361d2302c8f93d83642e`)
+        const result = await axios.get(process.env.WEATHER)
         console.log('result',result.data)
         setWeatherData(result.data.weather[0].main)
       } catch (error) {
