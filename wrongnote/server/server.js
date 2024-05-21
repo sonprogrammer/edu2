@@ -60,11 +60,8 @@ passport.use(new LocalStrategy(
     }
     , 
     async (userId, userPassword, cb) =>{
-    console.log('userid :', userId);
-    console.log('userPassword :', userPassword);
     try {
         const user = await userModel.findOne({userId : userId})
-        console.log('user1',user)
         if(!user){
             return cb(null, false, { message: 'User not founddd'})
         }
@@ -84,7 +81,6 @@ passport.use(new LocalStrategy(
 
 //* 로그인시 세션만들기
 passport.serializeUser((user, done) => {
-    console.log('serializeUser',user)
     done(null, {id : user.id})
 })
 

@@ -1,0 +1,10 @@
+.div{
+  box-sizing: border-box;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+}
+
+p{
+  color: white;
+}
