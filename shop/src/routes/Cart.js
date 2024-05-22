@@ -12,7 +12,7 @@ function Child(){
 
 export default function Cart() {
 
-
+  //* UseSelector는 store에 있는걸 가져옴
     let a = useSelector((state)=>{ return state})
     console.log(a.cart)
 
@@ -45,7 +45,7 @@ export default function Cart() {
           <td>{a.cart[i].count}</td>
           <td>
             <button onClick={()=>{
-                dispatch(plusCount(i))
+                dispatch(plusCount(a.cart[i].id))
             }}>+</button>
           </td>
         </tr>
