@@ -12,7 +12,18 @@ const loadedFiles = loadFilesSync("**/*",{
 })
 
 const schema = makeExecutableSchema({
-    typeDefs: loadedFiles
+    typeDefs: loadedFiles,
+    resolvers: {
+        Query:{
+            //parent에는 root에 들어 있는 부분이 있는 거다 
+            posts: (parent, args, context, info) =>{
+                return parent.posts
+            },
+            comments: (parent, args, context, info) => {
+                return parent.comments
+            }
+        }
+    }
 })
 
 const root = {
