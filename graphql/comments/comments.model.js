@@ -9,4 +9,10 @@ module.exports = [
         text: 'it is a second comment',
         likes: 2,
     }
+    ,
+    {
+        id: 'comment3',
+        text: 'it is a third comment',
+        likes: 3,
+    }
 ]
