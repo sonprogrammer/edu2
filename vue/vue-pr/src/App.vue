@@ -1,28 +1,17 @@
 <template>
 <div>
 
-  <div class="black-bg" v-if="modalOpen == true">
-    <div class="white-bg">
-      <h4>{{products[clicked].title}}</h4>
-      <p>{{products[clicked].content}}</p>
-      <button @click="modalOpen=false">close</button>
-    </div>
-  </div>
 
-
+  <Modal :clicked = 'clicked' :products='products' :modalOpen='modalOpen'/>
 
 
   <div class="menu">
     <a v-for="작명 in menus" :key="작명">{{작명}}</a>
   </div>
 
- <div>
-    <div v-for="(a, i) in products" :key="i">
-      <img :src="products[i].image" class="room-img">
-      <h4 @click="modalOpen=true; clicked= i">{{ products[i].title }}</h4>
-      <p>{{ products[i].price}} 원</p>
-    </div>
-  </div>
+<Discount />
+
+ <Card :products='products' :modalOpen='modalOpen'/>
 
  
 
@@ -31,7 +20,9 @@
 </template>
 
 <script>
-
+import Discount from './Discount.vue'
+import Card from './Card.vue'
+import Modal from './Modal.vue'
 import data from './assets/room'
 
 export default {
@@ -56,6 +47,9 @@ export default {
     }
   },
   components: {
+    Discount : Discount,
+    Modal : Modal,
+    Card : Card,
   }
 }
 </script>
@@ -102,6 +96,13 @@ div{
 .room-img{
   width: 100%;
   margin-top: 40px;
+}
+
+.discount{
+  background: #eee;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 </style>
