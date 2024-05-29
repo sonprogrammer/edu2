@@ -1,9 +1,13 @@
+<!-- eslint-disable vue/multi-word-component-names -->
+
 <template>
 <div>
 
 
-  <Modal :clicked = 'clicked' :products='products' :modalOpen='modalOpen'/>
 
+<transition name="fade">
+  <Modal :clicked = 'clicked' :products='products' :modalOpen='modalOpen' @closeModal="modalOpen=false"/>
+</transition>
 
   <div class="menu">
     <a v-for="작명 in menus" :key="작명">{{작명}}</a>
@@ -11,7 +15,7 @@
 
 <Discount />
 
- <Card :products='products' :modalOpen='modalOpen'/>
+ <Card @openModal="modalOpen=true; clicked=$event" :products='products' :modalOpen='modalOpen'/>
 
  
 
@@ -104,5 +108,22 @@ div{
   margin: 10px;
   border-radius: 5px;
 }
+.start{
+  opacity: 0;
+  transition: all 1s;
+}
+.end{
+  opacity: 1;
+}
 
+
+.fade-enter-from{
+  opacity: 0;
+}
+.fade-enter-active{
+  transition: all 1s;
+}
+.fade-enter-to{
+  opacity: 1;
+}
 </style>
