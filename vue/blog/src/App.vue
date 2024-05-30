@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#"><router-link to="/" >홈</router-link></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Features</a>
@@ -28,12 +28,14 @@
   </div>
 </nav>
 
-<div class="container mt-4">
-  <h5>React 개발자의 블로그입니다</h5>
-  <p> Vue로 만들었음</p>
+<router-link to="/" >홈</router-link>
+<router-link to="/list">리스트페이지</router-link>
+
+<div class="mt-4">
+<router-view :blog="blog"></router-view>
 </div>
 
-<List />
+<!-- <List :blog="blog"/> -->
 
 </div>
 
@@ -42,6 +44,8 @@
 <script>
 import List from './components/List.vue'
 import data from './assets/data'
+import Home from './components/Home.vue'
+import Detail from './components/Detail.vue'
 
 export default {
   name: 'App',
@@ -51,7 +55,9 @@ export default {
     }
   },
   components: {
-    List: List
+    List: List,
+    Home: Home,
+    Detail: Detail
   }
 }
 </script>

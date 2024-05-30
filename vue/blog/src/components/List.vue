@@ -5,13 +5,9 @@
 
 <div>
 
-  <div>
-    <h4>블로그 글 제목</h4>
-    <p>블로그 글 날짜</p>
-  </div>
-  <div>
-    <h4>블로그 글 제목</h4>
-    <p>블로그 글 날짜</p>
+  <div v-for="(a, i) in blog" :key="i">
+    <h4 @click="$router.push(`/detail/${i}`)">{{blog[i].title}}</h4>
+    <p>{{blog[i].date}}</p>
   </div>
 
 </div>
@@ -20,7 +16,10 @@
 
 <script>
 export default {
-    name: 'List'
+    name: 'List',
+    props:{
+        blog: Array
+    }
 
 }
 </script>
