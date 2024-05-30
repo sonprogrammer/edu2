@@ -15,6 +15,11 @@
 
 <Discount />
 
+
+<button @click="priceSort">가격순 정렬</button>
+<button @click="sortBack">되돌리기</button>
+
+
  <Card @openModal="modalOpen=true; clicked=$event" :products='products' :modalOpen='modalOpen'/>
 
  
@@ -38,6 +43,7 @@ export default {
       price1 : 50,
       price2: 70,
       products : data,
+      originalProducts : [...data],
       menus: ['Home', 'Shop', 'About'],
       신고수: [0,0,0]
     }
@@ -48,6 +54,14 @@ export default {
     },
       getImageSrc(index) {
       return require(`./assets/room${index}.jpg`);
+    },
+    priceSort(){
+      this.products.sort(function(a, b){
+        return a.price - b.price
+      })
+    },
+    sortBack(){
+      this.products = [...this.originalProducts];
     }
   },
   components: {
