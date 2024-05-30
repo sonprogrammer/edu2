@@ -31,6 +31,11 @@ export default {
             }
         }
     },
+    beforeUpdate() {
+        if(this.month == 2){
+            alert('2개월 노!')
+        }
+    },
     props: {
         products : Array,
         modalOpen : Boolean,

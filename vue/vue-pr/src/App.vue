@@ -13,7 +13,7 @@
     <a v-for="작명 in menus" :key="작명">{{작명}}</a>
   </div>
 
-<Discount />
+<Discount :discount="discount" v-if="showDiscount == true" />
 
 
 <button @click="priceSort">가격순 정렬</button>
@@ -34,10 +34,12 @@ import Card from './Card.vue'
 import Modal from './Modal.vue'
 import data from './assets/room'
 
+
 export default {
   name: 'App',
   data(){ //데이터 보관함
     return{
+      showDiscount : true,
       clicked: 0,
       modalOpen : false,
       price1 : 50,
@@ -45,7 +47,8 @@ export default {
       products : data,
       originalProducts : [...data],
       menus: ['Home', 'Shop', 'About'],
-      신고수: [0,0,0]
+      신고수: [0,0,0],
+      discount: 30
     }
   },
   methods : {
@@ -63,6 +66,11 @@ export default {
     sortBack(){
       this.products = [...this.originalProducts];
     }
+  },
+  mounted(){ //lifecycle hook 쓰는법
+    setInterval(() => {
+      this.discount--
+    }, 1000);
   },
   components: {
     Discount : Discount,
