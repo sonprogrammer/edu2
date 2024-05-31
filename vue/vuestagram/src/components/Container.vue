@@ -6,15 +6,17 @@
 
     <div v-if="step == 1">
       <!-- 필터선택페이지 -->
-      <div class="upload-image" :style="`background-image:url(${image})`"></div>
+      <div :class="selected" class="upload-image" :style="`background-image:url(${image})`"></div>
       <div class="filters">
-        <FilterBox v-for="a in filter" :key="a" :image="image" :filter="filter"></FilterBox>
+        <FilterBox :a="a" v-for="a in filter" :key="a" :image="image" :filter="filter">
+          {{a}}
+        </FilterBox>
       </div>
     </div>
 
     <div v-if="step == 2">
       <!-- 글작성페이지 -->
-      <div class="upload-image" :style="`background-image:url(${image})`"></div>
+      <div :class="selected" class="upload-image" :style="`background-image:url(${image})`"></div>
       <div class="write">
         <textarea
           @input="$emit('write', $event.target.value)"
@@ -37,7 +39,8 @@ export default {
   name: "Container",
   data() {
     return{
-      filter : filter
+      filter : filter,
+      selected : ''
     }
   },
   props: {
@@ -55,6 +58,11 @@ export default {
       let a = e.target.value;
       this.write = a;
     },
+  }, 
+  mounted() {
+    this.emitter.on('clicked', (a) =>{
+      this.selected = a
+    })
   },
 };
 </script>

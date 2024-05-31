@@ -3,6 +3,7 @@
 <template>
 
   <div>
+    <h4>hi {{ $store.state.name }}</h4>
     <div class="header">
       <ul class="header-button-left">
         <li>Cancel</li>
@@ -46,7 +47,8 @@ export default {
       post: data,
       plus: 0,
       image : '',
-      postWrite : ''
+      postWrite : '',
+      selected: ''
     }
   },
   components: {
@@ -78,11 +80,17 @@ export default {
         date: "May 15",
         liked: false,
         content: this.postWrite,
-        filter: "perpetua"
+        filter: this.selected
        }
+       console.log('my', my)
       this.post.unshift(my)
       this.step = 0
     }
+  },
+   mounted() {
+    this.emitter.on('clicked', (a) =>{
+      this.selected = a
+    })
   },
 };
 </script>
