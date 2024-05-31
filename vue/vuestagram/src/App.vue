@@ -16,8 +16,7 @@
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <p>{{ $store.state.more }}</p>
-    <button @click="$store.dispatch('getData')">더보기</button>
+ 
 
     <Container :step="step" :post="post" :image="image" @write="postWrite=$event"/>
     <button @click="more">더보기</button>
@@ -29,7 +28,7 @@
       </ul>
     </div>
 
-{{ name }}
+
 
   </div>
 </template>
@@ -48,7 +47,7 @@ export default {
   name: "App",
   data(){
     return {
-      step: 0,
+      step: 3,
       post: data,
       plus: 0,
       image : '',

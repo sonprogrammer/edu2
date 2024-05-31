@@ -26,6 +26,17 @@ write!</textarea
         >
       </div>
     </div>
+
+
+    <div v-if="step==3">
+      <MyPage />
+    </div>
+
+
+
+
+
+
   </div>
 </template>
 
@@ -34,6 +45,7 @@ write!</textarea
 import Post from "./Post.vue";
 import FilterBox from "./FilterBox.vue";
 import filter from '../assets/filter'
+import MyPage from '../components/MyPage.vue'
 
 export default {
   name: "Container",
@@ -52,6 +64,7 @@ export default {
   components: {
     Post: Post,
     FilterBox: FilterBox,
+    MyPage: MyPage,
   },
   methods: {
     change(e) {
