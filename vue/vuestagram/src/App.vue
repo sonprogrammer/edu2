@@ -1,28 +1,36 @@
+<!-- eslint-disable vue/multi-word-component-names -->
+
 <template>
+
   <div>
     <div class="header">
       <ul class="header-button-left">
         <li>Cancel</li>
       </ul>
       <ul class="header-button-right">
-        <li>Next</li>
+        <li v-if="step == 1" @click="step++">Next</li>
+        <li v-if="step == 2" @click="published">발행</li>
       </ul>
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <Container :post="post"/>
+    <Container :step="step" :post="post" :image="image" @write="postWrite=$event"/>
     <button @click="more">더보기</button>
 
     <div class="footer">
       <ul class="footer-button-plus">
-        <input type="file" id="file" class="inputfile" />
+        <input @change="upload" type="file" id="file" class="inputfile" />
         <label for="file" class="input-plus">+</label>
       </ul>
     </div>
+
+
+
   </div>
 </template>
 
 <script>
+/*eslint-disable*/ 
 import Container from "./components/Container.vue";
 import Post from "./components/Post.vue";
 import data from './assets/data'
@@ -34,8 +42,11 @@ export default {
   name: "App",
   data(){
     return {
+      step: 0,
       post: data,
-      plus: 0
+      plus: 0,
+      image : '',
+      postWrite : ''
     }
   },
   components: {
@@ -49,6 +60,28 @@ export default {
         this.post = [...this.post, result.data]
         this.plus++
       })
+    },
+    upload(e){
+      let file = e.target.files //e.target.files하면 사용자가 업로드한게 다 담겨있다
+      console.log(file)
+      let url = URL.createObjectURL(file[0])
+      console.log(url)
+      this.image = url
+      this.step++
+    },
+    published(){
+      let my = {     
+        name: "Kim Hyun",
+        userImage: "https://picsum.photos/100?random=3",
+        postImage: this.image,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: this.postWrite,
+        filter: "perpetua"
+       }
+      this.post.unshift(my)
+      this.step = 0
     }
   },
 };

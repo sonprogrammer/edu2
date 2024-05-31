@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/multi-word-component-names -->
+
 <template>
   <div class="post">
     <div class="post-header">
@@ -14,6 +16,7 @@
 </template>
 
 <script>
+/*eslint-disable*/ 
 export default {
     name: "Post",
     props: {
