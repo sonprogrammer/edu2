@@ -3,7 +3,8 @@
 <template>
 
   <div>
-    <h4>hi {{ $store.state.name }}</h4>
+
+
     <div class="header">
       <ul class="header-button-left">
         <li>Cancel</li>
@@ -15,6 +16,9 @@
       <img src="./assets/logo.png" class="logo" />
     </div>
 
+    <p>{{ $store.state.more }}</p>
+    <button @click="$store.dispatch('getData')">더보기</button>
+
     <Container :step="step" :post="post" :image="image" @write="postWrite=$event"/>
     <button @click="more">더보기</button>
 
@@ -25,7 +29,7 @@
       </ul>
     </div>
 
-
+{{ name }}
 
   </div>
 </template>
@@ -36,6 +40,7 @@ import Container from "./components/Container.vue";
 import Post from "./components/Post.vue";
 import data from './assets/data'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 const result = axios.get('https://codingapple1.github.io/vue/more0.json')
 
@@ -54,6 +59,12 @@ export default {
   components: {
     Container: Container,
     Post: Post,
+  },
+  computed:{
+    name(){
+      return this.$store.state.name
+    },
+    ...mapState(['age', 'likes' ])
   },
   methods: {
     more(){
