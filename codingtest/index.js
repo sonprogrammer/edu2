@@ -1,8 +1,8 @@
 // console.log('Hello World')
 
 // // 표준 입력에서 데이터를 읽어옴
-// const fs = require('fs');
-// const input = fs.readFileSync('/dev/stdin').toString().split('\n')
+const fs = require('fs');
+const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 
 
 
@@ -511,4 +511,13 @@
 //     return answer;
 // }
 
-console.log(solution("he110wor1d", 5))
+// function solution(my_string, is_suffix) {
+//     var answer = 0;
+//     if(my_string.endsWith(is_suffix)){
+//         answer = 1
+//     }else{
+//         answer = 0
+//     }
+//     return answer;
+// }
+
