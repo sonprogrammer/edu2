@@ -71,40 +71,114 @@
 // }
 
 
-function solution(num_list) {
-    var answer = 0;
-    let multiple = 1
-    let sum = 0
-    for(let i = 0; i < num_list.length; i++){
-        multiple *= num_list[i]
-        sum += num_list[i]
-    }
-    let sumSquare = sum * sum
-    if(multiple < sumSquare){
-        return 1
-    }else{
-        return 0
-    }
+// function solution(num_list) {
+//     var answer = 0;
+//     let multiple = 1
+//     let sum = 0
+//     for(let i = 0; i < num_list.length; i++){
+//         multiple *= num_list[i]
+//         sum += num_list[i]
+//     }
+//     let sumSquare = sum * sum
+//     if(multiple < sumSquare){
+//         return 1
+//     }else{
+//         return 0
+//     }
+// }
+
+
+
+// function solution(num_list) {
+//     let accMul = 1
+//     let accSum = 0
+//     for (const num of num_list) {
+//         accMul *= num
+//         accSum += num
+//     }
+//     return accMul < accSum ** 2 ? 1 : 0
+// }
+
+
+
+// function solution(a, b, flag) {
+//     var answer = 0;
+//     if(flag == true){
+//         return a + b
+//     }else{
+//         return a - b
+//     }
+//     return answer;
+// }
+
+// function solution(n) {
+//     var answer = 0;
+//         if(n % 2 == 0){ //짝수
+//             for(let j = 1; j <=n; j++) {
+//                 if(j % 2 == 0){
+//                     answer += j*j
+//                 }
+//             }
+//         }else{
+//             for(let j = 1; j <= n; j++) {
+//                 if(j % 2 != 0){
+//                     answer += j
+//                 }
+//             }
+//         }
+//     return answer;
+// }
+
+
+// function solution(number, n, m) {
+//     var answer = 0;
+//     if(number % n == 0 && number % m == 0){
+//         answer = 1
+//     }else{
+//         answer = 0
+//     }
+//     return answer;
+// }
+
+
+// function solution(num, n) {
+//     var answer = 0;
+//     if(num % n == 0){
+//         answer = 1;
+//     }else{
+//         answer = 0;
+//     }
+//     return answer;
+// }
+
+// function solution(a, b) {
+//     var answer = 0;
+//     let num = Number(a.toString() + b.toString());
+//     let multiple = 2*a*b
+//     if(num > multiple){
+//         answer = num
+//     }else if(num < multiple){
+//         answer = multiple
+//     }else{
+//         answer = num
+//     }
+//     return answer;
+// }
+
+// function solution(a, b){
+//     let num1 = parseInt(a+""+b+"")
+//     console.log(a+""+b+"")
+//     let num2 = 2*a*b
+//     return num1 > num2 ? num1 : num2
+// }
+
+
+
+
+function solution(a, b) {
+    let num1 = parseInt(a+""+b+"")
+    let num2 = parseInt(b+""+a+"")
+    return num1 > num2 ? num1 : num2
 }
 
-
-2
-3
-4
-5
-6
-7
-8
-9
-10
-function solution(num_list) {
-    let accMul = 1
-    let accSum = 0
-    for (const num of num_list) {
-        accMul *= num
-        accSum += num
-    }
-    return accMul < accSum ** 2 ? 1 : 0
-}
-
-console.log(solution([3, 4, 5, 2, 1]))
+console.log(solution(89, 8))
