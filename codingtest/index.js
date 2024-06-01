@@ -1,8 +1,13 @@
 // console.log('Hello World')
 
 // // 표준 입력에서 데이터를 읽어옴
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().split('\n')
+// const fs = require('fs');
+// const input = fs.readFileSync('/dev/stdin').toString().split('\n')
+
+
+
+
+
 
 // console.log(input)
 // const input = fs.readFileSync('./input.txt').toString().trim()
@@ -476,4 +481,34 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n')
 // a[5] = 6
 // console.log(a)
 // console.log(b)
+// console.log('hi')
 
+// function solution(n, k) {
+//     var answer = [];
+//     for(let i = 1; i <= n; i++){
+//         if(i % k == 0){
+//             answer.push(i)
+//         }
+//     }
+//     return answer;
+// }
+// console.log(solution(15, 5))
+
+// function solution(my_string, is_prefix) {
+//     var answer = 0;
+//     if(my_string.startsWith(is_prefix)){
+//         answer = 1
+//     }else{
+//         answer = 0
+//     }
+
+//     return answer;
+// }
+
+// function solution(my_string, n) {
+//     var answer = '';
+//     answer = my_string.slice(0, n)
+//     return answer;
+// }
+
+console.log(solution("he110wor1d", 5))
