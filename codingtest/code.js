@@ -175,10 +175,40 @@
 
 
 
-function solution(a, b) {
-    let num1 = parseInt(a+""+b+"")
-    let num2 = parseInt(b+""+a+"")
-    return num1 > num2 ? num1 : num2
-}
+// function solution(a, b) {
+//     let num1 = parseInt(a+""+b+"")
+//     let num2 = parseInt(b+""+a+"")
+//     return num1 > num2 ? num1 : num2
+// }
 
-console.log(solution(89, 8))
+// function solution(my_string, k) {
+//     var answer = '';
+//     for(let i = 0; i < k; i++) {
+//         answer += my_string
+//     }
+//     return answer;
+// }
+
+
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+let input = [];
+
+rl.on('line', function (line) {
+    input = line.split(' ');
+}).on('close', function () {
+    n = Number(input[0]);
+    
+    if(n % 2 == 0){
+        console.log(`${n} is even`)
+    }else{
+        console.log(`${n} is odd`)
+    }
+});
+
+
+// console.log(solution(3))
