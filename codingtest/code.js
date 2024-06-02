@@ -190,25 +190,76 @@
 // }
 
 
-const readline = require('readline');
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
 
-let input = [];
+// let input = [];
 
-rl.on('line', function (line) {
-    input = line.split(' ');
-}).on('close', function () {
-    n = Number(input[0]);
+// rl.on('line', function (line) {
+//     input = line.split(' ');
+// }).on('close', function () {
+//     n = Number(input[0]);
     
-    if(n % 2 == 0){
-        console.log(`${n} is even`)
-    }else{
-        console.log(`${n} is odd`)
-    }
-});
+//     if(n % 2 == 0){
+//         console.log(`${n} is even`)
+//     }else{
+//         console.log(`${n} is odd`)
+//     }
+// });
 
 
-// console.log(solution(3))
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// let input = [];
+
+// rl.on('line', function (line) {
+//     input = line.split(' ');
+// }).on('close', function () {
+//     str1 = input[0];
+//     str2 = input[1];
+//     console.log(str1 + str2);
+// });
+
+
+// function solution(a, b) {
+//     var answer = 0;
+//     if(a % 2 != 0 && b % 2 != 0) {
+//         answer = a**2 + b**2
+//     }else if(a % 2 != 0 && b % 2 == 0 || a % 2 == 0 && b % 2 != 0) {
+//         answer = 2*(a+b)
+//     }else{
+//         answer =  Math.abs(a-b)
+//     }
+//     return answer;
+//     const isAOdd = a % 2 === 1
+//     const isBOdd = b % 2 === 1
+
+//     if(isAOdd && isBOdd) {
+//         return a**2 + b**2
+//     }else if(!isAOdd && !isBOdd) {
+//         return Math.abs(a - b)
+//     }else{
+//         2*(a+b)
+//     }
+
+// }
+
+
+// function solution(str_list, ex) {
+//     let str = str_list.filter(str => !str.includes(ex))
+//     return str.join('')
+// }
+
+function solution(n_str) {
+    var answer = '';
+    return answer;
+}
+
+console.log(solution("abc", "aabcc"))
