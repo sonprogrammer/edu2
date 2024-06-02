@@ -374,17 +374,63 @@
 //     return myString.includes(newPat) ? 1 : 0;
 // }
 
-function solution(arr1, arr2) {
-    const sum1 = arr1.reduce((acc, curr) => acc + curr, 0);
-    const sum2 = arr2.reduce((acc, curr) => acc + curr, 0);
+// function solution(arr1, arr2) {
+//     const sum1 = arr1.reduce((acc, curr) => acc + curr, 0);
+//     const sum2 = arr2.reduce((acc, curr) => acc + curr, 0);
     
-    if (arr1.length !== arr2.length) {
-        return arr1.length > arr2.length ? 1 : -1;
-    } else {
-        return sum1 === sum2 ? 0 : sum1 > sum2 ? 1 : -1;
-    }
-}
+//     if (arr1.length !== arr2.length) {
+//         return arr1.length > arr2.length ? 1 : -1;
+//     } else {
+//         return sum1 === sum2 ? 0 : sum1 > sum2 ? 1 : -1;
+//     }
+// }
+
+// function solution(arr){
+
+// }
+
+// function solution(arr){
+//     let answer = [];
+//     for(let i = 0; i < arr.length; i++){
+//         for(let j = 0; j < arr[i]; j++){
+//             answer.push(arr[i])
+//         }
+//     }
+//     return answer
+// }
+
+// function solution(rny_string){
+//     let answer =[]
+//     let arr = [...rny_string]
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr[i] == 'm'){
+//             answer.push('rn')
+//         }else{
+//             answer.push(arr[i])
+//         }
+//     }
+//     return answer.join('')
+// }
+
+const solution=r=>r.replaceAll('m','rn')
 
 
 
-console.log(solution([49, 13], [70, 11, 2]	))
+console.log(solution("masterpiece"	))
+
+/*
+⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷
+⡆⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑⢝⣇
+⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕⢽
+⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕⢕
+⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱⢕
+⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀⢕
+⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗⢄
+⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕⢕
+⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵⣿
+⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟
+⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁⣠
+⡝⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀⣈⠙
+⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣
+*/
