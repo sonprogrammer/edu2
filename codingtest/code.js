@@ -257,9 +257,96 @@
 //     return str.join('')
 // }
 
-function solution(n_str) {
-    var answer = '';
-    return answer;
-}
+// function solution(n_str) {
+//     var answer = '';
+//     for(let i = 0; i < n_str.length; i++) {
+        
+//     }
+//     return answer;
+// }
 
-console.log(solution("abc", "aabcc"))
+
+
+// const solution = (str) => String(Number(str))
+
+// function solution(strArr) {
+//     var answer = [];
+//     for(let i = 0; i < strArr.length; i++) {
+//         let include = strArr[i].includes('ad')
+//         if(!include){
+//             answer.push(strArr[i])
+//         }
+//     }
+//     return answer;
+// }
+
+// const solution = strArr => strArr.filter(v => !v.includes('ad'))
+
+
+
+// function solution(num_str) {
+//     var answer = 0;
+//     let numArr = num_str.split('')
+//     for(let i = 0; i < numArr.length; i++) {
+//         answer += Number(numArr[i])
+//     }
+//     return answer;
+// }
+
+
+// function solution(num_str) {
+//     return [...num_str].reduce((a, c) => a + +c, 0)
+// }
+
+// const solution = n => String(n)
+// const solution = String
+
+
+// function solution(arr, k){
+//     let answer = []
+//     for(let i = 0; i < arr.length; i++){
+//         if(k % 2 != 0){
+//             answer.push(arr[i]*k)
+//         }else{
+//             answer.push(arr[i]+k)
+//         }
+//     }
+//     return answer
+// }
+
+
+// const solution = (arr, k) => arr.map(v => k % 2 ? v*k : v +k)
+
+// function solution(num_list){
+    // const a = num_list.sort((a, b) => a-b).slice(5)
+    // return a.sort((a,b) => a - b)
+//     return a
+// }
+
+
+// const solution =  Number
+
+
+// function solution(arr, n) {
+//     const result = [];
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr.length % 2 !== 0 && i % 2 === 0) {
+//             result.push(arr[i] + n);
+//         }
+//         else if (arr.length % 2 === 0 && i % 2 !== 0) {
+//             result.push(arr[i] + n);
+//         }
+//         else {
+//             result.push(arr[i]);
+//         }
+//     }
+//     return result;
+// }
+
+
+// const solution = (arr, n) => arr.map((num, i) => (arr.length % 2 !== i %2 ? num +n : num))
+
+
+
+
+console.log(solution([49, 12, 100, 276, 33], 27	))
