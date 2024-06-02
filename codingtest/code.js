@@ -346,7 +346,45 @@
 
 // const solution = (arr, n) => arr.map((num, i) => (arr.length % 2 !== i %2 ? num +n : num))
 
+// function solution(myString, pat){
+//     let arr = []
+//     let abArr = [...myString]
+//     console.log(abArr)
+//     for(let i = 0; i < abArr.length; i++){
+//         if(abArr[i] === 'A'){
+//             arr.push('B')
+//         }else{
+//             arr.push('A')
+//         }
+//     }
+//     console.log(arr.join(''))
+//     return arr.join('').includes(pat) ? 1 : 0
+// }
+
+
+// function solution(myString, pat){
+//     const newPat = [...pat].reduce((acc, cur) => {
+//         if(cur === "A"){
+//             acc += "B"
+//         }else{
+//             acc += "A"
+//         }
+//         return acc
+//     }, '')
+//     return myString.includes(newPat) ? 1 : 0;
+// }
+
+function solution(arr1, arr2) {
+    const sum1 = arr1.reduce((acc, curr) => acc + curr, 0);
+    const sum2 = arr2.reduce((acc, curr) => acc + curr, 0);
+    
+    if (arr1.length !== arr2.length) {
+        return arr1.length > arr2.length ? 1 : -1;
+    } else {
+        return sum1 === sum2 ? 0 : sum1 > sum2 ? 1 : -1;
+    }
+}
 
 
 
-console.log(solution([49, 12, 100, 276, 33], 27	))
+console.log(solution([49, 13], [70, 11, 2]	))
