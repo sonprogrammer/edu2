@@ -66,6 +66,48 @@
 
 // const solution = s => s.toUpperCase()
 
-const solution = s => s.split(' ')
+// const solution = s => s.split(' ')
 
-console.log(solution("appl e"))
+// function solution(list){
+//     let answer = list.length > 10 ? 0 : 1
+//     for(let i = 0; i < list.length; i++){
+//     if(list.length > 10){
+//             answer += list[i]
+//         }else if(list.length <= 10){
+//             answer *= list[i]
+//         }
+//     }
+//     return answer
+// }
+
+// const solution = list => list.reduce((a , v) => list.length > 10 ? a+v : a*v)
+
+// function solution(s){
+//     const splits = s.split('x')
+//     return splits.map((res) => res.length)
+// }
+
+
+// const solution = s => s.split('x').map(v => v.length)
+
+// const st = 'xabcxdefxghi'
+// console.log(st.split('x'))
+
+
+// function solution(string, parts){
+//     let answer = ''
+//     for(let i = 0; i < string.length; i++){
+//         const [start, end] = parts[i]
+//         const substring = string[i].substring(start, end+1)
+//         answer += substring
+//     }
+//     return answer
+// }
+
+function solution(string, parts){
+    return parts.map(([s, e], i) => {
+        return string[i].slice(s, e+1)
+    } ).join('');
+}
+
+console.log(solution(["progressive", "hamburger", "hammer", "ahocorasick"], [[0, 4], [1, 2], [3, 5], [7, 7]]))
