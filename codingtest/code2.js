@@ -104,10 +104,51 @@
 //     return answer
 // }
 
-function solution(string, parts){
-    return parts.map(([s, e], i) => {
-        return string[i].slice(s, e+1)
-    } ).join('');
-}
+// function solution(string, parts){
+//     return parts.map(([s, e], i) => {
+//         return string[i].slice(s, e+1)
+//     } ).join('');
+// }
 
-console.log(solution(["progressive", "hamburger", "hammer", "ahocorasick"], [[0, 4], [1, 2], [3, 5], [7, 7]]))
+// function solution(numbers, n){
+//     let answer = 0
+//     for(let i = 0; i < numbers.length; i++){
+//             answer += numbers[i]
+//             if(answer > n){
+//                 return answer - numbers[i]
+
+//             }
+//     }
+//     return answer
+// }
+
+// function solution(numbers, n){
+//     let answer = 0;
+//     let i = 0;
+//     while(answer < n){
+//         answer += numbers[i++];
+//     }
+//     return answer
+// }
+
+
+// function solution(numbers, n){
+//     return numbers.reduce((a, c, i, t) => (a<n) ? a+c : a)
+// }
+
+
+
+// function solution(num_list, n){
+//     let result = [];
+//     for(let i = 0; i < num_list.length; i+=n){
+//         result.push(num_list[i]);
+//     }
+//     return result;
+// }
+
+
+
+const solution = (num_list, n) => num_list.filter((_, i) => !(i % n))
+
+
+console.log(solution([58, 44, 27, 10, 100], 2))
