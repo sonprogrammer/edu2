@@ -44,6 +44,28 @@
 //     return answer
 // }
 
-const solution= (todo_list, finished) => todo_list.filter((e, i) => !finished[i])
+// const solution= (todo_list, finished) => todo_list.filter((e, i) => !finished[i])
 
-console.log(solution(["problemsolving", "practiceguitar", "swim", "studygraph"], [true, false, true, false]	))
+// function solution(strArr){
+//     let answer = []
+//     for(let i=0; i< strArr.length; i++) {
+//         if(i % 2 == 0) {
+//             answer.push(strArr[i].toLowerCase())
+//         }else{
+//             answer.push(strArr[i].toUpperCase())
+//         }
+//     }
+//     return answer
+// }
+
+// const solution = (strArr) => strArr.map((v, i) => i % 2 === 0 ? v.toLowerCase() : v.toUpperCase())
+
+// const solution = (myString) => myString.split('').map((v) => v < 'l' ? 'l' : v).join('')
+
+// const solution = (string) => [...string].map(v => v.toUpperCase()).join('')
+
+// const solution = s => s.toUpperCase()
+
+const solution = s => s.split(' ')
+
+console.log(solution("appl e"))
