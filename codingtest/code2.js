@@ -148,7 +148,84 @@
 
 
 
-const solution = (num_list, n) => num_list.filter((_, i) => !(i % n))
+// const solution = (num_list, n) => num_list.filter((_, i) => !(i % n))
+
+// function solution(string, pat){
+//     const lowerStrng = string.toLowerCase();
+//     const lowerPat = pat.toLowerCase();
+//     if(lowerStrng.includes(lowerPat)){
+//         return 1
+//     }else{
+//         return 0
+//     }
+// }
 
 
-console.log(solution([58, 44, 27, 10, 100], 2))
+
+// function solution(my_string, pat){
+//     return my_string.toUpperCase().includes(pat.toUpperCase()) ? 1 : 0
+// }
+
+
+
+// function solution(num_list, n){
+//     let a = num_list.slice(n)
+//     let b = num_list.slice(0, n)
+//     return a.concat(b)
+// }
+
+// function solution(num_list ,n){
+//     num_list.push(...num_list.splice(0, n))
+//     // console.log(...num_list.splice(0, n))
+//     return num_list
+// }
+// function solution(names){
+//     let res = []
+//     for(let i = 0; i < names.length; i++){
+//         res.push(names.slice(i, i+5)[0])
+//     }
+//     return res
+// }
+
+
+// function solution(names){
+//     return names.filter((a, i) => i % 5 == 0 ) 
+// }
+
+// function solution(names) {
+//     var answer = [];
+//     for(let i = 0; i < names.length; i += 5){
+//         answer.push(names[i])
+//     }
+//     return answer;
+// }
+
+
+
+// function solution(arr){
+//     let answer = [];
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr[i] > 50 && arr[i] % 2 == 0){
+//             answer.push(arr[i] / 2)
+//         }else if(arr[i] < 50 && arr[i] % 2 !== 0){
+//             answer.push(arr[i] * 2)
+//         }else{
+//             answer.push(arr[i])
+//         }
+//     }
+//     return answer;
+// }
+
+
+
+// const solution = arr => arr.map(a => a>=50&&a%2==0 ? a/2 : a<50&&a%2!=0 ? a*2 : a)
+// const solution=a=>a.map(v=>v>=50&&v%2==0?v/2:v<50&&v%2==1?v*2:v)
+
+
+// function solution(string){
+//     return [...string].map(res => res == "a" ? "A" : res == "A" ? res : res.toLowerCase()).join("")
+// }
+
+const solution = s => s.toLowerCase().replaceAll("a", "A")
+
+console.log(solution("PrOgRaMmErS"))
