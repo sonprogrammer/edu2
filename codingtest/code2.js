@@ -408,18 +408,64 @@
 // }
 
 
-function solution(num_list){
-    let even = 0
-    let odd = 0
-    for(let i = 0; i < num_list.length; i++) {
-        if(i % 2 == 0){
-            even += num_list[i]
-        }else{
-            odd += num_list[i]
-        }
-    }
+// function solution(num_list){
+//     let even = 0
+//     let odd = 0
+//     for(let i = 0; i < num_list.length; i++) {
+//         if(i % 2 == 0){
+//             even += num_list[i]
+//         }else{
+//             odd += num_list[i]
+//         }
+//     }
 
-    return Math.max(odd, even);
+//     return Math.max(odd, even);
+// }
+
+
+
+// function solution(my_string, m, c){
+//     let result = ''
+
+//     for(let i = c - 1; i < my_string.length; i+=m){
+//         result += my_string[i]
+//     }
+    
+//     return result
+// }
+
+// function solution(my_string, m, c){
+//     return [...my_string].filter((_, i) => i % m === c - 1).join('')
+// }
+
+// function solution(a, d, included) {
+//     let sum = 0;
+//     for (let i = 0; i < included.length; i++) {
+//         if (included[i]) {
+//             sum += a + i * d;
+//         }
+//     }
+//     return sum;
+// }
+
+// function solution(board, k) {
+//     let sum = 0;
+//     for (let i = 0; i < board.length; i++) {
+//         for (let j = 0; j < board[i].length; j++) {
+//             if (i + j <= k) {
+//                 sum += board[i][j];
+//             }
+//         }
+//     }
+//     return sum;
+// }
+
+function solution(myString){
+    let answer = myString.split('x').filter(s => s !='')
+    answer.sort()
+    return answer
+
 }
 
-console.log(solution([4, 2, 6, 1, 7, 6]	))
+
+console.log(solution("dxccxbbbxaaaa"))
