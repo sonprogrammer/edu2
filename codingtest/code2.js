@@ -226,6 +226,68 @@
 //     return [...string].map(res => res == "a" ? "A" : res == "A" ? res : res.toLowerCase()).join("")
 // }
 
-const solution = s => s.toLowerCase().replaceAll("a", "A")
+// const solution = s => s.toLowerCase().replaceAll("a", "A")
 
-console.log(solution("PrOgRaMmErS"))
+// function solution(list, n){
+//     return list.slice(0, n)
+// }
+
+// function solution(n){
+//     let arr = Array.from({ length : n }, () => Array(n).fill(0))
+
+//     for(let i = 0; i < n; i++){
+//         arr[i][i] = 1
+//     }
+//     return arr
+// }
+
+// function solution(strNum){
+//     let answer = 0;
+//     let [ a, c ,b ] = strNum.split(' ')
+//     // a = Number(a)
+//     // b = Number(b)
+
+//     switch(c){
+//         case '+': return +a + +b;
+//         case '-': return +a - +b;
+//         case '*': return +a * +b;
+//     }
+// }
+
+// function solution(arr, interval){
+
+//     let [ a1, b1 ] = interval[0]
+//     let [ a2, b2 ] = interval[1]
+
+//     let res1 = arr.slice(a1, b1+1)
+//     let res2 = arr.slice(a2, b2+1)
+
+//     return res1.concat(res2)
+
+// }
+
+// function solution(str){
+//     let answer = []
+//     for(let i = 0; i < str.length; i++) {
+//         answer.push(str.substring(i))
+//     }
+//     answer.sort()
+//     return answer
+// }
+
+
+function solution(n) {
+    let answer = []
+    while(n !== 1){
+        answer.push(n)
+        if(n % 2 == 0){
+            n = n/2
+        }else{
+            n = 3 * n + 1
+        }
+    }
+    answer.push(1)
+    return answer
+}
+
+console.log(solution(10))
