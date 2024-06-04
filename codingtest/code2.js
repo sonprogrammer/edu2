@@ -276,18 +276,150 @@
 // }
 
 
-function solution(n) {
-    let answer = []
-    while(n !== 1){
-        answer.push(n)
-        if(n % 2 == 0){
-            n = n/2
+// function solution(n) {
+//     let answer = []
+//     while(n !== 1){
+//         answer.push(n)
+//         if(n % 2 == 0){
+//             n = n/2
+//         }else{
+//             n = 3 * n + 1
+//         }
+//     }
+//     answer.push(1)
+//     return answer
+// }
+
+// function solution(n){
+//     let sum = 0
+//     for(let i = 0; i < n.length; i++){
+//         sum += +n[i]
+
+//     }
+
+//     return sum % 9
+// }
+
+
+
+// function solution(numLog) {
+//     let result = "";
+//     let currentNum = 0; 
+
+//     for (let i = 1; i < numLog.length; i++) {
+//         const diff = numLog[i] - numLog[i - 1];
+
+//         if (diff === 1) {
+//             result += "w";
+//             currentNum += 1;
+//         } else if (diff === -1) {
+//             result += "s";
+//             currentNum -= 1;
+//         } else if (diff === 10) {
+//             result += "d";
+//             currentNum += 10;
+//         } else if (diff === -10) {
+//             result += "a";
+//             currentNum -= 10;
+//         }
+//     }
+
+//     return result;
+// }
+
+
+// function solution(numLog){
+//     const convert = {
+//         '1' : 'w', '-1' : 's', '10' : 'd', '-10' : 'a'
+//     }
+//     return numLog.slice(1).map((v, i) => {
+//         return convert[v - numLog[i]]
+//     }).join('');
+// }
+
+
+// function solution(a, b, c){
+//     if(a !== b && b !== c && c !== a){
+//         return a + b + c
+//     }else if((a == b && b != c) || (a==c && a != b) || (b == c && a !=c)){
+//         return (a+b+c) * (a**2 + b**2 + c**2)
+//     }else{
+//         return (a+b+c) * (a**2 + b**2 + c**2) * (a**3 + b**3 + c**3)
+//     }
+// }
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// let input = [];
+
+// rl.on('line', function (line) {
+//     input = [line];
+// }).on('close',function(){
+//     str = input[0];
+//     console.log(str.split('').join('\n'))
+// });
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// let input = [];
+
+// rl.on('line', function (line) {
+//     input = line.split(' ');
+// }).on('close', function () {
+//     console.log(Number(input[0]) + " + " + Number(input[1]) + " = " + (Number(input[0]) + Number(input[1])));
+// });
+
+
+// function solution(arr){
+//     return arr.join('')
+// }
+
+
+
+// function solution(arr){
+//     let n = arr.length;
+//     for(let i = 0; i < n; i++) {
+//         for(let j = i + 1; j < n; j++) {
+//             if(arr[i][j] !== arr[j][i]){
+//                 return 0
+//             }
+//         }
+//     }
+//     return 1
+// }
+
+
+// function solution(arr, idx) {
+//     let minIndex = Infinity;
+//     for (let i = idx + 1; i < arr.length; i++) {
+//         if (arr[i] === 1 && i < minIndex) {
+//             minIndex = i;
+//         }
+//     }
+//     return minIndex === Infinity ? -1 : minIndex;
+// }
+
+
+function solution(num_list){
+    let even = 0
+    let odd = 0
+    for(let i = 0; i < num_list.length; i++) {
+        if(i % 2 == 0){
+            even += num_list[i]
         }else{
-            n = 3 * n + 1
+            odd += num_list[i]
         }
     }
-    answer.push(1)
-    return answer
+
+    return Math.max(odd, even);
 }
 
-console.log(solution(10))
+console.log(solution([4, 2, 6, 1, 7, 6]	))
