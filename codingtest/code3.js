@@ -190,17 +190,89 @@
 //     return tmp3
 // }
 
-function solution(myString, pat){
-    let count = 0
-    let index = myString.indexOf(pat)
+// function solution(myString, pat){
+//     let count = 0
+//     let index = myString.indexOf(pat)
 
-    while(index !== -1){
-        count++
-        index = myString.indexOf(pat, index + 1)
+//     while(index !== -1){
+//         count++
+//         index = myString.indexOf(pat, index + 1)
+//     }
+//     return count
+// }
+
+
+// function solution(strArr){
+//     strArr.sort((a, b) => a.length - b.length)
+
+//     let group = 1
+//     let current = 1
+
+//     for(let i = 1; i < strArr.length; i++){
+//         if(strArr[i].length === strArr[i -1].length){
+//             current++
+//         }else{
+//             group = Math.max(group, current)
+//             current = 1
+//         }
+//     }
+//     return Math.max(group, current)
+// }
+
+// function solution(arr){
+//     let result = arr.slice(arr.indexOf(2), arr.lastIndexOf(2)+1)
+//     if(!result.includes(2)){
+//         return [-1]
+//     }
+//     return result
+// }
+
+
+// function solution(n, slicer, num_list){
+//     let [a, b, c] = slicer
+//     if(n == 1){
+//         return num_list.slice(0, b+1)
+//     }else if(n == 2){
+//         return num_list.slice(a)
+//     }else if(n == 3){
+//         return num_list.slice(a, b+1)
+//     }else if(n == 4){
+//         return num_list.slice(a, b+1).filter((_, i) => i % c == 0)
+//     }
+// }
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// let input = [];
+
+// rl.on('line', function (line) {
+//     input = line.split(' ');
+// }).on('close', function () {
+//     str = input[0];
+//     n = Number(input[1]);
+//     console.log(str.repeat(n))
+// });
+
+
+function solution(order){
+    let a = 'americano'
+    let c = 'cafelatte'
+    let result = 0
+
+    for(let i = 0; i < order.length; i++){
+        if(order[i].includes(c)){
+            result += 5000
+        }else{
+            result += 4500
+        }
     }
-    return count
+    return result
+
 }
 
 
-
-console.log(solution("banana", "ana"))
+console.log(solution(["cafelatte", "americanoice", "hotcafelatte", "anything"]))
