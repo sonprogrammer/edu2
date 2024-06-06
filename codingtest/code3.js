@@ -258,20 +258,128 @@
 // });
 
 
-function solution(order){
-    let a = 'americano'
-    let c = 'cafelatte'
-    let result = 0
+// function solution(order){
+//     let a = 'americano'
+//     let c = 'cafelatte'
+//     let result = 0
 
-    for(let i = 0; i < order.length; i++){
-        if(order[i].includes(c)){
-            result += 5000
-        }else{
-            result += 4500
+//     for(let i = 0; i < order.length; i++){
+//         if(order[i].includes(c)){
+//             result += 5000
+//         }else{
+//             result += 4500
+//         }
+//     }
+//     return result
+
+// }
+
+// function solution(arr, query) {
+//     for (let i = 0; i < query.length; i++) {
+//         if (i % 2 === 0) {
+//             arr = arr.slice(0, query[i] + 1);
+//         } else {
+//             arr = arr.slice(query[i]);
+//         }
+//     }
+//     return arr;
+// }
+
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// let input = [];
+
+// rl.on('line', function (line) {
+//     input = [line];
+// }).on('close',function(){
+//     str = input[0];
+//     console.log(str);
+// });
+
+
+// function solution(a, b, c, d) {
+//     let dice = [a, b, c, d];
+//     dice.sort((x, y) => x - y);
+
+//     if (dice[0] === dice[3]) {
+//         return 1111 * dice[0];
+//     }
+
+//     if (dice[0] === dice[2] || dice[1] === dice[3]) {
+//         let p = (dice[0] === dice[2]) ? dice[0] : dice[3];
+//         let q = (dice[0] === dice[2]) ? dice[3] : dice[0];
+//         return (10 * p + q) ** 2;
+//     }
+
+//     if (dice[0] === dice[1] && dice[2] === dice[3]) {
+//         let p = dice[0];
+//         let q = dice[2];
+//         return (p + q) * Math.abs(p - q);
+//     }
+
+//     if (dice[0] === dice[1] || dice[1] === dice[2] || dice[2] === dice[3]) {
+//         let p, q, r;
+//         if (dice[0] === dice[1]) {
+//             p = dice[0];
+//             q = dice[2];
+//             r = dice[3];
+//         } else if (dice[1] === dice[2]) {
+//             p = dice[1];
+//             q = dice[0];
+//             r = dice[3];
+//         } else {
+//             p = dice[2];
+//             q = dice[0];
+//             r = dice[1];
+//         }
+//         return q * r;
+//     }
+
+//     return dice[0];
+// }
+
+
+// function solution(a, b, c, d){
+//     if(a == b && a == c && a == d) return 1111*a
+
+//     if (a === b && a === c) return (10 * a + d) ** 2
+//     if (a === b && a === d) return (10 * a + c) ** 2
+//     if (a === c && a === d) return (10 * a + b) ** 2
+//     if (b === c && b === d) return (10 * b + a) ** 2
+
+//     if (a === b && c === d) return (a + c) * Math.abs(a - c)
+//     if (a === c && b === d) return (a + b) * Math.abs(a - b)
+//     if (a === d && b === c) return (a + b) * Math.abs(a - b)
+
+//     if (a === b) return c * d
+//     if (a === c) return b * d
+//     if (a === d) return b * c
+//     if (b === c) return a * d
+//     if (b === d) return a * c
+//     if (c === d) return a * b
+
+//     return Math.min(a, b, c, d)
+// }
+
+
+
+function solution(n){
+    const a = Array.from({length : n}, () => Array(n).fill(0))   
+
+    let num = 1
+    let top = 0, bottom = n -1
+    let left = 0, right = n - 1
+
+    while(num < n * n){
+        for(let i = left; i <= right; i++){
+            a[top][i]
         }
     }
-    return result
-
 }
 
 
