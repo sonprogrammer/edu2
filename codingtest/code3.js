@@ -368,19 +368,124 @@
 
 
 
-function solution(n){
-    const a = Array.from({length : n}, () => Array(n).fill(0))   
+// function solution(n){
+//     const a = Array.from({length : n}, () => Array(n).fill(0))   
 
-    let num = 1
-    let top = 0, bottom = n -1
-    let left = 0, right = n - 1
+//     let num = 1
+//     let top = 0, bottom = n -1
+//     let left = 0, right = n - 1
 
-    while(num < n * n){
-        for(let i = left; i <= right; i++){
-            a[top][i]
-        }
+//     while(num < n * n){
+//         for(let i = left; i <= right; i++){
+//             a[top][i]
+//         }
+//     }
+// }
+
+
+
+// function solution(arr){
+//     let answer = []
+//     for(let i = 0; i < arr.length; i++){
+//         if((arr[i]) >= 50 && arr[i] % 2 == 0){
+//             answer.push(arr[i]/2)
+//         }else{
+//             answer.push(arr[i]*2 + 1)
+//         }
+//     }
+//     return answer
+// }
+
+// function solution(q, r, code){
+//     let answer = []
+//     let result = []
+//     for(let i = 0; i < code.length; i+=q){
+//         answer.push(code.substring(i, i + q))
+//     }
+//     for(let i = 0; i < answer.length; i++){
+//         result.push(answer[i][r])
+//     }
+//     return result.join("")
+// }
+
+// function solution(q, r, code){
+//     return [...code].filter((_, i) => i % q === r).join("")
+// }
+
+// function solution(my_string){
+//     const counts = new Array(52).fill(0)
+
+//     for(let char of my_string){
+//         if(char >= 'A' && char <= 'z'){
+//             counts[char.charCodeAt(0) - 'A'.charCodeAt(0)]++
+//         }else if(char >= 'a' && char <= 'z'){
+//             counts[char.charCodeAt(0) - 'a'.charCodeAt(0) + 26]++
+//         }
+//     }
+//     return counts
+// }
+
+
+// function solution(arr){
+//     let stk = []
+//     let i = 0
+
+//     while(i < arr.length){
+//         if(stk.length === 0){
+//             stk.push(arr[i])
+//             i++
+//         }else if(stk[stk.length - 1] < arr[i]){
+//             stk.push(arr[i])
+//             i++
+//         }else{
+//             stk.pop()
+//         }
+//     }
+//     return stk
+// }
+
+
+
+// function solution(arr){
+//     let stk = []
+//     let i = 0
+//     while(i < arr.length){
+//         if(stk.length === 0){
+//             stk.push(arr[i])
+//             i++
+//         }else if(stk[stk.length - 1] == arr[i]){
+//             stk.pop()
+//             i++
+//         }else{
+//             stk.push(arr[i])
+//             i++
+//         }
+//     }
+//     if(stk.length == 0){
+//         return [-1]
+//     }
+//     return stk
+// }
+
+// function solution(str_list){
+//     let anser = []
+//     let l = str_list.indexOf('l')
+//     let r = str_list.indexOf('r')
+    
+//     if (l !== -1 && (r === -1 || l < r)) {
+//         return str_list.slice(0, l);
+//     }else if(r !== -1){
+//         return str_list.slice(r+1)
+//     }
+//     return []
+// }
+
+function solution(arr){
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === 'l') return arr.slice(0, i)
+        if(arr[i] === 'r') return arr.slice(i + 1)
     }
+    return []
 }
 
-
-console.log(solution(["cafelatte", "americanoice", "hotcafelatte", "anything"]))
+console.log(solution(["u", "u", "r", "r"]))
