@@ -480,12 +480,92 @@
 //     return []
 // }
 
-function solution(arr){
-    for(let i = 0; i < arr.length; i++){
-        if(arr[i] === 'l') return arr.slice(0, i)
-        if(arr[i] === 'r') return arr.slice(i + 1)
-    }
-    return []
-}
+// function solution(arr){
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr[i] === 'l') return arr.slice(0, i)
+//         if(arr[i] === 'r') return arr.slice(i + 1)
+//     }
+//     return []
+// }
 
-console.log(solution(["u", "u", "r", "r"]))
+// function solution(a, b){
+//     let numA = Number(a)
+//     let numB = Number(b)
+//     let sum = numA + numB
+//     return sum.toString()
+// }
+
+
+// function solution(ineq, eq, n, m){
+//     if(n + ineq + eq + m === true){
+//         return 1
+//     }else{
+//         return 0
+//     }
+// }
+
+// function solution(arr, queries){
+//     return queries.map(([s, e, k]) => arr.slice(s, e+1).filter((n) => n > k).sort((a, b) => a - b)[0] || -1)
+// }
+
+// function solution(arr, k){
+//     let result = [];
+//     for(let i = 0; i < arr.length; i++) {
+//         if(arr[i] !== arr[i + 1]){
+//             result.push(arr[i]);
+//         }else{
+//             result.push(-1)
+//         }
+//     }
+// }
+
+
+// function solution(arr, k){
+//     const result = []
+//     const set = new Set()
+
+//     for(const num of arr){
+//         if(result.length === k) break;
+//         if(!set.has(num)){
+//             result.push(num)
+//             set.add(num)
+//         }
+//     }while(result.length < k){
+//         result.push(-1)
+//     }
+//     return result
+// }
+
+// function solution(my_string, queries){
+//     for(const query of queries){
+//         const [s, e] = query
+//         const result = my_string.slice(s, e+1).split('').reverse().join('')
+//         my_string = my_string.slice(0, s) + result+ my_string.slice(e+1)
+//     }
+//     return my_string
+// }
+
+
+// function solution(arr){
+//     const rows = arr.length
+//     const cols = arr.reduce((max, row) => Math.max(max, row.length), 0)
+
+//     const newArr = arr.map(row => {
+//         const numToAdd = cols - row.length
+//         if (numToAdd <= 0) return row;
+//         return [...row,...Array(numToAdd).fill(0)]
+//     })
+//     const finalArr = newArr.map(row => {
+//         const numToAdd = rows - row.length
+//         if (numToAdd <= 0) return row;
+//         return [...row, ...Array(numToAdd).fill(0)]
+//     })
+//     return finalArr
+// }
+
+
+
+
+
+
+console.log(solution([[572, 22, 37], [287, 726, 384], [85, 137, 292], [487, 13, 876]]))
