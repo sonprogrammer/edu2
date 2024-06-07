@@ -564,8 +564,162 @@
 // }
 
 
+// function solution(my_string, overwrite_string, s){
+//     let leng = overwrite_string.length;
+//     return my_string.slice(0, s) + overwrite_string + my_string.slice(leng+s)
+// }
+
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// let input = [];
+
+// rl.on('line', function (line) {
+//     input = line.split(' ');
+// }).on('close', function () {
+//     console.log(Number(input[0]) + Number(input[1]));
+//     console.log(`a = ${Number(input[0])}\nb = ${Number(input[1])}`)
+// });
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// let input = '';
+
+// rl.on('line', function (line) {
+//     input = line;
+//     let result = '';
+//     for(let i = 0; i < input.length; i++) {
+//         let char = input[i];
+//         if(char >= 'a' && char <= 'z'){
+//             result += char.toUpperCase();
+//         } else if(char >= 'A' && char <= 'Z'){
+//             result += char.toLowerCase();
+//         } else {
+//             result += char;
+//         }
+//     }
+//     console.log(result);
+//     rl.close();
+// });
+
+// function solution(rank, attendance){
+//     // let ranka = rank.sort().join('').slice(0, 3).split('')
+//     // console.log(ranka)
+//     let newRank = []
+//     for(let i = 0; i < rank.length; i++) {
+//         for(let j = 0; j < attendance.length; j++){
+//             if(attendance[j] === false){
+//                 newRank.pop(rank[i])
+//             }else{
+//                 newRank.push(rank[i])
+//             }
+//         }
+//     }
+//     console.log(newRank)
+
+// }
+
+
+// function solution(rank, attendance){
+//     const students = rank.map((r, i) => ({rank: r, canAttend: attendance[i]}))
+
+//     const canStudent = students.filter(student => student.canAttend).sort((a, b) => a.rank - b.rank)
+//     // console.log(canStudent)
+//     let answer = []
+//     for(let i = 0; i < rank.length; i++){
+//         if(rank[i] === 2){
+//         answer.push(i)
+//         }else if(rank[i] === 4){
+//             answer.push(i)
+//         }else if(rank[i] === 5){
+//             answer.push(i)
+//         }else if(rank[i] === 7){
+//             answer.push(i)
+//         }
+//     }
+//     console.log(answer)
+
+//     const result = canStudent.slice(0, 3)
+//     let [a, b, c] = result
+//     // console.log(a, b, c)
+
+
+//     return 10000*a.rank + 100*b.rank + c.rank
+// }
+
+
+// function solution(rank, attendance){
+//     // const [a, b, c] = rank.map((r, i) => [r, i])
+//     const answer = rank.map((r, i) => [r, i])
+//     console.log(answer)
+//     const result = answer.filter(([_, i]) => attendance[i])
+//     console.log(answer.filter(([_, i]) => attendance[i]))
+//     const res = result.sort()
+//     console.log(res)
+//     const [a, b, c] = res
+//     console.log(a, b, c)
+
+//     return 10000*a[1] + 100 * b[1] + c[1]
+// }
+
+// function solution(rank, attendance) {
+//     const [a, b, c] = rank
+//       .map((r, i) => [r, i])
+//       .filter(([_, i]) => attendance[i])
+//       .sort(([a], [b]) => a - b);
+//     return 10000 * a[1] + 100 * b[1] + c[1];
+//   }
+
+// function solution(l, r){
+
+//     let answer = [];
+//     for(let i = l; i <= r; i++) {
+//         let numStr = i.toString()
+//         if(numStr.split('').every(d => d === '0' || d === '5')){
+//             answer.push(i)
+//         }
+//     }
+//     if(answer.length == 0 ){
+//         return [-1]
+//     }
+//     return answer
+// }
+
+
+function solution(code) {
+    if(code.length == 0) return "EMPTY"
+
+    let mode = 0
+    let ret = ''
+
+    for(let idx = 0; idx < code.length; idx++) {
+        if(mode === 0){
+            if(code[idx] === '1'){
+                mode = 1
+            }else if(idx % 2 == 0){
+                ret += code[idx]
+            }
+        }else{
+            if(code[idx] === '1'){
+                mode = 0
+            }else if(idx % 2 !== 0){
+                ret +=code[idx]
+            }
+        }
+    }
+    return ret.length > 0 ? ret : "EMPTY"
+}
+
+
+console.log(solution(5, 555))
 
 
 
-
-console.log(solution([[572, 22, 37], [287, 726, 384], [85, 137, 292], [487, 13, 876]]))
