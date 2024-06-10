@@ -84,14 +84,62 @@
 //     return arr[middle]
 // }
 
-function solution(n){
-    let answer = [];
-    for(let i = 0; i<= n; i++){
-        if(i % 2 != 0){
-            answer.push(i);
+// function solution(n){
+//     let answer = [];
+//     for(let i = 0; i<= n; i++){
+//         if(i % 2 != 0){
+//             answer.push(i);
+//         }
+//     }
+//     return answer
+// }
+
+// function solution(n){
+//     return Math.ceil(n / 7)
+
+// }
+
+
+// function solution(price) {
+//     if (price >= 500000) {
+//         return price * 0.8;
+//     } else if (price >= 300000) {
+//         return price * 0.9;
+//     } else if (price >= 100000) {
+//         return price * 0.95;
+//     } else {
+//         return price;
+//     }
+// }
+
+// function solution(m){
+//     let answer = [];
+//     let c = Math.floor(m / 5500)
+//     let t = m % 5500
+//     return [c, t]
+// }
+// function solution(hp){
+//     let a = Math.floor(hp / 5)
+//     hp %= 5
+//     let b = Math.floor(hp / 3)
+//     hp %= 3
+//     let answer = hp
+//     return a + b + answer
+// }
+
+
+function solution(rsp){
+    let result = ''
+    for(let i = 0; i < rsp.length; i++) {
+        if(rsp[i] === '2'){
+            result += '0'
+        }else if(rsp[i] === '0'){
+            result += '5'
+        }else if(rsp[i] === '5'){
+            result += '2'
         }
-    }
-    return answer
+    }   
+    return result
 }
 
-console.log(solution(10))
+console.log(solution("205"))
