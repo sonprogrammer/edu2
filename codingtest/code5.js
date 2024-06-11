@@ -198,9 +198,64 @@
 //     return numList.filter(num => num % n == 0)
 // }
 
-function solution(n){
-    return n.map(a => a*2)
+// function solution(n){
+//     return n.map(a => a*2)
+// }
+
+// function solution(s){
+//     s.sort((a, b) => a - b)
+
+//     if(s[2] < s[0] + s[1]){
+//         return 1
+//     }else{
+//         return 2
+//     }
+// }
+
+// function solution(n){
+//     n.sort((a, b) => a - b)
+
+//     const a = n.length
+//     const max = n[a -1]*n[a-2]
+//     const max2 = n[0] * n[1]
+//     return Math.max(max, max2)
+// }
+
+
+// function solution(dot){
+//     let [a, b] = dot
+//     if(a >0 && b > 0){
+//         return 1
+//     }else if(a < 0 && b > 0){
+//         return 2
+//     }else if(a < 0 && b < 0){
+//         return 3
+//     }else{
+//         return 4
+//     }
+// }
+// function solution(my_string){
+//     return my_string.split('').reverse().join('')
+// }
+
+// function solution(strlist){
+//     let answer = [];
+//     for(let i = 0; i < strlist.length; i++){
+//         answer.push(strlist[i].length)
+//     }
+//     return answer
+// }
+
+// function solution(s1, s2){
+//     let set1 = new Set(s1)
+//     let set2 = new Set(s2)
+
+//     let a = new Set([...set1].filter(x => set2.has(x)))
+//     return a.size
+// }
+
+function solution(num_list){
+    return num_list.reverse()
 }
 
-
-console.log(solution([1, 2, 3, 4, 5]))
+console.log(solution(["We", "are", "the", "world!"]	))
