@@ -254,8 +254,71 @@
 //     return a.size
 // }
 
-function solution(num_list){
-    return num_list.reverse()
+// function solution(num_list){
+//     return num_list.reverse()
+// }
+
+// function solution(slice, n){
+//     let a = Math.ceil(n / slice)
+//     return a
+// }
+
+
+// function solution(n, t){
+//     let answer = n
+
+//     for(let i = 0; i < t; i++){
+//         answer *= 2
+//     }
+//     return answer
+// }
+
+
+// function solution(n){
+//     let a = Math.sqrt(n)
+//     if(Number.isInteger(a)){
+//         return 1
+//     }else{
+//         return 2
+//     }
+// }
+
+
+// function solution(n){
+//     n.sort((a, b) => a -b)
+//     let leng = n.length
+//     return n[leng-1] * n[leng-2]
+// }
+
+// function solution(num_list){
+//     let even = 0
+//     let odd = 0
+//     for(let i = 0; i < num_list.length; i++){
+//         if(num_list[i] % 2 == 0){
+//             even++
+//         }else{
+//             odd++
+//         }
+//     }
+//     return [even, odd]
+// }
+
+
+// function solution(n){
+//     let result = 0
+//     let a = n.toString().split('')
+//     for(let i = 0; i < a.length; i++){
+//         result += Number(a[i])
+//     }
+//     return result
+// }
+
+function solution(str1, str2){
+    if(str1.includes(str2)){
+        return 1
+    }else{
+        return 2
+    }
 }
 
-console.log(solution(["We", "are", "the", "world!"]	))
+console.log(solution("ab6CDE443fgh22iJKlmn1o", "6CD"	))
