@@ -313,12 +313,65 @@
 //     return result
 // }
 
-function solution(str1, str2){
-    if(str1.includes(str2)){
-        return 1
-    }else{
-        return 2
+// function solution(str1, str2){
+//     if(str1.includes(str2)){
+//         return 1
+//     }else{
+//         return 2
+//     }
+// }
+// function solution(my_string){
+//     let str = my_string.split('')
+//     let result = []
+//     for(let i = 0; i < str.length; i++){
+//         if (!(str[i] === 'a' || str[i] === 'e' || str[i] === 'i' || str[i] === 'o' || str[i] === 'u')){
+//             result.push(str[i])
+//         }
+//     }
+//     return result.join('')
+// }
+
+
+// function solution(n, k){
+//     let a = 12000
+//     let b = 2000
+
+//     let c = Math.floor(n / 10)
+
+//     let d = k - c
+
+//     let result = (a * n) + (b * d)
+//     return result
+// }
+
+// function solution(my_string, n1, n2){
+//     let arr = my_string.split('')
+
+//     let temp = arr[n1]
+//     arr[n1] = arr[n2] 
+//     arr[n2] = temp
+
+//     return arr.join('')
+// }
+
+// function solution(numbers, direction) {
+//     if (direction === 'right') {
+//         return [numbers[numbers.length - 1], ...numbers.slice(0, numbers.length - 1)];
+//     } else if (direction === 'left') {
+//         return [...numbers.slice(1), numbers[0]];
+//     } else {
+//         return numbers;
+//     }
+// }
+
+function solution(n){
+    let result = [];
+    for(let i = 0; i <= n; i++) {
+        if(n % i == 0){
+            result.push(i)
+        }
     }
+    return result
 }
 
-console.log(solution("ab6CDE443fgh22iJKlmn1o", "6CD"	))
+console.log(solution(24));
