@@ -364,14 +364,80 @@
 //     }
 // }
 
+// function solution(n){
+//     let result = [];
+//     for(let i = 0; i <= n; i++) {
+//         if(n % i == 0){
+//             result.push(i)
+//         }
+//     }
+//     return result
+// }
+
+// function solution(n, k){
+//     let str = n.toString()
+
+//     let kStr = k.toString()
+
+//     let a = str.indexOf(kStr)
+//     return a === -1 ? -1 : a+1
+// }
+
+
+// function solution(my_string){
+//     let lower = my_string.toLowerCase();
+//     return lower.split('').sort().join('')
+// }
+
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// let input = [];
+
+// rl.on('line', function (line) {
+//     input = line.split(' ');
+// }).on('close', function () {
+//     let height = Number(input[0]);
+//     for(let i = 0; i < height; i++){
+//         let row = ''
+//         for(let j = 0; j <= i; j++){
+//             row += '*'
+//         }
+//         console.log(row)
+//     }
+// });
+
+
+// function solution(my_string){
+//     let arr = my_string.split('')
+//     let answer =  arr.filter(x => !isNaN(parseInt(x))).sort()
+//     return answer.map(str => parseInt(str))
+// }
+
+// function solution(order){
+//     let arr = order.toString()
+//     console.log(arr)
+//     let count = 0;
+//     for(let i =0 ; i<arr.length; i++){
+//         if(arr[i] == 3 || arr[i] == 6 || arr[i] == 9){
+//             count++
+//         }
+//     }
+//     return count
+// }
+
 function solution(n){
-    let result = [];
+    let count = 0;
     for(let i = 0; i <= n; i++) {
         if(n % i == 0){
-            result.push(i)
+            count++
         }
     }
-    return result
+    return count
 }
 
-console.log(solution(24));
+console.log(solution(100));
