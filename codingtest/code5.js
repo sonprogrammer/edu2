@@ -430,14 +430,100 @@
 //     return count
 // }
 
-function solution(n){
-    let count = 0;
-    for(let i = 0; i <= n; i++) {
-        if(n % i == 0){
-            count++
-        }
+// function solution(n){
+//     let count = 0;
+//     for(let i = 0; i <= n; i++) {
+//         if(n % i == 0){
+//             count++
+//         }
+//     }
+//     return count
+// }
+
+// function solution(box, n) {
+//     const [length, width, height] = box;
+//     const maxCubes = Math.floor(length / n) * Math.floor(width / n) * Math.floor(height / n);
+//     return maxCubes;
+// }
+
+// function solution(age) {
+
+//     const ageMap = 'abcdefghij';
+
+//     let ageString = age.toString();
+    
+//     let result = '';
+//     for (let i = 0; i < ageString.length; i++) {
+//         result += ageMap[parseInt(ageString[i])];
+//     }
+    
+//     return result;
+// }
+
+// function solution(n) {
+//     let dp = new Array(n+1).fill(1)
+//     for(let i = 2 ; i <= n ; i++){
+//         if(dp[i]){
+//             for(let j = 2 ; i*j <= n ; j++){
+//                 dp[i*j] = 0
+//             }
+//         }
+//     }
+
+//     return dp.filter(el => el === 0).length
+// }
+
+// function solution(n){
+//     let peices = 6
+//     while(true){
+//         if(peices % n == 0){
+//             break;
+//         }
+//         peices += 6
+//     }
+//     return peices / 6
+// }
+// function solution(str) {
+//     let seen = new Set();
+//     let result = '';
+
+//     for (let char of str) {
+//         if (!seen.has(char)) {
+//             seen.add(char);
+//             result += char;
+//         }
+//     }
+
+//     return result;
+// }
+
+// function solution(my_string, letter){
+//     let remove = new Set(letter)
+
+//     let result = []
+
+//     for(let char of my_string){
+//         if(!remove.has(char)){
+//             result.push(char)
+//         }
+//     }
+//     return result.join('')
+// }
+
+// function solution(my_string, letter){
+//     return my_string.split(letter).join('')
+// }
+
+// function solution(numbers, n1, n2){
+//     return numbers.slice(n1, n2+1)
+// }
+
+function solution(my_string, n){
+    let result = ''
+    for(let i = 0; i < my_string.length; i++){
+        result += my_string[i].repeat(n)
     }
-    return count
+    return result
 }
 
-console.log(solution(100));
+console.log(solution("hello", 3));
