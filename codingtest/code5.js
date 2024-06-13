@@ -518,12 +518,119 @@
 //     return numbers.slice(n1, n2+1)
 // }
 
-function solution(my_string, n){
-    let result = ''
-    for(let i = 0; i < my_string.length; i++){
-        result += my_string[i].repeat(n)
-    }
-    return result
-}
+// function solution(my_string, n){
+//     let result = ''
+//     for(let i = 0; i < my_string.length; i++){
+//         result += my_string[i].repeat(n)
+//     }
+//     return result
+// }
 
-console.log(solution("hello", 3));
+// function solution(num_list, n) {
+//     let result = [];
+//     for (let i = 0; i < num_list.length; i += n) {
+//         result.push(num_list.slice(i, i + n));
+//     }
+//     return result;
+// }
+
+// function solution(letter){
+//     morse = { 
+//         '.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',
+//         '--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',
+//         '--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',
+//         '...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',
+//         '-.--':'y','--..':'z'
+//     }
+//     return letter.split(' ').map(a => morse[a]).join('')
+    
+// }
+
+// function solution(n){
+//     let i = 1
+//     let factorial = 1
+
+//     while(factorial <= n){
+//         i++
+//         factorial *= i
+//     }
+//     return i - 1
+// }
+
+
+// function solution(my_string) {
+//     let sum = 0;
+//     let currentNumber = 0;
+//     let isNumber = false;
+
+//     for (let char of my_string) {
+//         if (!isNaN(char) && char !== ' ') {
+//             currentNumber = currentNumber * 10 + Number(char);
+//             isNumber = true;
+//         } else {
+//             if (isNumber) {
+//                 sum += currentNumber;
+//                 currentNumber = 0;
+//                 isNumber = false;
+//             }
+//         }
+//     }
+
+//     if (isNumber) {
+//         sum += currentNumber;
+//     }
+
+//     return sum;
+// }
+
+
+// function solution(before, after){
+//     let sortedBefore = before.split('').sort().join('');
+//     let sortedAfter = after.split('').sort().join('');
+
+//     return sortedBefore === sortedAfter ? 1 : 0
+// }
+
+
+// function solution(i, j, k) {
+//     let count = 0
+//     k = k.toString()
+
+//     for(let num = i; num <= j; num++) {
+//         let numStr = num.toString()
+//         for(let char of numStr) {
+//             if(char === k){
+//                 count++
+//             }
+//         }
+//     }
+//     return count
+// }
+
+
+// function solution(arr, n){
+//     let closeNum = arr[0]
+//     let a = Math.abs(arr[0] - n)
+
+//     for(let i = 1; i < arr.length; i++) {
+//         let b = Math.abs(arr[i] - n)
+
+//         if(b < a){
+//             b = a
+//             closeNum = arr[i]
+//         }else if( b === a){
+//             if(arr[i] < closeNum){
+//                 closeNum = arr[i]
+//             }
+//         }
+//     }
+//     return closeNum
+// }
+
+
+function solution(array, n) {
+    array.sort((a,b) => Math.abs(n - a) - Math.abs(n - b) || a - b);
+
+    return array[0];
+}
+console.log(solution([3, 10, 28], 20));
