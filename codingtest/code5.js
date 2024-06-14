@@ -628,9 +628,56 @@
 // }
 
 
-function solution(array, n) {
-    array.sort((a,b) => Math.abs(n - a) - Math.abs(n - b) || a - b);
+// function solution(array, n) {
+//     array.sort((a,b) => Math.abs(n - a) - Math.abs(n - b) || a - b);
 
-    return array[0];
-}
-console.log(solution([3, 10, 28], 20));
+//     return array[0];
+// }
+
+// function solution(s) {
+//     // 각 문자의 등장 횟수를 저장할 객체
+//     let charCount = {};
+
+//     // 문자열을 순회하며 각 문자의 등장 횟수를 기록
+//     for (let char of s) {
+//         if (charCount[char]) {
+//             charCount[char]++;
+//         } else {
+//             charCount[char] = 1;
+//         }
+//     }
+
+//     // 등장 횟수가 1인 문자를 배열에 저장
+//     let uniqueChars = [];
+//     for (let char in charCount) {
+//         if (charCount[char] === 1) {
+//             uniqueChars.push(char);
+//         }
+//     }
+
+//     // 배열을 사전 순으로 정렬하고 문자열로 변환하여 반환
+//     return uniqueChars.sort().join('');
+// }
+
+
+// function solution(s){
+//     let res = [];
+//     for(let c of s){
+//         console.log(c);
+//         if(s.indexOf(c) === s.lastIndexOf(c)){
+//             res.push(c)
+//         }
+//     }
+//     return res.sort().join('')
+// }
+
+
+// function solution(em){
+//     let a = [...em].sort((a, b) => b - a)
+
+//     return em.map(v => a.indexOf(v) + 1)
+// }
+
+
+
+console.log(solution([3, 76, 24]));
