@@ -36,18 +36,34 @@
 //     return res
 // }
 
-function solution(s){
-    let res = 0
-    let arr = s.split(' ') 
-    for(let i = 0; i < arr.length; i++) {
-        if(arr[i] === 'Z'){
-            res -= Number(arr[i-1])
-        }
-        else{
-            res += Number(arr[i])
-        }
-    }
-    return res
+// function solution(s){
+//     let res = 0
+//     let arr = s.split(' ') 
+//     for(let i = 0; i < arr.length; i++) {
+//         if(arr[i] === 'Z'){
+//             res -= Number(arr[i-1])
+//         }
+//         else{
+//             res += Number(arr[i])
+//         }
+//     }
+//     return res
+// }
+
+// function solution(my_string) {
+//     let [a, b, c] = my_string.split(' ')
+//     if(b ==='+'){
+//         return +a + +c
+//     }else{
+//         return +a - +c
+//     }
+// }
+
+function solution(n, k){
+    const index = (2 * (k - 1)) % n.length;
+    return n[index];
 }
 
-console.log(solution("1 2 Z 3"))
+
+
+console.log(solution([1, 2, 3, 4], 2))
