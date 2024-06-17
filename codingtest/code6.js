@@ -59,6 +59,8 @@
 //     }
 // }
 
+
+
 function solution(n, k){
     const index = (2 * (k - 1)) % n.length;
     return n[index];
