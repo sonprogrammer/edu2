@@ -69,4 +69,5 @@ function solution(n, k){
 
 
 
+
 console.log(solution([3, 5, 7, 9], 7))
