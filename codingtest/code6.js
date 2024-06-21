@@ -60,16 +60,66 @@
 // }
 
 
+// function solution(n, k){
+//     const index = (2 * (k - 1)) % n.length;
+//     return n[index];
+// }
 
-function solution(n, k){
-    const index = (2 * (k - 1)) % n.length;
-    return n[index];
+
+// function solution(n, k){
+//     let index = (2 * (k - 1)) % n.length;
+//     return n[index];
+// }
+
+
+// function solution(n){
+//     const numberMap = {
+//         "zero": 0,
+//         "one": 1,
+//         "two": 2,
+//         "three": 3,
+//         "four": 4,
+//         "five": 5,
+//         "six": 6,
+//         "seven": 7,
+//         "eight": 8,
+//         "nine": 9
+//     };
+
+//     let result = ''
+//     let currentString = ''
+
+//     for(let char of n){
+//         currentString += char
+
+//         if(numberMap[currentString] !== undefined){
+//             result += numberMap[currentString]
+//             currentString = ""
+//         }
+//     }
+//     return parseInt(result, 10)
+// }
+
+// function solution(n){
+//     let number = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+//     for(let i = 0; i < number.length; i++){
+//         n = n.split(number[i]).join(i)
+//     }
+//     return +n
+// }
+
+function solution(balls, share){
+    function x(num){
+        let result = 1;
+        for(let i = 2; i <= num; i++){
+            result *= i
+        }
+        return result
+    }
+    function combination(n, r){
+        return x(n) / (x(r) * x(n - r))
+    }
+    return combination(balls, share)
 }
 
-
-
-
-
-console.log(solution([3, 5, 7, 9], 7))
-console.log(solution([3, 5, 7, 9], 7))
-console.log(solution([3, 5, 7, 9], 7))
+console.log(solution(3, 2))
