@@ -108,18 +108,42 @@
 //     return +n
 // }
 
-function solution(balls, share){
-    function x(num){
-        let result = 1;
-        for(let i = 2; i <= num; i++){
-            result *= i
+// function solution(balls, share){
+//     function x(num){
+//         let result = 1;
+//         for(let i = 2; i <= num; i++){
+//             result *= i
+//         }
+//         return result
+//     }
+//     function combination(n, r){
+//         return x(n) / (x(r) * x(n - r))
+//     }
+//     return combination(balls, share)
+// }
+
+// function solution(sides){
+//     let [a, b] = sides
+//     let minSide = Math.abs(a - b) + 1
+//     let maxSide = a + b - 1
+//     let count = 0
+
+//     for(let c = minSide; c <= maxSide; c++){
+//         count++
+//     }
+//     return count
+// }
+
+function solution(spell, dic){
+    let sortedSpell = spell.sort().join('')
+    for(let word of dic){
+        let sortedWord = word.split('').sort().join('')
+        if(sortedSpell === sortedWord){
+            return 1
         }
-        return result
     }
-    function combination(n, r){
-        return x(n) / (x(r) * x(n - r))
-    }
-    return combination(balls, share)
+    return 2
 }
 
-console.log(solution(3, 2))
+
+console.log(solution(["p", "o", "s"], ["sod", "eocd", "qixm", "adio", "soo"]))
