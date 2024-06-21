@@ -134,16 +134,20 @@
 //     return count
 // }
 
-function solution(spell, dic){
-    let sortedSpell = spell.sort().join('')
-    for(let word of dic){
-        let sortedWord = word.split('').sort().join('')
-        if(sortedSpell === sortedWord){
-            return 1
-        }
-    }
-    return 2
-}
+// function solution(spell, dic){
+//     let sortedSpell = spell.sort().join('')
+//     for(let word of dic){
+//         let sortedWord = word.split('').sort().join('')
+//         if(sortedSpell === sortedWord){
+//             return 1
+//         }
+//     }
+//     return 2
+// }
 
+
+function solution(M, N){
+    return M * N -1
+}
 
 console.log(solution(["p", "o", "s"], ["sod", "eocd", "qixm", "adio", "soo"]))
