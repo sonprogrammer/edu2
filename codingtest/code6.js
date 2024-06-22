@@ -146,8 +146,59 @@
 // }
 
 
-function solution(M, N){
-    return M * N -1
+// function solution(M, N){
+//     return M * N -1
+// }
+
+// function solution(keyinput, board){
+//     let position = [0,0]
+
+//     let xLimit = Math.floor(board[0] / 2)
+//     let yLimit = Math.floor(board[1] / 2)
+
+//     keyinput.forEach(key => {
+//         if(key === 'up' && position[1] < yLimit){
+//             position[1] += 1
+//         }else if(key === 'down' && position[1] > -yLimit){
+//             position[1] -= 1
+//         }else if(key === 'left' && position[0] > -xLimit){
+//             position[0] -= 1
+//         }else if(key === 'right' && position[0] < xLimit){
+//             position[0] += 1
+//         }
+//     })
+//     return position
+// }
+
+// function solution(dots){
+//     let Xs = dots.map(x => x[0])
+//     let Ys = dots.map(y => y[1])
+
+//     let width = Math.max(...Xs) - Math.min(...Xs)
+//     let height = Math.max(...Ys) - Math.min(...Ys)
+
+//     return width * height 
+// }
+
+// function solution(id_pw, db){
+//     return db.some(inner => inner.length === id_pw.length && inner.every((value, index) => value === id_pw[index])) ? 'login' : 'wrong pw'
+// }
+
+function solution(id_pw, db){
+    const [id, pw] = id_pw
+
+    for(let i = 0; i < db.length; i++) {
+        let [dbId, pwId] = db[i]
+        if(id === dbId){
+            if(pw === pwId){
+                return 'login'
+            }else{
+                return 'wrong pw'
+            }
+        }
+        
+    }
+    return 'fail'
 }
 
-console.log(solution(["p", "o", "s"], ["sod", "eocd", "qixm", "adio", "soo"]))
+console.log(solution(["meosseugi", "1234"], [["rardss", "123"], ["yyoom", "1234"], ["meosseugi", "1234"]]	))
