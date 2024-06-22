@@ -250,17 +250,85 @@
 //     return n
 // }
 
-function solution(a, b){
-    let n =1 
-    for(let i = 1; i <= Math.min(a, b); i++) {
-        if(a%i === 0 && b%i === 0){
-            n = i
+// function solution(a, b){
+//     let n =1 
+//     for(let i = 1; i <= Math.min(a, b); i++) {
+//         if(a%i === 0 && b%i === 0){
+//             n = i
+//         }
+//     }
+//     b/=n
+//     while(b%2 === 0) b/=2
+//     while(b%5 === 0) b/=5
+//     return b === 1 ? 1 : 2
+// }
+
+
+// function solution(a, b){
+//     if(a.length !== b.length){
+//         return -1
+//     }
+
+//     let n = a.length
+
+//     for(let i = 0; i < n; i++){
+//         if(a.slice(i) + a.slice(0, i) === b){
+//             return i
+//         }
+//     }
+//     return -1
+// }
+
+
+// function solution(A, B) {
+//     if (A === B) {
+//         return 0; // A와 B가 이미 동일한 경우, 추가 밀기 필요 없음
+//     }
+
+//     if (A.length !== B.length) {
+//         return -1; // A와 B의 길이가 다르면 밀 수 없음
+//     }
+
+//     const n = A.length;
+
+//     // A를 오른쪽으로 밀었을 때 B와 일치하는 최소 횟수 계산
+//     let minRightShifts = Number.MAX_SAFE_INTEGER;
+//     for (let i = 0; i < n; i++) {
+//         if (A.slice(i) + A.slice(0, i) === B) {
+//             minRightShifts = Math.min(minRightShifts, i);
+//         }
+//     }
+
+//     // A를 왼쪽으로 밀었을 때 B와 일치하는 최소 횟수 계산
+//     let minLeftShifts = Number.MAX_SAFE_INTEGER;
+//     for (let i = 0; i < n; i++) {
+//         if (A.slice(-i) + A.slice(0, -i) === B) {
+//             minLeftShifts = Math.min(minLeftShifts, i);
+//         }
+//     }
+
+//     // 두 경우 중 최소 횟수 반환
+//     let result = Math.min(minRightShifts, minLeftShifts);
+//     return result === Number.MAX_SAFE_INTEGER ? -1 : result;
+// }
+
+// let solution=(a,b)=>(b+b).indexOf(a)
+
+function solution(numlist, n){
+    numlist.sort((a,b) => {
+        let distA = Math.abs(a - n)
+        let distB = Math.abs(b - n)
+
+        if(distA !== distB){
+            return distA - distB
         }
-    }
-    b/=n
-    while(b%2 === 0) b/=2
-    while(b%5 === 0) b/=5
-    return b === 1 ? 1 : 2
+        else{
+            return b -a
+        }
+    })
+    return numlist
 }
 
-console.log(solution(15))
+
+console.log(solution([1, 2, 3, 4, 5, 6]	, 4))
+
