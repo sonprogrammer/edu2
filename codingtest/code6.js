@@ -184,21 +184,83 @@
 //     return db.some(inner => inner.length === id_pw.length && inner.every((value, index) => value === id_pw[index])) ? 'login' : 'wrong pw'
 // }
 
-function solution(id_pw, db){
-    const [id, pw] = id_pw
+// function solution(id_pw, db){
+//     const [id, pw] = id_pw
 
-    for(let i = 0; i < db.length; i++) {
-        let [dbId, pwId] = db[i]
-        if(id === dbId){
-            if(pw === pwId){
-                return 'login'
-            }else{
-                return 'wrong pw'
-            }
-        }
+//     for(let i = 0; i < db.length; i++) {
+//         let [dbId, pwId] = db[i]
+//         if(id === dbId){
+//             if(pw === pwId){
+//                 return 'login'
+//             }else{
+//                 return 'wrong pw'
+//             }
+//         }
         
+//     }
+//     return 'fail'
+// }
+
+
+// function solution(score){
+//    let avg = score.map(v => (v[0]+v[1])/2)
+//    console.log(avg)
+//    let sorted = avg.slice().sort((a,b) => b-a)
+//    console.log(sorted)
+//    return avg.map(v => sorted.indexOf(v)+1)
+// }
+
+// function solution(chicken){
+//     let coupons = chicken
+//     let service = 0
+
+//     while(coupons >= 10){
+//         let current = Math.floor(coupons / 10)
+//         service += current
+//         console.log(coupons)
+
+//         let newCoupons = coupons % 10
+//         coupons = current + newCoupons
+//     }
+//     return service
+// }
+
+// function solution(chicken){
+//     let answer = 0
+//     let coupons = chicken
+
+//     while(coupons >= 10){
+//         answer = answer + parseInt(coupons/10)
+//         console.log('answer: ', answer)
+//         coupons = parseInt(coupons/10) + coupons%10
+//         console.log('coupons: ', coupons)
+//     }
+//     return answer
+// }
+
+// function solution(n){
+//     for(let i = 1; i <= n; i++) {
+//         if(i % 3 === 0){
+//             n++
+//         }
+//         if(String(i).includes('3') & i % 3 != 0){
+//             n++
+//         }
+//     }
+//     return n
+// }
+
+function solution(a, b){
+    let n =1 
+    for(let i = 1; i <= Math.min(a, b); i++) {
+        if(a%i === 0 && b%i === 0){
+            n = i
+        }
     }
-    return 'fail'
+    b/=n
+    while(b%2 === 0) b/=2
+    while(b%5 === 0) b/=5
+    return b === 1 ? 1 : 2
 }
 
-console.log(solution(["meosseugi", "1234"], [["rardss", "123"], ["yyoom", "1234"], ["meosseugi", "1234"]]	))
+console.log(solution(15))
