@@ -314,20 +314,20 @@
 
 // let solution=(a,b)=>(b+b).indexOf(a)
 
-function solution(numlist, n){
-    numlist.sort((a,b) => {
-        let distA = Math.abs(a - n)
-        let distB = Math.abs(b - n)
+// function solution(numlist, n){
+//     numlist.sort((a,b) => {
+//         let distA = Math.abs(a - n)
+//         let distB = Math.abs(b - n)
 
-        if(distA !== distB){
-            return distA - distB
-        }
-        else{
-            return b -a
-        }
-    })
-    return numlist
-}
+//         if(distA !== distB){
+//             return distA - distB
+//         }
+//         else{
+//             return b -a
+//         }
+//     })
+//     return numlist
+// }
 
 
 console.log(solution([1, 2, 3, 4, 5, 6]	, 4))
