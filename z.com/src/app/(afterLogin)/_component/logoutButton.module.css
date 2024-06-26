@@ -9,6 +9,7 @@
     align-items: center;
     background-color: transparent;
     text-align: left;
+    color: black;
 }
 .logOutButton:hover {
     background-color: rgba(15,20,25, 0.1);

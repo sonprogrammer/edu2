@@ -12,17 +12,17 @@
 }
 
 .leftSection {
-    background-color: orange;
     width: 275px;
     height: 100dvh;
+    color: black;
 }
 
 .leftSectionFixed {
-    background-color: orange;
     position: fixed;
     width: inherit;
     height: 100dvh;
     display: flex;
+    color: black;
     flex-direction: column;
 }
 
@@ -93,7 +93,6 @@
 }
 
 .rightSection {
-    background-color: green;
     width: 350px;
     height: 100%;
 }
