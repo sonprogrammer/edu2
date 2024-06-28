@@ -1,37 +1,40 @@
 import style from './profile.module.css';
-import Post from "@/app/(afterLogin)/_component/Post";
-import BackButton from "@/app/(afterLogin)/_component/BackButton";
-export default function Profile() {
-  const user = {
-    id: 'zerohch0',
-    nickname: '제로초',
-    image: '/5Udwvqim.jpg'
-  };
+import {dehydrate, HydrationBoundary, QueryClient} from "@tanstack/react-query";
+import UserPosts from "@/app/(afterLogin)/[username]/_component/UserPosts";
+import UserInfo from '@/app/(afterLogin)/[username]/_component/UserInfo';
+import {getUserPosts} from "@/app/(afterLogin)/[username]/_lib/getUserPosts";
+import {getUserServer} from "@/app/(afterLogin)/[username]/_lib/getUserServer";
+import {auth} from "@/auth";
+import { User } from '@/app/model/User';
+
+export async function generateMetadata({params}: Props) {
+  const user: User = await getUserServer({ queryKey: ["users", params.username] });
+  return {
+    title: `${user.nickname} (${user.id}) / Z`,
+    description: `${user.nickname} (${user.id}) 프로필`,
+  }
+}
+
+
+type Props = {
+  params: { username: string },
+}
+export default async function Profile({params}: Props) {
+  const {username} = params;
+  const session = await auth();
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({queryKey: ['users', username], queryFn: getUserServer})
+  await queryClient.prefetchQuery({queryKey: ['posts', 'users', username], queryFn: getUserPosts})
+  const dehydratedState = dehydrate(queryClient);
 
   return (
     <main className={style.main}>
-      <div className={style.header}>
-        <BackButton />
-        <h3 className={style.headerTitle}>{user.nickname}</h3>
-      </div>
-      <div className={style.userZone}>
-        <div className={style.userImage}>
-          <img src={user.image} alt={user.id}/>
-        </div> 
-        <div className={style.userName}>
-          <div>{user.nickname}</div>
-          <div>@{user.id}</div>
+      <HydrationBoundary state={dehydratedState}>
+        <UserInfo username={username} session={session} />
+        <div>
+          <UserPosts username={username} />
         </div>
-        <button className={style.followButton}>팔로우</button>
-      </div>
-      <div>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-      </div>
+      </HydrationBoundary>
     </main>
   )
 }
