@@ -42,13 +42,36 @@
 // }
 
 
-function solution(common){
-    if((common[1] - common[0]) == (common[2] - common[1])){
-        console.log(common.pop())
-        return common.pop() + common[1] - common[0]
-    }else{
-        return common.pop()*common[1]/common[0]
+// function solution(common){
+//     if((common[1] - common[0]) == (common[2] - common[1])){
+//         console.log(common.pop())
+//         return common.pop() + common[1] - common[0]
+//     }else{
+//         return common.pop()*common[1]/common[0]
+//     }
+// }
+
+
+// function solution(num, total){
+//     let min = Math.ceil(total/num - Math.floor(num/2))
+//     let max = Math.floor(total/num + Math.floor(num/2));
+//     return new Array(max-min+1).fill(0).map((el,i)=> {return i+min})
+// }
+
+// function solution(n1, d1, n2, d2){
+//     let a = n1/d1
+//     let b = n2/d2
+//     return a + b
+// }
+
+function solution(babbling){
+    let count = 0
+    for(let i = 0; i< babbling.length; i++){
+        if(babbling[i].includes("aya") || babbling[i].includes('yet') || babbling[i].includes('woo') || babbling[i].includes('ma')){
+            count++
+        }
     }
+    return count
 }
 
-console.log(solution([1, 2, 3, 4]))
+console.log(solution(["aya", "yee", "u", "maa", "wyeoo"]))
