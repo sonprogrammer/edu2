@@ -74,4 +74,5 @@ function solution(babbling){
     return count
 }
 
+
 console.log(solution(["aya", "yee", "u", "maa", "wyeoo"]))
