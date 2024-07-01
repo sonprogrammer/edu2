@@ -64,15 +64,23 @@
 //     return a + b
 // }
 
-function solution(babbling){
-    let count = 0
-    for(let i = 0; i< babbling.length; i++){
-        if(babbling[i].includes("aya") || babbling[i].includes('yet') || babbling[i].includes('woo') || babbling[i].includes('ma')){
-            count++
-        }
+// function solution(babbling){
+//     let count = 0
+//     for(let i = 0; i< babbling.length; i++){
+//         if(babbling[i].includes("aya") || babbling[i].includes('yet') || babbling[i].includes('woo') || babbling[i].includes('ma')){
+//             count++
+//         }
+//     }
+//     return count
+// }
+
+function solution(t, p){
+    let count = 0;
+    for(let i = 0; i <= t.length - p.length; i++){
+        let val = t.slice(i, i+p.length)
+        if(+p >= +val) count++
     }
     return count
 }
 
-
-console.log(solution(["aya", "yee", "u", "maa", "wyeoo"]))
+console.log(solution("3141592", "271"))
