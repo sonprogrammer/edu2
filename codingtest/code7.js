@@ -84,9 +84,16 @@
 // }
 
 
-const solution = (s) =>
-  [...s].map((char, i) => {
-    const count = s.slice(0, i).lastIndexOf(char);
-    return count < 0 ? count : i - count;
-  });
-console.log(solution("banana"))
+// const solution = (s) =>
+//   [...s].map((char, i) => {
+//     const count = s.slice(0, i).lastIndexOf(char);
+//     return count < 0 ? count : i - count;
+//   });
+
+
+
+function solution(number){
+    
+}
+
+console.log(solution([-2, 3, 0, 2, -5]))
