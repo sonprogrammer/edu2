@@ -74,13 +74,19 @@
 //     return count
 // }
 
-function solution(t, p){
-    let count = 0;
-    for(let i = 0; i <= t.length - p.length; i++){
-        let val = t.slice(i, i+p.length)
-        if(+p >= +val) count++
-    }
-    return count
-}
+// function solution(t, p){
+//     let count = 0;
+//     for(let i = 0; i <= t.length - p.length; i++){
+//         let val = t.slice(i, i+p.length)
+//         if(+p >= +val) count++
+//     }
+//     return count
+// }
 
-console.log(solution("3141592", "271"))
+
+const solution = (s) =>
+  [...s].map((char, i) => {
+    const count = s.slice(0, i).lastIndexOf(char);
+    return count < 0 ? count : i - count;
+  });
+console.log(solution("banana"))
