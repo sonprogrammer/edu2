@@ -142,8 +142,25 @@
 //     return +(n.toString().split('').sort((a,b) => b - a).join(''))
 // }
 
+// function solution(n){
+//     let a = Math.sqrt(n)
+//     if(a % 1 === 0){
+//         return (a+1) ** 2
+//     }else{
+//         return -1
+//     }
+// }
 
 
-console.log(solution(118372))
+function solution(n){
+    if(n % 2 === 0){
+        return "Even"
+    }else{
+        return "Odd"
+    }
+}
+
+
+console.log(solution(2))
 
 
