@@ -92,8 +92,46 @@
 
 
 
-function solution(number){
+// function solution(number){
     
-}
+// }
 
-console.log(solution([-2, 3, 0, 2, -5]))
+
+
+// function solution(s){
+//     let arr = s.split('')
+//     let pCount = 0
+//     let yCount = 0
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr[i] == 'p' || arr[i] =='P'){
+//             pCount++;
+//         }else if(arr[i] == 'y' || arr[i] == 'Y'){
+//             yCount++;
+//         }
+//     }
+//     if(pCount == yCount){
+//         return true
+//     }else{
+//         return false
+//     }
+// }
+
+// function solution(s){
+//     return +s
+// }
+
+// function solution(n){
+//     let result = 0
+//     let arr = n.toString().split('')
+//     for(let i = 0; i < arr.length; i++){
+//         result+= +arr[i]
+//     }
+//     return result
+// }
+
+
+
+
+
+
+console.log(solution(123))
