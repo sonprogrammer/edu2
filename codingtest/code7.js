@@ -180,14 +180,55 @@
 // }
 
 
-function solution(a, b){
-    let result = 0;
-    for(let i = Math.min(a, b); i <= Math.max(a, b); i++){
-        result += i
-    }
-    return result
+// function solution(a, b){
+//     let result = 0;
+//     for(let i = Math.min(a, b); i <= Math.max(a, b); i++){
+//         result += i
+//     }
+//     return result
+// }
+
+// function solution(n){
+//     let result = 0;
+//     for(let i = 1; i <= n; i++) {
+//         if(n %i === 0){
+//             result += i
+//         }
+//     }
+//     return result;
+// }
+
+// function solution(arr){
+//     let result = 0
+//     for(let i = 0; i < arr.length; i++) {
+//         result += arr[i]
+//     }
+//     return result/arr.length
+// }
+
+// function solution(arr){
+//     return arr.reduce((a,b) => a+b)
+// }
+
+// function solution(x){
+//     let arr = x.toString().split('').map(a => parseInt(a))
+//     console.log(arr)
+//     let n = 0
+//     for(let i = 0; i< arr.length; i++) {
+//         n += arr[i]
+//     }
+//     if(x % n === 0){
+//         return true
+//     }else{
+//         return false
+//     }
+// }
+
+function solution(n){
+    return 
 }
 
-console.log(solution(5, 3))
+
+console.log(solution(11))
 
 
