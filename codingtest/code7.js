@@ -224,11 +224,54 @@
 //     }
 // }
 
+
+
+
+
+// function solution(x, n){
+//     let answer = []
+//     for(let i = 0; i < n; i++) {
+//         answer.push(x*(i+1))
+//     }
+//     return answer
+// }
+
+// function solution(x, n){
+//     return Array(n).fill(x).map((v, i) => (i+1) * v)
+// }
+
+// function solution(n){
+//     let result = []
+//     for(let i = 0; i < n; i++) {
+//         if(n % i == 1){
+//             result.push(i)
+//         }
+//     }
+//     return result[0]
+// }
+
+// function solution(seoul){
+//     let index = seoul.indexOf('Kim')
+//     return `김서방은 ${index}에 있다`
+// }
+
+
 function solution(n){
-    return 
+    let cnt = 0
+    while(n !== 1){
+        if(cnt >= 500){
+            return -1
+        }
+        if(n % 2 === 0){
+            n /= 2
+        }else{
+            n = n * 3 + 1
+        }
+        cnt++
+    }
+    return cnt
 }
 
 
-console.log(solution(11))
-
+console.log(solution(6))
 
