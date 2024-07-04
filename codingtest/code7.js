@@ -152,15 +152,42 @@
 // }
 
 
-function solution(n){
-    if(n % 2 === 0){
-        return "Even"
-    }else{
-        return "Odd"
+// function solution(n){
+//     if(n % 2 === 0){
+//         return "Even"
+//     }else{
+//         return "Odd"
+//     }
+// }
+
+// function solution(a, b){
+//     let result = 0
+//     if(a <= b){
+//         for(let i = a; i <= b; i++){
+//             result += i
+//         }
+//     }else{
+//         for(let i = b; i <= a; i++){
+//             result += i
+//         }
+//     }
+//     return result
+
+// }
+// function solution(a,b){
+//     let result = 0;
+//     return (a+b) * (Math.abs(a-b)+1)/2
+// }
+
+
+function solution(a, b){
+    let result = 0;
+    for(let i = Math.min(a, b); i <= Math.max(a, b); i++){
+        result += i
     }
+    return result
 }
 
-
-console.log(solution(2))
+console.log(solution(5, 3))
 
 
