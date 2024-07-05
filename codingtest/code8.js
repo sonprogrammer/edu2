@@ -78,9 +78,44 @@
 // }
 
 
-function solution(arr){
-    const min = Math.min(...arr);
-    return arr.length !== 1 ? arr.filter(i => i !== min) : [-1]
+// function solution(arr){
+//     const min = Math.min(...arr);
+//     return arr.length !== 1 ? arr.filter(i => i !== min) : [-1]
+// }
+
+
+// function solution(phone_number){
+//     return '*'.repeat(phone_number.length - 4) + phone_number.slice(-4)
+// }
+
+// function solution(s){
+//     let midIndex = Math.floor(s.length / 2)
+//     if(s.length % 2 === 0){
+//         return s[midIndex - 1] + s[midIndex]
+//     }else{
+//         return s[midIndex]
+//     }
+// }
+
+
+// function solution(n){
+//     let answer = ''
+//     for(let i = 0; i < n; i++) {
+//         if(i % 2 === 0){
+//             answer += '수'
+//         }else{
+//             answer += '박'
+//         }
+//     }
+//     return answer
+// }
+
+function solution(a, b){
+    let result = 0
+    for(let i = 0; i < a.length; i++) {
+        result += a[i]*b[i]
+    }
+    return result
 }
 
-console.log(solution([4, 3, 2, 1]))
+console.log(solution([1,2,3,4], [-3,-1,0,2]	))
