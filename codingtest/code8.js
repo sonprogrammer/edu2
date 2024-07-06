@@ -110,12 +110,34 @@
 //     return answer
 // }
 
-function solution(a, b){
-    let result = 0
-    for(let i = 0; i < a.length; i++) {
-        result += a[i]*b[i]
-    }
-    return result
+// function solution(a, b){
+//     let result = 0
+//     for(let i = 0; i < a.length; i++) {
+//         result += a[i]*b[i]
+//     }
+//     return result
+// }
+
+// function solution(s){
+//     let arr = s.split('')
+//     arr.sort((a, b) => {
+//         if(a.toLowerCase() === b.toLowerCase()){
+//             return a > b ? -1 : 1
+//         }else{
+//             return a.toLowerCase() > b.toLowerCase() ? -1 : 1
+//         }
+//     })
+//     return arr.join('')
+// }
+
+function solution(s) {
+    return s.split('').sort((a, b) => {
+        if (a < b) return 1;
+        if (a > b) return -1;
+        return 0;
+    }).join('');
 }
 
-console.log(solution([1,2,3,4], [-3,-1,0,2]	))
+
+
+console.log(solution("Zbcdefg"))
