@@ -130,14 +130,25 @@
 //     return arr.join('')
 // }
 
-function solution(s) {
-    return s.split('').sort((a, b) => {
-        if (a < b) return 1;
-        if (a > b) return -1;
-        return 0;
-    }).join('');
+// function solution(s) {
+//     return s.split('').sort((a, b) => {
+//         if (a < b) return 1;
+//         if (a > b) return -1;
+//         return 0;
+//     }).join('');
+// }
+
+function solution(left, right) {
+    let result = 0
+    for(let i = left; i <= right; i++) {
+        if(Number.isInteger(Math.sqrt(i))){
+            result -= i
+        }else{
+            result +=i
+        }
+    }
+    return result
 }
 
 
-
-console.log(solution("Zbcdefg"))
+console.log(solution(13, 17))
