@@ -150,12 +150,36 @@
 //     return result
 // }
 
-function solution(price, money, count){
-    let result = 0;
-    for(let i = 1; i <= count; i++) {
-        result += price * i
+// function solution(price, money, count){
+//     let result = 0;
+//     for(let i = 1; i <= count; i++) {
+//         result += price * i
+//     }
+//     return result - money
+// }
+
+// function solution(s){
+//     if(s.length !== 4 && s.length !== 6){
+//         return false
+//     }
+//     for(let i = 0; i < s.length; i++) {
+//         if(isNaN(s[i]) || s[i] === ' '){
+//             return false
+//         }
+//     }
+//     return true
+// }
+
+function solution(arr1, arr2){
+    let arr = []
+    for(let i = 0; i < arr1.length; i++){
+        let row = []
+        for(let j = 0; j < arr1[i].length; j++){
+            row.push(arr1[i][j] + arr2[i][j])
+        }
+        arr.push(row)
     }
-    return result - money
+    return arr
 }
 
-console.log(solution(3, 20, 4))
+console.log(solution([[1,2],[2,3]], [[3,4],[5,6]]))
