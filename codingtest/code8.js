@@ -138,17 +138,24 @@
 //     }).join('');
 // }
 
-function solution(left, right) {
-    let result = 0
-    for(let i = left; i <= right; i++) {
-        if(Number.isInteger(Math.sqrt(i))){
-            result -= i
-        }else{
-            result +=i
-        }
+// function solution(left, right) {
+//     let result = 0
+//     for(let i = left; i <= right; i++) {
+//         if(Number.isInteger(Math.sqrt(i))){
+//             result -= i
+//         }else{
+//             result +=i
+//         }
+//     }
+//     return result
+// }
+
+function solution(price, money, count){
+    let result = 0;
+    for(let i = 1; i <= count; i++) {
+        result += price * i
     }
-    return result
+    return result - money
 }
 
-
-console.log(solution(13, 17))
+console.log(solution(3, 20, 4))
