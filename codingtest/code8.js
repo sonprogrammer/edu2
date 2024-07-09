@@ -170,16 +170,26 @@
 //     return true
 // }
 
-function solution(arr1, arr2){
-    let arr = []
-    for(let i = 0; i < arr1.length; i++){
-        let row = []
-        for(let j = 0; j < arr1[i].length; j++){
-            row.push(arr1[i][j] + arr2[i][j])
-        }
-        arr.push(row)
-    }
-    return arr
-}
+// function solution(arr1, arr2){
+//     let arr = []
+//     for(let i = 0; i < arr1.length; i++){
+//         let row = []
+//         for(let j = 0; j < arr1[i].length; j++){
+//             row.push(arr1[i][j] + arr2[i][j])
+//         }
+//         arr.push(row)
+//     }
+//     return arr
+// }
 
-console.log(solution([[1,2],[2,3]], [[3,4],[5,6]]))
+// function solution(a, b){
+//     let r;
+//     for(let ab = a*b; r = a % b; a =b, b=r){}
+//     return [b, ab/b]
+
+// }
+
+
+
+
+console.log(solution(3, 12))
