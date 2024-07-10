@@ -242,17 +242,20 @@
 // }
 
 
-function solution(s){
-    return s.split(' ').map(word =>{
-        return word.split('').map((char, i) =>{
-            if(i % 2 == 0){
-                return char.toUpperCase()
-            }else{
-                return char.toLowerCase()
-            }
-        }).join('')
-    }).join(' ')
-}
+// function solution(s){
+//     return s.split(' ').map(word =>{
+//         return word.split('').map((char, i) =>{
+//             if(i % 2 == 0){
+//                 return char.toUpperCase()
+//             }else{
+//                 return char.toLowerCase()
+//             }
+//         }).join('')
+//     }).join(' ')
+// }
 
+function solution(sizes){
+    
+}
 
 console.log(solution("try hello world"))
