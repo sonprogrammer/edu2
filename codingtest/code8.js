@@ -204,18 +204,55 @@
 //     return arr.filter((val, i) => val != arr[i+1])
 // }
 
-function solution(d, budget){
-    d.sort((a, b) => a - b)
-    let count = 0
-    for(let i = 0; i < d.length; i++){
-        if(budget >= d[i]){
-            budget -= d[i]
-            count++
-        }else{
-            break
-        }
-    }
-    return count
+// function solution(d, budget){
+//     d.sort((a, b) => a - b)
+//     let count = 0
+//     for(let i = 0; i < d.length; i++){
+//         if(budget >= d[i]){
+//             budget -= d[i]
+//             count++
+//         }else{
+//             break
+//         }
+//     }
+//     return count
+// }
+
+// function solution(n){
+//     let three = n.toString(3)
+
+//     let reverseThreee = three.split('').reverse().join('')
+
+//     return parseInt(reverseThreee, 3)
+// }
+
+// function solution(s){
+//     let arr = s.split(' ')
+//     let result = []
+//     for(let i = 0; i < arr.length; i++){
+//         for(let j = 0; j < arr[i].length; j++){
+//             if(j % 2 === 0){
+//                 result.push(arr[i][j].toUpperCase())
+//             }else{
+//                 result.push(arr[i][j])
+//             }
+//         }
+//     }
+//     return result.join('')
+// }
+
+
+function solution(s){
+    return s.split(' ').map(word =>{
+        return word.split('').map((char, i) =>{
+            if(i % 2 == 0){
+                return char.toUpperCase()
+            }else{
+                return char.toLowerCase()
+            }
+        }).join('')
+    }).join(' ')
 }
 
-console.log(solution([1,3,2,5,4], 9))
+
+console.log(solution("try hello world"))
