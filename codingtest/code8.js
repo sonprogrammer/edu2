@@ -254,8 +254,6 @@
 //     }).join(' ')
 // }
 
-function solution(sizes){
-    
-}
+
 
 console.log(solution("try hello world"))
