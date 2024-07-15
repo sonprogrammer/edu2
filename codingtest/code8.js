@@ -291,7 +291,51 @@
 //     }
 //     return Array.from(new Set(result)).sort()
 // }
+const numWords = {
+    "zero": "0",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8",
+    "nine": "9"
+};
+// function solution(s){
+//     for(const [word, num] of Object.entries(numWords)){
+//         s = s.replaceAll(word, num)
+//     }
+//     return parseInt(s, 10)
+// }
+
+// function solution(s){
+//     let answer = s
+//     for(let i = 0; i < numWords.length; i++) {
+//         let arr = answer.split(numWords[i])
+//         answer = arr.join(i)
+//     }
+//     return Number(answer)
+// }
+// function solution(strings, n) {
+//     strings.sort((a, b) => {
+//         // 먼저 n번째 글자로 비교
+//         if (a[n] > b[n]) return 1;
+//         if (a[n] < b[n]) return -1;
+//         // 만약 n번째 글자가 같으면 사전순으로 정렬
+//         if (a > b) return 1;
+//         if (a < b) return -1;
+//         return 0;
+//     });
+//     return strings;
+// }
+
+
+function solution(strings, n) {
+    return strings.sort((s1, s2) => s1[n] === s2[n] ? s1.localeCompare(s2) : s1[n].localeCompare(s2[n]))
+}
 
 
 
-console.log(solution([2,1,3,4,1]))
+console.log(solution(["sun", "bed", "car"], 1))
