@@ -269,6 +269,29 @@
 //     return maxWidth * maxHeight;
 // }
 
+// function solution(s, n){
+//     let result = ''
+
+//     for(let i = 0; i < s.length; i++){
+//         let char = s[i];
+
+//         if(char >= 'A' && char <= 'Z'){
+//             result += String.fromCharCode((charCodeAt(0) - 'A'.charCodeAt())
+//         }
+//     }
+// }
 
 
-console.log(solution("try hello world"))
+// function solution(numbers){
+//     let result = []
+//     for(let i = 0; i < numbers.length; i++){
+//         for(let j = 0; j < numbers.length; j++){
+//             result.push(numbers[i]+numbers[j]);
+//         }
+//     }
+//     return Array.from(new Set(result)).sort()
+// }
+
+
+
+console.log(solution([2,1,3,4,1]))
