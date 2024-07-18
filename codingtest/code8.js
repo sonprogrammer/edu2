@@ -336,18 +336,18 @@ const numWords = {
 //     return strings.sort((s1, s2) => s1[n] === s2[n] ? s1.localeCompare(s2) : s1[n].localeCompare(s2[n]))
 // }
 
-function solution(a, b, n) {
-    let totalColas = 0;
+// function solution(a, b, n) {
+//     let totalColas = 0;
 
-    while (n >= a) {
+//     while (n >= a) {
 
-        let newColas = Math.floor(n / a) * b;
-        totalColas += newColas;
-        n = (n % a) + newColas;
-    }
+//         let newColas = Math.floor(n / a) * b;
+//         totalColas += newColas;
+//         n = (n % a) + newColas;
+//     }
 
-    return totalColas;
-}
+//     return totalColas;
+// }
 
 
 
