@@ -350,6 +350,4 @@ const numWords = {
 // }
 
 
-
-
 console.log(solution(["sun", "bed", "car"], 1))
