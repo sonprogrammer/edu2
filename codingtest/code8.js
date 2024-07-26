@@ -291,18 +291,18 @@
 //     }
 //     return Array.from(new Set(result)).sort()
 // }
-const numWords = {
-    "zero": "0",
-    "one": "1",
-    "two": "2",
-    "three": "3",
-    "four": "4",
-    "five": "5",
-    "six": "6",
-    "seven": "7",
-    "eight": "8",
-    "nine": "9"
-};
+// const numWords = {
+//     "zero": "0",
+//     "one": "1",
+//     "two": "2",
+//     "three": "3",
+//     "four": "4",
+//     "five": "5",
+//     "six": "6",
+//     "seven": "7",
+//     "eight": "8",
+//     "nine": "9"
+// };
 // function solution(s){
 //     for(const [word, num] of Object.entries(numWords)){
 //         s = s.replaceAll(word, num)
@@ -350,17 +350,28 @@ const numWords = {
 // }
 
 
-function solution(numbers){
-    let answer = 0
+// function solution(numbers){
+//     let answer = 0
 
-    for(let i = 0; i <= 9; i++){
-        if(!numbers.includes(i)){
-            answer += i
+//     for(let i = 0; i <= 9; i++){
+//         if(!numbers.includes(i)){
+//             answer += i
+//         }
+//     }
+//     return answer
+// }
+
+
+function solution(s){
+    let arr = s.split('')
+    arr.sort((a, b) => {
+        if(a.toLowerCase() === b.toLowerCase()){
+            return a > b ? -1 : 1
+        }else{
+            return a.toLowerCase() > b.toLowerCase() ? -1 : 1
         }
-    }
-    return answer
+    })
+    return arr.join('')
 }
-
-
 
 console.log(solution(["sun", "bed", "car"], 1))
