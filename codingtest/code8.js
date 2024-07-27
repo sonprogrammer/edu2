@@ -362,16 +362,28 @@
 // }
 
 
-function solution(s){
-    let arr = s.split('')
-    arr.sort((a, b) => {
-        if(a.toLowerCase() === b.toLowerCase()){
-            return a > b ? -1 : 1
+// function solution(s){
+//     let arr = s.split('')
+//     arr.sort((a, b) => {
+//         if(a.toLowerCase() === b.toLowerCase()){
+//             return a > b ? -1 : 1
+//         }else{
+//             return a.toLowerCase() > b.toLowerCase() ? -1 : 1
+//         }
+//     })
+//     return arr.join('')
+// }
+
+function solution(n){
+    let answer = ''
+    for(let i = 0; i < n; i++) {
+        if(i % 2 === 0){
+            answer += '수'
         }else{
-            return a.toLowerCase() > b.toLowerCase() ? -1 : 1
+            answer += '박'
         }
-    })
-    return arr.join('')
+    }
+    return answer
 }
 
 console.log(solution(["sun", "bed", "car"], 1))
