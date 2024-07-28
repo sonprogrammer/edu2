@@ -386,4 +386,4 @@ function solution(n){
     return answer
 }
 
-console.log(solution(["sun", "bed", "car"], 1))
+// console.log(solution(["sun", "bed", "car"], 1))
