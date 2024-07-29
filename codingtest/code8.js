@@ -374,16 +374,16 @@
 //     return arr.join('')
 // }
 
-function solution(n){
-    let answer = ''
-    for(let i = 0; i < n; i++) {
-        if(i % 2 === 0){
-            answer += '수'
-        }else{
-            answer += '박'
-        }
-    }
-    return answer
-}
+// function solution(n){
+//     let answer = ''
+//     for(let i = 0; i < n; i++) {
+//         if(i % 2 === 0){
+//             answer += '수'
+//         }else{
+//             answer += '박'
+//         }
+//     }
+//     return answer
+// }
 
 // console.log(solution(["sun", "bed", "car"], 1))
