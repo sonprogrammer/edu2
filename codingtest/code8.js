@@ -404,14 +404,14 @@
 // }
 
 
-function solution(a, b){
-    let tempDate = new Date(2016, a-1, b)
+// function solution(a, b){
+//     let tempDate = new Date(2016, a-1, b)
 
-    return tempDate.toString().slice(0, 3).toUpperCase()
-}
+//     return tempDate.toString().slice(0, 3).toUpperCase()
+// }
 
 
-console.log(solution(5, 24))
+// console.log(solution(5, 24))
 
 
 // console.log(solution(["sun", "bed", "car"], 1))
