@@ -374,18 +374,44 @@
 //     return arr.join('')
 // }
 
-function solution(n){
-    let answer = ''
-    for(let i = 0; i < n; i++) {
-        if(i % 2 === 0){
-            answer += '수'
-        }else{
-            answer += '박'
-        }
-    }
-    return answer
+// function solution(n){
+//     let answer = ''
+//     for(let i = 0; i < n; i++) {
+//         if(i % 2 === 0){
+//             answer += '수'
+//         }else{
+//             answer += '박'
+//         }
+//     }
+//     return answer
+// }
+
+
+
+// function solution(a, b){
+//     const daysOfWeek = ["FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"]
+
+//     const daysInMonth = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+//     let totalDays = 0;
+
+//     for(let i = 1; i < a; i++){
+//         totalDays += daysInMonth[i]
+//     }
+//     totalDays += b - 1
+
+//     return daysOfWeek[totalDays % 7]
+// }
+
+
+function solution(a, b){
+    let tempDate = new Date(2016, a-1, b)
+
+    return tempDate.toString().slice(0, 3).toUpperCase()
 }
 
+
+console.log(solution(5, 24))
 
 
 // console.log(solution(["sun", "bed", "car"], 1))
