@@ -413,7 +413,9 @@
 
 // console.log(solution(5, 24))
 
-
+function solution(a){
+    console.log('hi my name is ' + a)
+}
 
 
 // console.log(solution(["sun", "bed", "car"], 1))
