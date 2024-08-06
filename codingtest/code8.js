@@ -413,9 +413,31 @@
 
 // console.log(solution(5, 24))
 
-function solution(a){
-    console.log('hi my name is ' + a)
-}
-
+// function solution(a){
+//     console.log('hi my name is ' + a)
+// }
 
 // console.log(solution(["sun", "bed", "car"], 1))
+
+
+function solution(k, score) {
+    const hallOfFame = [];  
+    const result = [];      
+
+    for (let i = 0; i < score.length; i++) {
+        const currentScore = score[i];
+
+        if (hallOfFame.length < k) {
+            hallOfFame.push(currentScore);
+        } else {
+            if (currentScore > Math.min(...hallOfFame)) {
+                hallOfFame.push(currentScore);
+                hallOfFame.sort((a, b) => b - a);  
+                hallOfFame.pop();  
+            }
+        }
+        result.push(Math.min(...hallOfFame));
+    }
+
+    return result;
+}
