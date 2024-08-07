@@ -420,24 +420,49 @@
 // console.log(solution(["sun", "bed", "car"], 1))
 
 
-function solution(k, score) {
-    const hallOfFame = [];  
-    const result = [];      
+// function solution(k, score) {
+//     const hallOfFame = [];  
+//     const result = [];      
 
-    for (let i = 0; i < score.length; i++) {
-        const currentScore = score[i];
+//     for (let i = 0; i < score.length; i++) {
+//         const currentScore = score[i];
 
-        if (hallOfFame.length < k) {
-            hallOfFame.push(currentScore);
-        } else {
-            if (currentScore > Math.min(...hallOfFame)) {
-                hallOfFame.push(currentScore);
-                hallOfFame.sort((a, b) => b - a);  
-                hallOfFame.pop();  
+//         if (hallOfFame.length < k) {
+//             hallOfFame.push(currentScore);
+//         } else {
+//             if (currentScore > Math.min(...hallOfFame)) {
+//                 hallOfFame.push(currentScore);
+//                 hallOfFame.sort((a, b) => b - a);  
+//                 hallOfFame.pop();  
+//             }
+//         }
+//         result.push(Math.min(...hallOfFame));
+//     }
+
+//     return result;
+// }
+
+function solution(name, yearning, photo) {
+    const yearningMap = {};
+    for (let i = 0; i < name.length; i++) {
+        yearningMap[name[i]] = yearning[i];
+    }
+    const result = photo.map(persons => {
+        let score = 0;
+        for (let person of persons) {
+            if (yearningMap[person] !== undefined) {
+                score += yearningMap[person];
             }
         }
-        result.push(Math.min(...hallOfFame));
-    }
+        return score;
+    });
 
     return result;
 }
+
+const name = ["may", "kein", "kain", "kali", "mari", "don"];
+const yearning = [5, 10, 1, 11, 1, 55];
+const photo = [
+    ["may", "kein", "kain"],
+    ["kali", "mari", "don", "tony"]
+];
