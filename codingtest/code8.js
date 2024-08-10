@@ -461,6 +461,7 @@ function solution(name, yearning, photo) {
 }
 
 
+
 // const name = ["may", "kein", "kain", "kali", "mari", "don"];
 // const yearning = [5, 10, 1, 11, 1, 55];
 // const photo = [
