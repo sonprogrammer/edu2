@@ -466,3 +466,4 @@ function solution(name, yearning, photo) {
 //     ["may", "kein", "kain"],
 //     ["kali", "mari", "don", "tony"]
 // ];
+
