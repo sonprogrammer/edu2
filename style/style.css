@@ -1,0 +1,20 @@
+.title{
+    text-align: center;
+    font-size: 24px;
+}
+
+.content{
+    text-align: center;
+}
+
+.box{
+    background-color: black;
+    height: 100px;
+    color: white;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+}
