@@ -7,14 +7,76 @@
     text-align: center;
 }
 
-.box{
-    background-color: black;
-    height: 100px;
-    color: white;
-    margin: 20px;
-    padding: 20px;
+
+
+.container{
+    width: 800px;
     display: flex;
-    /* flex-direction: column; */
+    height: 250px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.box{
+    width: 70%;
+    height: 100%;
+}
+
+.one {
+    width: 100%;
+    background-color: red;
+    height: 40%;
+}
+
+.two{
+
+    background-color: yellow;
+    height: 150px;
+}
+
+.three{
+    width: 30%;
+    background-color: orange;
+    height: 100%;
+}
+
+.for{
+
+    background-color: green;
+    height: 50px;
+
+}
+
+.btnbox{
+    display: flex;
     justify-content: center;
-    /* align-items: center; */
+    position: relative;
+}
+
+.btn{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    padding: 15px;
+    font-size: 20px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+}
+
+.item{
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    margin: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
 }
