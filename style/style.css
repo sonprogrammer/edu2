@@ -79,5 +79,11 @@
     justify-content: center;
     align-items: center;
     vertical-align: center;
-    
+
+}
+
+.text{
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
 }
