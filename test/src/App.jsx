@@ -14,7 +14,7 @@ function App() {
   useEffect(() =>{
     const fetchWeather = async() => {
       try {
-        const result = await axios.get(process.env.WEATHER)
+        const result = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=07b4a2fe64be361d2302c8f93d83642e')
         console.log('result',result.data)
         setWeatherData(result.data.weather[0].main)
       } catch (error) {
@@ -26,6 +26,7 @@ function App() {
 
   return (
     <div className='div'>
+      hello
       {wearherData ? (
         <p>{JSON.stringify(wearherData)}</p>
       ) : (
