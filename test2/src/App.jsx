@@ -13,7 +13,7 @@ function App() {
   }
   return (
     <div >
-        <Todocomponent/>
+        <Todocomponent />
       <div ref={topRef}>
         <Weathercomponent />
       </div>

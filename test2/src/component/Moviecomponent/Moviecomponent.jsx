@@ -18,11 +18,12 @@ const Moviecomponent = () => {
         try {
             const res = await axios.get(`http://www.omdbapi.com/?apikey=ed9cb08b&t=${title}`)
             console.log('res', res)
-            if(res.data){
+            if(res.data.Response === 'True'){
                 setMovieInfo(res.data)
-            }else {
-                alert('check the movie name')
-            }
+            }else if (res.data.Response === 'False') {
+                alert('Movie not found');
+                setMovieInfo(null); 
+              }
         } catch (error) {
             console.error(error)
         }
@@ -49,7 +50,7 @@ const Moviecomponent = () => {
                 >search</button>
         </div>
         {
-            movieInfo.Title ? (
+            movieInfo ? (
                 <div className='text-white text-center mt-[30px]'>
                     <h2>영화 이름 : {movieInfo.Title}</h2>
                     <h2>영화 장르 : {movieInfo.Genre}</h2>
