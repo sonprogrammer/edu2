@@ -1,7 +1,7 @@
 
 import { useRef } from 'react';
 import './App.css';
-import { Refcomponent, Todocomponent, Weathercomponent } from './component';
+import { Moviecomponent, Refcomponent, Todocomponent, Weathercomponent } from './component';
 
 function App() {
   const topRef = useRef(null)
@@ -18,6 +18,7 @@ function App() {
         <Weathercomponent />
       </div>
       <Refcomponent scrolltoTop={scrolltoTop}/>
+      <Moviecomponent />
     </div>
   );
 }
