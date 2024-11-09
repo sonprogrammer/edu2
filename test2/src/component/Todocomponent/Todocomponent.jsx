@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 
 
-const Todocomponent = () => {
+const Todocomponent = ({scrollToBottom}) => {
   const [checked, setChecked] = useState(false)
   const [todo, setTodo] = useState([])
   const [inputValue, setInputValue] = useState('')
@@ -39,7 +39,6 @@ const Todocomponent = () => {
     //투두에서 투두.compoleted가 true인거 갯수를 찾으면됨
     const count = todo.filter(todo => todo.completed)
     setEndCount(count.length)
-    console.log(count)
   }
 
   useEffect(() => {
@@ -74,6 +73,12 @@ const Todocomponent = () => {
                 </StyledTodoList>
               ))}
             </StyledCheckBox>
+
+{/* <div className='relative w-full h-full'> */}
+
+            <button className='absolute bottom-5 right-5 font-bold text-red-700' onClick={scrollToBottom}>go bottom</button>
+{/* </div> */}
+
 
 
     </StyledContainer>

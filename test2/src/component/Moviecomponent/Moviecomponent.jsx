@@ -17,7 +17,6 @@ const Moviecomponent = () => {
         }
         try {
             const res = await axios.get(`http://www.omdbapi.com/?apikey=ed9cb08b&t=${title}`)
-            console.log('res', res)
             if(res.data.Response === 'True'){
                 setMovieInfo(res.data)
             }else if (res.data.Response === 'False') {

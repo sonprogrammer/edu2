@@ -4,17 +4,10 @@ const Refcomponent = ({scrolltoTop}) => {
     const [stateCount, setstateCount] = useState(0);
     const refCount = useRef(0);
     //*useRef가주는 훅은 객체이다 그 안에 current라는 키가 있다
-    console.log("render");
 
 
     const [inputValue, setInputValue] = useState('')
     const inputEl = useRef('');
-
-    console.log("dasflk;asdj;lfjads;l", inputEl);
-
-    const fetch = () => {
-        console.log("fetchiing")
-    }
 
     const handleSearch = () => {
         if(inputEl.current !== inputValue && inputValue){
@@ -39,13 +32,11 @@ const Refcomponent = ({scrolltoTop}) => {
             </button>
             <button onClick={() => {
                 count++
-                console.log("count", count);
             }}>
                 변수 up
             </button>
             <button onClick={() => {
                 refCount.current++
-                console.log("refcount", refCount.current);
             }}>
                 ref up
             </button>

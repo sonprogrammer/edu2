@@ -19,7 +19,6 @@ const Weathercomponent = () => {
 
     try {
       const res = await axios.get(apiUrl)
-      console.log('res', res)
       if(res.status === 200){
         setWeatherData(res.data)
       }else{
