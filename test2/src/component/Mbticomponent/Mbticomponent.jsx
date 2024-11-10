@@ -1,23 +1,93 @@
-import React from 'react'
+import React, { useState } from 'react'
+import questions from './data'
 
 const Mbticomponent = () => {
+    const [testStart, setTestStart] = useState(false)
+    const [currentQuestion, setCurrentQuestion] = useState(0)
+    const [answers, setAnswers] = useState({
+        E: 0,
+        I: 0,
+        S: 0,
+        N: 0,
+        T: 0,
+        F: 0,
+        J: 0,
+        P: 0,
+    })
 
+    const [result, setResult] = useState("")
+
+    
     const handleStart = () => {
-        
+        setTestStart(true)
     }
-  return (
-    <div className='h-screen bg-gray-500 flex justify-center items-center '>
-        <div className='border rounded-xl w-[50%] h-[70%] flex flex-col justify-around'>
-            <h1 className='text-center text-[37px] font-bold'>Let's do the MBTI Test!</h1>
-            <h1 className='text-center text-[100px] font-bold'>MBTI</h1>
-            <div className='flex justify-center '>
-                <button 
-                    onClick={handleStart}
-                className='text-[37px] px-7 rounded-xl hover:bg-blue-400 bg-blue-500 '>Start</button>
+
+    const handleAnswer = (value) => {
+        setAnswers((prevAnswers) => ({
+            ...prevAnswers,
+            [value]: prevAnswers[value] + 1,
+        }))
+
+        if (currentQuestion < questions.length - 1) {
+            setCurrentQuestion(currentQuestion + 1)
+        } else {
+            calculateResult()
+        }
+    }
+
+    const calculateResult = () => {
+        const mbti = `${answers.E >= answers.I ? "E" : "I"}${answers.S >= answers.N ? "S" : "N"}${answers.T >= answers.F ? "T" : "F"}${answers.J >= answers.P ? "J" : "P"}`
+        setResult(mbti)
+    }
+
+
+
+    
+    
+    return (
+        <div className='h-screen bg-gray-500 flex justify-center items-center '>
+            <div className='border rounded-xl w-[50%] h-[70%] flex flex-col justify-around p-8'>
+                {testStart ? (
+                    result ? (
+                        <div className="text-center">
+                            <h2 className='text-4xl font-bold'>Your MBTI Type is: {result}</h2>
+                        </div>
+                    ) : (
+                        <div className="text-center">
+                            <h2 className='text-2xl font-bold mb-4'>{questions[currentQuestion].question}</h2>
+                            <p>{questions[currentQuestion].id}</p>
+                            <div className='flex justify-center gap-4'>
+                                {questions[currentQuestion].options.map((option, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => handleAnswer(option.value)}
+                                        className='text-lg px-4 py-2 rounded-lg hover:bg-blue-400 bg-blue-500 text-white'
+                                    >
+                                        {option.label}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )
+                ) : (
+                    <>
+                        <h1 className='text-center text-3xl font-bold'>Let's do the MBTI Test!</h1>
+                        <h1 className='text-center text-7xl font-bold'>MBTI</h1>
+                        <div className='flex justify-center mt-8'>
+                            <button
+                                onClick={handleStart}
+                                className='text-2xl px-8 py-4 rounded-xl hover:bg-blue-400 bg-blue-500 text-white'
+                            >
+                                Start
+                            </button>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
-    </div>
-  )
+
+    );
+    
 }
 
 export default Mbticomponent
