@@ -9,7 +9,7 @@ const Timercomponent = () => {
             setRemainingTime((prevTime) => {
                 if (prevTime < 1) {
                   clearInterval(timer); 
-                  alert('timeout');
+                  // alert('timeout');
                   return 0;
                 }
                 return prevTime - 1;
