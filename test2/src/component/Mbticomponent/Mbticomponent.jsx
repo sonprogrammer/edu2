@@ -22,7 +22,7 @@ const Mbticomponent = () => {
         setTestStart(true)
     }
 
-    const handleAnswer = (value) => {
+    const handleAnswer = (value) => { 
         setAnswers((prevAnswers) => ({
             ...prevAnswers,
             [value]: prevAnswers[value] + 1,

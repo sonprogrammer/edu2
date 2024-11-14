@@ -1,7 +1,7 @@
 
 import { useRef } from 'react';
 import './App.css';
-import { Moviecomponent, Refcomponent, Timercomponent, Todocomponent, Weathercomponent } from './component';
+import { Moviecomponent, Refcomponent, Testcomponent, Timercomponent, Todocomponent, Weathercomponent } from './component';
 import { Mbticomponent } from './component/Mbticomponent';
 
 
@@ -32,6 +32,7 @@ function App() {
       <div ref={bottomRef}>
         <Mbticomponent />
       </div>
+      <Testcomponent />
     </div>
   );
 }
