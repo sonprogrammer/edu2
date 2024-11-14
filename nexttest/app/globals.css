@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  margin: 0;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.sub{
+  text-align: center;
+}
+
+.food{
+  margin: 20px auto ;
+  width: 200px;
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 5px;
+  &:hover{
+    background-color: blue;
+    cursor: pointer;
+  }
+}
+
+.food img{
+  width: 100%;
+  height: auto;
+  background-color: blue;
+}
+
+.navbar{
+  background: white;
+  padding: 20px;
+  color: black;
+}
+
+.navbar a{
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.cart-item {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid grey;
+  line-height: 0px;
+  margin-top: 10px;
+} 
