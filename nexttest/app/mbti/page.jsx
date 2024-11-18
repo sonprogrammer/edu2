@@ -16,6 +16,10 @@ const page = () => {
 
   const clickStart = () => {
     setStart(true)
+    setCurrentQuestion(0)
+    setAnswers({"O": 0, "X": 0})
+    setResult("")
+
   }
 
   const handleAnswer = (value) => {
@@ -43,7 +47,10 @@ const page = () => {
         className='flex flex-col justify-around items-center text-center border-2 p-7 w-[50%] h-[70%] rounded-xl'>
         {start ? (
           result ? (
-            <h1 className='text-2xl text-black'>you are type of {result}man</h1>
+            <>
+              <h1 className='text-2xl text-black'>you are type of {result}</h1>
+              <button onClick={clickStart}>try again</button>
+            </>
           ): (
               <div>
         <h2>{data[currentQuestion].question}</h2>
