@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
         <div className="navbar">
           <Link href='/'>home</Link>
           <Link href='/list'>list</Link>
+          <Link href='/mbti'>mbti test</Link>
         </div>
         <div className="flex-grow">
           {children}
