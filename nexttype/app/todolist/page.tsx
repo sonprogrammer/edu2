@@ -9,7 +9,7 @@ const page = () => {
         <button>+</button>
       </div>
       <div>
-        input
+        <input type="text" placeholder='type here...'/>
       </div>
     </div>
   )
