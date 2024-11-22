@@ -39,22 +39,25 @@ const page = () => {
 
     
   return (
-    <div className='h-full flex flex-col pt-40 items-center bg-gray-500 gap-10'>
-      <div className='mb-10 bg-blue-300 '>
+    <div className='h-screen flex flex-col items-center bg-gray-500 gap-10'>
+      <div className='mb-10  flex flex-col justify-center h-[30%]'>
         <h1 className='text-xl text-center mb-10'>todoList</h1>
+        <div className='flex'>
+
         <input 
             className='text-black border rounded-md p-2'
             placeholder='write...'
             value={task}
             onChange={inputTask}
             onKeyDown={handle}
-             />
+            />
         <button
             className='ml-2 bg-blue-500 text-white px-4 py-2 rounded'
             onClick={handleClick}
-        >+</button>
+            >+</button>
+            </div>
       </div>
-      <div className='flex flex-col overflow-y-auto max-h-[400px] gap-3 w-[50%] text-center'>
+      <div className='flex flex-col overflow-y-auto max-h-[50%] gap-3 w-[50%] text-center'>
                 {todos.length > 0 ?(
             todos.map((todo, index) => (
                 <div key={index} className='flex justify-between items-center w-full'>

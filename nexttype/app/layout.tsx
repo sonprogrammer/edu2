@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
+import '@pigment-css/react/styles.css';
+
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
       >
-        <div className="bg-white text-black flex gap-5 p-5 text-xl">
+        <div className="bg-white text-black flex gap-5 p-5 text-xl fixed top-0 left-0 right-0 z-10">
           <Link href='/'>home</Link>
           <Link href='/todolist'>todolist</Link>
         </div>

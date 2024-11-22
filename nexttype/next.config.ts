@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+// next.config.js
+import { withPigment } from '@pigment-css/nextjs-plugin';
 
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Next.js 설정 옵션을 추가
+  reactStrictMode: true,
 };
 
-export default nextConfig;
+export default withPigment(nextConfig);

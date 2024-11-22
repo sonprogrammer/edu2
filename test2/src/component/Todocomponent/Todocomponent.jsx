@@ -58,7 +58,7 @@ const Todocomponent = ({scrollToBottom}) => {
 
             <StyledInput>
               <input type="text" value={inputValue} onKeyDown={handleInputKey} onChange={handleInputChange} placeholder='what to do'/>
-              <StyledButton variant="contained" onClick={handleClick} >add</StyledButton>
+              <StyledButton variant="contained" onClick={handleClick} >addd</StyledButton>
             </StyledInput>
             <StyledCheckBox>
               {todo.map((item, i) => (

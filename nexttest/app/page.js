@@ -1,6 +1,6 @@
 import Link from "next/link";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/globals.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../styles/globals.css';
 
 
 
