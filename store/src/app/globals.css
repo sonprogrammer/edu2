@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  /* background: var(--background); */
+  font-family: Arial, Helvetica, sans-serif;
+  /* max-width: 393px; */
+}
+
+.navbar{
+  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px;
+}
+
+
+.main{
+  background-color: lightgray;
+  z-index: 10;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.footer{
+  background-color: orange;
+  color: white;
+  padding: 32px 15px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.footer p{
+  color: purple;
+}
+
+
+.clothes{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 21px;
+  justify-content: center;
+  height: 100%;
+  align-items: flex-start;
+  align-content: center; 
+
+}
+
+.shoes{
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background-color: orange;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jacket{
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pants{
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bedding{
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ /* .shoes, .jacket {
+  margin-bottom: 10px; 
+} */
+
+.pants .bedding {
+  margin-top: -10px; 
+
+} 
