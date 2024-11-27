@@ -4,45 +4,54 @@ import React, { useEffect, useRef } from 'react';
 
 const KakaoMap: React.FC = () => {
   const mapRef = useRef<HTMLDivElement | null>(null);
+  
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const script = document.createElement('script');
-      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=c94b38fd92f27930e5ec6e68015aeecd&autoload=false`;
+      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=cbf0d229c11de2e16d575d9d5107a59f&autoload=false`;
       script.async = true;
-
+      
       script.onload = () => {
+        console.log('window', window.kakao)
         if (window.kakao && window.kakao.maps) {
-          const mapContainer = mapRef.current;
-          if (!mapContainer) return;
+          // Kakao Maps API 로드 완료 후 지도 생성
+          window.kakao.maps.load(() => {
+            console.log('mapref.current', mapRef.current)
+            const mapContainer = mapRef.current;
+            if (!mapContainer) return;
 
-          const mapOption = {
-            center: new window.kakao.maps.LatLng(37.5665, 126.9780),
-            level: 2,
-          };
+            const mapOption = {
+              center: new window.kakao.maps.LatLng(37.5665, 126.9780),
+              level: 3,
+            };
 
-          const map = new window.kakao.maps.Map(mapContainer, mapOption);
+            const map = new window.kakao.maps.Map(mapContainer, mapOption);
 
-          const markerPosition = new window.kakao.maps.LatLng(37.5665, 126.9780);
-          const marker = new window.kakao.maps.Marker({
-            position: markerPosition,
+            const markerPosition = new window.kakao.maps.LatLng(
+              37.5665,
+              126.9780
+            );
+            const marker = new window.kakao.maps.Marker({
+              position: markerPosition,
+            });
+            marker.setMap(map);
           });
-          marker.setMap(map);
         } else {
-          console.error("Kakao Map SDK failed to load.");
+          console.error('Kakao Map SDK failed to load.');
         }
       };
 
       document.head.appendChild(script);
     }
   }, []);
-
   return (
     <div
       ref={mapRef}
       style={{
-        width: '100%',
-        height: '500px',
+        width: '80%',
+        height: '80%',
+        borderRadius: '50px'
       }}
     ></div>
   );

@@ -8,7 +8,7 @@ export default async function Detail(props) {
     const client = await connectDB
   const db = client.db('forum')
   let result = await db.collection('post').findOne({ _id : new ObjectId(props.params.any) })
-  console.log(props)
+  console.log(props.params.any)
 
   if(result === null) {
     return Notfound()

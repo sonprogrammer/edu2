@@ -12,6 +12,7 @@ export default async function List() {
 
   return (
     <div className='list-bg'>
+      <DetailLink />
       <ListItem result={result}/>
     </div>
   )

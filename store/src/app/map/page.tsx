@@ -10,8 +10,9 @@ const Page: React.FC = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh', // 화면 전체 높이
+        height: '100%', 
         padding: '16px',
+        zIndex: 10,
       }}
     >
       <KakaoMap />
