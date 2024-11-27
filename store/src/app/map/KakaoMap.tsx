@@ -9,7 +9,7 @@ const KakaoMap: React.FC = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const script = document.createElement('script');
-      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=cbf0d229c11de2e16d575d9d5107a59f&autoload=false`;
+      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_KEY}&autoload=false`;
       script.async = true;
       
       script.onload = () => {
