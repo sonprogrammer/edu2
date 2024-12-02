@@ -35,6 +35,7 @@ body {
   z-index: 10;
   flex-grow: 1;
   overflow: auto;
+  width: 100%;
 }
 
 .footer{
@@ -106,5 +107,20 @@ body {
 
 .pants .bedding {
   margin-top: -10px; 
-
 } 
+
+
+.modal{
+
+}
+
+.modalInput input{
+  padding: 10px;
+  margin: 10px;
+}
+
+.modalInput button{
+  background: orange;
+  border-radius: 20px;
+  margin-top: 12px;
+}
