@@ -124,3 +124,29 @@ body {
   border-radius: 20px;
   margin-top: 12px;
 }
+
+.recordBox{
+  display: flex;
+  border: 2px solid orange;
+  padding: 4px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.recordBox img{
+  width: 120px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.recordDetail{
+  border-left: 2px solid gray;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: black;
+}
+
