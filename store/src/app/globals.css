@@ -135,7 +135,7 @@ body {
 
 .recordBox img{
   width: 120px;
-  max-width: 100%;
+  /* max-width: 100%; */
   height: auto;
   border-radius: 20px;
   margin-right: 10px;
@@ -144,9 +144,22 @@ body {
 .recordDetail{
   border-left: 2px solid gray;
   padding-left: 10px;
+  padding-right: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   color: black;
+  width: 100%;
+}
+
+.recordBox .btn{
+  background-color: rgb(251, 183, 59);
+  color: white;
+  font-weight: bolder;
+}
+
+.text{
+  display: flex;
+  justify-content: space-between;
 }
 

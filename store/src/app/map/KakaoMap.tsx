@@ -21,6 +21,10 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ onLoadComplete }) => {
             navigator.geolocation.getCurrentPosition((position) => {
               const { latitude, longitude } = position.coords
               console.log('geolocation', latitude, longitude)
+
+              const store1 = new window.kakao.maps.LatLng(36.7881311, 127.1137473); 
+              const store2 = new window.kakao.maps.LatLng(36.80440059597869, 127.1119463550031); 
+              
               
               const mapContainer = mapRef.current;
               if (!mapContainer) return;
@@ -35,12 +39,14 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ onLoadComplete }) => {
               const markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
 
               const imageSrc = './click.png'
+              const meImage = './me.png'
               const imageSize = new window.kakao.maps.Size(52, 52)
               const imageOptions = {
                 offset: new window.kakao.maps.Point(32, 64)
               }
 
-              const markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize, imageOptions)
+              const markerImage = new window.kakao.maps.MarkerImage(meImage, imageSize, imageOptions)
+              const storeImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize, imageOptions)
               
 
               const marker = new window.kakao.maps.Marker({
@@ -48,6 +54,21 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ onLoadComplete }) => {
                 image: markerImage
               })
               marker.setMap(map)
+
+
+            const marker1 = new window.kakao.maps.Marker({
+              position: store1,
+              title: "cloudset 쌍용점",
+              image: storeImage
+            });
+            marker1.setMap(map);
+
+            const marker2 = new window.kakao.maps.Marker({
+              position: store2,
+              title: "cloudset 불당점", 
+              image: storeImage
+            });
+            marker2.setMap(map);
               
             })
 
@@ -76,3 +97,6 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ onLoadComplete }) => {
 };
 
 export default KakaoMap;
+
+
+// 위도(Latitude) : 36.7881311 / 경도(Longitude) : 127.1137473

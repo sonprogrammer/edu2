@@ -32,7 +32,9 @@ export default function RootLayout({
       >
         <div className="flex flex-col h-full w-[393px] relative">
           <div className="navbar">
-            <img src="./logo7.png" alt="logo" className="h-10" />
+            <Link href='/'>
+              <img src="./logo7.png" alt="logo" className="h-10" />
+            </Link>
           </div>
           <div className="main">
             {children}
@@ -42,7 +44,7 @@ export default function RootLayout({
             <p>|</p>
             <Link href='/map'>지도</Link>
             <p>|</p>
-            <Link href='/record'>남은기간</Link>
+            <Link href='/record'>내 옷장</Link>
           </div>
         </div>
       </body>

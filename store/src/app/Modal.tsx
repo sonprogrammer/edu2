@@ -19,9 +19,9 @@ const Modal = ({ isOpen, closeModal, selectedItem }: ModalProps) => {
           <h2 className='text-center mb-6'>{selectedItem} detail</h2>
           <button className='absolute right-6 top-6' onClick={closeModal}>X</button>
         <div className='modalInput flex flex-col'>
-          <input type="number" placeholder='weight' /> 
+          <input type="number" placeholder='weight(KG)' /> 
           <input type="number" placeholder='amount' />
-          <input type="type" placeholder='name' />
+          <input type="type" placeholder='name(for your items)' />
           <button className='p-3'>submit</button>
         </div>
       </div>
