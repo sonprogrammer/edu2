@@ -26,6 +26,7 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ onLoadComplete }) => {
               const store2 = new window.kakao.maps.LatLng(36.80440059597869, 127.1119463550031); 
               
               
+              
               const mapContainer = mapRef.current;
               if (!mapContainer) return;
               
