@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
+import Link from "next/link";
 
 
 
@@ -86,12 +87,14 @@ export default function Home() {
           <Slider {...sliderSettings}>
             {popularMovies.map((movie: any) => (
               <div key={movie.id}>
+                <Link href={`/movie/${movie.id}`}>
                 <img
                   src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                   alt={movie.title}
                   className="rounded-lg"
                 />
                 <p>{movie.title}</p>
+                </Link>
               </div>
             ))}
           </Slider>

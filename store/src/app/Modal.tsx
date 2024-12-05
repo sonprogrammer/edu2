@@ -10,7 +10,7 @@ const Modal = ({ isOpen, closeModal, selectedItem }: ModalProps) => {
   if (!isOpen) return null
 
   return (
-    <div className='absolute inset-0 text-black flex items-center justify-center bg-black bg-opacity-50'
+    <div className='absolute inset-0 text-black flex items-center justify-center bg-black bg-opacity-50 shadow-xl'
       onClick={closeModal} 
     >
       <div className='modal bg-white w-[90%] p-6 rounded-lg relative'
