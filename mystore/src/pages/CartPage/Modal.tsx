@@ -25,6 +25,12 @@ const Modal = ({modalClose, handleSubmit} : ModalProps) => {
   //   modalClose() 
   // }
 
+  const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if(e.key === 'Enter') {
+      handleFormSubmit()
+    }
+  }
+
   const handleFormSubmit = () => {
     if (name) {
       handleSubmit(); 
@@ -41,7 +47,7 @@ const Modal = ({modalClose, handleSubmit} : ModalProps) => {
           <p>X</p>
         </StyledClose>
         <StyledInput>
-          <input type="text" placeholder='🚷출처를 밝히시오!🚷' onChange={handleInput}/>
+          <input type="text" placeholder='🚷출처를 밝히시오!🚷' onChange={handleInput} onKeyDown={handleKeydown}/>
         </StyledInput>
         <StyledSubmit onClick={handleFormSubmit}>제출</StyledSubmit>
       </StyledModalContent>

@@ -6,14 +6,15 @@ interface ChapterComponentProps{
   data: any[];
   onButtonClick: (id: any) => void;
   isCartPage? : boolean;
-  cartItems: any[];
+  isMyPage? : boolean;
+  cartItems?: any[];
   isPurchased?: (item:any) => boolean;
 }
 
 
-const ChapterComponent = ({ data, onButtonClick, isCartPage, cartItems, isPurchased }: ChapterComponentProps) => {
+const ChapterComponent = ({ data, onButtonClick, isCartPage, isMypage, cartItems, isPurchased }: ChapterComponentProps) => {
   const isInCart = (item: any) => {
-    return cartItems.some(cartItem => cartItem.id === item.id);
+    return (cartItems || []).some(cartItem => cartItem.id === item.id);
   }
 
 
@@ -25,13 +26,14 @@ const ChapterComponent = ({ data, onButtonClick, isCartPage, cartItems, isPurcha
           <StyledContent>
             {info.title}
           </StyledContent>
-          {!isCartPage ? (
+          {
+
+          !isCartPage ? (
             <StyledBtn
                onClick={() => onButtonClick(info)}
                 isInCart={isInCart(info)}
                 disabled={isPurchased && isPurchased(info)}
                 >
-              {/* {isPurchased && isInCart(info) ? 'purchased' : 'Cart'} */}
               {isPurchased && isPurchased(info) ? 'Purchased' : isInCart(info) ? 'In Cart' : 'Cart'}
             </StyledBtn>
           ) : (
