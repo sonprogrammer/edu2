@@ -1,0 +1,1 @@
+export { default as ChapterComponent } from './ChapterComponent'

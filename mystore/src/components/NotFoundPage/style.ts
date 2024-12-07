@@ -5,10 +5,12 @@ import tw from "twin.macro";
 export const StyledContainer = styled.div`
     ${tw`
         flex
-        w-full
+        h-full
+        items-center
         justify-center
-        py-10
-        bg-orange-400
+        text-[33px]
         font-bold
+        text-purple-400
     `}
 `
+

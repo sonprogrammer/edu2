@@ -1,6 +1,8 @@
 import { Link, Route, Router, Routes } from 'react-router-dom'
 import './App.css'
-import { LogoComponent } from './components/LogoComponent'
+import { useState } from 'react'
+import { CartPage, LayoutPage, MainPage, MyPage } from './pages'
+import { DetailComponet } from './components'
 
 
 
@@ -8,14 +10,19 @@ import { LogoComponent } from './components/LogoComponent'
 
 function App() {
 
+
+
   return (
-    <div className='bg-gray-500'>
-      <Router> {/* BrowserRouter로 감쌈 */}
+    <div className='flex justify-center '>
       <Routes>
-        <Route path="/" element={<LogoComponent />} />
-        {/* 다른 라우트도 추가 가능 */}
+        <Route element={<LayoutPage />}>
+          <Route path='/' element={<MainPage />} />
+          <Route path='/mypage' element={<MyPage />} />
+          <Route path='/detail/:id' element={<DetailComponet />} />
+          <Route path='/cart' element={<CartPage />} />
+        </Route>
       </Routes>
-    </Router>
+
     </div>
   )
 }
