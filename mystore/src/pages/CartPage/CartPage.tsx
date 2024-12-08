@@ -3,12 +3,13 @@ import { ChapterComponent } from '../../components/ChapterComponent'
 import { NotFoundPage } from '../../components'
 import { StyledBtn } from './style'
 import Modal from './Modal'
+import { Section } from '../../types'
 
 
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState<any[]>([])
-  const [myItems, setMyItems] = useState<any[]>([])
+  const [cartItems, setCartItems] = useState<Section[]>([])
+  const [myItems, setMyItems] = useState<Section[]>([])
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   
 
@@ -24,7 +25,7 @@ const CartPage = () => {
   },[])
 
   
-  const handleRemoveFromCart = (removeItem: any) => {
+  const handleRemoveFromCart = (removeItem: Section) => {
     const updateCart = cartItems.filter(item => item.id !== removeItem.id)
     console.log('updateCart', updateCart)
 
@@ -44,7 +45,7 @@ const CartPage = () => {
   const handleSubmit = () => {
     const updatedPurchasedItems = [...myItems, ...cartItems];
     localStorage.setItem('myItem', JSON.stringify(updatedPurchasedItems));
-    localStorage.removeItem('cart'); // 장바구니 초기화
+    localStorage.removeItem('cart'); 
     setMyItems(updatedPurchasedItems); 
     setCartItems([]); 
     closeModal(); 

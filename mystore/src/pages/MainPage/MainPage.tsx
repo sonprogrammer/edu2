@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { ChapterComponent } from '../../components/ChapterComponent'
 import { infoData } from '../../Data/infoData'
+import { Section } from '../../types'
 
 const MainPage = () => {
-  const [cartItems, setCartItems] = useState<any[]>([])
-  const [myItems, setMyItems] = useState<any[]>([])
+  const [cartItems, setCartItems] = useState<Section[]>([])
+  const [myItems, setMyItems] = useState<Section[]>([])
 
   useEffect(() => {
     const cart = localStorage.getItem('cart')
@@ -17,7 +18,7 @@ const MainPage = () => {
     }
   },[])
 
-  const handleCart = (item: any) => {
+  const handleCart = (item: Section) => {
 
     const isInCart = cartItems.some(cartItem => cartItem.id === item.id)
 
@@ -30,13 +31,13 @@ const MainPage = () => {
     }
   }
   
-  const isPurchased = (item: any) => {
+  const isPurchased = (item: Section) => {
     return myItems.some((myItem) => myItem.id === item.id);
   };
 
   return (
     <div className='p-5'>
-      <ChapterComponent data={infoData} onButtonClick={handleCart} cartItems={cartItems} isPurchased={isPurchased}/>
+      <ChapterComponent data={infoData} onButtonClick={handleCart} cartItems={cartItems} isPurchased={isPurchased} />
     </div>
   )
 }

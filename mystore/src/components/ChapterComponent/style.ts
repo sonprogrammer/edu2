@@ -3,20 +3,25 @@ import tw from "twin.macro";
 
 
 interface StyledBtnProps {
-    isInCart: boolean;
+    isInCart?: boolean;
     disabled?: boolean;
+    isMypage?: boolean;
   }
+
+
 
 export const StyledContainer = styled.div`
     ${tw`
         p-7
         flex
         border-4
-        border-zinc-700
+        border-purple-300
+        rounded-xl
         mb-3
         items-center
         relative
-    `}
+        `}
+    
 `
 export const StyledImage = styled.div<{ imageUrl?: string }>`
   ${tw`
@@ -48,7 +53,7 @@ export const StyledBtn = styled.div<StyledBtnProps>`
         rounded-xl
         text-white
         `}
-        background-color: ${(props) => (props.isInCart ? 'rgb(165 180 252)' : 'rgb(139 92 246)')}; 
+        background-color: ${(props) => (props.isInCart ? 'rgb(165 180 252)' : props.isMypage ? 'rgb(249 168 212)' : 'rgb(139 92 246)')}; 
         pointer-events: ${(props) => (props.disabled ? 'none' : 'auto')};
         opacity: ${(props) => (props.disabled ? 0.5 : 1)};
 

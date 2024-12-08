@@ -1,6 +1,5 @@
-import { Link, Route, Router, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import { useState } from 'react'
 import { CartPage, LayoutPage, MainPage, MyPage } from './pages'
 import { DetailComponet } from './components'
 

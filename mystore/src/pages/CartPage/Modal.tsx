@@ -15,15 +15,24 @@ const Modal = ({modalClose, handleSubmit} : ModalProps) => {
     setName(e.target.value)
   }
   
-  // const handleFormSubmit = async () => {
-  //   const response = await fetch('/.netlify/functions/submit-form', {
-  //     method: 'POST',
-  //     body: JSON.stringify({ name }),
-  //     headers: { 'Content-Type': 'application/json' },
-  //   })
-  //   const result = await response.json()
-  //   modalClose() 
-  // }
+  const handleFormSubmit = async () => {
+    if (name) {
+      // Netlify Functions API 호출
+      const response = await fetch('https://glittering-mochi-caff7f.netlify.app/.netlify/functions/submit-source', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name }),
+      });
+  
+      const result = await response.json();
+      console.log(result.message);  
+      handleSubmit(); 
+    } else {
+      alert("출처를 입력해주세요!");
+    }
+  };
 
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === 'Enter') {
@@ -31,13 +40,13 @@ const Modal = ({modalClose, handleSubmit} : ModalProps) => {
     }
   }
 
-  const handleFormSubmit = () => {
-    if (name) {
-      handleSubmit(); 
-    } else {
-      alert("출처를 입력해주세요!");
-    }
-  };
+  // const handleFormSubmit = () => {
+  //   if (name) {
+  //     handleSubmit(); 
+  //   } else {
+  //     alert("출처를 입력해주세요!");
+  //   }
+  // };
   
   return (
     <StyledModalContainer onClick={modalClose}>
