@@ -16,10 +16,10 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   let res = cookies().get('mode')
-  console.log(res)
+  console.log('res', res)
 
   let session = await getServerSession(authOptions)
-  console.log(session)
+  console.log('session',session)
   return (
     <html lang="en">
       <body className={ res != undefined && res.value == 'dark' ? 'dark-mode' : ''}>

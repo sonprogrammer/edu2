@@ -7,9 +7,7 @@ export default async function Write2(){
         const client = await connectDB
         const db = await client.db('forum')
         const result = await db.collection('post_test').insertOne({title: formData.get('title')})
-        console.log(result)
-        console.log('hi')
-        console.log(formData.get('title'))
+    
     }
     return(
         <div>
