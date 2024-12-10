@@ -35,7 +35,7 @@ const DetailComponet = () => {
                 <StyledPortfolio>
                     {item.content.map((portfolio, index) => (
                         <StyledIndPort key={index}>
-                            {/* Link 속성이 있으면 링크만 표시 */}
+
                             {portfolio.Link ? (
                                 <div className='flex justify-between text-[17px] font-bold'>
                                     <h1>Github</h1>
@@ -50,7 +50,7 @@ const DetailComponet = () => {
                                 </div>
                             ) : (
                                 <>
-                                    {/* 일반 항목 렌더링 */}
+
                                     <div className='flex justify-between text-[17px] font-bold'>
                                         <h1>Project Name</h1>
                                         <h3>{portfolio.projectTitle}</h3>
