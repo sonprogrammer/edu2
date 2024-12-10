@@ -13,3 +13,4 @@ if (process.env.NODE_ENV === 'development') {
   connectDB = new MongoClient(url, options).connect()
 }
 export { connectDB }
+

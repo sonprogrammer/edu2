@@ -1,5 +1,5 @@
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import './App.css';
 import { Moviecomponent, Refcomponent, Testcomponent, Timercomponent, Todocomponent, Weathercomponent } from './component';
 import { Mbticomponent } from './component/Mbticomponent';
@@ -8,6 +8,16 @@ import { Mbticomponent } from './component/Mbticomponent';
 function App() {
   const topRef = useRef(null)
   const bottomRef = useRef(null)
+
+  //ex
+  const countRef = useRef(0)
+  const [renderCount, setRenderCount] = useState(0)
+
+  const handleClick = () => {
+    countRef.current += 1;
+    setRenderCount(renderCount + 1)
+  }
+  
 
   const scrolltoTop = () => {
     if(topRef.current){
@@ -33,6 +43,15 @@ function App() {
         <Mbticomponent />
       </div>
       <Testcomponent />
+
+    {/* ex */}
+    <div>
+      <p>Count ref : {countRef.current}</p>
+      <p>render count : {renderCount}</p>
+      <button onClick={handleClick}>click</button>
+    </div>
+
+      
     </div>
   );
 }
