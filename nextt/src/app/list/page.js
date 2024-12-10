@@ -6,7 +6,6 @@ const page = async () => {
   const client = await connectDB;
   const db = client.db("forum");
   let res = await db.collection("post").find().toArray();
-  console.log(res);
 
   return (
     <div className="list-bg">

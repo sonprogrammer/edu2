@@ -24,3 +24,4 @@ const Detail = async (props) => {
 }
 
 export default Detail
+ 

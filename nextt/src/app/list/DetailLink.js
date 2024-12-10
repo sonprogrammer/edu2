@@ -5,9 +5,6 @@ import React from 'react'
 
 const DetailLink = () => {
     let router = useRouter()
-    let a = usePathname()
-
-    console.log('a',a)
     
   return (
     <div>
