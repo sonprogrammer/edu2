@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import './App.css';
 import { Moviecomponent, Refcomponent, Testcomponent, Timercomponent, Todocomponent, Weathercomponent } from './component';
 import { Mbticomponent } from './component/Mbticomponent';
+import Test from './Test';
 
 
 function App() {
@@ -45,13 +46,13 @@ function App() {
       <Testcomponent />
 
     {/* ex */}
-    <div>
+    {/* <div>
       <p>Count ref : {countRef.current}</p>
       <p>render count : {renderCount}</p>
       <button onClick={handleClick}>click</button>
-    </div>
+    </div> */}
 
-      
+      <Test></Test>
     </div>
   );
 }

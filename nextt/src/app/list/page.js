@@ -13,7 +13,8 @@ const page = async () => {
         <div className="list-item">
           <h4>{r.title}</h4>
           <Link href={`/detail/${r._id}`}>link</Link>
-          <DetailLink />
+          <Link href={`/edit/${r._id}`}>수정</Link>
+
           <p>{r.content}</p>
         </div>
       ))}
