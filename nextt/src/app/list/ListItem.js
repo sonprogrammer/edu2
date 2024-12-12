@@ -21,6 +21,7 @@ const ListItem = ({res}) => {
                 })
                 .then((a) => {
                     return a.json()
+                    
                 })
                 .then((a) => {
                     console.log(a)
