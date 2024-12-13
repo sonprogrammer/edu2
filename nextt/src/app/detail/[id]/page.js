@@ -17,8 +17,7 @@ const Detail = async (props) => {
     <div>
       <h4>상세페이지</h4>
       {res.title}
-      <h4>글제목</h4>
-      <p>글내용</p>
+      <p>{res.content}</p>
     </div>
   )
 }

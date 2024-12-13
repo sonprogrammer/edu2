@@ -6,7 +6,7 @@ import DetailLink from "./DetailLink";
 import ListItem from "./ListItem";
 
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 20;
 
 const page = async () => {
   const client = await connectDB;

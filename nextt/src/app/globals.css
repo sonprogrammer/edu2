@@ -46,4 +46,6 @@ body {
 .list-item p {
   color: grey;
   margin : 5px 0px;
+  opacity: 1;
+  transition: all 1s;
 } 
