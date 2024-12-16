@@ -15,6 +15,7 @@
 
 export default {
     name: 'Card',
+    
     props: {
         products: Array,
         modalOpen: Number
