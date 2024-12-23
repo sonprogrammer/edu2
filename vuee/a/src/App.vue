@@ -6,6 +6,8 @@
       <div class="white-bg" @click.stop>
         <h4>{{rooms[clicked].title}}</h4>
         <p>{{rooms[clicked].content}}</p>
+        <img :src="rooms[clicked].image" alt="image">
+        <p>{{rooms[clicked].price}} Won</p>
         <p class="close" @click="modalOpend = close">X</p>
       </div>
     </div>
@@ -94,10 +96,13 @@ div{
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .white-bg{
-  width: 100%;
+  width: 80%;
   background: white;
   border-radius: 8px;
   padding: 20px;
