@@ -1,40 +1,40 @@
 <template>
   <div>
 
-    <!-- modal -->
-    <div class="black-bg" v-if="modalOpend == true" @click="modalOpend = false">
-      <div class="white-bg" @click.stop>
-        <h4>{{rooms[clicked].title}}</h4>
-        <p>{{rooms[clicked].content}}</p>
-        <img :src="rooms[clicked].image" alt="image">
-        <p>{{rooms[clicked].price}} Won</p>
-        <p class="close" @click="modalOpend = close">X</p>
-      </div>
-    </div>
+    <transition name="fade">
+      <Modal @modalClosed="modalClosed" :rooms="rooms.find(room => room.id === clicked)"  :modalOpend='modalOpend'/>
+      <!-- <Modal @modalClosed="modalClosed" :rooms='rooms' :clicked='clicked' :modalOpend='modalOpend'/> -->
+    </transition>
+
 
     <div class="menu">
       <a v-for="a in menus" :key="a" :href="a">{{ a }}</a>
     </div>
 
+
+    <Discount />
+
     
-  <div v-for="(a,i) in rooms" :key="a">
-    <img :src="`https://codingapple1.github.io/vue/room${i}.jpg`" alt="image" class="room-img" @click="modalOpendF(i)">
-    <h4 >{{a.title}}</h4>
-    <p>{{a.price}} Won</p>
-    <button @click="increase(i)">허위매물신고</button>
-    <span>신고수 : {{ a.report }}</span>
-  </div>
+    <button @click="priceSort">가격순 정렬</button>
+    <button @click="sortBack">되돌리기</button>
+
+
+      <Card @increase="increase(i)" @click="id" @openModal="modalOpend = true; clicked = $event"  :rooms='rooms[i]' v-for="(a,i) in rooms" :key="a.id"/>
 
   </div>
 </template>
 
-<script>
+<script> 
 import data from './assets/room'
+import Discount from './components/Discount.vue'
+import Modal from './components/Modal.vue'
+import Card from './components/Card.vue'
 
 export default {
   name: 'App',
   data(){
     return{
+      originalRooms: [...data],
       menus: ['Home', 'Shop', 'About'],
       modalOpend: false,
       rooms: data,
@@ -48,10 +48,24 @@ export default {
     modalOpendF(i){
       this.modalOpend = true;
       this.clicked = i;
+    },
+    modalClosed(){
+      this.modalOpend = false;
+    },
+    priceSort(){
+      this.rooms.sort((a, b) => a.price - b.price)
+    },
+    sortBack(){
+      this.rooms = [...this.originalRooms]
+    },
+    id(){
+      console.log('id', this.clicked)
     }
   },
   components: {
-
+    Discount,
+    Modal,
+    Card
   }
 }
 </script>
@@ -109,6 +123,10 @@ div{
   position: relative;
 }
 
+.white-bg img{
+  width: 100%;
+}
+
 .close{
   position: absolute;
   right: 10px;
@@ -127,6 +145,37 @@ div{
   background-color: black;
   border-radius: 50%;
   color: white;
+  }
+
+  .start{
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .end{
+    opacity: 1;
+  }
+
+  .fade-enter-from{
+    opacity: 0;
+  }
+
+  .fade-enter-active{
+    transition: all 0.5s;
+  }
+
+  .fade-enter-to{
+    opacity: 1;
+  }
+
+  .fade-leave-enter{
+    transform: translateY(-1000px);
+  }
+  .fade-leave-active{
+    transition: all 0.5s;
+  }
+  .fade-leave-to{
+    transform: translateY(1000px);
   }
 
 </style>
