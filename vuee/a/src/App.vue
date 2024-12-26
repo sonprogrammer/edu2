@@ -12,7 +12,7 @@
     </div>
 
 
-    <Discount />
+    <Discount v-if="showDiscount == true"/>
 
     
     <button @click="priceSort">가격순 정렬</button>
@@ -34,6 +34,7 @@ export default {
   name: 'App',
   data(){
     return{
+      showDiscount: true,
       originalRooms: [...data],
       menus: ['Home', 'Shop', 'About'],
       modalOpend: false,
@@ -60,8 +61,13 @@ export default {
     },
     id(){
       console.log('id', this.clicked)
-    }
+    },
   },
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.showDiscount = false
+  //   }, 2000);
+  // },
   components: {
     Discount,
     Modal,

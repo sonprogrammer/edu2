@@ -21,15 +21,21 @@ export default {
         month: 1,
       }
     },
-    watch: {
-      month(a, b){
-        if(a >= 13){
-          alert('no 13개월')
-        }
-        if(isNaN(a) === true){
-          alert('use number')
-          this.month=1
-        }
+    // watch: {
+    //   month(a, b){
+    //     if(a >= 13){
+    //       alert('no 13개월')
+    //     }
+    //     if(isNaN(a) === true){
+    //       alert('use number')
+    //       this.month=1
+    //     }
+    //   }
+    // },
+    beforeUpdate() {
+      if(this.month <= 2){
+        alert('3개월 부터 팝니다')
+        this.month = 3
       }
     },
     props: {
