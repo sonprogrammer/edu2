@@ -11,6 +11,7 @@
     </div>
 
     <Container :data='data'/>
+    <button @click="more">더 보기</button>
 
     <div class="footer">
       <ul class="footer-button-plus">
@@ -24,6 +25,7 @@
 <script>
 import Container from './components/Container.vue'
 import data from './assets/data'
+import axios from 'axios'
 
 export default {
   name: "App",
@@ -34,6 +36,15 @@ export default {
   },
   components: {
     Container
+  },
+  methods: {
+    more(){
+      axios.get(`https://codingapple1.github.io/vue/more1.json`)
+        .then((res) =>{
+          console.log('res', res)
+          this.data.push(res.data)
+        })
+    }
   },
 };
 </script>
