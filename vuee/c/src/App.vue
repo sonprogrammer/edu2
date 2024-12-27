@@ -5,20 +5,25 @@
         <li>Cancel</li>
       </ul>
       <ul class="header-button-right">
-        <li>Next</li>
+        <li v-if="step == 1" @click="step++">Next</li>
+        <li v-if="step == 2" @click="publish">Upload</li>
       </ul>
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <Container :data='data'/>
+    <Container :data='data' :step='step' :imageUrl='imageUrl' @write="content" :selectedFilter="selectedFilter"/>
+
     <button @click="more">더 보기</button>
 
     <div class="footer">
       <ul class="footer-button-plus">
-        <input type="file" id="file" class="inputfile" />
+        <input @change="upload" type="file" id="file" class="inputfile" />
         <label for="file" class="input-plus">+</label>
       </ul>
     </div>
+
+
+    
   </div>
 </template>
 
@@ -31,20 +36,54 @@ export default {
   name: "App",
   data() {
     return{
-      data
+      data,
+      plus: 0,
+      step: 0,
+      imageUrl :'',
+      contents: '',
+      selectedFilter: ''
     }
   },
   components: {
     Container
   },
+  mounted() {
+    this.emitter.on('boxClick', (a) => {
+      this.selectedFilter = a
+    })
+  },
   methods: {
     more(){
-      axios.get(`https://codingapple1.github.io/vue/more1.json`)
+      axios.get(`https://codingapple1.github.io/vue/more${this.plus}.json`)
         .then((res) =>{
           console.log('res', res)
           this.data.push(res.data)
+          this.plus++
         })
-    }
+    },
+    upload(e){
+      let file = e.target.files;
+      let url = URL.createObjectURL(file[0])
+      this.imageUrl = url
+      this.step = 1
+    },
+    publish() {
+      let myPost = {
+      name: "Kim Hyun",
+      userImage: "https://picsum.photos/100?random=3",
+      postImage: this.imageUrl,
+      likes: 36,
+      date: "May 15",
+      liked: false,
+      content: this.contents,
+      
+      } //여기에는 이미지 파일이랑 내용이 있어야함
+      this.data.unshift(myPost)
+      this.step = 0
+    },
+    content(v) {
+      this.contents = v
+    },
   },
 };
 </script>
