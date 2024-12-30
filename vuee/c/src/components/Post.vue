@@ -4,9 +4,13 @@
       <div class="profile"></div>
       <span class="profile-name">{{a.name}}</span>
     </div>
-    <div class="post-body" :style="{ backgroundImage : `url(${a.postImage})`}"></div>
+    <div :class="a.filter" class="post-body" 
+      :style="{ backgroundImage : `url(${a.postImage})`}"
+      @click="$store.commit('likes', a.id)"
+    ></div>
     <div class="post-content">
       <p>{{a.likes}} likes</p>
+      <!-- <p>{{ $store.state.data.likes }}likes</p> -->
       <p><strong>{{a.name}}</strong> {{a.content}}</p>
       <p class="date">{{a.date}}</p>
     </div>

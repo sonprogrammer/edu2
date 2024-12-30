@@ -11,9 +11,22 @@
       <img src="./assets/logo.png" class="logo" />
     </div>
 
+  <!-- <p>{{ $store.state.more }}</p>
+  <button @click="$store.dispatch('getData')">more</button> -->
+
+
+    <!-- <p>{{now()}} {{counter}}</p>
+    <button @click="counter++">button</button>
+
+    <p>{{now2}} {{counter2}}</p>
+    <button @click="counter2++">button</button> -->
+
+
+    
+
     <Container :data='data' :step='step' :imageUrl='imageUrl' @write="content" :selectedFilter="selectedFilter"/>
 
-    <button @click="more">더 보기</button>
+    <!-- <button @click="more">더 보기</button> -->
 
     <div class="footer">
       <ul class="footer-button-plus">
@@ -21,7 +34,6 @@
         <label for="file" class="input-plus">+</label>
       </ul>
     </div>
-
 
     
   </div>
@@ -31,6 +43,7 @@
 import Container from './components/Container.vue'
 import data from './assets/data'
 import axios from 'axios'
+import {mapState, mapMutations} from 'vuex'
 
 export default {
   name: "App",
@@ -38,10 +51,12 @@ export default {
     return{
       data,
       plus: 0,
-      step: 0,
+      step: 4,
       imageUrl :'',
       contents: '',
-      selectedFilter: ''
+      selectedFilter: '',
+      counter: 0,
+      counter2: 0
     }
   },
   components: {
@@ -50,9 +65,24 @@ export default {
   mounted() {
     this.emitter.on('boxClick', (a) => {
       this.selectedFilter = a
+      console.log('a' ,a)
     })
   },
+  computed:{
+    now2(){
+      return new Date()
+    },
+    name(){
+      return this.$store.state.name
+    },
+    ...mapState(['name', 'age', 'data']),
+    ...mapState({ 내이름 : 'name', 나이 : 'age'}),
+  },
   methods: {
+    ...mapMutations(['setMore','likes']),
+    now(){
+      return new Date()
+    },
     more(){
       axios.get(`https://codingapple1.github.io/vue/more${this.plus}.json`)
         .then((res) =>{
@@ -76,8 +106,10 @@ export default {
       date: "May 15",
       liked: false,
       content: this.contents,
+      filter: this.selectedFilter
       
-      } //여기에는 이미지 파일이랑 내용이 있어야함
+      } 
+      console.log('myPost', myPost)
       this.data.unshift(myPost)
       this.step = 0
     },
@@ -122,6 +154,7 @@ ul {
   padding-bottom: 8px;
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 .header-button-left {
   color: skyblue;

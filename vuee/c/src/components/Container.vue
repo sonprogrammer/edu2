@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="step == 0">
-      <Post :a="a" v-for="(a, i) in data" :key="i" />
+      <Post  :a="a" v-for="(a, i) in data" :key="i" />
      </div>
 
     <div v-if="step == 1">
@@ -19,13 +19,26 @@
         <textarea class="write-box" @input="$emit('write', $event.target.value)" >write</textarea>
       </div>
     </div>
-  </div>
+
+    <div v-if="step == 3">
+      <MyPage :one="1"/>
+    </div>
+
+    <div v-if="step==4">
+      <Computed />
+    </div>
+
+
+  </div> 
 </template>
+
 
 <script>
 import Post from "./Post.vue";
 import FilterBox from './FilterBox.vue'
 import filter from '../assets/filter'
+import MyPage from './MyPage.vue'
+import Computed from './Computed.vue'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -33,12 +46,14 @@ export default {
   data() {
     return{
       filter,
-      
+
     }
   },
   components: {
     Post,
-    FilterBox
+    FilterBox,
+    MyPage,
+    Computed
   },
   props: {
     data: Array,
