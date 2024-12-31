@@ -2,7 +2,7 @@
   <div style="padding: 10px">
     <h4>팔로워</h4>
     <input placeholder="🔍" @input="search($event.target.value)"/>
-    <div class="post-header" v-for="a in searchedFollower" :key="a">
+    <div class="post-header" v-for="a in filteredFollower()" :key="a">
       <div class="profile" :style="{backgroundImage: `url(${a.image})`}"></div>
       <span class="profile-name">{{a.name}}</span>
     </div>

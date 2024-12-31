@@ -1,28 +1,31 @@
 <template>
   <div>
-    <h2>상품 가격: ${{ price }}</h2>
-    <h3>할인 가격: ${{ getDiscountedPrice() }}</h3>
-    <input v-model="discount" placeholder="할인율을 입력하세요 (%)" />
+    <h2>버튼을 {{ count }}번 클릭했습니다.</h2>
+    <h3>{{ getMessage() }}</h3>
+    <button @click="increment">클릭!</button>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
+
 export default {
   setup() {
-    const price = ref(100); // 원래 가격
-    const discount = ref(0); // 할인율
+    const count = ref(0);
 
-    // methods를 사용하여 할인된 가격 계산
-    function getDiscountedPrice() {
-      return price.value - (price.value * discount.value) / 100;
+    // 호출할 때마다 메시지 계산
+    function getMessage() {
+      console.log('Methods 실행');
+      return count.value >= 5
+        ? '클릭을 너무 많이 했어요!'
+        : '조금 더 클릭해보세요!';
     }
 
-    return {
-      price,
-      discount,
-      getDiscountedPrice,
-    };
+    function increment() {
+      count.value++;
+    }
+
+    return { count, getMessage, increment };
   },
 };
 </script>

@@ -26,6 +26,7 @@
 
     <div v-if="step==4">
       <Computed />
+      <!-- <Method /> -->
     </div>
 
 
@@ -39,6 +40,7 @@ import FilterBox from './FilterBox.vue'
 import filter from '../assets/filter'
 import MyPage from './MyPage.vue'
 import Computed from './Computed.vue'
+import Method from './Method.vue'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -53,7 +55,8 @@ export default {
     Post,
     FilterBox,
     MyPage,
-    Computed
+    Computed,
+    Method
   },
   props: {
     data: Array,

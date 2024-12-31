@@ -51,7 +51,7 @@ export default {
     return{
       data,
       plus: 0,
-      step: 4,
+      step: 3,
       imageUrl :'',
       contents: '',
       selectedFilter: '',
@@ -70,6 +70,7 @@ export default {
   },
   computed:{
     now2(){
+      console.log('computerd')
       return new Date()
     },
     name(){
@@ -81,6 +82,7 @@ export default {
   methods: {
     ...mapMutations(['setMore','likes']),
     now(){
+      console.log('method')
       return new Date()
     },
     more(){

@@ -1,29 +1,44 @@
 <template>
   <div>
-    <h2>상품 가격: ${{ price }}</h2>
-    <h3>할인 가격: ${{ discountedPrice }}</h3>
-    <input v-model="discount" placeholder="할인율을 입력하세요 (%)" />
+    <h2>Computed vs Methods (반복 호출)</h2>
+    <!-- Count 값을 변경하는 버튼 -->
+    <button @click="increment">Count 증가</button>
+    <p>현재 Count: {{ count }}</p>
+
+    <h3>Computed 사용</h3>
+    <!-- 동일한 computed property를 여러 번 사용 -->
+    <p>{{ computedResult }}</p>
+    <p>{{ computedResult }}</p>
+
+    <h3>Method 사용</h3>
+    <!-- 동일한 method를 여러 번 호출 -->
+    <p>{{ methodResult() }}</p>
+    <p>{{ methodResult() }}</p>
   </div>
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { ref, computed } from 'vue';
 
 export default {
   setup() {
-    const price = ref(100); // 원래 가격
-    const discount = ref(0); // 할인율
+    const count = ref(0);
 
-    // computed를 사용하여 할인된 가격 계산
-    const discountedPrice = computed(() => {
-      return price.value - (price.value * discount.value) / 100;
+    const computedResult = computed(() => {
+      console.log("Computed 실행");
+      return `Computed 값: ${count.value * 2}`;
     });
 
-    return {
-      price,
-      discount,
-      discountedPrice,
+    const methodResult = () => {
+      console.log("Method 실행");
+      return `Method 값: ${count.value * 2}`;
     };
+
+    const increment = () => {
+      count.value++;
+    };
+
+    return { count, computedResult, methodResult, increment };
   },
 };
 </script>
