@@ -1,10 +1,13 @@
+/* eslint-disable */
+
 import { createWebHistory, createRouter } from "vue-router";
-import ListPage from './components/ListPage'
+// import ListPage from './components/ListPage'
 import Main from './components/Main'
 import Detail from './components/Detail'
 import NotFound from './components/NotFound'
 import Author from './components/Author'
 import Comment from './components/Comment'
+import List from './components/ListPage'
 
 const routes = [
   {

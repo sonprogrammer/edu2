@@ -44,7 +44,7 @@
 
 <script>
 import data from './assets/data'
-import List from './components/ListPage.vue'
+// import List from './components/ListPage.vue'
 
 
 export default {
@@ -55,7 +55,6 @@ export default {
     }
   },
   components: {
-    List
   },
 };
 </script>
