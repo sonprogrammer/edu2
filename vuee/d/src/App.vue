@@ -4,9 +4,9 @@
       <h1 class="fixed-title title"  style="border-bottom: 2px solid; width: full">지능 테스트</h1>
     </router-link>
     <div class="box">
-      <Container :problems="problems" :step="step" />
+      <Container :problems="problems" :step="step" @gotoFisrtPage="step=0"/>
       <!-- <router-view :problem="problem"></router-view> -->
-      <!-- <router-link to="/problem/1" v-if="isHome" class="start">시작하기</router-link> -->
+      <div v-if="isHome" class="start" @click="nextPage()">시작하기</div>
     </div>
   </div>
 </template>
@@ -25,13 +25,19 @@ export default {
       step: 0
     }
   },
+  methods:{
+    nextPage(){
+      this.step++
+      console.log(this.step)
+    }
+  },
   computed: {
     isHome(){
-      return this.$route.path == '/'
+      return this.step == 0
     },
     nextProblem(){
       return parseInt(this.$route.params.id) <= this.problems.length;
-    }
+    },
   },
   components: {
     Container
@@ -80,7 +86,6 @@ html, body {
 }
 
 .start{
-  text-decoration: none;
   font-size: 72px;
   border: 3px solid blue;
   border-radius: 20px;
