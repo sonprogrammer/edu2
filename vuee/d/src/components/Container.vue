@@ -1,7 +1,11 @@
 <template>
   <div>
     <div v-if="step == 1" style="width: 100%;">
-        <Problem :problem="currentProblem" :nextProblem="nextProblem" :answerCheck="answerCheck" @showAnswer="answerCheck = true"/>
+        <Problem :problem="currentProblem" :nextProblem="nextProblem" :answerCheck="answerCheck" @showAnswer="answerCheck = true"  @score="totalScore++"/>
+    </div>
+    <div v-if="step == 2">
+        <div class="count">{{ totalScore }}개 정답!</div>
+        <div @click="$emit('gotoFisrtPage')" class="homeBtn">HOME으로 가기</div>
     </div>
   </div>
 </template>
@@ -13,7 +17,8 @@ export default {
     data(){
         return{
             currentIndex: 0,
-            answerCheck: false
+            answerCheck: false,
+            totalScore: 0,
         }
     },
     props:{
@@ -34,11 +39,12 @@ export default {
                 this.currentIndex++
                 this.answerCheck = false
             }else{
-                alert('cool')
-                this.$emit('gotoFisrtPage')
+                this.$emit('gotoScorePage')
                 this.currentIndex = 0
+                this.answerCheck = false
             }
         },
+
     },
     components:{
         Problem
@@ -48,6 +54,22 @@ export default {
 </script>
 
 <style>
+
+.count{
+    font-size: 37px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.homeBtn{
+    font-size: 27px;
+    color: rgb(172, 18, 172);
+    text-align: center;
+}
+
+.homeBtn:hover{
+    cursor: pointer;
+}
 
 
 </style>

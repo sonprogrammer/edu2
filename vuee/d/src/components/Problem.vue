@@ -7,10 +7,10 @@
     <input type="text" class="input" v-model="answer" @keydown.enter="check">
     <div v-if="answerCheck == false" class="check" @click="check()" @keydown.enter="check()">정답확인</div>
     <div v-if="answerCheck == true">
-      <p v-if="marking()">정답입니다</p>
-      <p v-if="!marking()">틀렸습니다</p>
-      <p>{{problem.answer}}</p>
-      <div class="next" @click="nextProblem"  @keydown.enter="nextProblem"  tabindex="0">다음 문제</div>
+      <p v-if="marking()" class="right">정답입니다</p>
+      <p v-if="!marking()" class="wrong">틀렸습니다</p>
+      <p class="answer">정답 : {{problem.answer}}</p>
+      <div class="next" @click="nextProblem" >다음 문제</div>
     </div>
   </div>
 </template>
@@ -30,7 +30,10 @@ export default {
   methods:{
     check(){
       this.$emit('showAnswer')
-      this.marking()
+      const isCorrect = this.marking()
+      if(isCorrect){
+        this.$emit('score')
+      }
     },
     marking(){
       return this.answer === this.problem.answer
@@ -90,6 +93,25 @@ export default {
 .next:focus {
   outline: none; /* 기본 outline 제거 */
   border: 2px solid blue; /* 포커스 시 테두리 추가 */
+}
+
+.right{
+  color: blue;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.wrong{
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.answer{
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 </style>

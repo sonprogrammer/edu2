@@ -1,11 +1,10 @@
 <template>
   <div class="container">
-    <router-link to="/" class="title">
+    <div class="title">
       <h1 class="fixed-title title"  style="border-bottom: 2px solid; width: full">지능 테스트</h1>
-    </router-link>
+    </div>
     <div class="box">
-      <Container :problems="problems" :step="step" @gotoFisrtPage="step=0"/>
-      <!-- <router-view :problem="problem"></router-view> -->
+      <Container :problems="problems" :step="step" @gotoScorePage="step=2" @gotoFisrtPage="step=0" />
       <div v-if="isHome" class="start" @click="nextPage()">시작하기</div>
     </div>
   </div>
@@ -22,14 +21,15 @@ export default {
   data() {
     return{
       problems,
-      step: 0
+      step: 0,
     }
   },
   methods:{
     nextPage(){
       this.step++
       console.log(this.step)
-    }
+    },
+
   },
   computed: {
     isHome(){
@@ -53,7 +53,7 @@ export default {
 }
 html, body {
   height: 100%;  /* 전체 높이를 채움 */
-  background-color: lightblue; /* 바깥쪽 배경색을 원하는 색으로 설정 */
+  background-color:rgb(224 231 255)  /* 바깥쪽 배경색을 원하는 색으로 설정 */
 }
 
 #app {
@@ -63,7 +63,7 @@ html, body {
   margin-left: 0;
   margin-right: 0;
   margin: auto;
-  background-color: skyblue;
+  /* background-color: skyblue; */
 }
 
 .container{
@@ -73,13 +73,13 @@ html, body {
 }
 
 .title{
-  background-color: red;
+  background-color: darkviolet;
   text-decoration: none;
 }
 
 .box{
   height: 100%;
-  background-color: orange;
+  background-color: rgb(221 214 254);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,9 +87,9 @@ html, body {
 
 .start{
   font-size: 72px;
-  border: 3px solid blue;
+  border: 3px solid rgb(99 102 241);
   border-radius: 20px;
-  background-color: brown;
+  background-color: rgb(165 180 252);
   padding: 10px;
   transition: transform 0.7s ease;
   color: white;
