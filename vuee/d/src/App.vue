@@ -4,7 +4,7 @@
       <h1 class="fixed-title title"  style="border-bottom: 2px solid; width: full">지능 테스트</h1>
     </div>
     <div class="box">
-      <Container :problems="problems" :step="step" @gotoScorePage="step=2" @gotoFisrtPage="step=0" />
+      <Container :problems="problems" :step="step" @gotoScorePage="step=2" @gotoFisrtPage="gotoFisrtPage" :totalScore="totalScore" @score="totalScore++"/>
       <div v-if="isHome" class="start" @click="nextPage()">시작하기</div>
     </div>
   </div>
@@ -22,6 +22,7 @@ export default {
     return{
       problems,
       step: 0,
+      totalScore: 0
     }
   },
   methods:{
@@ -29,6 +30,10 @@ export default {
       this.step++
       console.log(this.step)
     },
+    gotoFisrtPage(){
+      this.totalScore = 0
+      this.step = 0
+    }
 
   },
   computed: {

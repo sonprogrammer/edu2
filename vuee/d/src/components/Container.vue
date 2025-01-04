@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="step == 1" style="width: 100%;">
-        <Problem :problem="currentProblem" :nextProblem="nextProblem" :answerCheck="answerCheck" @showAnswer="answerCheck = true"  @score="totalScore++"/>
+        <Problem :problem="currentProblem" :nextProblem="nextProblem" :answerCheck="answerCheck" @showAnswer="answerCheck = true" @score="$emit('score')" />
     </div>
     <div v-if="step == 2">
         <div class="count">{{ totalScore }}개 정답!</div>
@@ -18,12 +18,12 @@ export default {
         return{
             currentIndex: 0,
             answerCheck: false,
-            totalScore: 0,
         }
     },
     props:{
         problems: Array,
-        step: Number
+        step: Number,
+        totalScore: Number,
     },
     computed:{
         currentProblem(){
@@ -38,6 +38,7 @@ export default {
             if(!this.isLastProblem){
                 this.currentIndex++
                 this.answerCheck = false
+                console.log('totalscore', this.totalScore)
             }else{
                 this.$emit('gotoScorePage')
                 this.currentIndex = 0

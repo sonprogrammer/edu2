@@ -5,13 +5,14 @@
         {{ problem.id }}번 문제
     </h1> 
     <img :src="problem.image" alt="이미지" class="image">
-    <input type="text" class="input" v-model="answer" @keydown.enter="check">
-    <div v-if="answerCheck == false" class="check" @click="check()" @keydown.enter="check()">정답확인</div>
+    <input v-if="answerCheck == false" type="text" class="input" v-model="answer" @keyup.enter="check()">
+    <p v-if="answerCheck == true">내 정답 : {{answer}}</p>
+    <div v-if="answerCheck == false" class="check" @click="check()">정답확인</div>
     <div v-if="answerCheck == true">
       <p v-if="marking()" class="right">정답입니다</p>
       <p v-if="!marking()" class="wrong">틀렸습니다</p>
       <p class="answer">정답 : {{problem.answer}}</p>
-      <div class="next" @click="nextProblem" >다음 문제</div>
+      <button class="next" @click="nextProblemAndResetInput()" @keyup.enter="nextProblemAndResetInput()">다음 문제</button>
     </div>
   </div>
 </template>
@@ -26,18 +27,25 @@ export default {
   props: {
     problem: Object,
     nextProblem: Function,
-    answerCheck: Boolean
+    answerCheck: Boolean,
   },
   methods:{
     check(){
-      this.$emit('showAnswer')
-      const isCorrect = this.marking()
-      if(isCorrect){
-        this.$emit('score')
+       if (!this.answerCheck) {  
+        this.$emit('showAnswer');  
+        const isCorrect = this.marking();
+        console.log('isCorrect', isCorrect)
+        if (isCorrect) {
+          this.$emit('score');  
+        }
       }
     },
     marking(){
       return this.answer === this.problem.answer
+    },
+    nextProblemAndResetInput(){
+      this.nextProblem()
+      this.answer = ''
     }
 
   }
@@ -113,6 +121,10 @@ export default {
 .answer{
   text-align: center;
   margin-bottom: 20px;
+}
+
+.none{
+  display: none;
 }
 
 </style>
