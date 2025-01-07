@@ -232,18 +232,194 @@ function solution(feature){
 // }
 
 
-function sol(map){
-    for(let i = 0; i < map.length; i++){
-        for(let j = 0; j < map[i].length; j++){
-            if(map[i][j]){
-                return `선배님은 ${방 + 1}번째 방, ${자리 + 1}번째 자리에 있습니다.`;
-            }
-        }
-    }
-    return "선배님을 찾을 수가 없습니다.";
+// function sol(map){
+//     for(let i = 0; i < map.length; i++){
+//         for(let j = 0; j < map[i].length; j++){
+//             if(map[i][j]){
+//                 return `선배님은 ${방 + 1}번째 방, ${자리 + 1}번째 자리에 있습니다.`;
+//             }
+//         }
+//     }
+//     return "선배님을 찾을 수가 없습니다.";
 
-}
+// }
 
-console.log(sol([
-    [0], [1, 0], [0], [0, 0], [0, 0]
-  ]))
+// console.log(sol([
+//     [0], [1, 0], [0], [0, 0], [0, 0]
+//   ]))
+
+// function sol(word){
+//     let reversedWord = word.split('').reverse().join('')
+//     if(word === reversedWord ){
+//         return true
+//     }else{
+//         return false
+//     }
+// }
+
+
+// function sol(str){
+//     const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+//     console.log(ALPHABET.length)
+//     let res = ''
+//     for(let i = 0; i < str.length; i++){
+//         if(str[i] === ' '){
+//             res += ' '
+//             continue;
+//         }
+//         const index = ALPHABET.indexOf(str[i])
+//         if(index === -1){
+//             const UpperCase = ALPHABET.indexOf(str[i].toLowerCase())
+//             console.log('UpperCase', UpperCase)
+//             res += ALPHABET[ALPHABET.length - 1 - UpperCase].toUpperCase()
+//         }else{
+//             res += ALPHABET[ALPHABET.length - 1 - index].toLowerCase()
+//         }
+//     }
+//     return res
+
+// }
+
+// function sol(str){
+//     const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+//     let res = ''
+//     for(let i = 0; i < str.length; i++){
+//         if(str[i] ===  ' '){
+//             res += ' '
+//             continue;
+//         }
+//         const leng = ALPHABET.length
+//         if(ALPHABET.indexOf(str[i]) !== -1){ //소문자
+//             res += ALPHABET[leng - 1 - ALPHABET.indexOf(str[i])]
+//         }else{
+//             const Upper = ALPHABET.toUpperCase()
+//             res += Upper[leng - 1 - Upper.indexOf(str[i])]
+//         }
+//     }
+//     return res
+// }
+
+
+// function sol(str){
+//     let res =''
+//     if(str.includes('q') && str.includes('Q')){
+//         return -1
+//     }else{
+
+//         for(let i = 0; i < str.length; i++){
+//             if(str[i] === 'q'){
+//                 res += 'a'
+//             }else if(str[i] === 'Q'){
+//                 res += 'A'
+//             }else{
+//                 res += str[i]
+//             }
+//         }
+//     }
+//     return res
+// }
+
+
+// function sol(str){
+//     if(str.includes('q') === false && str.includes('Q') === false){
+//         return -1;
+//     }
+//       return str.replaceAll('q', 'a').replaceAll('Q', 'A');
+    
+
+// }
+
+
+// function sol(search, recommends){
+//     let res = []
+//     for(let i = 0; i < search.length; i++){
+//         for(let j = 0; j < recommends.length; j++){
+//             for(let k = 0; k < recommends[j].length; k++){
+//                 if(search[i] == recommends[j][i]){
+//                     res.push(search[i])
+//                 }else{
+//                     res.push('')
+//                 }
+//             }
+//         }
+//     }
+//         return [...new Set(res)].join('')
+    
+// }
+
+
+// function sol(search, recommends){
+//     for(let i = search.length; i > 0; i--){
+//         const searched = search.slice(0, i)
+//         for(let j = 0; j < recommends.length; j++){
+//             const word = recommends[j]
+//             if(word.startsWith(searched) === false){
+//                 break;
+//             }
+
+//             if(j === recommends.length - 1){
+//                 return searched
+//             }
+//         }
+//     }
+//     return ''
+// }
+
+// console.log(sol( "autter", ["flower", "flow", "flight"]))
+
+
+// function solution(search, recommends) {
+//     let longestPrefix = ""; // 가장 긴 공통 접두사를 저장할 변수
+  
+//     // 추천 검색어 목록에서 하나씩 비교
+//     for (let i = 0; i < recommends.length; i++) {
+//       let currentPrefix = "";
+//       let j = 0;
+      
+//       // search와 추천 검색어에서 공통된 부분을 찾기
+//       while (j < search.length && j < recommends[i].length && search[j] === recommends[i][j]) {
+//         currentPrefix += search[j];
+//         j++;
+//       }
+      
+//       // 가장 긴 공통 접두사를 갱신
+//       if (currentPrefix.length > longestPrefix.length) {
+//         longestPrefix = currentPrefix;
+//       }
+//     }
+  
+//     return longestPrefix;
+//   }
+
+
+// function sol(search, recommends){
+//     for(let i = search.length; i > 0; i--){
+//         const searched = search.slice(0, i)
+//         for(let j = 0; j < recommends.length; j++){
+//             const word = recommends[j]
+
+//             if(!word.startsWith(searched)){
+//                 break;
+//             }
+//             if(j === recommends.length - 1){
+//                 return searched
+//             }
+//         }
+//     }
+//     return ''
+// }
+
+
+// function sol(name, sex, spouse) {
+//     if(sex === 'male'){
+//         return `결혼 후 당신의 full name은 바뀌지 않습니다.`
+//     }else{ //여성이면 앞이름은 자신의 앞이름 뒷이름은 남편의 뒷이름.
+//         const feName = name.split(' ')[0]
+//         const lastName = spouse.split(' ')[1]
+//         return `결혼 후 당신의 full name은 ${feName} ${lastName} 입니다.`
+//     }
+// }
+
+//   console.log(sol("Calista Flockhart", "female", "Harrison Ford")); // calista ford
+  
+
