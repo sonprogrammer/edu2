@@ -423,3 +423,94 @@ function solution(feature){
 //   console.log(sol("Calista Flockhart", "female", "Harrison Ford")); // calista ford
   
 
+// function sol(team){
+//      team.dev.push('원두')
+//      let newTeam = team.dev.push('원두')
+//      return newTeam
+//     return team
+//     // console.log('team', team)
+
+// }
+
+
+
+// function sol(team){
+//     if(team.dev){
+//         return team.dev
+//     }else{
+//         return -1
+//     }
+// }
+
+// function sol(winners){
+//     const arr = []
+//     for(rank in winners){
+//         for(let i = 1; i <= winners[rank]; i++) {
+//             arr.push(Number(rank))
+//         }
+//     }
+//     return arr
+// }
+
+// function sol(arr){
+//     const team = {}
+//     arr.map(num => {
+//         if(team[num] === undefined){
+//             team[num] = 1
+//         }else{
+//             team[num]++
+//         }
+//     })
+//     const teamArr = Object.values(team)
+//     const odd = teamArr.filter(num => num % 2 == 1)[0]
+
+//     const teamKey = Object.keys(team)
+//     const res = teamKey.filter(a => team[a] === odd)
+    
+//     return Number(res[0])
+// }
+
+// function sol(arr){
+//     let criminal = ''
+//     let times = 0
+//     for(n in arr){
+//         if(arr[n].time > times){
+//             times = arr[n].time
+//             criminal = arr[n].name
+//         }
+//     }
+//     return `범인은 바로 ${criminal}입니다!`
+// }
+
+function sol(arr){
+    let criminal = ''
+    let times = 0
+    for(let v of arr){
+        if(v.time > times){
+            times = v.time
+            criminal = v.name
+        }
+    }
+    return `범인은 바로 ${criminal}입니다!`
+}
+
+
+console.log(sol([
+    {
+      name: "카페",
+      time: 5,
+    },
+    {
+      name: "모카",
+      time: 12,
+    },
+    {
+      name: "라떼",
+      time: 10,
+    },
+    {
+      name: "아라비카",
+      time: 1,
+    },
+  ]))
+
