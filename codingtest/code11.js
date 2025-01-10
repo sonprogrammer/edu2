@@ -80,17 +80,192 @@
 //     return res     
 // }
 
-function sol(s) {
-    let answer = ''
-    for(let i = 0; i < s.length; i++){
-        if(i === 0 || s[i-1] === ' '){
-            answer += (s[i].toUpperCase())
+// function sol(s) {
+//     let answer = ''
+//     for(let i = 0; i < s.length; i++){
+//         if(i === 0 || s[i-1] === ' '){
+//             answer += (s[i].toUpperCase())
+//         }else{
+//             answer += s[i].toLowerCase()
+//         }
+//     }
+//     return answer
+// }
+
+// function solution(s) {
+//     let count = 0;
+//     for (let char of s) {
+//         if (char === '(') {
+//             count++;
+//         } else if (char === ')') {
+//             count--;
+//         }
+//         if (count < 0) {
+//             return false;
+//         }
+//     }
+//     return count === 0;
+// }
+
+
+// function sol(s){
+//     let count = 0;
+//     let removedZero = 0
+
+//     while(s !== '1'){
+//         let currentRemovedZero = 0
+//         let newOne = ''
+
+//         for(let i = 0; i < s.length; i++){
+//             if(s[i] === '0'){
+//                 currentRemovedZero++
+//             }else{
+//                 newOne += s[i]
+//             }
+//         }
+//         s = (newOne.length).toString(2)
+//         removedZero += currentRemovedZero
+//         count++
+//     }
+//     return [count, removedZero]
+    
+// }
+
+
+// function sol(s){
+//     let count = 0;
+//     let removedZero = 0
+
+//     while(s !== '1'){
+//         let newOne =''
+//         let currentRemovedZero = 0
+
+//         for(let i = 0; i < s.length; i++){
+//             if(s[i] === '0'){
+//                 currentRemovedZero++
+//             }else{
+//                 newOne += s[i]
+//             }
+            
+//         }
+//         s = (newOne.length).toString(2)
+//         removedZero += currentRemovedZero
+//         count++
+//     }
+//     return [count, removedZero]
+// }
+
+
+// function solution(n) {
+//     var answer = 0;
+//     let  i = 0;
+//     while(n > 0){
+//         i++;
+//        if(n % i  === 0)  answer++;
+//         n -= i;
+//     }
+//     return answer;
+// }
+
+
+// function solution(n){
+//     let answer = 0;
+//     let i = 0;
+
+//     while(n > 0){
+//         i++;
+//         console.log('i',i)
+//         if(n % i === 0) answer++;
+//         n = n - i;
+//         console.log('n', n)
+//     }
+//     return answer;
+// }
+
+
+
+
+
+// function solution(s){
+//     let answer = ''
+
+//     for(let i = 0; i < s.length; i++) {
+//         if(s[i] == s[i + 1]){
+//             answer += s.slice(0, i)+s.slice(i + 2, s.length+1)
+//             break;
+//         }
+//     }
+//     console.log(answer)
+
+//     while(answer.length !== 0){
+//         let option = answer          
+//         for(let i = 0; i < option.length; i++) {
+//             if(option[i] == option[i + 1]){
+//                 return 1
+//             }else{
+//                 return 0
+//             }
+//         }
+//     }
+//     return 0
+
+// }
+
+// function solution(s){
+//     let stack = [];
+
+//     for(let i = 0; i < s.length; i++){
+//         if(stack.length > 0 && stack[stack.length - 1] == s[i]){
+//             stack.pop()
+//         }else{
+//             stack.push(s[i])
+//         }
+//     }
+//     return stack.length === 0 ? 1 : 0
+// }
+
+// function solution(brown, yellow){
+//     let total = brown + yellow
+
+//     for(let x = 0; x < Math.sqrt(total); x++){
+//         if(total % x === 0){
+//             let y = total / x
+//             if((x-2) * (y-2) === yellow){
+//                 return [y , x]
+//             }
+//         }
+//     }
+// }
+
+
+function solution(n){
+    let countOne = num => num.toString(2).split('1').length - 1
+
+    let nCount = countOne(n)
+    console.log(nCount)
+
+    let nextNumber = n + 1
+    while(nextNumber > n){
+        if(countOne(nextNumber) == nCount){
+            return nextNumber
         }else{
-            answer += s[i].toLowerCase()
+            nextNumber++
         }
     }
-    return answer
+}
+
+function solution(n){
+    const countOne = num => num.toString(2).split('1').length - 1
+
+    const tOne = countOne(n)
+    let nextNumber = n + 1
+    while(countOne(nextNumber) !== tOne){
+        nextNumber++
+    }
+    return nextNumber
 }
 
 
-console.log(sol("for the last week"	))
+console.log(solution(15))
+
+// console.log('baabaa'.slice(0, 2))
