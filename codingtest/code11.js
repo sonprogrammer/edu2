@@ -245,13 +245,10 @@ function solution(n){
     console.log(nCount)
 
     let nextNumber = n + 1
-    while(nextNumber > n){
-        if(countOne(nextNumber) == nCount){
-            return nextNumber
-        }else{
-            nextNumber++
-        }
+    while(countOne(nextNumber) !== tOne){
+        nextNumber++
     }
+    return nextNumber
 }
 
 function solution(n){
