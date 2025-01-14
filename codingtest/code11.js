@@ -238,31 +238,118 @@
 // }
 
 
-function solution(n){
-    let countOne = num => num.toString(2).split('1').length - 1
+// function solution(n){
+//     let countOne = num => num.toString(2).split('1').length - 1
 
-    let nCount = countOne(n)
-    console.log(nCount)
+//     let nCount = countOne(n)
+//     console.log(nCount)
 
-    let nextNumber = n + 1
-    while(countOne(nextNumber) !== tOne){
-        nextNumber++
-    }
-    return nextNumber
-}
+//     let nextNumber = n + 1
+//     while(countOne(nextNumber) !== tOne){
+//         nextNumber++
+//     }
+//     return nextNumber
+// }
 
-function solution(n){
-    const countOne = num => num.toString(2).split('1').length - 1
+// function solution(n){
+//     const countOne = num => num.toString(2).split('1').length - 1
 
-    const tOne = countOne(n)
-    let nextNumber = n + 1
-    while(countOne(nextNumber) !== tOne){
-        nextNumber++
-    }
-    return nextNumber
-}
+//     const tOne = countOne(n)
+//     let nextNumber = n + 1
+//     while(countOne(nextNumber) !== tOne){
+//         nextNumber++
+//     }
+//     return nextNumber
+// }
 
 
-console.log(solution(15))
+// console.log(solution(15))
 
 // console.log('baabaa'.slice(0, 2))
+
+
+// function solution(brown, yellow){
+//    let total = brown + yellow
+
+//    for(let x = 3; x<= Math.sqrt(total); x++){
+//     if(total % x == 0){
+//         let y = total / x
+
+//         if((x-2) *(y-2) === yellow){
+//             return [y, x]
+//         }
+//     }
+//    }
+    
+// }
+
+
+// function solution(n){
+//     let oneCount = num => num.toString(2).split('1').length - 1
+
+//     let firstCount = oneCount(n)
+//     let nextCount = n + 1
+//     while(firstCount !== oneCount(nextCount)){
+//         nextCount++
+//     }
+//     return nextCount
+// }
+
+// function solution(s){
+//     let stack = [];
+//     for(let i = 0; i < s.length; i++){
+//         if(stack.length > 0 && stack[stack.length - 1] == s[i]){
+//             stack.pop()
+//         }else{
+//             stack.push(s[i])
+//         }
+//     }
+//     return stack.length === 0 ? 1 : 0
+// }
+
+
+// let num = 17
+// console.log(num.toString(2))
+
+// function solution(s){
+//     let stack = [];
+
+//     for(let i = 0; i < s.length; i++){
+//         if(stack.length > 0 && stack[stack.length - 1] == s[i]){
+//             stack.pop()
+//         }else{
+//             stack.push(s[i])
+//         }
+//     }
+//     return stack.length === 0 ? 1 : 0
+// }
+
+// function solution(s){
+//     let stack = [];
+
+//     for(let i = 0; i < s.length; i++){
+//         if(stack.length > 0 && stack[stack.length - 1] === s[i]){
+//             stack.pop()
+//         }else{
+//             stack.push(s[i])
+//         }
+//     }
+//     return stack.length === 0 ? 1 : 0
+// }
+
+
+function solution(people, limit){
+    let tube = [a, b]
+    let num = 0
+    for(let i = 0; i < people.length; i++){
+        for(let j =0; j < people.length; j++){
+            if(limit - people[i] < people[j]){
+                num++
+            }
+        }
+    }
+    return num
+}
+
+
+console.log(solution([70, 50, 80, 50], 100));
