@@ -68,9 +68,48 @@
 //     return "Yes"
 // }
 
-function solution(){
-    
+// function solution(arr){
+//     arr.sort((a, b) => a - b)
+//     let last = arr.length - 1
+//     let i = 0
+//     arr[last]
+
+//     return arr
+// }
+
+
+//최대 공약수 구하는 공식
+// function gcd(a, b) {
+//     while (b !== 0) {
+//         let temp = b;
+//         b = a % b;
+//         a = temp;
+//     }
+//     return a;
+// }
+
+// //최소공배수 구하는 공식
+// function lcm(a, b) {
+//     return (a * b) / gcd(a, b);
+// }
+
+// function solution(arr) {
+//     return arr.reduce((acc, curr) => lcm(acc, curr), 1);
+// }
+
+//최대공약수 하는 함수
+function gcd(){
+
 }
 
+// 최소공배수 구하는 함수
+function lcm(a, b) {
+    return a * b /gcd(a, b)
+}
 
-console.log(solution(["i", "drink", "water"],["want", "to"],["i", "want", "to", "drink", "water"]));
+function solution(arr){
+    
+
+}
+
+console.log(solution([1,2,3]));
