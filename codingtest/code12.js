@@ -228,16 +228,116 @@
     
 // }
 
-function solution(n, a, b){
-    let round = 0
+// function solution(n, a, b){
+//     let round = 0
 
-    while(a !== b){
-        a = Math.ceil(a /2 )
-        b = Math.ceil(b / 2)
-        round++
-    }
-    return round
-}
+//     while(a !== b){
+//         a = Math.ceil(a /2 )
+//         b = Math.ceil(b / 2)
+//         round++
+//     }
+//     return round
+// }
 
 
-console.log(solution(8, 4, 7))
+// function solution(want, n, discount){
+//     let items= {}
+//     for(let i = 0; i < n.length; i++){
+//         items[want[i]] = n[i]
+//     }
+//     let count = 0
+//     for(let i = 0; i < discount.length; i++){
+//         const currentDiscount = discount.slice(i, i+10) 
+
+//         const copyItems = { ...items}
+
+//         for(const item of currentDiscount){
+//             if(copyItems[item]){
+//                 copyItems[item]-=1
+//                 if(copyItems[item] === 0){
+//                     delete copyItems[item]
+//                 }
+//             }
+//         }
+//         if(Object.keys(copyItems).length === 0){
+//             count++
+//         }
+//     }
+//     return count
+// }
+
+
+
+// function solution(nums){
+//     //nums에서 반을 가져갈 수 있음, 대신 여러개의 종류로 가져와야함 그 종류의 갯수를 리턴하는거임
+//     let duplicated = new Set()
+//     duplicated.add(nums[0])
+    
+//     let trash = []
+//     for(let i = 1; i < nums.length; i++) {
+//         if(!duplicated.has(nums[i])){
+//             duplicated.add(nums[i])
+//         }else{
+//             trash.push(nums[i])
+//         }
+//     }
+//     let half = nums.length - 1
+//     if(duplicated.size <= half){
+
+//     }
+//     return duplicated.size
+// }
+
+
+
+// function solution(nums){
+//     //nums에서 반을 가져갈 수 있음, 대신 여러개의 종류로 가져와야함 그 종류의 갯수를 리턴하는거임
+//     let res = {}
+//     nums.forEach(n => res[n] = (res[n] || 0) + 1) //{ '1': 1, '2': 1, '3': 2 }
+
+//     let count = 0
+    
+//     for(let i = 0; i < nums.length; i++){
+//         if(nums[i] === )
+//     }
+    
+//     return res
+// }
+
+// function solution(nums){
+//     const unique = new Set(nums) // 3
+//     const pick = (nums.length) / 2 //2
+//     return Math.min(unique.size, pick) 
+// }
+
+// function solution(cit){
+//     cit.sort((a, b) => b - a) //내림차순 //[0, 1, 3, 5, 6]
+
+//     for(let i = 0; i < cit.length; i++){
+//         console.log(i)
+//         if(cit[i] < i + 1){
+//             console.log(i)
+//             return i
+//         }
+//     }
+//     return cit
+
+// }
+
+
+
+// function solution(n, limit, power){
+//     // 약수의 갯수
+//     let arr = []
+//     for(let i = 1; i <= n; i++){
+//         if(n % i == 0){
+//             console.log(i)
+//         }
+//     }
+// }
+
+
+
+
+console.log(solution(5, 3, 2))
+
