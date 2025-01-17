@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>battery</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="battery-top"></div>
+        <div class="battery-content">
+            <div class="charge"></div>
+            <div class="battery-status">Charging...</div>
+
+        </div>
+    </div>
+</body>
+<script>
+    const chargeElement = document.querySelector('.charge')
+    const statusElement = document.querySelector('.battery-status')
+
+    function updatedBatteryStatus(){
+        const chargeHeight = parseFloat(getComputedStyle(chargeElement).height)
+        const batteryHeight = parseFloat(getComputedStyle(chargeElement.parentElement).height)
+        const percentage = (chargeHeight / batteryHeight) * 100
+
+        if (percentage <= 0) {
+            statusElement.textContent = 'Battery Empty';
+        } else if (percentage <= 45) {
+            statusElement.textContent = 'Low Battery';
+        } else if (percentage <= 65) {
+            statusElement.textContent = 'Half Charged';
+        } else if (percentage <= 90) {
+            statusElement.textContent = 'Almost Full';
+        } else if (percentage <= 100) {
+            statusElement.textContent = 'Fully Charged';
+        }
+    }
+    setInterval(updatedBatteryStatus, 10)
+</script>
+</html>
