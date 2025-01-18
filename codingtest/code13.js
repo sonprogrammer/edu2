@@ -94,6 +94,134 @@
 //     return [max, index]
 // }
 
+// function solution(myS){
+//     return myS.split('').filter(v => !isNaN(v)).map(v => Number(v)).sort((a, b) => a - b)
+// }
 
-console.log(solution([9, 10, 11, 8]))
+// function solution(cipher, code){
+//     let res = ''
+//     for(let i = code-1; i < cipher.length; i += code){
+//         res += cipher[i]
+//     }
+//     return res
+// }
+
+// function solution(box, n){
+//     return Math.floor(box[0] / n) * Math.floor(box[1] / n) * Math.floor(box[2] / n)
+// }
+
+// function solution(n, arr){
+//     return arr.filter(v => v % n == 0)
+// }
+
+// function solution(n){
+//     return Math.ceil(n / 7)
+// }
+
+// function solution(n){
+//     function gcd(a, b){
+//         while(b !== 0){
+//             let temp = b
+//             b = a % b
+//             a = temp
+//         }
+//         return a 
+//     }
+//     function lcm(a, b){
+//         return (a * b) / gcd(a, b)
+//     }
+//     return lcm(6, n) / 6
+// }
+
+
+// function solution(n){
+//     let peice = 6
+
+//     while(true){
+//         if(peice % n === 0){
+//             break;
+//         }
+//         peice += 6
+//     }
+//     return peice / 6
+// }
+
+// function solution(age){
+//     let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+//     let arr = age.toString().split('')
+//     return arr.map(v => Number(v)).map(v => alphabet[v]).join('')
+// }
+
+
+// function solution(numbers, direction){
+//     if(direction === 'right'){
+//         let last = numbers[numbers.length - 1];
+//         numbers.unshift(numbers.pop())
+//     }else if(direction === 'left'){
+//         let first = numbers[0]
+//         numbers.push(numbers.shift())
+//     }
+//     return numbers
+// }
+
+
+// function solution(order){
+//     let count = 0
+//     let arr = order.toString()
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr[i] == 3 || arr[i] == 6 || arr[i] == 9){
+//             count++;
+//         }
+//     }
+//     return count
+// }
+
+
+// function solution(num, k){
+//     let st = num.toString()
+//     for(let i = 0; i < st.length; i++){
+//         if(Number(st[i]) == k){
+//             return i+1
+//         }
+//     }
+//     return -1
+// }
+
+// function solution(myS){
+//     return myS.toLowerCase().split('').sort().join('')
+// }
+
+// function solution(n){
+//     let count = 0;
+//     for(let i = 4; i <= n; i++){
+//         let nom = 0
+//         for(let j = 1; j <= i; j++){
+//             if(i % j == 0){
+//                 nom++
+//             }
+//         }
+//         if(nom >= 3){
+//             count++
+//         }
+//     }
+//     return count
+// }
+
+function solution(letter){
+    let res = ''
+    morse = { 
+        '.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',
+        '--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',
+        '--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',
+        '...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',
+        '-.--':'y','--..':'z'
+    }
+
+    return letter.split(' ').map(v => morse[v]).join('')
+
+}
+
+
+console.log(solution(".... . .-.. .-.. ---"))
 
