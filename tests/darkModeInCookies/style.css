@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+body.dark-mode{
+    background-color: #000;
+    color: white;
+}
+
+button{
+    width: 150px;
+    height: 70px;
+    box-shadow: 0 0 12px rgb(0, 0, 0);
+}
+
+button:hover{
+    transform: scale(1.2);
+}
