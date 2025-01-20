@@ -208,20 +208,204 @@
 //     return count
 // }
 
-function solution(letter){
-    let res = ''
-    morse = { 
-        '.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',
-        '--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',
-        '--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',
-        '...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',
-        '-.--':'y','--..':'z'
+// function solution(letter){
+//     let res = ''
+//     morse = { 
+//         '.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',
+//         '--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',
+//         '--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',
+//         '...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',
+//         '-.--':'y','--..':'z'
+//     }
+
+//     return letter.split(' ').map(v => morse[v]).join('')
+
+// }
+
+
+// console.log(solution(".... . .-.. .-.. ---"))
+
+
+// function solution(numArr, n){
+//     let result = [];
+
+//     for(let i = 0; i < numArr.length; i+=n) {
+//         result.push(numArr.slice(i,  i + n))
+//     }
+//         return result
+// }
+
+
+// function solution(myS){
+//     let result= ''
+
+//     for(let i = 0; i < myS.length; i++) {
+//         if(!result.includes(myS[i])){
+//             result += myS[i]
+//         }
+//     }
+//     return result
+// }
+
+
+// function solution(myS){
+//     return [...new Set(myS)]
+// }
+
+// function solution(i, j, k){
+//     let count = 0;
+
+//     for(let x = i; x <= j; x++) {
+//         let numStr = x.toString()
+//         for(let num of numStr){
+//             console.log(num)
+//             if(num.includes(k)){
+//                 count++
+//             }
+//         }
+//     }
+//     return count
+// }
+
+
+// function solution(emergy){
+//     let a = [...emergy].sort((a, b) => b - a) // 내림차순으로 만듦
+//     console.log(a)//[ 76, 24, 3 ]
+//     return emergy.map(v => console.log(a.indexOf(v)))
+
+// }
+
+
+// function solution(n){
+//     let i = 1
+//     let fa = 1
+//     while(fa <= n){
+//         i++
+//         fa *= i
+//         console.log(fa)
+//     }
+//     return i -1 
+// }
+
+
+// function solution(s){
+//     let numArr = []
+
+//     for(let i = 0; i < s.length; i++){
+//         if(!isNaN(s[i]) && !isNaN(s[i+1])){
+//             numArr.push(s.slice(i, i + 2))
+//             i++
+//             continue;
+//         }
+//         else if(!isNaN(s[i])){
+//             numArr.push(s[i])
+//         }
+//     }
+//     return numArr.map(v=> Number(v)).reduce((acc , cur) => acc + cur, 0)
+
+// }
+
+// function solution(s){
+//     let numArr = []
+//     let i = 0;
+
+//     while(i < s.length){
+//         if(!isNaN(s[i]) && !isNaN(s[i+1])){
+//             numArr.push(s.slice(i, i + 2))
+//             i++
+//         }
+//         else if(!isNaN(s[i])){
+//             numArr.push(s[i])
+//             i++
+//         }else{
+//             i++
+//         }
+//     }
+//     return numArr.map(v=> Number(v)).reduce((acc , cur) => acc + cur, 0)
+// }
+
+// function solution(s){
+//     let answer = ''
+//     for(let i =0; i < s.length; i++){
+//         if(Number.isInteger(+s[i])){
+//             answer += s[i]
+//         }else{
+//             answer += " "
+//         }
+//     }
+//     console.log(answer)
+//     return answer.split(' ').reduce((acc, cur) => acc += +cur, 0)
+// }
+
+
+// function solution(s){
+//     let res = ''
+//     for(let i = 0; i < s.length; i++){
+//         if(Number.isInteger(+s[i])){
+//             res += s[i]
+//         }else{
+//             res += " "
+//         }
+//     }
+//     return res.split(' ').reduce((acc, cur) => acc += +cur, 0)
+// }
+
+// function solution(arr, n){
+//     let res =  arr.sort((a, b) => Math.abs(n-a) - Math.abs(n-b) || a -b)
+//     console.log(res)
+// }
+
+
+// function solution(s){
+//     let res = [];
+//     for (let c of s) if (s.indexOf(c) === s.lastIndexOf(c)){
+//         console.log(s.indexOf(c))
+//         res.push(c);  
+    
+//     } 
+//     console.log(res)
+//     return res.sort().join('');
+
+// }
+
+// function solution(arr){
+//     let count = 0
+//     for(let i = 0; i < arr.length; i++){
+//         let str = arr[i].toString()
+//         for(let j = 0; j < str.length; j++){
+//             if(str[j] === '7'){
+//                 count++
+//             }
+//         }
+//         }
+//         return count
+//     }
+
+
+// function solution(before, after){
+//     let sortedBefore = before.split('').sort().join('');
+//     console.log(sortedBefore)
+//     let sortedAfter = after.split('').sort().join('');
+//     console.log(sortedAfter)
+
+//     return sortedBefore === sortedAfter ? 1 : 0
+// }
+
+
+function solution(s){
+    let count = 0;
+    let arr = s.split(' ')
+    console.log(+arr[0])
+
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === 'Z'){
+            count -= (+arr[i-1])
+        }else{
+            count += (+arr[i])
+        }
     }
-
-    return letter.split(' ').map(v => morse[v]).join('')
-
+    return count
 }
 
 
-console.log(solution(".... . .-.. .-.. ---"))
-
+console.log(solution("1 2 Z 3"))
