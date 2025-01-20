@@ -6,16 +6,22 @@
 
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 1s, color 1s;
 }
 
 
 body.dark-mode{
     background-color: #000;
     color: white;
+}
+
+#moon{
+    font-size: 40px;
+    cursor: pointer;
 }
 
 button{

@@ -1,9 +1,4 @@
-// document.querySelector('button').addEventListener('click', () => {
-//     let body = document.querySelector('body')
-//     body.style.backgroundColor ='white'
-// })
-
-const themeToggleBtn = document.getElementById('themeToggle')
+const themeToggleBtn = document.getElementById('moon')
 const body = document.body
 
 const getCookie = (name) =>{
