@@ -19,6 +19,10 @@ body.dark-mode{
     color: white;
 }
 
+img{
+    width: 300px;
+}
+
 #moon{
     font-size: 40px;
     cursor: pointer;
