@@ -118,22 +118,156 @@
 //     return position
 // }
 
-function solution(spell, dic){
-    let sortedSpell = spell.sort().join('')
-    console.log(sortedSpell)
-    for(let i = 0; i < dic.length; i++){
-        if(dic[i].split().sort().join('') === sortedSpell){
-            return 1
-        }else{
-            return 2
+// function solution(spell, dic){
+//     let sortedSpell = spell.sort().join('')
+//     console.log(sortedSpell)
+//     for(let i = 0; i < dic.length; i++){
+//         if(dic[i].split().sort().join('') === sortedSpell){
+//             return 1
+//         }else{
+//             return 2
+//         }
+//     }
+// }
+
+
+
+// function solution(spell, dic){
+//     let newSpell = spell.sort().join('')
+//     for(let i = 0; i < dic.length; i++){
+//         let dicArr = dic[i].split('').sort().join('')
+//         if(dicArr === newSpell){
+//             return 1
+//         }
+        
+//     }
+//     return 2
+
+// }
+
+
+// console.log(solution(["p", "o", "s"],["sod", "eocd", "qixm", "adio", "soo"]))
+
+// function solution(M, N){
+//     return M * N -1
+// }
+
+// function solution(dots){
+//     let X = dots.map(v => v[0])
+//     let Y = dots.map(v => v[1])
+
+//     let width = Math.max(...X) - Math.min(...X)
+//     let height = Math.max(...Y) - Math.min(...Y)
+
+//     return width * height
+// }
+
+// function solution(id_pw, db){
+//     let [id, pw] = id_pw
+//     for(let i = 0; i < db.length; i++){
+//         if(db[i][0] == id && db[i][1] == pw){
+//             return 'login'
+//         }else if(db[i][0] == id && db[i][1] !== pw){
+//             return 'wrong pw'
+//         }
+//     }
+//     return 'fail'
+// }
+
+// function solution(id_pw, db){
+//     let [id, pw] = id_pw
+//     let map = new Map(db)
+//     return map.has(id) ? (map.get(id) == pw ? 'login' : 'wrong pw') : 'fail'
+// }
+
+// function solution(chicken){
+//     return Math.floor((chicken - 10) / 9 + 1 )
+// }
+
+// function solution(score){
+//     let avg = score.map(v => (v[0]+v[1])/2)
+//     console.log(avg)
+//     let sorted = [...avg].sort((a,b)=> b - a)//오름차순
+//     console.log(sorted)
+//     return avg.map(v => sorted.indexOf(v)+1)
+// }
+
+
+
+// function solution(n){
+//     for(let i = 1; i <=n; i++){
+//         if(i % 3 == 0){
+//             n++
+//         }
+//         if(String(i).includes('3') & i % 3 != 0){
+//             n++
+//         }
+//     }
+//     return n
+// }
+
+// function solution(a, b){
+//     return (b+b).indexOf(a)
+// }
+
+// function solution(numArr, n){
+//     let a = numArr.sort((a, b) => Math.abs(a - n) - Math.abs(b - n));
+
+//     console.log(a)
+// }
+
+// function solution(numArr, n){
+//     return numArr.sort((a, b) => {
+//         const A = Math.abs(a - n)
+//         console.log('A', A)
+//         const B = Math.abs(b - n)
+//         console.log('B', B)
+
+//         if(A === B){
+//             return b - a
+//         }
+//         return A - B
+//     })
+// }
+
+// function solution(numArr, n){
+//     return numArr.sort((a, b) => Math.abs(a-n) - Math.abs(b - n) || b -a)
+// }
+
+function solution(p){
+    let arr = p.split(' + ')
+    let resX = []
+    let int = []
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i].includes('x')){
+            resX.push(arr[i])
+        }else if(!isNaN(arr[i])){
+            int.push(Number(arr[i]))
         }
+    }
+    let plusX = 0
+    for (let i = 0; i < resX.length; i++) {
+        let splitX = resX[i].split('x')[0]  // 'x' 앞부분만 추출
+        if (splitX === '' || splitX === '+') {
+            plusX += 1  // x가 앞에 없으면 1을 더함
+        } else if (splitX === '-') {
+            plusX -= 1  // x 앞에 -가 있으면 -1을 더함
+        } else {
+            plusX += Number(splitX)  // x 앞에 숫자가 있으면 그 값을 더함
+        }
+    }
+    let plusI = 0
+    for(let num of int){
+        plusI += num
+    }
+
+    if(plusI === 0 ){
+        return plusX +'x'
+    }else{
+        return plusX+'x' + ' + ' + plusI
     }
 }
 
-let a = [1, 2, 3]
-let b = [1, 3, 2]
-let c = b.sort()
-console.log(c)
+console.log(solution("3x + 7 + x"))
 
 
-console.log(solution(["p", "o", "s"],["sod", "eocd", "qixm", "adio", "soo"]))
