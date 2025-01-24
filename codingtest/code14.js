@@ -234,40 +234,109 @@
 //     return numArr.sort((a, b) => Math.abs(a-n) - Math.abs(b - n) || b -a)
 // }
 
-function solution(p){
-    let arr = p.split(' + ')
-    let resX = []
-    let int = []
-    for(let i = 0; i < arr.length; i++){
-        if(arr[i].includes('x')){
-            resX.push(arr[i])
-        }else if(!isNaN(arr[i])){
-            int.push(Number(arr[i]))
-        }
-    }
-    let plusX = 0
-    for (let i = 0; i < resX.length; i++) {
-        let splitX = resX[i].split('x')[0]  // 'x' 앞부분만 추출
-        if (splitX === '' || splitX === '+') {
-            plusX += 1  // x가 앞에 없으면 1을 더함
-        } else if (splitX === '-') {
-            plusX -= 1  // x 앞에 -가 있으면 -1을 더함
-        } else {
-            plusX += Number(splitX)  // x 앞에 숫자가 있으면 그 값을 더함
-        }
-    }
-    let plusI = 0
-    for(let num of int){
-        plusI += num
-    }
+// function solution(p){
+//     let arr = p.split(' + ')
+//     let resX = []
+//     let int = []
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr[i].includes('x')){
+//             resX.push(arr[i])
+//         }else if(!isNaN(arr[i])){
+//             int.push(Number(arr[i]))
+//         }
+//     }
+//     let plusX = 0
+//     for (let i = 0; i < resX.length; i++) {
+//         let splitX = resX[i].split('x')[0]  // 'x' 앞부분만 추출
+//         if (splitX === '' || splitX === '+') {
+//             plusX += 1  // x가 앞에 없으면 1을 더함
+//         } else if (splitX === '-') {
+//             plusX -= 1  // x 앞에 -가 있으면 -1을 더함
+//         } else {
+//             plusX += Number(splitX)  // x 앞에 숫자가 있으면 그 값을 더함
+//         }
+//     }
+//     let plusI = 0
+//     for(let num of int){
+//         plusI += num
+//     }
 
-    if(plusI === 0 ){
-        return plusX +'x'
-    }else{
-        return plusX+'x' + ' + ' + plusI
-    }
-}
+//     if(plusI === 0 ){
+//         return plusX +'x'
+//     }else{
+//         return plusX+'x' + ' + ' + plusI
+//     }
+// }
 
-console.log(solution("3x + 7 + x"))
+// console.log(solution("3x + 7 + x"))
 
+// function solution(arr){
+//     let res = {}
+
+//     arr.forEach(num => {
+//         if (res[num]) {
+//             res[num]++;
+//         } else {
+//             res[num] = 1;
+//         }
+//     });
+    
+//     console.log(res)
+    
+//     //value의 값이 가장 큰 키값을 가져오게 하는거임
+//     let values = Object.values(res)
+//     console.log(values)
+//     let maxnumber = Math.max(...values )
+//     const maxCount = values.filter(value => value === maxnumber).length;
+//     console.log(maxCount)
+//     if(maxCount > 1){
+//         return -1
+//     }
+
+//     const keyWithMaxValue = Object.keys(res).reduce((maxKey, key) => {
+//         return res[key] > res[maxKey] ? key : maxKey;
+//     });
+
+// return Number(keyWithMaxValue)
+
+// }  
+
+
+// function solution(arr){
+//     let res = {}
+
+//     arr.forEach(num => {
+//         if(res[num]){
+//             res[num]++
+//         }else{
+//             res[num] = 1
+//         }
+//     })
+
+//     //객체 중 가장 많은 value를 가지고 있는 key의 값을 가져오는것, value가 일치하면 -1
+
+//     //가장 큰 value를 가지고 있는거 찾음
+//     let values = Object.values(res) //values들만 배열로 만들어놓음
+//     let max = Math.max(...values) //values중 가장 큰 값을 max에 담음
+//     console.log(max)
+
+//     //그 value의  값과 일치하는 키를 찾으면됨
+//     const maxCount = values.filter(v => v === max).length //우선 가장 많이 있는 숫자들이 여러개이면 -1을 리턴하기 위함
+//     if(maxCount > 1){
+//         return -1
+//     }
+
+//     const matchKey = [] // key값을 찾기 위함
+
+//     Object.keys(res).forEach(key => { //Object.keys(res)는 키값들만 배열로 나열됨
+//         if(res[key] === max){
+//             matchKey.push(key)
+//         }
+//     })
+//     return Number(matchKey.join(''))
+
+// }
+
+
+console.log(solution([1, 1, 2, 3, 3, 3, 3, 3, 4, 4]))
 
