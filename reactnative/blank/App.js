@@ -40,6 +40,7 @@ export default function App() {
     return (
       <View>
         <Text style={styles.boldText}>this is NestedComponent</Text>
+        
         <Text style={styles.boldText}>props : {props.count}</Text>
         <Text style={styles.boldText}>GlobalCount : {globalCount}</Text>
       </View>
