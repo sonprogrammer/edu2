@@ -1,127 +1,169 @@
-import { StatusBar } from "expo-status-bar";
-import { createContext, useContext, useEffect, useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
-import Toast from 'react-native-toast-message';
-import EventEmitter from 'eventemitter3'
-
-
-const GlobalContext = createContext()
-export const globalEvent = new EventEmitter()
-
+import React, { useState } from 'react';
+import {
+  Alert,
+  ActivityIndicator,
+  Button,
+  FlatList,
+  Image,
+  ImageBackground,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  RefreshControl,
+  SafeAreaView,
+  ScrollView,
+  SectionList,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [input, setInput] = useState('');
+  const [refreshing, setRefreshing] = useState(false);
 
-  const [globalCount, setGlobalCount] = useState(0);
-
-
-  const generateColor = () => {
-    const randomColor = Math.floor(Math.random() * 16777215)
-      .toString(16)
-      .padStart(6, "0");
-    return `#${randomColor}`;
+  const handleAlert = () => {
+    Alert.alert("🚨 Alert", "버튼이 눌렸습니다!");
   };
-  function SomeComponent(props) {
 
-    const [globalCount, setGlobalCount] = useContext(GlobalContext)
-    
-    return (
-      <View>
-        <Text style={styles.boldText}>this is SomeComponent</Text>
-        <Text style={styles.boldText}>props : {props.count}</Text>
-        <Text style={styles.boldText}>GlobalCount : {globalCount}</Text>
-        <Button title="button" onPress={(e) =>{setGlobalCount(globalCount+1)}}/>
-      <NestedComponent count={props.count}/>
-      </View>
-    );
-  }
-  function NestedComponent(props) {
-    const [globalCount, setGlobalCount] = useContext(GlobalContext)
-    return (
-      <View>
-        <Text style={styles.boldText}>this is NestedComponent</Text>
-        
-        <Text style={styles.boldText}>props : {props.count}</Text>
-        <Text style={styles.boldText}>GlobalCount : {globalCount}</Text>
-      </View>
-    );
-  }
-  function NestedComponent1(props) {
-    const [myNum, setMyNum] = useState(0)
-    return (
-      <View>
-        <Text style={styles.boldText}>dsalfgadsg</Text>
-        <Text style={styles.boldText}>myNum : {myNum}</Text>
-        <Button title="click" onPress={() => setMyNum(myNum+1)}/>
-        <Button title="mynum" onPress={() => {
-          globalEvent.emit('show toast', myNum)
-        }}/>
-
-      </View>
-    );
-  }
-
-  function EvenNum(props) {
-    if(props.isEven){
-      return <Text>짝수</Text>
-    }return null
-  }
-
-  const showToast = (data) => {
-    Toast.show({
-      type: 'success',
-      text1: `data: ${data}`,
-      text2: 'This is some something 👋'
-    });
-  }
-
-  useEffect(() => {
-    console.log('useeffect')
-
-    globalEvent.on('show toast', (data) => {
-      console.log('data', data)
-      showToast(data)
-    })
-
-    return() => {
-      globalEvent.removeListener('show toast')
-    }
-  },[]) 
-
+  const DATA = [
+    { title: "Fruits", data: ["🍎 Apple", "🍌 Banana"] },
+    { title: "Vegetables", data: ["🥕 Carrot", "🥦 Broccoli"] },
+  ];
 
   return (
-    <GlobalContext.Provider value={[globalCount, setGlobalCount]}>
-    <View style={[styles.container, { backgroundColor: generateColor() }]}>
+    <SafeAreaView style={styles.safeArea}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{ flex: 1 }}
+      >
+        <ScrollView
+          contentContainerStyle={styles.container}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={() => {
+              setRefreshing(true);
+              setTimeout(() => setRefreshing(false), 1000);
+            }} />
+          }
+        >
+          <Text style={styles.title}>React Native 태그 테스트</Text>
 
-      <EvenNum isEven={count % 2 === 0}/>
-      
-      <Text style={styles.boldText}>let's do it</Text>
-      <Text style={styles.boldText}>count: {count}</Text>
-      <StatusBar style="auto" />
-      <Button
-        title="i am button"
-        onPress={(e) => {
-          setCount((v) => v + 1);
-        }}
-      />
-      <Button title="toast 띄우기" onPress={(e) =>showToast(count)}/>
-      <SomeComponent count={count} />
-      <NestedComponent1 />
-    </View>
-    <Toast />
-    </GlobalContext.Provider>
+          <Text style={styles.label}>TextInput:</Text>
+          <TextInput
+            value={input}
+            onChangeText={setInput}
+            placeholder="search"
+            style={styles.input}
+          />
+
+          <Text style={styles.label}>Button:</Text>
+          <Button title="Alert 띄우기" onPress={handleAlert} />
+
+          <Text style={styles.label}>ActivityIndicator (로딩):</Text>
+          <ActivityIndicator size='large' color='red'/>
+
+          <Text style={styles.label}>opacity :</Text>
+          <TouchableOpacity style={styles.touch} onPress={handleAlert} activeOpacity={0.5}>
+            <Text>ㄴ누르면 투명도 변경</Text>
+          </TouchableOpacity>
+
+
+          <Text style={styles.label}> TouchableHighlight :</Text>
+          <TouchableHighlight
+            style={styles.touch}
+            underlayColor='purple'
+            onPress={handleAlert}
+          >
+            <Text>누르면 색상 변경</Text>
+          </TouchableHighlight>
+
+          <Text style={styles.label}>Pressable:</Text>
+          <Pressable style={styles.touch} onPress={handleAlert}>
+            <Text>누르면 동작</Text>
+          </Pressable>
+         
+          <Text style={styles.label}> FlatList :</Text>
+          <FlatList 
+            data={["😀", "😎", "🚀"]}
+            renderItem={({item}) => <Text>{item}</Text>}
+            keyExtractor={(item, i)=> i.toString()}
+            horizontal
+          />
+
+          <Text style={styles.label}>SectionList:</Text>
+          <SectionList 
+            sections={DATA}
+            renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+            renderSectionHeader={({section: {title}}) => (<Text style={styles.header}>{title}</Text>)}
+          />
+
+          <Text style={styles.label}>Image:</Text>
+          <Image 
+            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+            style={{width: 40, height: 40}}
+          />
+
+          <Text style={styles.label}>ImageBackground:</Text>
+          <ImageBackground
+            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+            style={{width: '100%', height: 100, justifyContent: 'center', alignItems: 'center'}}
+          >
+            <Text style={{color: 'white'}}>배경 위 텍스트</Text>
+          </ImageBackground>
+
+          <Text style={styles.label}>TouchableWithoutFeedback:</Text>
+          <TouchableWithoutFeedback onPress={()=> Alert.alert('touched@@')}>
+              <View style={styles.touch}>
+                  <Text>효과없는 터치</Text>
+              </View>
+          </TouchableWithoutFeedback>
+
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
-    backgroundColor: "#990090",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff'
   },
-  boldText: {
-    fontWeight: "bold",
-    fontSize: 26,
+  container: {
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  label: {
+    marginTop: 20,
+    fontWeight: 'bold',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    borderRadius: 5,
+  },
+  touch: {
+    padding: 10,
+    backgroundColor: '#eec',
+    marginTop: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  item: {
+    paddingLeft: 10,
+  },
+  header: {
+    fontWeight: 'bold',
+    backgroundColor: '#f0f0f0',
+    padding: 5,
   },
 });
