@@ -24,16 +24,55 @@ import {
 
 export default function App() {
   const [input, setInput] = useState('');
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [timerDuration, setTimerDuration] = useState(null);
+  const [remainingTime, setRemainingTime] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
+
+
+  let interval
+
+  const startTimer = () => {
+    if(!timerDuration){
+      Alert.alert('error', '타이머 시간을 설정하세요')
+      return
+    }
+  
+
+  setRemainingTime(timerDuration)
+  setIsTimerRunning(true)
+
+  interval = setInterval(() => {
+    setRemainingTime((prev) => {
+      if(prev <= 0){
+        clearInterval(interval)
+        setIsTimerRunning(false)
+        Alert.alert('time up', '타이머가 종료')
+        return 0
+      }
+      return prev -1
+    })
+  }, 1000)
+}
+  
+  const stopTimer = () => {
+    clearInterval(interval)
+    setIsTimerRunning(false)
+    setRemainingTime(null)
+  }
+
+  const handlInputChange = (value)=> {
+    if(!isNaN(value)){
+      setInput(value)
+      setTimerDuration(parseInt(value, 10) * 60)
+    }
+  }
+
 
   const handleAlert = () => {
     Alert.alert("🚨 Alert", "버튼이 눌렸습니다!");
   };
 
-  const DATA = [
-    { title: "Fruits", data: ["🍎 Apple", "🍌 Banana"] },
-    { title: "Vegetables", data: ["🥕 Carrot", "🥦 Broccoli"] },
-  ];
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -50,77 +89,33 @@ export default function App() {
             }} />
           }
         >
-          <Text style={styles.title}>React Native 태그 테스트</Text>
+          <Text>Interval Timer</Text>
 
-          <Text style={styles.label}>TextInput:</Text>
-          <TextInput
-            value={input}
-            onChangeText={setInput}
-            placeholder="search"
+          <Text style={styles.label}>타이머 설정 (분) : </Text>
+          <TextInput 
             style={styles.input}
+            value={input}
+            onChangeText={handlInputChange}
+            keyboardType='numeric'
+            placeholder='타이머 시간을 입력하세요'
           />
 
-          <Text style={styles.label}>Button:</Text>
-          <Button title="Alert 띄우기" onPress={handleAlert} />
+<View style={styles.buttonContainer}>
+            {!isTimerRunning ? (
+              <Button title="타이머 시작" onPress={startTimer} />
+            ) : (
+              <Button title="타이머 중지" onPress={stopTimer} />
+            )}
+          </View>
 
-          <Text style={styles.label}>ActivityIndicator (로딩):</Text>
-          <ActivityIndicator size='large' color='red'/>
-
-          <Text style={styles.label}>opacity :</Text>
-          <TouchableOpacity style={styles.touch} onPress={handleAlert} activeOpacity={0.5}>
-            <Text>ㄴ누르면 투명도 변경</Text>
-          </TouchableOpacity>
-
-
-          <Text style={styles.label}> TouchableHighlight :</Text>
-          <TouchableHighlight
-            style={styles.touch}
-            underlayColor='purple'
-            onPress={handleAlert}
-          >
-            <Text>누르면 색상 변경</Text>
-          </TouchableHighlight>
-
-          <Text style={styles.label}>Pressable:</Text>
-          <Pressable style={styles.touch} onPress={handleAlert}>
-            <Text>누르면 동작</Text>
-          </Pressable>
-         
-          <Text style={styles.label}> FlatList :</Text>
-          <FlatList 
-            data={["😀", "😎", "🚀"]}
-            renderItem={({item}) => <Text>{item}</Text>}
-            keyExtractor={(item, i)=> i.toString()}
-            horizontal
-          />
-
-          <Text style={styles.label}>SectionList:</Text>
-          <SectionList 
-            sections={DATA}
-            renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-            renderSectionHeader={({section: {title}}) => (<Text style={styles.header}>{title}</Text>)}
-          />
-
-          <Text style={styles.label}>Image:</Text>
-          <Image 
-            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-            style={{width: 40, height: 40}}
-          />
-
-          <Text style={styles.label}>ImageBackground:</Text>
-          <ImageBackground
-            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-            style={{width: '100%', height: 100, justifyContent: 'center', alignItems: 'center'}}
-          >
-            <Text style={{color: 'white'}}>배경 위 텍스트</Text>
-          </ImageBackground>
-
-          <Text style={styles.label}>TouchableWithoutFeedback:</Text>
-          <TouchableWithoutFeedback onPress={()=> Alert.alert('touched@@')}>
-              <View style={styles.touch}>
-                  <Text>효과없는 터치</Text>
-              </View>
-          </TouchableWithoutFeedback>
+          {isTimerRunning && (
+            <View style={styles.timerContainer}>
+              <Text style={styles.timerText}>
+                남은 시간: {Math.floor(remainingTime / 60)}:{remainingTime % 60}
+              </Text>
+              <ActivityIndicator size="large" color="#0000ff" />
+            </View>
+          )}
 
         </ScrollView>
       </KeyboardAvoidingView>
