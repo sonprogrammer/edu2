@@ -34,7 +34,7 @@ function solution(n,m,section){
             painted = s + m -1
         }
     }
-    return answer
+    return answer 
 }
 console.log(solution(8, 4, [2, 3, 6]))
 
