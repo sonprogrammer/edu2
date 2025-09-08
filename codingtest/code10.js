@@ -495,6 +495,7 @@ function sol(arr){
 }
 
 
+
 console.log(sol([
     {
       name: "카페",
