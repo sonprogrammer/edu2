@@ -482,36 +482,38 @@ function solution(feature){
 //     return `범인은 바로 ${criminal}입니다!`
 // }
 
-function sol(arr){
-    let criminal = ''
-    let times = 0
-    for(let v of arr){
-        if(v.time > times){
-            times = v.time
-            criminal = v.name
-        }
-    }
-    return `범인은 바로 ${criminal}입니다!`
-}
+// function sol(arr){
+//     let criminal = ''
+//     let times = 0
+//     for(let v of arr){
+//         if(v.time > times){
+//             times = v.time
+//             criminal = v.name
+//         }
+//     }
+//     return `범인은 바로 ${criminal}입니다!`
+// }
 
 
 
-console.log(sol([
-    {
-      name: "카페",
-      time: 5,
-    },
-    {
-      name: "모카",
-      time: 12,
-    },
-    {
-      name: "라떼",
-      time: 10,
-    },
-    {
-      name: "아라비카",
-      time: 1,
-    },
-  ]))
+// console.log(sol([
+//     {
+//       name: "카페",
+//       time: 5,
+//     },
+//     {
+//       name: "모카",
+//       time: 12,
+//     },
+//     {
+//       name: "라떼",
+//       time: 10,
+//     },
+//     {
+//       name: "아라비카",
+//       time: 1,
+//     },
+//   ]))
+
+
 
