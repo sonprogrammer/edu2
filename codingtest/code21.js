@@ -134,15 +134,42 @@
 //   return winner
 // }
 
+// function solution(actions){
+//     let map = new Map()
+//     for(let i = 0; i < actions.length; i++ ){
+//         for(let j = 0; j < actions[i].length; j++){
+//             if(!map.has(actions[i][j])){
+//                 map.set(actions[i][j], 1)
+//             }else{
+
+//                 map.set(actions[i][j], map.get(actions[i][j]) +1)
+//             }
+//         }
+//     }
+//     let maxCount = 0
+//     let res =[]
+
+//     for(const [title, count] of map){
+//         if(maxCount < count){
+//             maxCount = count
+//             res = [title]
+//         }else if(maxCount === count){
+//             res.push(title)
+//         }
+//     }
+    
+//     return res
+// }
+
+
+
+
 console.log(
   solution([
-    "Alice add Bob",
-    "Alice add Charlie",
-    "Bob add Alice",
-    "Charlie add Alice",
-    "Alice remove Bob",
-    "David add Alice",
-    "Bob add Charlie",
-    "Charlie remove Alice",
+    ["javascript", "web", "frontend"],
+  ["web", "backend", "nodejs"],
+  ["javascript", "react", "frontend"],
+  ["nodejs", "backend", "database"],
+  ["javascript", "frontend", "typescript"]
   ])
 );
