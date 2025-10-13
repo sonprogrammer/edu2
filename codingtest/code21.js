@@ -162,14 +162,126 @@
 // }
 
 
+// function solution(actions){
+//   let ansewr = new Map()
+
+//   for(let action of actions){
+//     const [name, act, book] = action.split(' ')
+
+//     if(!ansewr.has(name)){
+//       ansewr.set(name, new Set())
+//     }
+//     if(act === 'borrow'){
+//       ansewr.get(name).add(book)
+//     }else if(act === 'return'){
+//       ansewr.get(name).delete(book)
+//     }
+//   }
+
+//   let maxCount = 0
+//   let result = []
+
+//   for(const [name, books] of ansewr){
+//     const count = books.size
+//     if(count > maxCount){
+//       maxCount = count
+//       result = [{name, count}]
+//     }else if(count === maxCount){
+//       result.push({name, count})
+//     }
+//   }
+//   return result
+// }
+
+
+// function solution(actions){
+//   let attendees = new Set()
+//   let map = new Map()
+
+//   for(let action of actions){
+//     const [name, act] = action.split(' ')
+//     if(act === 'join'){
+//       attendees.add(name)
+//       map.set(name, (map.get(name) || 0) + 1)
+//     }else if(act === 'leave'){
+//       attendees.delete(name)
+//       map.delete(name)
+//     }
+//   }
+//   return {attendees, count: map.size}
+// }
+
+
+// function solution(actions){
+//   let map = new Map()
+
+//   for(let action of actions){
+//     const [name, act, freind] = action.split(' ')
+
+//     if(!map.has(name)) map.set(name, new Set())
+    
+//     if(act === 'add'){
+//       map.get(name).add(freind)
+//     }else if(act === 'remove'){
+//       map.get(name).delete(freind)
+//     }
+//   }
+
+//   let maxFreind = 0
+//   let result = []
+//   for(let [name, f] of map){
+//     const count = f.size
+//     if(maxFreind < count){
+//       maxFreind = count
+//       result = [name]
+//     }else if(maxFreind === count){
+//       result.push(name)
+//     }
+//   }
+//   return result.map(name => ({name, count : maxFreind}))
+// }
+
+
+// function solution(actions){
+//   let map = new Map()
+
+//   for(let action of actions){
+//     let [name, act, seat] = action.split(' ')
+//     if(!map.has(name)) map.set(name, new Set())
+
+//     if(act === 'reserve'){
+//       map.get(name).add(seat)
+//     }else if(act === 'cancel'){
+//       map.get(name).delete(seat)
+//     }
+//   }
+//   console.log(map)
+//   let maxSeat = 0
+//   let names = []
+//   for(let [name, seat] of map){
+//     const count = seat.size
+//     if(maxSeat < count){
+//       maxSeat = count
+//       names = [name]
+//     }else if ( maxSeat === count){
+//       names.push(name)
+//     }
+//   }
+//   return names.map(res => {return {name: res, count: maxSeat}})
+// }
+
+20 , 30, 11
 
 
 console.log(
   solution([
-    ["javascript", "web", "frontend"],
-  ["web", "backend", "nodejs"],
-  ["javascript", "react", "frontend"],
-  ["nodejs", "backend", "database"],
-  ["javascript", "frontend", "typescript"]
+  "Alice reserve A1",
+  "Bob reserve B1",
+  "Alice reserve A2",
+  "Charlie reserve C1",
+  "Bob reserve B2",
+  "Alice cancel A1",
+  "David reserve D1",
+  "Charlie reserve C2"
   ])
 );
