@@ -270,18 +270,104 @@
 //   return names.map(res => {return {name: res, count: maxSeat}})
 // }
 
-20 , 30, 11
+
+
+// function solution(actions){
+//   let res = new Map()
+
+//   for(let action of actions){
+//     const [name , act, book] = action.split(' ')
+
+//     if(!res.has(name)) res.set(name, new Set())
+
+//     if(act === 'borrow'){
+//       res.get(name).add(book)
+//     }else if(act ==='return'){
+//       res.get(name).delete(book)
+//     }
+//   }
+//   console.log(res)
+//   let maxCount = 0
+//   let names = []
+
+//   for(let [name, book] of res){
+//     const bookCount = book.size
+//     if(maxCount < bookCount){
+//       maxCount = bookCount
+//       names = [name]
+//     }else if(maxCount === bookCount){
+//       names.push(name)
+//     }
+//   }
+//   return names.map(a => ({ name: a, count: maxCount}))
+// }
+
+// function solution(actions){
+//   let online = new Set()
+//   let loginCount = new Map()
+
+//   for(let action of actions){
+//     const [name, act] = action.split(' ')
+//     if(act === 'login'){
+//       online.add(name)
+//       loginCount.set(name, (loginCount.get(name) || 0) + 1)
+//     }else if(act === 'logout'){
+//       online.delete(name)
+//     }
+//   }
+
+//   return {
+//     online: Array.from(online),
+//     loginCount
+//   }
+// }
+
+function solution(actions) {
+  let online = new Set()
+  let loginCount = new Map()
+
+  for(let action of actions){
+    const [name, act] = action.split(' ')
+
+    if(act === 'login'){
+      online.add(name)
+      loginCount.set(name, (loginCount.get(name)|| 0) + 1)
+    }else{
+      online.delete(name)
+    }
+  }
+
+  let maxCount = 0
+  let top = []
+
+  for(let [name, count] of loginCount){
+    if(maxCount< count){
+      maxCount = count
+      top = [name]
+    }else if( maxCount === count){
+      top.push(name)
+    }
+  }
+
+  return {
+    currentUser: Array.from(online),
+    topUser: top.map(a => ({name: a, count: maxCount}))
+  }
+}
+
+
 
 
 console.log(
   solution([
-  "Alice reserve A1",
-  "Bob reserve B1",
-  "Alice reserve A2",
-  "Charlie reserve C1",
-  "Bob reserve B2",
-  "Alice cancel A1",
-  "David reserve D1",
-  "Charlie reserve C2"
+ "Alice login",
+  "Bob login",
+  "Alice logout",
+  "Alice login",
+  "Charlie login",
+  "Bob logout",
+  "Alice logout",
+  "Charlie logout",
+  "Bob login"
   ])
 );
