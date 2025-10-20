@@ -322,52 +322,77 @@
 //   }
 // }
 
-function solution(actions) {
-  let online = new Set()
-  let loginCount = new Map()
+// function solution(actions) {
+//   let online = new Set()
+//   let loginCount = new Map()
 
-  for(let action of actions){
-    const [name, act] = action.split(' ')
+//   for(let action of actions){
+//     const [name, act] = action.split(' ')
 
-    if(act === 'login'){
-      online.add(name)
-      loginCount.set(name, (loginCount.get(name)|| 0) + 1)
-    }else{
-      online.delete(name)
-    }
+//     if(act === 'login'){
+//       online.add(name)
+//       loginCount.set(name, (loginCount.get(name)|| 0) + 1)
+//     }else{
+//       online.delete(name)
+//     }
+//   }
+
+//   let maxCount = 0
+//   let top = []
+
+//   for(let [name, count] of loginCount){
+//     if(maxCount< count){
+//       maxCount = count
+//       top = [name]
+//     }else if( maxCount === count){
+//       top.push(name)
+//     }
+//   }
+
+//   return {
+//     currentUser: Array.from(online),
+//     topUser: top.map(a => ({name: a, count: maxCount}))
+//   }
+// }
+
+
+
+
+function solution(str){
+  let map = new Map()
+
+  let newArr = str.split('')
+  
+  for(let char of newArr){
+    map.set(char, (map.get(char) || 0) + 1)
   }
 
   let maxCount = 0
-  let top = []
-
-  for(let [name, count] of loginCount){
-    if(maxCount< count){
+  let maxChar =[]
+  for(let [c, a] of map){
+    let count = a
+    if(maxCount < count){
       maxCount = count
-      top = [name]
-    }else if( maxCount === count){
-      top.push(name)
+      maxChar = [c]
+    }else if(maxCount === count){
+      maxChar.push(c)
     }
   }
-
-  return {
-    currentUser: Array.from(online),
-    topUser: top.map(a => ({name: a, count: maxCount}))
-  }
+  return maxChar.map((char) => ({char, count: maxCount}))
 }
 
 
-
-
-console.log(
-  solution([
- "Alice login",
-  "Bob login",
-  "Alice logout",
-  "Alice login",
-  "Charlie login",
-  "Bob logout",
-  "Alice logout",
-  "Charlie logout",
-  "Bob login"
-  ])
-);
+console.log(solution('banana'))
+// console.log(
+//   solution([
+//  "Alice login",
+//   "Bob login",
+//   "Alice logout",
+//   "Alice login",
+//   "Charlie login",
+//   "Bob logout",
+//   "Alice logout",
+//   "Charlie logout",
+//   "Bob login"
+//   ])
+// );
