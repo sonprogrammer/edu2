@@ -358,41 +358,55 @@
 
 
 
+// function solution(str){
+//   let map = new Map()
+
+//   let newArr = str.split('')
+  
+//   for(let char of newArr){
+//     map.set(char, (map.get(char) || 0) + 1)
+//   }
+
+//   let maxCount = 0
+//   let maxChar =[]
+//   for(let [c, a] of map){
+//     let count = a
+//     if(maxCount < count){
+//       maxCount = count
+//       maxChar = [c]
+//     }else if(maxCount === count){
+//       maxChar.push(c)
+//     }
+//   }
+//   return maxChar.map((char) => ({char, count: maxCount}))
+// }
+
+
 function solution(str){
   let map = new Map()
 
-  let newArr = str.split('')
-  
-  for(let char of newArr){
-    map.set(char, (map.get(char) || 0) + 1)
-  }
+  for(let action of str){
+    const [name, act] = action.split(' ')
 
-  let maxCount = 0
-  let maxChar =[]
-  for(let [c, a] of map){
-    let count = a
-    if(maxCount < count){
-      maxCount = count
-      maxChar = [c]
-    }else if(maxCount === count){
-      maxChar.push(c)
+    if(act === 'login'){
+      map.set(name, 'login')
+    }else if(act === 'logout'){
+      map.delete(name)
     }
   }
-  return maxChar.map((char) => ({char, count: maxCount}))
+  return map
 }
 
-
-console.log(solution('banana'))
-// console.log(
-//   solution([
-//  "Alice login",
-//   "Bob login",
-//   "Alice logout",
-//   "Alice login",
-//   "Charlie login",
-//   "Bob logout",
-//   "Alice logout",
-//   "Charlie logout",
-//   "Bob login"
-//   ])
-// );
+console.log(
+  solution([
+ "Alice login",
+  "Bob login",
+  "Alice logout",
+  "Alice login",
+  "Charlie login",
+  "Bob logout",
+  "Alice logout",
+  "Charlie logout",
+  "Bob login"
+  ])
+);
