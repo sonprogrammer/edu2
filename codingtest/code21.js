@@ -382,31 +382,80 @@
 // }
 
 
-function solution(str){
+// function solution(str){
+//   let map = new Map()
+
+//   for(let action of str){
+//     const [name, act] = action.split(' ')
+
+//     if(act === 'login'){
+//       map.set(name, 'login')
+//     }else if(act === 'logout'){
+//       map.delete(name)
+//     }
+//   }
+//   return map
+// }
+
+
+// function solution(actions){
+//   let map = new Map()
+//   let currentSt = new Set()
+
+//   for(let action of actions){
+//     const [name, act] = action.split(' ')
+    
+
+//     if(act === 'join'){
+//       map.set(name, (map.get(name) || 0) + 1)
+//       currentSt.add(name)
+//     }else if(act ==='leave'){
+//       currentSt.delete(name)
+//     }
+//   }
+
+  
+//   let maxCount = 0
+//   let maxName =[]
+  
+//   for(let [name, count] of map){
+//     if(count > maxCount){
+//       maxCount = count
+//       maxName = [name]
+//     }else if(count === maxCount){
+//       maxName.push(name)
+//     }
+//   }
+//   return {
+//     currentSt: Array.from(currentSt),
+//     topUser: maxName.map(name => ({count: maxCount, name}))
+//   }
+// }
+
+function solution(actions){
   let map = new Map()
 
-  for(let action of str){
+  for(let action of actions){
     const [name, act] = action.split(' ')
 
-    if(act === 'login'){
-      map.set(name, 'login')
-    }else if(act === 'logout'){
+    if(act ==='join'){
+      map.set(name, (map.get(name) || 0) + 1)
+    }else if(act === 'leave'){
       map.delete(name)
     }
   }
-  return map
+
+  console.log('map', map)
 }
+
 
 console.log(
   solution([
- "Alice login",
-  "Bob login",
-  "Alice logout",
-  "Alice login",
-  "Charlie login",
-  "Bob logout",
-  "Alice logout",
-  "Charlie logout",
-  "Bob login"
+    "Alice join",
+    "Bob join",
+    "Alice leave",
+    "Charlie join",
+    "Bob leave",
+    "Alice join"
   ])
 );
